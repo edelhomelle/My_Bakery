@@ -1,0 +1,17 @@
+body {}
+
+#fond_boulang {
+    display: inline-block;
+    position: relative;
+    background-image: url("./image/fond_boulangerie.png");
+
+
+}
+
+
+
+#chat {
+    width: 100px;
+    float: right;
+    align-content: center;
+}
