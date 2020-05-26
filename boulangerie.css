@@ -1,4 +1,12 @@
-body {}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("./image/fond_boulangerie.png");
+
+}
+
+#bod_bky{
+
+}
 
 #fond_boulang {
     display: inline-block;
