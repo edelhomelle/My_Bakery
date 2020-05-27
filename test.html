@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+
+<style media="screen">
+    input, button{
+        padding: 7px;
+        height: 40px;
+    }
+</style>
+<body>
+<h2 id="title">Local Storage</h2>
+<fieldset>
+    <legend>
+        Insert Data
+    </legend>
+    <input id="inpkey" type="text" placeholder="Enter key">
+    <input id="inpvalue" type="text" placeholder="Enter value">
+   <button type="button" id="btn">insert data</button>
+</fieldset>
+
+<fieldset>
+    <legend>Local Storage</legend>
+<div id="output"></div>
+    </fieldset>
+
+</body>
+
+<script type="text/javascript">
+    console.log(localStorage);
+    localStorage.setItem("name" , "dodo");
+    const inpkey = document.getElementById("inpkey");
+    const inpvalue = document.getElementById("inpvalue");
+    const btn = document.getElementById("btn");
+    const output = document.getElementById("output");
+
+    btn.onclick = function () {
+const key = inpkey.value;
+const value = inpvalue.value;
+console.log(key);
+console.log(value);
+
+if (key && value){
+    localStorage.setItem(key, value);
+    location.reload();
+
+}
+
+    };
+
+    for (let i = 0 ; i < localStorage.length ; i++){
+        const key = localStorage.key(i);
+        const value = localStorage.getItem(key);
+        output.innerHTML += `${key}: ${value} <br />`;
+    }
+
+</script>
+
+</html>

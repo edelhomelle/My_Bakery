@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <title>Ma boulangerie</title>
     <meta charset="utf-8">
@@ -10,22 +9,71 @@
     <meta name="description" content="TD2">
     <meta name="keywords" content="HTML,CSS,XML,JavaScript">
 </head>
+<body>
 
-<body onload="init()">
-<div id="result"></div>
+<div id="bulle" style="position: relative;
+    right:50px;
+    background-color:white;
+    text-align:center;
+    width:300px;
+    height:160px;
+    border:2px solid #555555;
+border-top-right-radius:80px 40px;
+border-top-left-radius:80px 40px;
+border-bottom-right-radius:80px 40px;
+border-bottom-left-radius:80px 40px;
+display: block; margin : auto;
 
+
+
+">
+    <span id="output" style="
+font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */
+font-weight:bold;
+font-size:3em;
+position:relative;
+top:26px;
+
+
+"></span>
+    <span id="arrow_border" style="
+width: 0;
+height: 0;
+line-height: 0;
+border-bottom:30px solid transparent;
+border-left:30px solid transparent;
+border-right:30px solid #555555; /* couleur de la bordure de la bulle */
+position:absolute;
+bottom:-30px;
+right:65px;
+
+"></span>
+    <span id="arrow_inner" style="
+width: 0;
+height: 0;
+line-height: 0;
+border-bottom:30px solid transparent;
+border-left:30px solid transparent;
+border-right:30px solid #555555; /* couleur de la bordure de la bulle */
+position:absolute;
+bottom:-25px;
+right:67px;
+
+"></span>
+</div>
+<img src="image/chat.png" style="
+display: block; margin : auto;margin-top:1em; width: 30em" />
+</body>
 <script>
-    // Check browser support
-    if (typeof(Storage) !== "undefined") {
-        // Store
-        localStorage.setItem("lastname", "Smith");
-        // Retrieve
-        document.getElementById("result").innerHTML = localStorage.getItem("lastname");
-    } else {
-        document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+    console.log(localStorage);
+    const output = document.getElementById("output");
+
+        const key = localStorage.key('prenom');
+        const value = localStorage.getItem('prenom');
+        output.innerHTML += `Bienvenue ${value} <br />`;
+
+    document.getElementsByTagName('body')[0].onclick = function(e) {
+        document.location.href="caisse.html";
     }
 </script>
-
-</body>
-
 </html>

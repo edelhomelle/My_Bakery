@@ -5,23 +5,49 @@
     <title>Ma boulangerie</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="boulangerie.css" />
-    <script type="text/javascript" src="./boulangerie.js"> </script>
+<!--    <script type="text/javascript" src="./boulangerie.js"> </script>-->
     <meta name="author" content="Eloïse DELHOMELLE">
     <meta name="description" content="TD2">
     <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <script src='boulangerie.js' async></script>
 </head>
+
+<style media="screen">
+    input, button{
+        padding: 7px;
+        height: 40px;
+    }
+</style>
 <body>
-localStorage.setItem("username", "John");
-
-<form action="debut_jeu.html" method="get">
-    <div style="display: block; margin : auto;margin-top:1em;margin-bottom:0.5em;text-align: center; font-size: 5em; font-weight: 1000; text-shadow: -1px -1px white, 1px 1px #333;  color: orangered ">Quel est ton prénom ?</div>
-    <div><input name="prenom" type="text" style="display: block; margin : auto;margin-top:1em;margin-bottom:0.5em;text-align: center; font-size: 5em;"></div>
-    <div><input type="submit"></div>
-
-
+<form action="debut_jeu.html">
+    <legend style="display: block; margin : auto;margin-top:1em;margin-bottom:0.5em;text-align: center; font-size: 5em; font-weight: 1000; text-shadow: -1px -1px white, 1px 1px #333;  color: orangered ">
+        Quel est ton prénom?
+    </legend>
+    <input id="inpvalue" type="text" placeholder="Enter value" style="display: block; width : 10em; margin : auto;margin-top:1em;margin-bottom:0.5em;text-align: center; font-size: 3em; ">
+    <button type="submit" id="btn" style="display: block; width : 10em; margin : auto;text-align: center; padding: 0em 1em 1em 1em; font-size: 3em; border-radius: 30px; background-color: orangered; text-decoration: none; color: #333333">ok</button>
 </form>
 
-
-
 </body>
+
+<script type="text/javascript">
+    console.log(localStorage);
+    const inpvalue = document.getElementById("inpvalue");
+    const btn = document.getElementById("btn");
+    const output = document.getElementById("output");
+
+    btn.onclick = function () {
+        const key = "prenom";
+        const value = inpvalue.value;
+         if (key && value){
+            localStorage.setItem(key, value);
+            location.reload();        }    };
+
+    for (let i = 0 ; i < localStorage.length ; i++){
+        const key = localStorage.key(i);
+        const value = localStorage.getItem(key);
+           output.innerHTML += `${key}: ${value} <br />`;
+    }
+
+</script>
+
 </html>

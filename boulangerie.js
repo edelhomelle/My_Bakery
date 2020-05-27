@@ -1,9 +1,44 @@
-function init() {
+let htmlElt = document.querySelector('html');
+let bgColor = document.getElementById('bgtheme');
+let nomjoueur = document.getElementById('nom');
 
-
-    var img_chat = document.createElement("img_chat");
-    img.src = "chat.png";
-    var block_chat = document.getElementById("chat");
-    block_chat.appendChild(img_chat);
-
+if(localStorage.getItem('bgtheme')){
+    updateBg();
+}else{
+    setBg();
 }
+
+function setBg(){
+    localStorage.setItem('bgtheme', bgColor.value);
+    updateBg();
+}
+
+function updateBg(){
+    let bg = localStorage.getItem('bgtheme');
+    htmlElt.style.backgroundColor = '#' + bg;
+    bgColor.value = bg;
+}
+
+bgColor.addEventListener('change', setBg);
+
+
+
+if(localStorage.getItem('nom')){
+    updatenom();
+}else{
+    setnom();
+}
+
+function setnom(){
+    localStorage.setItem('nom', nomjoueur.value);
+    updateBg();
+}
+
+function updatenom(){
+    let nomj = localStorage.getItem('nom');
+    document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+    htmlElt.style.backgroundColor = '#' + bg;
+    bgColor.value = bg;
+}
+
+bgColor.addEventListener('change', setBg);
