@@ -30,29 +30,71 @@
 </body>
 
 <script type="text/javascript">
-    console.log(localStorage);
     const inpvalue = document.getElementById("inpvalue");
     const btn = document.getElementById("btn");
     const output = document.getElementById("output");
-
     btn.onclick = function () {
         const key = "prenom";
         const value = inpvalue.value;
-         if (key && value){
+        console.log(key);
+        console.log(value);
+        if (key && value) {
             localStorage.setItem(key, value);
-            location.reload();        }    };
+            location.reload();
+        }
+        let objJson = {
+            prenom: inpvalue.value,
+            niveau: 0,
+            produits : {
+                pain : 1
+            }
+        }
+        let objLinea = JSON.stringify(objJson);
+        localStorage.setItem("joueur", objLinea);
+        const fs = require('fs')
 
-    for (let i = 0 ; i < localStorage.length ; i++){
-        const key = localStorage.key(i);
-        const value = localStorage.getItem(key);
-           output.innerHTML += `${key}: ${value} <br />`;
+        fs.writeFile('joueur.json', objLinea, function(erreur) {
+            if (erreur) {
+                console.log(erreur)}
+        })
+    };
+
+    /*btn.onclick = function () {
+        console.log(localStorage.getItem("prenom"));
+        console.log(inpvalue.value);
+        if (localStorage.getItem("prenom") != inpvalue.value){
+            console.log("empty");
+            //add_name();
+            add_json();
+        }
+        else{
+            console.log("ce prénom est déjà utilisé");
+            alert("Il y a déjà un joueur qui porte ce nom, vérifie dans les parties enregistrées. Sinon, tu peux écrire un autre prénom pour commencer une nouvelle partie.")
+        }
+    };*/
+
+    function add_name() {
+        const key = "prenom";
+        const value = inpvalue.value;
+        if (key && value) {
+            localStorage.setItem(key, value);
+            //location.reload();
+        }
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            const value = localStorage.getItem(key);
+            output.innerHTML += `${key}: ${value} <br />`;
+        }
     }
 
-</script>
-<script>
-let objJson = {
-niveau : 0}
-let objLinea = JSON.stringify(objJson);
-localStorage.setItem("joueur",objLinea);
+    function add_json() {
+        let objJson = {
+            prenom: inpvalue.value,
+            niveau: 0
+        }
+        let objLinea = JSON.stringify(objJson);
+        localStorage.setItem("joueur", objLinea);
+    }
+
 </script>
 </html>

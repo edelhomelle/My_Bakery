@@ -3,11 +3,29 @@
 <head>
     <meta charset="UTF-8">
 </head>
-<body>
-<img src="./image/chien.PNG" style="width: 20em">
-<img src="./image/chien.PNG" style="width: 20em">
+<body style="">
+<img src="./image/chien.PNG" style="width: 10em; margin-top: 15em">
+<img src="./image/chien.PNG" style="width: 10em">
 
-<img src="./image/caisse.PNG" style="width: 30em">
-<img src="./image/chat.png" style="width: 20em">
+<img src="./image/caisse.PNG" style="width: 15em">
+<img src="./image/chat.png" style="width: 10em">
 </body>
+
+<script>
+
+    choixProduit();
+    function choixProduit(){
+        console.log("oui");
+        console.log(localStorage);
+        const joueur = JSON.parse(localStorage.getItem("joueur"));
+        console.log(joueur.produits);
+        console.log(Object.keys(joueur.produits).length);
+
+
+
+        res = Math.floor(Math.random() * (nb - 1 + 1)) + 1;
+        console.log(res);
+    }
+</script>
+
 </html>
