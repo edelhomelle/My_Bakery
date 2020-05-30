@@ -1,0 +1,56 @@
+jeu = {
+  "evolution": [
+    {
+      "niveau": 0,
+      "produits": [
+        "pain":1
+      ]
+    },
+    {
+      "niveau": 1,
+      "produits": [
+        "pain":1,
+        "croissant":2
+      ]
+    },
+    {
+      "niveau": 2,
+      "produits": [
+        "pain":1,
+        "croissant":2,
+        "pain au chocolat":3
+      ]
+    },
+    {
+      "niveau": 4,
+      "produits": [
+        "pain":1,
+        "croissant":2,
+        "pain au chocolat":3,
+        "meringue":2.50
+      ]
+    },
+    {
+      "niveau": 5,
+      "produits": [
+        "pain":1,
+        "croissant":2,
+        "pain au chocolat":3,
+        "meringue":2.50,
+        "gateau au chocolat":3.30
+      ]
+    },
+    {
+      "niveau": 5,
+      "produits": [
+        "pain":1,
+        "croissant":2,
+        "pain au chocolat":3,
+        "meringue":2.50,
+        "gateau au chocolat":3.30,
+        "cookie":3.25
+      ]
+    }
+  ]
+}
+
