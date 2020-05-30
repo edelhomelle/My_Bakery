@@ -1,57 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <title>test</title>
 </head>
-<body style="">
+<body>
 <img src="./image/chien.PNG" style="width: 10em; margin-top: 15em">
-<img src="./image/chien.PNG" style="width: 10em">
+
+<div id="bulle" style="position: relative;    right:50px;    background-color:white;    text-align:center;    width:500px;    height:250px;    border:2px solid #555555;border-top-right-radius:80px 40px;border-top-left-radius:80px 40px;border-bottom-right-radius:80px 40px;border-bottom-left-radius:80px 40px;margin-left: 10em;">
+    <span id="output" style=" font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */ font-weight:bold;font-size:3em;position:relative;top:26px;"></span>
+    <span id="arrow_border" style="width: 0;height: 0;line-height: 0;border-bottom:0px solid transparent;border-left:30px solid transparent;border-right:30px solid #555555; /* couleur de la bordure de la bulle */position:absolute;bottom:-30px;left:65px;"></span>
+    <span id="arrow_inner" style="width: 0;height: 0;line-height: 0;border-bottom:30px solid transparent;border-right:30px solid transparent;border-left:30px solid #555555; /* couleur de la bordure de la bulle */position:absolute;bottom:-25px;left:67px;"></span>
+</div>
+<img src="./image/chien.PNG" style="width: 10em; margin-left: 10em;">
 
 <img src="./image/caisse.PNG" style="width: 15em">
 <img src="./image/chat.png" style="width: 10em">
-</body>
+<div id="calcul" style=" float:right;font-family: ComicFighter, Georgia; font-weight:bold;font-size:3em; background-color: orangered; width: 10em; padding: 1em;"></div>
+<input type="text" id="resultat" style="float: right; width : 10em; margin : auto; font-size: 3em; ">
+<input type="submit" id="verif">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 <script>
-    alert(localStorage.getItem("niveau"));
-    var requestURL = 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js';
-   $.getJSON('config_jeu.json', function(data)){
-       console.log("ok");
-    }
-
-    request.onload = function() {
-        var evolution = request.response;
-        getNiveau(evolution);
-        getproduits(evolution);
-    }
 
 
-    const niveau = localStorage.getItem("niveau");
-    switch (niveau) {
-    }
+    /* $.getJSON('evolution', function(data){
+     console.log(data);
+ });
+ */
+    //recuperer niveau du joueur:
+    var niveau_joueur = localStorage.getItem('niveau');
 
-    function getniveau(jsonObj) {
-        var niveau_joueur = jsonObj['niveau'];
-        return niveau_joueur
-    }
-    function getproduits(jsonObj){
-        var produits_joueur = jsonObj['produits'];
-        return produits_joueur;
-    }
+    //afficher contenu json evolution en console en fonction du niveau du joueur:
+    $.ajax({
+        url: 'evolution',
+        dataType: 'json',
+        type: 'get',
+        cache: false,
+        success : function(data){
+            $(data.evolution).each(function (index, value) {
+                if (index==2){
+                    /*console.log(index);
+                    console.log(data);
+                    console.log(value.produit);
+                    console.log(value.produit.length);*/
 
-    choixProduit();
-    function choixProduit(){
-        /*console.log("oui");
-        console.log(localStorage);
-        const joueur = JSON.parse(localStorage.getItem("joueur"));
-        console.log(joueur.produits);
-        console.log(Object.keys(joueur.produits).length);
+                    //on récupère la liste des produits (tupples) disponibles au niveau du joueur:
+                    liste_produits = value.produit;
+                    //console.log(liste_produits);
+                    //on récupère les clés (=nom de chaque produit)
+                    keys = Object.keys(liste_produits[0]);
+                    //on calcule le nombre de produit (nombre de clés)
+                    nombre_produits=keys.length;
+                    // console.log(nombre_produits);
+                    //on choisit un entier au hasard parmis le nombre de produit
+                    nb_random =     Math.floor(Math.random() * Math.floor(nombre_produits));
+                    // console.log(nb_random);
+                    //on affiche la clé (=nom produit)
+                    nom_produit = keys[nb_random];
+                    console.log(nom_produit);
+                    //on affiche la valeur de la clé (=prix produit)
+                    values = Object.values(liste_produits[0]);
+                    prix_produit = values[nb_random];
+                    console.log(prix_produit);
 
+                    //le client choisit le nombre de fois qu'il veut ce produit
+                    recur_produit =     Math.floor(Math.random() * (3 - 1 + 1)) + 1;
 
+                    //bulle client
+                    const output = document.getElementById("output");
+                    output.innerHTML += `Bonjour, ${recur_produit} ${nom_produit} svp<br />`;
 
-        res = Math.floor(Math.random() * (nb - 1 + 1)) + 1;
-        console.log(res);*/
-    }
+                    //affichage calcul à faire en bas à droite
+                    const calcul = document.getElementById("calcul");
+                    calcul.innerHTML += `${recur_produit} * ${prix_produit} =<br />`;
+
+                    //calcul du résultat attendu
+                    bon_resultat = recur_produit * prix_produit;
+
+                    //vérification du résultat donné par le joueur
+                    document.getElementById('verif').onclick = function(e) {
+                        const resultat = document.getElementById("resultat").value;
+                        if(resultat==bon_resultat){
+
+                            alert("C'est le bon resultat, bravo!");
+                            bonne_rep_test = parseInt(localStorage.getItem("bonne_reponse"))+1;
+                            if (bonne_rep_test == 3){
+                                //si c'est la 3e bonne réponse, le niveau du joueur augmente
+                                localStorage.setItem("niveau", parseInt(localStorage.getItem("niveau")+1));
+                                console.log(localStorage.getItem("niveau"));
+                                //on initialise à 0 son nb de bonne réponse et de tentative pour le nouveau niveau
+                                localStorage.setItem("bonne_reponse", 0);
+                                localStorage.setItem("tentative", 0);
+                                location.reload();
+                            }
+                            else {
+                                //si ce n'est pas la 3e bonne réponse, on incrémente le nb de bonne réponse et initialise le nombre de tentative à 0
+                                localStorage.setItem("bonne_reponse", bonne_rep_test);
+                                localStorage.setItem("tentative", 0);
+                                location.reload();
+
+                            }
+                            console.log(parseInt(localStorage.getItem("bonne_reponse"))+1);
+                        } else{
+                            //mauvais résultat
+                            //on incrémente le nombre de tentative
+                            tentative_test = parseInt(localStorage.getItem("tentative"));
+                            tentative_test++;
+                            console.log("tentative_test " + tentative_test);
+                            //si le nb de tentatives est > 3
+                            if (tentative_test > 3){
+                                //nombre de tentative dépassé, on diminue le niveau et affiche le bon résultat
+                                alert("Dommage, ce n'est pas le bon resultat. " + recur_produit + " * " + prix_produit + " = " + bon_resultat);
+                                // on baisse le niveau
+                                if (niveau_joueur>0){
+                                    niveau_joueur--;
+                                    localStorage.setItem("niveau", niveau_joueur);
+                                }
+                                //on remet à 0 le nb de bonne réponse et de tentative
+                                localStorage.setItem("bonne_reponse", 0);
+                                localStorage.setItem("tentative", 0);
+                                location.reload();
+                            }
+                            else{
+                                alert("Dommage, ce n'est pas le bon resultat. Essaye encore!");
+                                //on incrémente le nb de tentatives
+                                localStorage.setItem("tentative", tentative_test);
+                                //le nombre de bonne réponse repasse à 0, car il faut 3 bonnes réponse A LA SUITE
+                                localStorage.setItem("bonne_reponse", 0);
+                            }
+                        }      }
+
+                }
+            })
+        }
+    })
+
 
 </script>
-
+</body>
 </html>
