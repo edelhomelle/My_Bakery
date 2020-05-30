@@ -34,20 +34,27 @@
     const btn = document.getElementById("btn");
     const output = document.getElementById("output");
     btn.onclick = function () {
-        const key = "prenom";
-        const value = inpvalue.value;
-        console.log(key);
-        console.log(value);
-        if (key && value) {
-            localStorage.setItem(key, value);
+        const key_prenom = "prenom";
+        const val_prenom = inpvalue.value;
+        const key_niveau = "niveau";
+        const val_niveau = 0;
+        const key_bonne_reponse= "bonne_reponse";
+        const val_bonne_reponse= 0;
+        const key_tentative = "tentative";
+        const val_tentative = 0;
+
+
+        if (key_prenom && val_prenom) {
+            localStorage.setItem(key_prenom, val_prenom);
+            localStorage.setItem(key_niveau, val_niveau);
+            localStorage.setItem(key_bonne_reponse, val_bonne_reponse);
+            localStorage.setItem(key_tentative, val_tentative);
             location.reload();
         }
-        let objJson = {
+
+      /* let objJson = {
             prenom: inpvalue.value,
-            niveau: 0,
-            produits : {
-                pain : 1
-            }
+            niveau: 0
         }
         let objLinea = JSON.stringify(objJson);
         localStorage.setItem("joueur", objLinea);
@@ -56,7 +63,7 @@
         fs.writeFile('joueur.json', objLinea, function(erreur) {
             if (erreur) {
                 console.log(erreur)}
-        })
+        })*/
     };
 
     /*btn.onclick = function () {

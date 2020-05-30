@@ -1,0 +1,67 @@
+{
+  "evolution": [
+    {
+      "niveau": 0,
+      "produit": [
+        {
+          "pain": 1
+        }
+      ]
+    },
+    {
+      "niveau": 1,
+      "produit": [
+        {
+          "pain": 1,
+          "croissant": 2
+        }
+      ]
+    },
+    {
+      "niveau": 2,
+      "produit": [
+        {
+          "pain": 1,
+          "croissant": 2,
+          "pain au chocolat": 3
+        }
+      ]
+    },
+    {
+      "niveau": 3,
+      "produit": [
+        {
+          "pain": 1,
+          "croissant": 2,
+          "pain au chocolat": 3,
+          "gateau au chocolat": 4
+        }
+      ]
+    },
+    {
+      "niveau": 4,
+      "produit": [
+        {
+          "pain": 1,
+          "croissant": 2,
+          "pain au chocolat": 3,
+          "gateau au chocolat": 4,
+          "meringue": 5
+        }
+      ]
+    },
+    {
+      "niveau": 5,
+      "produit": [
+        {
+          "pain": 1,
+          "croissant": 2,
+          "pain au chocolat": 3,
+          "gateau au chocolat": 4,
+          "meringue": 5,
+          "cookie": 3.5
+        }
+      ]
+    }
+  ]
+}
