@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>test</title>
+    <title>My Bakey _ caisse</title>
+    <meta charset="utf-8">
+
 </head>
 <body>
-<img src="./image/chien.PNG" style="width: 10em; margin-top: 15em">
 
 <div id="bulle" style="position: relative;    right:50px;    background-color:white;    text-align:center;    width:500px;    height:250px;    border:2px solid #555555;border-top-right-radius:80px 40px;border-top-left-radius:80px 40px;border-bottom-right-radius:80px 40px;border-bottom-left-radius:80px 40px;margin-left: 10em;">
     <span id="output" style=" font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */ font-weight:bold;font-size:3em;position:relative;top:26px;"></span>
@@ -15,13 +16,14 @@
 
 <img src="./image/caisse.PNG" style="width: 15em">
 <img src="./image/chat.png" style="width: 10em">
-<div id="calcul" style=" float:right;font-family: ComicFighter, Georgia; font-weight:bold;font-size:3em; background-color: orangered; width: 10em; padding: 1em;"></div>
-<input type="text" id="resultat" style="float: right; width : 10em; margin : auto; font-size: 3em; ">
-<input type="submit" id="verif">
+<div style="background-color: orangered; padding: 1em; width: 50%; display:block; margin: auto; ">
+<span id="calcul" style=" display:block; margin: auto; margin-top: 0.5em; text-align: center; font-family: ComicFighter, Georgia; font-weight:bold;font-size:3em; "></span>
+<input type="text" id="resultat" style="display: block; margin : auto; margin-bottom: 0.5em;font-size: 3em; ">
+<input type="submit" id="verif" style="display: block; margin : auto; margin-bottom:1em;font-size: 3em; ">
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 <script>
-
 
     /* $.getJSON('evolution', function(data){
      console.log(data);
@@ -68,7 +70,7 @@
 
                     //bulle client
                     const output = document.getElementById("output");
-                    output.innerHTML += `Bonjour, ${recur_produit} ${nom_produit} svp<br />`;
+                    output.innerHTML += `Bonjour, ${recur_produit} ${nom_produit} s'il-vous-plaît<br />`;
 
                     //affichage calcul à faire en bas à droite
                     const calcul = document.getElementById("calcul");
@@ -82,7 +84,7 @@
                         const resultat = document.getElementById("resultat").value;
                         if(resultat==bon_resultat){
 
-                            alert("C'est le bon resultat, bravo!");
+                            alert("C'est le bon résultat, bravo!");
                             bonne_rep_test = parseInt(localStorage.getItem("bonne_reponse"))+1;
                             if (bonne_rep_test == 3){
                                 //si c'est la 3e bonne réponse, le niveau du joueur augmente
@@ -110,7 +112,7 @@
                             //si le nb de tentatives est > 3
                             if (tentative_test > 3){
                                 //nombre de tentative dépassé, on diminue le niveau et affiche le bon résultat
-                                alert("Dommage, ce n'est pas le bon resultat. " + recur_produit + " * " + prix_produit + " = " + bon_resultat);
+                                alert("Dommage, ce n'est pas le bon résultat. " + recur_produit + " * " + prix_produit + " = " + bon_resultat);
                                 // on baisse le niveau
                                 if (niveau_joueur>0){
                                     niveau_joueur--;
@@ -122,7 +124,7 @@
                                 location.reload();
                             }
                             else{
-                                alert("Dommage, ce n'est pas le bon resultat. Essaye encore!");
+                                alert("Dommage, ce n'est pas le bon résultat. Essaye encore!");
                                 //on incrémente le nb de tentatives
                                 localStorage.setItem("tentative", tentative_test);
                                 //le nombre de bonne réponse repasse à 0, car il faut 3 bonnes réponse A LA SUITE
