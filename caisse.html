@@ -6,8 +6,8 @@
 
 </head>
 <body>
-<div style="float: left; margin-top: 10%">
-    <div id="bulle" style="position: relative;right:50px;background-color:white;text-align:center;width:500px;height:250px;    border:2px solid #555555;border-top-right-radius:80px 40px;border-top-left-radius:80px 40px;border-bottom-right-radius:80px 40px;border-bottom-left-radius:80px 40px;margin-left: 5em;">
+<div style="float: left;">
+    <div id="bulle" style="position: relative;right:50px;background-color:white;text-align:center;/*width:500px;height:250px;*/; padding:1em;border:2px solid #555555;border-top-right-radius:80px 40px;border-top-left-radius:80px 40px;border-bottom-right-radius:80px 40px;border-bottom-left-radius:80px 40px;margin-left: 5em;">
         <span id="output" style=" font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */ font-weight:bold;font-size:3em;position:relative;top:26px;"></span>
         <span id="arrow_border" style="width: 0;height: 0;line-height: 0;border-bottom:0px solid transparent;border-left:30px solid transparent;border-right:30px solid #555555; /* couleur de la bordure de la bulle */position:absolute;bottom:-30px;left:65px;"></span>
         <span id="arrow_inner" style="width: 0;height: 0;line-height: 0;border-bottom:30px solid transparent;border-right:30px solid transparent;border-left:30px solid #555555; /* couleur de la bordure de la bulle */position:absolute;bottom:-25px;left:67px;"></span>
@@ -41,7 +41,94 @@
         cache: false,
         success : function(data){
             $(data.evolution).each(function (index, value) {
-                if (index==2){
+                //on récupère la liste des produits (tupples) disponibles au niveau du joueur:
+                liste_produits = value.produit;
+                //console.log(liste_produits);
+                //on récupère les clés (=nom de chaque produit) et leur valeur (= prix)
+                keys = Object.keys(liste_produits[0]);
+                values = Object.values(liste_produits[0]);
+                //on calcule le nombre de produit (nombre de clés)
+                nombre_produits=keys.length;
+                message_client = '';
+                message_calcul = '';
+                resultat_calcul = 0;
+
+                if (index==4) {
+                    if (index <= 3){
+                        for (i = 0; i <= index ; i++){
+                            nom_produit = keys[i];
+                            prix_produit = values[i];
+                            //le client choisit le nombre de fois qu'il veut ce produit
+                            recur_produit = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+
+                            if (i == 0){
+                                message_client = "Bonjour, j'aimerais " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
+                                message_calcul = recur_produit + "*" + prix_produit;
+                                resultat_calcul = recur_produit * prix_produit;
+                            }
+                            else {
+                                message_client += ", <br />" + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
+                                message_calcul += "<br /> + <br />" + recur_produit + "*" + prix_produit;
+                                resultat_calcul += recur_produit * prix_produit;
+                            }
+                            console.log(message_client);
+                            console.log(message_calcul);
+                            console.log(resultat_calcul);
+                        }
+                    }
+                    else{
+                        //on choisi 3 produits parmis tous ceux dispos
+                        var tab=new Array();
+                        for (j = 0; j <= nombre_produits; j++){
+                            tab[j]=j;
+                            console.log(tab[j]);
+                        }
+                        tab = shuffle(tab);
+                        for (j = 0; j <= nombre_produits; j++){
+                            console.log(tab[j])
+                        }
+                        for (i = 0; i <= 3 ; i++){
+                            nom_produit = keys[tab[i]];
+                            prix_produit = values[tab[i]];
+                            console.log(nom_produit+" "+prix_produit);
+                            //le client choisit le nombre de fois qu'il veut ce produit
+                            recur_produit = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+
+                            if (i == 0){
+                                message_client = "Bonjour, j'aimerais " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
+                                message_calcul = recur_produit + "*" + prix_produit;
+                                resultat_calcul = recur_produit * prix_produit;
+                            }
+                            else {
+                                message_client += ", <br />" + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
+                                message_calcul += "<br /> + <br />" + recur_produit + "*" + prix_produit;
+                                resultat_calcul += recur_produit * prix_produit;
+                            }
+                            console.log(message_client);
+                            console.log(message_calcul);
+                            console.log(resultat_calcul);
+                        }
+
+                    }
+
+                    message_client += "<br />S'il-vous-plaît."
+
+                    //bulle client
+                    const output = document.getElementById("output");
+                    output.innerHTML += `${message_client} `;
+
+                    //affichage calcul à faire en bas à droite
+                    const calcul = document.getElementById("calcul");
+                    calcul.innerHTML += `${message_calcul} =<br />`;
+                }
+
+
+
+
+
+
+
+                if (index!=index){
                     /*console.log(index);
                     console.log(data);
                     console.log(value.produit);
@@ -138,7 +225,10 @@
         }
     })
 
-
+    function shuffle(array)
+    {
+        return array.sort(function() { return Math.random() - .5 });
+    }
 </script>
 </body>
 </html>
