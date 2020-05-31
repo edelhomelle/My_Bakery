@@ -53,7 +53,7 @@
                 message_calcul = '';
                 resultat_calcul = 0;
 
-                if (index==4) {
+                if (index==6) {
                     if (index <= 3){
                         for (i = 0; i <= index ; i++){
                             nom_produit = keys[i];
@@ -77,17 +77,29 @@
                         }
                     }
                     else{
-                        //on choisi 3 produits parmis tous ceux dispos
-                        var tab=new Array();
-                        for (j = 0; j <= nombre_produits; j++){
-                            tab[j]=j;
-                            console.log(tab[j]);
+                        //console.log(keys);
+                        //on sélectionne 3 produits au hasard
+                        //1) on créer une liste de taille = nb produits dispos : 1, 2, 3, 4, 5...
+                        //2) mélanger la liste : 2, 5, 1, 4, 3...
+
+                        tab = new Array();
+                        nom_produits = new Array();
+                        prix_produits = new Array();
+
+                        for (i = 0; i < keys.length; i++){
+                            tab[i]=i;
+                            //console.log(tab[i]);
                         }
                         tab = shuffle(tab);
-                        for (j = 0; j <= nombre_produits; j++){
-                            console.log(tab[j])
+                        for (i = 0; i < keys.length; i++){
+                           // console.log("nb "+tab[i]);
+                            nom_produits[i]=keys[tab[i]];
+                            prix_produits[i]=values[tab[i]];
+                            //console.log(nom_produits[i]+" "+prix_produits[i]);
                         }
-                        for (i = 0; i <= 3 ; i++){
+
+                        //on récupère les trois premiers produits
+                        for (i = 0; i <3 ; i++){
                             nom_produit = keys[tab[i]];
                             prix_produit = values[tab[i]];
                             console.log(nom_produit+" "+prix_produit);
