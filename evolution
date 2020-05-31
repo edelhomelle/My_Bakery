@@ -54,12 +54,12 @@
       "niveau": 5,
       "produit": [
         {
-          "pain": 1,
-          "croissant": 2,
-          "pain au chocolat": 3,
-          "gateau au chocolat": 4,
-          "meringue": 5,
-          "cookie": 3.5
+          "pain": 1.5,
+          "croissant": 2.6,
+          "pain au chocolat": 3.3,
+          "gateau au chocolat": 4.7,
+          "meringue": 5.1,
+          "cookie": 3.9
         }
       ]
     },
@@ -67,13 +67,41 @@
       "niveau": 6,
       "produit": [
         {
-          "pain": 1,
-          "croissant": 2,
-          "pain au chocolat": 3,
-          "gateau au chocolat": 4,
-          "meringue": 5,
-          "cookie": 3.5,
-          "macaron" : 5.2
+          "pain": 1.5,
+          "croissant": 2.6,
+          "pain au chocolat": 3.3,
+          "gateau au chocolat": 4.7,
+          "meringue": 5.1,
+          "cookie": 3.9,
+          "macaron" : 5.4
+        }
+      ]
+    },
+    {
+      "niveau": 7,
+      "produit": [
+        {
+          "pain": 1.5,
+          "croissant": 2.6,
+          "pain au chocolat": 3.3,
+          "gateau au chocolat": 4.7,
+          "meringue": 5.1,
+          "cookie": 3.9,
+          "macaron" : 5.4
+        }
+      ]
+    },
+    {
+      "niveau": 8,
+      "produit": [
+        {
+          "pain": 1.5,
+          "croissant": 2.6,
+          "pain au chocolat": 3.3,
+          "gateau au chocolat": 4.7,
+          "meringue": 5.1,
+          "cookie": 3.9,
+          "macaron" : 5.4
         }
       ]
     }
