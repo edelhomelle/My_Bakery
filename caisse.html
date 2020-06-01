@@ -7,17 +7,17 @@
 </head>
 <body>
 <div style="float: left;">
-    <div id="bulle" style="position: relative;right:50px;background-color:white;text-align:center;/*width:500px;height:250px;*/; padding:1em;border:2px solid #555555;border-top-right-radius:80px 40px;border-top-left-radius:80px 40px;border-bottom-right-radius:80px 40px;border-bottom-left-radius:80px 40px;margin-left: 5em;">
-        <span id="output" style=" font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */ font-weight:bold;font-size:3em;position:relative;top:26px;"></span>
+    <div id="bulle" style="position: relative;right:50px; margin-top: 9em;background-color:white;text-align:center; height: 15em; padding:1em;border:2px solid #555555;border-top-right-radius:80px 40px;border-top-left-radius:80px 40px;border-bottom-right-radius:80px 40px;border-bottom-left-radius:80px 40px;margin-left: 5em;">
+        <span id="output" style=" font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */ font-weight:bold;font-size:2em;position:relative;top:26px;"></span>
         <span id="arrow_border" style="width: 0;height: 0;line-height: 0;border-bottom:0px solid transparent;border-left:30px solid transparent;border-right:30px solid #555555; /* couleur de la bordure de la bulle */position:absolute;bottom:-30px;left:65px;"></span>
-        <span id="arrow_inner" style="width: 0;height: 0;line-height: 0;border-bottom:30px solid transparent;border-right:30px solid transparent;border-left:30px solid #555555; /* couleur de la bordure de la bulle */position:absolute;bottom:-25px;left:67px;"></span>
+        <span id="arrow_inner" style="width: 0;height: 0;line-height: 0;border-bottom:30px solid transparent;border-right:30px solid transparent;border-left:30px solid #555555; /* couleur de la bordure de la bulle */position:absolute;bottom:-25px;left:67px;"><span>
     </div>
-    <img src="./image/chien.PNG" style="width: 15em; margin-left: 5em;">
-    <img src="./image/caisse.PNG" style="width: 20em">
-    <img src="./image/chat.png" style="width: 15em">
+    <img src="./image/chien.PNG" style="width: 10em; margin-left: 1em;">
+    <img src="./image/caisse.PNG" style="width: 15em">
+    <img src="./image/chat.png" style="width: 10em">
 </div>
-
-<div style="background-color: orangered; width: 50%; float: right">
+<div id="score" style=" margin-bottom: 0.5em;float: right; text-shadow: -1px -1px white, 1px 1px #333;text-align: center; width: 1em; height: 1em; padding:0.5em; font-size: 3em; border-radius: 30px; background-color: orangered; text-decoration: none; color: #333333""></div>
+<div id="calculette" style="background-color: orangered; width: 50%; float: right">
 <span id="calcul" style=" display:block; margin: auto; margin-top: 0.5em; text-align: center; font-family: ComicFighter, Georgia; font-weight:bold;font-size:3em; "></span>
 <input type="text" id="resultat" style="display: block; margin : auto;margin-top: 0.5em; margin-bottom: 0.5em;font-size: 3em; ">
 <input type="submit" id="verif" style="display: block; margin : auto; margin-bottom:1em;font-size: 3em; ">
@@ -53,20 +53,20 @@
                 message_calcul = '';
                 resultat_calcul = 0;
 
-                if (index==8) {
-                    if (index <= 3){
-                        for (i = 0; i <= index ; i++){
+                if (index==niveau_joueur) {
+                    if (index <= 3) {
+                        for (i = 0; i <= index; i++) {
+                            console.log("i" + i);
                             nom_produit = keys[i];
                             prix_produit = values[i];
                             //le client choisit le nombre de fois qu'il veut ce produit
                             recur_produit = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
 
-                            if (i == 0){
-                                message_client = "Bonjour, j'aimerais " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
+                            if (i == 0) {
+                                message_client = "Bonjour, <br />J'aimerais " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
                                 message_calcul = recur_produit + "*" + prix_produit;
                                 resultat_calcul = recur_produit * prix_produit;
-                            }
-                            else {
+                            } else {
                                 message_client += ", <br />" + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
                                 message_calcul += "<br /> + <br />" + recur_produit + "*" + prix_produit;
                                 resultat_calcul += recur_produit * prix_produit;
@@ -75,8 +75,7 @@
                             console.log(message_calcul);
                             console.log(resultat_calcul);
                         }
-                    }
-                    if (index <5) {
+                    } else if (index < 5) {
                         console.log("<<<<<<<<<<<<<<<<<<5")
                         //console.log(keys);
                         //on sélectionne 3 produits au hasard
@@ -87,32 +86,31 @@
                         nom_produits = new Array();
                         prix_produits = new Array();
 
-                        for (i = 0; i < keys.length; i++){
-                            tab[i]=i;
+                        for (i = 0; i < keys.length; i++) {
+                            tab[i] = i;
                             //console.log(tab[i]);
                         }
                         tab = shuffle(tab);
-                        for (i = 0; i < keys.length; i++){
-                           // console.log("nb "+tab[i]);
-                            nom_produits[i]=keys[tab[i]];
-                            prix_produits[i]=values[tab[i]];
+                        for (i = 0; i < keys.length; i++) {
+                            // console.log("nb "+tab[i]);
+                            nom_produits[i] = keys[tab[i]];
+                            prix_produits[i] = values[tab[i]];
                             //console.log(nom_produits[i]+" "+prix_produits[i]);
                         }
 
                         //on récupère les trois premiers produits
-                        for (i = 0; i <3 ; i++){
+                        for (i = 0; i < 3; i++) {
                             nom_produit = keys[tab[i]];
                             prix_produit = values[tab[i]];
-                            console.log(nom_produit+" "+prix_produit);
+                            console.log(nom_produit + " " + prix_produit);
                             //le client choisit le nombre de fois qu'il veut ce produit
                             recur_produit = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
 
-                            if (i == 0){
-                                message_client = "Bonjour, j'aimerais " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
+                            if (i == 0) {
+                                message_client = "Bonjour, <br />j'aimerais " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
                                 message_calcul = recur_produit + "*" + prix_produit;
                                 resultat_calcul = recur_produit * prix_produit;
-                            }
-                            else {
+                            } else {
                                 message_client += ", <br />" + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
                                 message_calcul += "<br /> + <br />" + recur_produit + "*" + prix_produit;
                                 resultat_calcul += recur_produit * prix_produit;
@@ -122,8 +120,7 @@
                             console.log(resultat_calcul);
                         }
 
-                    }
-                    else {
+                    } else {
                         console.log(">>>>>>>>>>>>>>>>>5");
                         //console.log(keys);
                         //on sélectionne 3 produits au hasard
@@ -134,15 +131,15 @@
                         nom_produits = new Array();
                         prix_produits = new Array();
 
-                        for (i = 0; i < keys.length; i++){
-                            tab[i]=i;
+                        for (i = 0; i < keys.length; i++) {
+                            tab[i] = i;
                             //console.log(tab[i]);
                         }
                         tab = shuffle(tab);
-                        for (i = 0; i < keys.length; i++){
+                        for (i = 0; i < keys.length; i++) {
                             // console.log("nb "+tab[i]);
-                            nom_produits[i]=keys[tab[i]];
-                            prix_produits[i]=values[tab[i]];
+                            nom_produits[i] = keys[tab[i]];
+                            prix_produits[i] = values[tab[i]];
                             //console.log(nom_produits[i]+" "+prix_produits[i]);
                         }
                         max = 3;
@@ -166,17 +163,16 @@
                         }
 
                         //on récupère les "max" premiers produits
-                        for (i = 0; i <max ; i++){
+                        for (i = 0; i < max; i++) {
                             nom_produit = keys[tab[i]];
                             prix_produit = values[tab[i]];
-                            console.log(nom_produit+" "+prix_produit);
+                            console.log(nom_produit + " " + prix_produit);
 
-                            if (i == 0){
-                                message_client = "Bonjour, j'aimerais " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
+                            if (i == 0) {
+                                message_client = "Bonjour, <br />j'aimerais " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
                                 message_calcul = recur_produit + "*" + prix_produit;
                                 resultat_calcul = recur_produit * prix_produit;
-                            }
-                            else {
+                            } else {
                                 message_client += ", <br />" + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
                                 message_calcul += "<br /> + <br />" + recur_produit + "*" + prix_produit;
                                 resultat_calcul += recur_produit * prix_produit;
@@ -197,45 +193,47 @@
                     //affichage calcul à faire en bas à droite
                     const calcul = document.getElementById("calcul");
                     calcul.innerHTML += `${message_calcul} =<br />`;
-                }
 
-                bon_resultat = resultat_calcul;
-                 //vérification du résultat donné par le joueur
-                    document.getElementById('verif').onclick = function(e) {
+
+                    bon_resultat = resultat_calcul;
+                    console.log("BON RES " + bon_resultat);
+
+                    //vérification du résultat donné par le joueur
+                    document.getElementById('verif').onclick = function (e) {
                         const resultat = document.getElementById("resultat").value;
-                        if(resultat==bon_resultat){
+                        if (resultat == bon_resultat) {
 
                             alert("C'est le bon résultat, bravo!");
-                            bonne_rep_test = parseInt(localStorage.getItem("bonne_reponse"))+1;
-                            if (bonne_rep_test == 3){
+                            bonne_rep_test = parseInt(localStorage.getItem("bonne_reponse")) + 1;
+                            if (bonne_rep_test == 3) {
                                 //si c'est la 3e bonne réponse, le niveau du joueur augmente
-                                localStorage.setItem("niveau", parseInt(localStorage.getItem("niveau")+1));
+                                niveau_joueur++;
+                                localStorage.setItem("niveau", niveau_joueur);
                                 console.log(localStorage.getItem("niveau"));
                                 //on initialise à 0 son nb de bonne réponse et de tentative pour le nouveau niveau
                                 localStorage.setItem("bonne_reponse", 0);
                                 localStorage.setItem("tentative", 0);
                                 location.reload();
-                            }
-                            else {
+                            } else {
                                 //si ce n'est pas la 3e bonne réponse, on incrémente le nb de bonne réponse et initialise le nombre de tentative à 0
                                 localStorage.setItem("bonne_reponse", bonne_rep_test);
                                 localStorage.setItem("tentative", 0);
                                 location.reload();
 
                             }
-                            console.log(parseInt(localStorage.getItem("bonne_reponse"))+1);
-                        } else{
+                            console.log(parseInt(localStorage.getItem("bonne_reponse")) + 1);
+                        } else {
                             //mauvais résultat
                             //on incrémente le nombre de tentative
                             tentative_test = parseInt(localStorage.getItem("tentative"));
                             tentative_test++;
                             console.log("tentative_test " + tentative_test);
                             //si le nb de tentatives est > 3
-                            if (tentative_test > 3){
+                            if (tentative_test > 3) {
                                 //nombre de tentative dépassé, on diminue le niveau et affiche le bon résultat
-                                alert("Dommage, ce n'est pas le bon résultat. " + recur_produit + " * " + prix_produit + " = " + bon_resultat);
+                                alert("Dommage, ce n'est pas le bon résultat. Le bon résultat était " + bon_resultat);
                                 // on baisse le niveau
-                                if (niveau_joueur>0){
+                                if (niveau_joueur > 0) {
                                     niveau_joueur--;
                                     localStorage.setItem("niveau", niveau_joueur);
                                 }
@@ -243,25 +241,31 @@
                                 localStorage.setItem("bonne_reponse", 0);
                                 localStorage.setItem("tentative", 0);
                                 location.reload();
-                            }
-                            else{
+                            } else {
                                 alert("Dommage, ce n'est pas le bon résultat. Essaye encore!");
                                 //on incrémente le nb de tentatives
                                 localStorage.setItem("tentative", tentative_test);
                                 //le nombre de bonne réponse repasse à 0, car il faut 3 bonnes réponse A LA SUITE
                                 localStorage.setItem("bonne_reponse", 0);
                             }
-                        }      }
+                        }
+                    }
 
-
+                }
             })
         }
     })
+
+    sc = localStorage.getItem("niveau");
+    const score = document.getElementById("score");
+    score.innerHTML = `${sc} <br />`;
 
     function shuffle(array)
     {
         return array.sort(function() { return Math.random() - .5 });
     }
+
+
 </script>
 </body>
 </html>
