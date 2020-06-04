@@ -14,7 +14,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
     window.onload = function(){
-
+//https://www.science-emergence.com/Articles/Comment-tester-si-un-fichier-existe-avec-du-javascript-/
         $.get("config_joueur.json")
             .done(function(data){
                 alert('file is ready !');
@@ -31,43 +31,14 @@
                         localStorage.setItem("niveau", data.niveau);
                         localStorage.setItem("tentative", data.tentative);
                         localStorage.setItem("bonne_reponse", data.bonne_reponse);
+                        location="init2.html"
                     }
                 })
             }).fail(function() {
-            alert('Oups ! file not found ...');
+            alert('Oups ! file not found ...')
+            location="init.html"
         })
 
     }
-/*
-
-        window.onload = function(){
-        $.get("hello.txt")
-            .done(function(data){
-                alert('file is ready !');
-                console.log(data);
-                console.log()
-                $.ajax({
-                    url: 'config_joueur',
-                    dataType: 'json',
-                    type: 'get',
-                    cache: false,
-                    success : function(data){
-                        console.log(data.prenom)
-                        console.log(data.niveau)
-                        localStorage.setItem("prenom", data.prenom);
-                        localStorage.setItem("niveau", data.niveau);
-                        localStorage.setItem("tentative", data.tentative);
-                        localStorage.setItem("bonne_reponse", data.bonne_reponse);
-                    }
-                })
-                location="init2.html";
-            }).fail(function() {
-            console.log('Oups ! file not found ...');
-            localStorage.clear();
-            location="init.html";
-        })
-
-    }
-*/
 </script>
 </html>
