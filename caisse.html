@@ -86,9 +86,9 @@ window.onclick = function(event) {
                 resultat_calcul = 0;
 
                 if (index==niveau_joueur) {
-                    if (index <= 3) {
+                    if (index < 3) {
                         for (i = 0; i <= index; i++) {
-                            console.log("i" + i);
+
                             nom_produit = keys[i];
                             prix_produit = values[i];
                             //le client choisit le nombre de fois qu'il veut ce produit
