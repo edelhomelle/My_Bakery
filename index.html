@@ -5,18 +5,49 @@
     <title>Ma boulangerie</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="boulangerie.css" />
-    <script type="text/javascript" src="./boulangerie.js"> </script>
     <meta name="author" content="Eloïse DELHOMELLE">
     <meta name="description" content="TD2">
     <meta name="keywords" content="HTML,CSS,XML,JavaScript">
 </head>
 <body>
 </body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 <script>
+    window.onload = function(){
+
+        $.get("config_joueur.json")
+            .done(function(data){
+                console.log('file is ready !');
+                console.log(data);
+                console.log()
+                $.ajax({
+                    url: 'config_joueur',
+                    dataType: 'json',
+                    type: 'get',
+                    cache: false,
+                    success : function(data){
+                        console.log(data.prenom)
+                        console.log(data.niveau)
+                        localStorage.setItem("prenom", data.prenom);
+                        localStorage.setItem("niveau", data.niveau);
+
+
+                    }
+                })
+                location="init2.html";
+            }).fail(function() {
+            console.log('Oups ! file not found ...');
+            localStorage.clear();
+            location="init.html";
+        })
+
+    }
+
     if (localStorage.length == 0){
-location="init.html";
+//location="init.html";
     } else {
-        location="init2.html";
+        //location="init2.html";
 
     }
 </script>
