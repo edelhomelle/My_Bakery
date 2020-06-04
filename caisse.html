@@ -49,10 +49,11 @@ window.onclick = function(event) {
 </div>
 <div id="score" style=" margin-bottom: 0.5em;float: right; text-shadow: -1px -1px white, 1px 1px #333;text-align: center; width: 1em; height: 1em; padding:0.5em; font-size: 3em; border-radius: 30px; background-color: orangered; text-decoration: none; color: #333333""></div>
 <div id="calculette" style="background-color: orangered; width: 50%; float: right">
-<span id="calcul" style=" display:block; margin: auto; margin-top: 0.5em; text-align: center; font-family: ComicFighter, Georgia; font-weight:bold;font-size:3em; "></span>
+<span id="calcul" style="  display:none; margin: auto; margin-top: 0.5em; text-align: center; font-family: ComicFighter, Georgia; font-weight:bold;font-size:3em; "></span>
 <input type="text" id="resultat" style="display: block; margin : auto;margin-top: 0.5em; margin-bottom: 0.5em;font-size: 3em; ">
-<input type="submit" id="verif" style="display: block; margin : auto; margin-bottom:1em;font-size: 3em; ">
-</div>
+<input type="submit" id="verif" style="padding:0.5em;margin:1em;margin-top: 0.5em;margin-bottom:0.5em;font-size: 3em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333">
+    <input type="button" id="aide" style="float:right; margin:1em;margin-top: 0.5em;margin-bottom:0.5em;padding:0.5em;font-size: 3em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333" value="Aide" "></div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script>
     /* $.getJSON('evolution', function(data){
@@ -61,6 +62,7 @@ window.onclick = function(event) {
  */
     //recuperer niveau du joueur:
     var niveau_joueur = localStorage.getItem('niveau');
+    message_calcul = '';
 
     //afficher contenu json evolution en console en fonction du niveau du joueur:
     $.ajax({
@@ -79,7 +81,6 @@ window.onclick = function(event) {
                 //on calcule le nombre de produit (nombre de clés)
                 nombre_produits=keys.length;
                 message_client = '';
-                message_calcul = '';
                 resultat_calcul = 0;
 
                 if (index==niveau_joueur) {
@@ -105,7 +106,6 @@ window.onclick = function(event) {
                             console.log(resultat_calcul);
                         }
                     } else if (index < 5) {
-                        console.log("<<<<<<<<<<<<<<<<<<5")
                         //console.log(keys);
                         //on sélectionne 3 produits au hasard
                         //1) on créer une liste de taille = nb produits dispos : 1, 2, 3, 4, 5...
@@ -223,6 +223,7 @@ window.onclick = function(event) {
                     calcul.innerHTML += `${message_calcul} =<br />`;
 
 
+
                     bon_resultat = resultat_calcul;
                     console.log("BON RES " + bon_resultat);
 
@@ -323,9 +324,18 @@ document.getElementById("dwn-btn").addEventListener("click", function(){
 
     download(filename, text);
 }, false);
+
 document.getElementById("dwn-btn").addEventListener("click", function(){
     localStorage.clear();
 }, false);
+
+document.getElementById("aide").addEventListener("click", function(){
+    let clic_aide = document.getElementById("calcul");
+    if(getComputedStyle(clic_aide).display != "none"){
+        clic_aide.style.display = "none";
+    } else {
+        clic_aide.style.display = "block";
+    }}, false);
 
 </script>
 
