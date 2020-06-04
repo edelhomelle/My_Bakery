@@ -17,7 +17,6 @@
 //https://www.science-emergence.com/Articles/Comment-tester-si-un-fichier-existe-avec-du-javascript-/
         $.get("config_joueur.json")
             .done(function(data){
-                alert('file is ready !');
                 console.log(data);
                 $.ajax({
                     url: 'config_joueur.json',
@@ -35,7 +34,6 @@
                     }
                 })
             }).fail(function() {
-            alert('Oups ! file not found ...')
             location="init.html"
         })
 

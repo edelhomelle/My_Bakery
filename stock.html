@@ -7,7 +7,7 @@
 
 </head>
 <body style="    background-image: url('./image/fond_boulangerie.png');
-"><div class="dropdown">
+"><div class="dropdown" style="float: left">
     <button onclick="myFunction()" class="dropbtn">Menu</button>
     <div id="myDropdown" class="dropdown-content">
         <a href="./index.html">Menu principal</a>
@@ -69,13 +69,10 @@ function tostring_item(nom_prod) {
 }
 </script>
 
-<table style="background-color: brown; border:solid; border-color: brown; margin: auto; margin-top: 5%;
-
-
-
-">
+<div id="produits" style="float: left; margin-top: 10%">
+<table style="position:relative; background-color: brown; border:solid; border-color: brown; left: 7em">
     <tr style="background-color:chocolate" >
-        <td><input id="0" alt="pain"  type="image" src="image/pain.png" style="width: 10em; z-index: 2 ">
+        <td><input id="0" alt="pain"  type="image" src="image/pain.png" style="width: 10em; ">
             <script>    tostring_item("pain");</script></td>
         <td><input id="1" alt="croissant" type="image" src="image/croissant.jpg" style="width: 10em">
             <script>    tostring_item("croissant");</script></td>
@@ -99,8 +96,58 @@ function tostring_item(nom_prod) {
 
     </tr>
 </table>
+</div>
+<div id="chat_qui_parle" style="float: right; margin-top: 5%">
+    <div id="bulle" style="position: relative; background-color:white;
+    right: 10em;
+    text-align:center;
+    width:400px;
+    height:210px;
+    border:2px solid #555555;
+    padding: 1em;
+border-top-right-radius:80px 40px;
+border-top-left-radius:80px 40px;
+border-bottom-right-radius:80px 40px;
+border-bottom-left-radius:80px 40px;
+">
+    <span id="output" style="
+font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */
+font-weight:bold;
+font-size:2em;
+position:relative;
+top:26px;
 
 
+">Nous avons obtenu les produits colorés. Encore quelques clients et nous débloquerons ceux grisés!</span>
+        <span id="arrow_border" style="
+width: 0;
+height: 0;
+line-height: 0;
+border-bottom:30px solid transparent;
+border-left:30px solid transparent;
+border-right:30px solid #555555; /* couleur de la bordure de la bulle */
+position:absolute;
+bottom:-30px;
+right:65px;
+
+"></span>
+        <span id="arrow_inner" style="
+width: 0;
+height: 0;
+line-height: 0;
+border-bottom:30px solid transparent;
+border-left:30px solid transparent;
+border-right:30px solid #555555; /* couleur de la bordure de la bulle */
+position:absolute;
+bottom:-25px;
+right:67px;
+
+"></span>
+    </div>
+    <div style="float: right">
+    <input type="image" src="image/chat.png" style=" position:relative;margin-top: 3em; right: 7em">
+    </div>
+</div>
 </body>
 <script>
     //infobulle et image grisée
