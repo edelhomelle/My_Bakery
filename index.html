@@ -12,13 +12,38 @@
 <body>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
 <script>
     window.onload = function(){
 
         $.get("config_joueur.json")
             .done(function(data){
-                console.log('file is ready !');
+                alert('file is ready !');
+                console.log(data);
+                $.ajax({
+                    url: 'config_joueur.json',
+                    dataType: 'json',
+                    type: 'get',
+                    cache: false,
+                    success : function(data){
+                        console.log(data.prenom)
+                        console.log(data.niveau)
+                        localStorage.setItem("prenom", data.prenom);
+                        localStorage.setItem("niveau", data.niveau);
+                        localStorage.setItem("tentative", data.tentative);
+                        localStorage.setItem("bonne_reponse", data.bonne_reponse);
+                    }
+                })
+            }).fail(function() {
+            alert('Oups ! file not found ...');
+        })
+
+    }
+/*
+
+        window.onload = function(){
+        $.get("hello.txt")
+            .done(function(data){
+                alert('file is ready !');
                 console.log(data);
                 console.log()
                 $.ajax({
@@ -31,8 +56,8 @@
                         console.log(data.niveau)
                         localStorage.setItem("prenom", data.prenom);
                         localStorage.setItem("niveau", data.niveau);
-
-
+                        localStorage.setItem("tentative", data.tentative);
+                        localStorage.setItem("bonne_reponse", data.bonne_reponse);
                     }
                 })
                 location="init2.html";
@@ -43,12 +68,6 @@
         })
 
     }
-
-    if (localStorage.length == 0){
-//location="init.html";
-    } else {
-        //location="init2.html";
-
-    }
+*/
 </script>
 </html>

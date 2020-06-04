@@ -3,10 +3,40 @@
 <head>
     <title>My Bakey _ caisse</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="menu.css" />
+
 
 
 </head>
 <body>
+<div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+    <div id="myDropdown" class="dropdown-content">
+        <a href="./index.html">Menu</a>
+        <a href="./stock.html">Stock</a>
+        <a href="#" id="dwn-btn">Sauvegarder ma partie</a>
+        <a href="#" id="supprimer_joueur">Supprimer ma partie</a>
+    </div>
+</div>
+<script>/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}</script>
 <div style="float: left;">
     <div id="bulle" style="position: relative;right:50px; margin-top: 9em;background-color:white;text-align:center; height: 15em; padding:1em;border:2px solid #555555;border-top-right-radius:80px 40px;border-top-left-radius:80px 40px;border-bottom-right-radius:80px 40px;border-bottom-left-radius:80px 40px;margin-left: 5em;">
         <span id="output" style=" font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */ font-weight:bold;font-size:2em;position:relative;top:26px;"></span>
@@ -25,29 +55,6 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script>
-    window.onbeforeunload = function (e) {
-// Your logic to prepare for 'Stay on this Page' goes here
-
-        return "Please click 'Stay on this Page' and we will give you candy";
-    };
-</script>
-<script>
-
-    $(window).bind('beforeunload', function(){
-        var text = '{\n' +
-            '  "prenom": "' + localStorage.getItem("prenom") +'",\n' +
-            '  "niveau": "' + localStorage.getItem("niveau") +'"\n' +
-            '  "tentative": "' + localStorage.getItem("tentative") +'"\n' +
-            '  "bonne_reponse": "' + localStorage.getItem("bonne_reponse") +'"\n' +
-            '}';
-        var filename = "config_joueur.json";
-
-        download(filename, text);
-
-    });
-
-
-
     /* $.getJSON('evolution', function(data){
      console.log(data);
  });
@@ -289,10 +296,9 @@
 
 </script>
 
-//maj
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-
+//téléchargement du fichir json avec les informations du joueur
     //https://ourcodeworld.com/articles/read/189/how-to-create-a-file-and-generate-a-download-with-javascript-in-the-browser-without-a-server
     function download(filename, text) {
         var element = document.createElement('a');
@@ -305,8 +311,22 @@
         element.click();
         document.body.removeChild(element);
     }
+// Start file download.
+document.getElementById("dwn-btn").addEventListener("click", function(){
+    // Generate download of config_joueur.json file with some content
+    var text = '{\n' +
+        '  "prenom": "' + localStorage.getItem("prenom") +'",\n' +
+        '  "niveau": "' + localStorage.getItem("niveau") +'",\n' +
+        '  "tentative": "' + localStorage.getItem("tentative") +'",\n' +
+        '  "bonne_reponse": "' + localStorage.getItem("bonne_reponse") +'"\n' +
+        '}';
+    var filename = "config_joueur.json";
 
-
+    download(filename, text);
+}, false);
+document.getElementById("dwn-btn").addEventListener("click", function(){
+    localStorage.clear();
+}, false);
 
 </script>
 
