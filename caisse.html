@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="color: #555555">
 <head>
     <title>My Bakey _ caisse</title>
     <meta charset="utf-8">
@@ -8,9 +8,9 @@
 
 
 </head>
-<body style="color: #333333">
-<div class="dropdown">
-    <button onclick="myFunction()" class="dropbtn">Menu</button>
+<body>
+<div class="dropdown" style="float: left; position: absolute">
+    <button onclick="myFunction()" class="dropbtn" style="background-color: orange; padding:0.5em 1em 0.5em 1em; font-size: 2em; border-radius: 1em; color: #555555">MENU</button>
     <div id="myDropdown" class="dropdown-content">
         <a href="./index.html">Menu principal</a>
         <a href="./stock.html">Stock</a>
@@ -49,8 +49,8 @@ window.onclick = function(event) {
     <img src="./image/caisse.png" style="width: 15em">
     <img src="./image/chat.png" style="width: 10em">
 </div>
-<div id="score" style=" margin-bottom: 0.5em;float: right; text-shadow: -1px -1px white, 1px 1px #333;text-align: center; width: 1em; height: 1em; padding:0.5em; font-size: 3em; border-radius: 30px; background-color: orangered; text-decoration: none; color: #333333""></div>
-<div id="calculette" style="background-color: orangered; width: 50%; float: right">
+<div id="score" style=" margin-bottom: 0.5em;float: right; text-shadow: -1px -1px white, 1px 1px #333;text-align: center; width: 4em; height: 1em; padding:0.5em; font-size: 3em; border-radius: 30px; background-color: orangered; text-decoration: none;""></div>
+<div id="calculette" style="background-color: orangered; width: 50%; float: right; border-radius: 40px">
 <span id="calcul" style="  display:none; margin: auto; margin-top: 0.5em; text-align: center; font-family: ComicFighter, Georgia; font-weight:bold;font-size:3em; "></span>
 <input type="text" id="resultat" autocomplete="off" placeholder="Ecris le résultat ici" style="display: block; margin : auto;margin-top: 0.5em; margin-bottom: 0.5em;font-size: 3em; ">
 <input type="submit" id="verif" style="padding:0.5em;margin:1em;margin-top: 0.2em;margin-bottom:0.5em;font-size: 2em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;">
@@ -293,7 +293,7 @@ window.onclick = function(event) {
 
     sc = localStorage.getItem("niveau");
     const score = document.getElementById("score");
-    score.innerHTML = `${sc} <br />`;
+    score.innerHTML = `niveau ${sc} <br />`;
 
     function shuffle(array)
     {
@@ -333,6 +333,8 @@ document.getElementById("dwn-btn").addEventListener("click", function(){
 
 document.getElementById("dwn-btn").addEventListener("click", function(){
     localStorage.clear();
+    location = "init.html";
+
 }, false);
 
 document.getElementById("aide").addEventListener("click", function(){
