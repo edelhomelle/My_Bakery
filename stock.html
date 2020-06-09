@@ -79,23 +79,26 @@ function tostring_item(nom_prod) {
             <script>    tostring_item("croissant");</script></td>
         <td><input id="2" alt="pain au chocolat" type="image" src="image/pain_au_chocolat.png" style="width: 10em">
             <script>    tostring_item("pain au chocolat");</script></td>
+        <td><input id="3" alt="brioche" type="image" src="image/brioche.png" style="width: 10em">
+            <script>    tostring_item("brioche");</script></td>
     </tr>
     <tr style="background-color:chocolate" >
-        <td><input id="3" alt="gateau au chocolat" type="image" src="image/gateau_au_chocolat.webp" style="width: 10em">
-            <script>    tostring_item("gateau au chocolat");</script></td>
-        <td><input id="4" alt="meringue" type="image" src="image/meringue.png" style="width: 10em">
-            <script>    tostring_item("meringue");</script></td>
+        <td><input id="4" alt="chouquette"  type="image" src="image/chouquette.jpg" style="width: 10em; ">
+            <script>    tostring_item("chouquette");</script></td>
         <td><input id="5" alt="cookie" type="image" src="image/cookie.png" style="width: 10em">
             <script>    tostring_item("cookie");</script></td>
+        <td><input id="6" alt="meringue" type="image" src="image/meringue.png" style="width: 10em">
+            <script>    tostring_item("meringue");</script></td>
+        <td><input id="7" alt="gateau au chocolat" type="image" src="image/gateau_au_chocolat.webp" style="width: 10em">
+            <script>    tostring_item("gateau au chocolat");</script></td>
     </tr>
-    <tr style="background-color:chocolate;" >
-        <td>
-            <input id="6" alt="macaron" type="image" src="image/macaron.jpg" style="width: 10em">
-            <script>    tostring_item("macaron");</script></td>
-        <td></td>
-        <td></td>
+    <tr style="background-color:chocolate" >
+        <td><input id="8" alt="charlotte aux fraises"  type="image" src="image/charlotte.jpg" style="width: 10em; ">
+            <script>    tostring_item("charlotte aux fraises");</script></td>
+        <td><input id="9" alt="tarte au citron" type="image" src="image/tarte_citron.png" style="width: 10em">
+            <script>    tostring_item("tarte au citron");</script></td>
+    </tr>
 
-    </tr>
 </table>
 </div>
 <div id="chat_qui_parle" style="float: right; margin-top: 5%">
@@ -152,7 +155,7 @@ right:67px;
 </body>
 <script>
     //infobulle et image grisée
-for (i=0; i<=6; i++){
+for (i=0; i<=13; i++){
     var elmt = document.getElementById(i);
     //https://forum.alsacreations.com/topic-5-18801-1-resoluRecuperer-lattribut-Alt.html
     var nom = document.getElementById(i).getAttribute("alt")

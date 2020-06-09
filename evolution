@@ -34,7 +34,7 @@
           "pain": 1,
           "croissant": 2,
           "pain au chocolat": 3,
-          "gateau au chocolat": 4
+          "brioche" : 4
         }
       ]
     },
@@ -45,8 +45,8 @@
           "pain": 1,
           "croissant": 2,
           "pain au chocolat": 3,
-          "gateau au chocolat": 4,
-          "meringue": 5
+          "brioche" : 4,
+          "chouquette" : 5
         }
       ]
     },
@@ -54,12 +54,12 @@
       "niveau": 5,
       "produit": [
         {
-          "pain": 1.5,
-          "croissant": 2.6,
-          "pain au chocolat": 3.3,
-          "gateau au chocolat": 4.7,
-          "meringue": 5.1,
-          "cookie": 3.9
+          "pain": 1,
+          "croissant": 2,
+          "pain au chocolat": 3,
+          "brioche" : 4,
+          "chouquette" : 5,
+          "cookie" : 6
         }
       ]
     },
@@ -67,13 +67,13 @@
       "niveau": 6,
       "produit": [
         {
-          "pain": 1.5,
-          "croissant": 2.6,
-          "pain au chocolat": 3.3,
-          "gateau au chocolat": 4.7,
-          "meringue": 5.1,
-          "cookie": 3.9,
-          "macaron" : 5.4
+          "pain": 1,
+          "croissant": 2,
+          "pain au chocolat": 3,
+          "brioche" : 4,
+          "chouquette" : 5,
+          "cookie" : 6,
+          "meringue" : 7
         }
       ]
     },
@@ -81,13 +81,14 @@
       "niveau": 7,
       "produit": [
         {
-          "pain": 1.5,
-          "croissant": 2.6,
-          "pain au chocolat": 3.3,
-          "gateau au chocolat": 4.7,
-          "meringue": 5.1,
-          "cookie": 3.9,
-          "macaron" : 5.4
+          "pain": 1,
+          "croissant": 2,
+          "pain au chocolat": 3,
+          "brioche" : 4,
+          "chouquette" : 5,
+          "cookie" : 6,
+          "meringue" : 7,
+          "gateau au chocolat" : 8
         }
       ]
     },
@@ -95,15 +96,115 @@
       "niveau": 8,
       "produit": [
         {
-          "pain": 1.5,
-          "croissant": 2.6,
-          "pain au chocolat": 3.3,
-          "gateau au chocolat": 4.7,
-          "meringue": 5.1,
-          "cookie": 3.9,
-          "macaron" : 5.4
+          "pain": 1,
+          "croissant": 2,
+          "pain au chocolat": 3,
+          "brioche" : 4,
+          "chouquette" : 5,
+          "cookie" : 6,
+          "meringue" : 7,
+          "gateau au chocolat" : 8,
+          "charlotte aux fraises" : 9
+        }
+      ]
+    },{
+      "niveau": 9,
+      "produit": [
+        {
+          "pain": 1,
+          "croissant": 2,
+          "pain au chocolat": 3,
+          "brioche" : 4,
+          "chouquette" : 5,
+          "cookie" : 6,
+          "meringue" : 7,
+          "gateau au chocolat" : 8,
+          "charlotte aux fraises" : 9,
+          "tarte au citron" : 10
         }
       ]
     }
+  ,{
+      "niveau": 10,
+      "produit": [
+        {
+          "pain": 1.5,
+          "croissant": 2.5,
+          "pain au chocolat": 3.5,
+          "brioche" : 4.5,
+          "chouquette" : 5.5,
+          "cookie" : 6.5,
+          "meringue" : 7,
+          "gateau au chocolat" : 8,
+          "charlotte aux fraises" : 9,
+          "tarte au citron" : 10
+        }
+      ]
+    },{
+      "niveau": 11,
+      "produit": [
+        {
+          "pain": 1.2,
+          "croissant": 2.2,
+          "pain au chocolat": 3.4,
+          "brioche" : 4.4,
+          "chouquette" : 5.4,
+          "cookie" : 6.2,
+          "meringue" : 7.2,
+          "gateau au chocolat" : 8.4,
+          "charlotte aux fraises" : 9,
+          "tarte au citron" : 10
+        }
+      ]
+    },{
+      "niveau": 12,
+      "produit": [
+        {
+          "pain": 1.3,
+          "croissant": 2.3,
+          "pain au chocolat": 3.3,
+          "brioche" : 4.3,
+          "chouquette" : 5.3,
+          "cookie" : 6.3,
+          "meringue" : 7.3,
+          "gateau au chocolat" : 8.3,
+          "charlotte aux fraises" : 9,
+          "tarte au citron" : 10
+        }
+      ]
+    },{
+      "niveau": 13,
+      "produit": [
+        {
+          "pain": 1.6,
+          "croissant": 2.6,
+          "pain au chocolat": 3.6,
+          "brioche" : 4.6,
+          "chouquette" : 5.6,
+          "cookie" : 6.6,
+          "meringue" : 7,
+          "gateau au chocolat" : 8,
+          "charlotte aux fraises" : 9,
+          "tarte au citron" : 10
+        }
+      ]
+    },{
+      "niveau": 14,
+      "produit": [
+        {
+          "pain": 1.9,
+          "croissant": 2.8,
+          "pain au chocolat": 3.7,
+          "brioche" : 4.6,
+          "chouquette" : 5.5,
+          "cookie" : 6.4,
+          "meringue" : 7.3,
+          "gateau au chocolat" : 8.2,
+          "charlotte aux fraises" : 9.1,
+          "tarte au citron" : 10
+        }
+      ]
+    }
+
   ]
 }

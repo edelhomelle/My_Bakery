@@ -107,7 +107,7 @@ window.onclick = function(event) {
                             console.log(message_calcul);
                             console.log(resultat_calcul);
                         }
-                    } else if (index < 5) {
+                    } else if (index < 10) {
                         //console.log(keys);
                         //on sélectionne 3 produits au hasard
                         //1) on créer une liste de taille = nb produits dispos : 1, 2, 3, 4, 5...
@@ -172,31 +172,29 @@ window.onclick = function(event) {
                             prix_produits[i] = values[tab[i]];
                             //console.log(nom_produits[i]+" "+prix_produits[i]);
                         }
-                        max = 3;
+                        max = 2;
                         switch (index) {
-                            case 5:
-                                max = 2;
-                                recur_produit = 1;
+                            case 10:
+                            case 11 :
+                            case 12 :
+                            case 13 :
+                                console.log(index);
+                                max=2;
+                                max_recur_produit=2;
                                 break;
-                            case 6 :
-                                max = 3;
-                                recur_produit = 1;
-                                break;
-                            case 7 :
-                                max = 2;
-                                recur_produit = Math.floor(Math.random() * (2 - 1 + 1)) + 1;
-                                break;
-                            case 8 :
-                                max = 3;
-                                recur_produit = Math.floor(Math.random() * (2 - 1 + 1)) + 1;
+                            case 14 :
+                                max=3;
+                                max_recur_produit=2;
                                 break;
                         }
+
 
                         //on récupère les "max" premiers produits
                         for (i = 0; i < max; i++) {
                             nom_produit = keys[tab[i]];
                             prix_produit = values[tab[i]];
                             console.log(nom_produit + " " + prix_produit);
+                            recur_produit = Math.floor(Math.random() * (max_recur_produit - 1 + 1)) + 1;
 
                             if (i == 0) {
                                 message_client = "Bonjour, j'aimerais<br /> " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
