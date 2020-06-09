@@ -50,11 +50,11 @@ window.onclick = function(event) {
     <img src="./image/chat.png" style="width: 10em">
 </div>
 <div id="score" style=" margin-bottom: 0.5em;float: right; text-shadow: -1px -1px white, 1px 1px #333;text-align: center; width: 4em; height: 1em; padding:0.5em; font-size: 3em; border-radius: 30px; background-color: orangered; text-decoration: none;""></div>
-<div id="calculette" style="background-color: orangered; width: 50%; float: right; border-radius: 40px">
-<span id="calcul" style="  display:none; margin: auto; margin-top: 0.5em; text-align: center; font-family: ComicFighter, Georgia; font-weight:bold;font-size:3em; "></span>
-<input type="text" id="resultat" autocomplete="off" placeholder="Ecris le résultat ici" style="display: block; margin : auto;margin-top: 0.5em; margin-bottom: 0.5em;font-size: 3em; ">
+<div id="calculette" style="position:absolute;right:2em;background-color: orangered; width: 46%; top:10em; border-radius: 40px">
+<span id="calcul" style="  width: 40%; text-align:left;display:none; margin: auto; margin-top: 0.5em; font-family: ComicFighter, Georgia; font-weight:bold;font-size:3em; "></span>
+<input type="text" id="resultat" autocomplete="off" placeholder="Ecris le résultat ici" style="width:90%;display: block; margin : auto;margin-top: 0.5em; margin-bottom: 0.5em;font-size: 2em; ">
 <input type="submit" id="verif" style="padding:0.5em;margin:1em;margin-top: 0.2em;margin-bottom:0.5em;font-size: 2em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;">
-    <input type="button" id="aide" style="float:right; margin:1em;margin-top: 0.2em;margin-bottom:0.5em;padding:0.5em;font-size: 2em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Aide" "></div>
+    <input type="button" id="aide" style="float:right; margin-top: 0.2em;margin-bottom:0.5em; margin-right:1em;padding:0.5em;font-size: 2em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Aide" "></div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script>
@@ -96,11 +96,11 @@ window.onclick = function(event) {
 
                             if (i == 0) {
                                 message_client = "Bonjour, j'aimerais<br /> " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
-                                message_calcul = recur_produit + "*" + prix_produit;
+                                message_calcul = recur_produit + " x " + prix_produit;
                                 resultat_calcul = recur_produit * prix_produit;
                             } else {
                                 message_client += ", <br />" + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
-                                message_calcul += "<br /> + <br />" + recur_produit + "*" + prix_produit;
+                                message_calcul += "<br /> + <br />" + recur_produit + " x " + prix_produit;
                                 resultat_calcul += recur_produit * prix_produit;
                             }
                             console.log(message_client);
@@ -139,11 +139,11 @@ window.onclick = function(event) {
 
                             if (i == 0) {
                                 message_client = "Bonjour, j'aimerais<br /> " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
-                                message_calcul = recur_produit + "*" + prix_produit;
+                                message_calcul = recur_produit + " x " + prix_produit;
                                 resultat_calcul = recur_produit * prix_produit;
                             } else {
                                 message_client += ", <br />" + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
-                                message_calcul += "<br /> + <br />" + recur_produit + "*" + prix_produit;
+                                message_calcul += "<br /> + <br />" + recur_produit + " x " + prix_produit;
                                 resultat_calcul += recur_produit * prix_produit;
                             }
                             console.log(message_client);
@@ -200,11 +200,11 @@ window.onclick = function(event) {
 
                             if (i == 0) {
                                 message_client = "Bonjour, j'aimerais<br /> " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
-                                message_calcul = recur_produit + "*" + prix_produit;
+                                message_calcul = recur_produit + " x " + prix_produit;
                                 resultat_calcul = recur_produit * prix_produit;
                             } else {
                                 message_client += ", <br />" + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
-                                message_calcul += "<br /> + <br />" + recur_produit + "*" + prix_produit;
+                                message_calcul += "<br /> + <br />" + recur_produit + " x " + prix_produit;
                                 resultat_calcul += recur_produit * prix_produit;
                             }
                             console.log(message_client);
