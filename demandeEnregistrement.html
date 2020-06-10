@@ -1,0 +1,38 @@
+    Ton ancienne partie va être supprimé. Veux-tu la télécharger?
+    <input type="button" value="oui" id="oui">
+    <input type="button" value="non" id="non">
+
+<script>
+    document.getElementById("non").addEventListener("click", function(){
+        localStorage.clear();
+        location = "recuperer_compte.html";
+    }, false);
+
+    document.getElementById("oui").addEventListener("click", function(){
+
+        var text = '{\n' +
+            '  "prenom": "' + localStorage.getItem("prenom") +'",\n' +
+            '  "niveau": "' + localStorage.getItem("niveau") +'",\n' +
+            '  "tentative": "' + localStorage.getItem("tentative") +'",\n' +
+            '  "bonne_reponse": "' + localStorage.getItem("bonne_reponse") +'"\n' +
+            '}';
+        var filename = "config_joueur.json";
+
+        download(filename, text);
+
+        location = "recuperer_compte.html";
+
+    }, false);
+
+    function download(filename, text) {
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+        document.body.removeChild(element);
+    }
+</script>

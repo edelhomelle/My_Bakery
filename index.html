@@ -11,32 +11,15 @@
 </head>
 <body>
 </body>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-    window.onload = function(){
-//https://www.science-emergence.com/Articles/Comment-tester-si-un-fichier-existe-avec-du-javascript-/
-        $.get("config_joueur.json")
-            .done(function(data){
-                console.log(data);
-                $.ajax({
-                    url: 'config_joueur.json',
-                    dataType: 'json',
-                    type: 'get',
-                    cache: false,
-                    success : function(data){
-                        console.log(data.prenom)
-                        console.log(data.niveau)
-                        localStorage.setItem("prenom", data.prenom);
-                        localStorage.setItem("niveau", data.niveau);
-                        localStorage.setItem("tentative", data.tentative);
-                        localStorage.setItem("bonne_reponse", data.bonne_reponse);
-                        location="init2.html"
-                    }
-                })
-            }).fail(function() {
-            location="init.html"
-        })
-
+    //s'il n'y a aucun enregisrement dans le local storage, on propose soit d'importer une partie, soit d'en créer une
+    if (localStorage.length == 0)
+    {
+        location = "init.html"
+    }
+    //s'il y a un enregistrement dans le local storage, on propose soit de lancer la partie, soit d'en importer une autre (inclue la supression de l'autre)
+    else {
+        location = "init2.html"
     }
 </script>
 </html>
