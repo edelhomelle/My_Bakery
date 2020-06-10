@@ -15,7 +15,7 @@
         <a href="./index.html">Menu principal</a>
         <a href="./stock.html">Stock</a>
         <a href="#" id="dwn-btn">Sauvegarder ma partie</a>
-        <a href="supprimer_joueur.html" id="supprimer_joueur">Supprimer ma partie</a>
+        <a href="supprimer_joueur.html">Supprimer ma partie</a>
         <a href="demandeEnregistrement.html" id="seco" >Importer une partie</a>
     </div>
 </div>
@@ -330,11 +330,7 @@ document.getElementById("dwn-btn").addEventListener("click", function(){
     download(filename, text);
 }, false);
 
-document.getElementById("dwn-btn").addEventListener("click", function(){
-    localStorage.clear();
-    location = "init.html";
 
-}, false);
 
 document.getElementById("aide").addEventListener("click", function(){
     let clic_aide = document.getElementById("calcul");
