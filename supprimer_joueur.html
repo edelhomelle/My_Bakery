@@ -38,9 +38,9 @@
 </style>
 <body>
 <div id="txt">
-Ton ancienne partie va être supprimé. <br>
+    Ton ancienne partie va être supprimé. <br>
     Veux-tu la télécharger?<br>
-    </div><div id="btn">
+</div><div id="btn">
     <input type="button" value="OUI" id="oui">
     <input type="button" value="NON" id="non">
     <input type="button" value="ANNULER" id="annuler">
@@ -52,7 +52,7 @@ Ton ancienne partie va être supprimé. <br>
 
     document.getElementById("non").addEventListener("click", function(){
         localStorage.clear();
-        location = "recuperer_compte.html";
+        location = "index.html";
     }, false);
 
     document.getElementById("oui").addEventListener("click", function(){
@@ -67,7 +67,7 @@ Ton ancienne partie va être supprimé. <br>
 
         download(filename, text);
 
-        location = "recuperer_compte.html";
+        location = "index.html";
 
     }, false);
 
