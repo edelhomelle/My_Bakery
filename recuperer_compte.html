@@ -1,0 +1,33 @@
+<input type="file">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<script>
+    const input = document.querySelector('input[type="file')
+    input.addEventListener('change', function (e) {
+        console.log(input.files)
+        const reader = new FileReader()
+        reader.onload = function () {
+            console.log(reader.result)
+
+        }
+        reader.onload = receivedText;
+
+        reader.readAsText(input.files[0])
+    }, false)
+    function receivedText(e) {
+        let lines = e.target.result;
+        var newArr = JSON.parse(lines);
+        console.log(newArr)
+        console.log(newArr.prenom)
+        console.log(newArr.niveau)
+        console.log(newArr.tentative)
+        console.log(newArr.bonne_reponse)
+        localStorage.setItem('prenom', newArr.prenom)
+        localStorage.setItem('niveau', newArr.niveau)
+        localStorage.setItem('tentative', newArr.tentative)
+        localStorage.setItem('bonne_reponse', newArr.bonne_reponse)
+
+    }
+
+
+</script>
