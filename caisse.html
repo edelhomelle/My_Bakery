@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="color: #555555">
+<html lang="en" style="background-image: url('image/piece.jpg'); background-size: cover">
 <head>
     <title>My Bakey _ caisse</title>
     <meta charset="utf-8">
@@ -57,6 +57,14 @@ window.onclick = function(event) {
 <input type="submit" id="verif" style="padding:0.5em;margin:1em;margin-top: 0.2em;margin-bottom:0.5em;font-size: 2em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;">
     <input type="button" id="aide" style="float:right; margin-top: 0.2em;margin-bottom:0.5em; margin-right:1em;padding:0.5em;font-size: 2em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Aide" "></div>
 
+<div>
+<input type="image"  style="width: 10em" id="nb_tentatives">
+</div>
+<div style="position: absolute;bottom: 0px; right: 0px; display: inline-block; text-align: center">
+    <span id="pieces"></span>
+    <input type="image" src="image/sous.jpg" style="width: 10em">
+
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script>
     /* $.getJSON('evolution', function(data){
@@ -249,11 +257,17 @@ window.onclick = function(event) {
                                 //on initialise à 0 son nb de bonne réponse et de tentative pour le nouveau niveau
                                 localStorage.setItem("bonne_reponse", 0);
                                 localStorage.setItem("tentative", 0);
+                                piece = parseInt(localStorage.getItem("piece"));
+                                piece = piece+3;
+                                localStorage.setItem("piece", piece)
                                 location.reload();
                             } else {
                                 //si ce n'est pas la 3e bonne réponse, on incrémente le nb de bonne réponse et initialise le nombre de tentative à 0
                                 localStorage.setItem("bonne_reponse", bonne_rep_test);
                                 localStorage.setItem("tentative", 0);
+                                piece = parseInt(localStorage.getItem("piece"));
+                                piece++
+                                localStorage.setItem("piece", piece)
                                 location.reload();
 
                             }
@@ -300,6 +314,35 @@ window.onclick = function(event) {
     {
         return array.sort(function() { return Math.random() - .5 });
     }
+
+    nb_pieces = localStorage.getItem("piece");
+    const piece_affichage = document.getElementById("pieces");
+    if (nb_pieces > 1) {
+        piece_affichage.innerHTML = `${nb_pieces} pièces`;
+    }
+    else {
+        piece_affichage.innerHTML = `${nb_pieces} pièce`;
+    }
+
+
+    tentatives = localStorage.getItem("bonne_reponse")
+console.log(tentatives)
+    const te = document.getElementById("nb_tentatives");
+
+    switch (parseInt(tentatives)) {
+        case 0:
+            te.src = "./image/t0.svg"
+            break;
+        case 1:
+            te.src = "./image/t1.svg"
+            break;
+        case 2:
+            te.src = "./image/t2.svg"
+            break;
+
+
+    }
+
 
 </script>
 

@@ -41,13 +41,15 @@
         const val_bonne_reponse= 0;
         const key_tentative = "tentative";
         const val_tentative = 0;
-
+        const key_piece = "piece";
+        const val_piece = 0;
 
         if (key_prenom && val_prenom) {
             localStorage.setItem(key_prenom, val_prenom);
             localStorage.setItem(key_niveau, val_niveau);
             localStorage.setItem(key_bonne_reponse, val_bonne_reponse);
             localStorage.setItem(key_tentative, val_tentative);
+            localStorage.setItem(key_piece, val_piece);
             location.reload();
         }
 
