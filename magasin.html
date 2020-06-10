@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" style="background-image: url('image/fondfinal.png'); background-size: cover">
+<head>
+    <title>My Bakey _ magasin</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="menu.css" />
+</head>
+<body style="text-align: center;">
+<table style="background-color: red; text-align: center; font-size: 2em; display: inline-block;">
+    <tr>
+        <td><input type="image" src="image/magasin/1.png" style="width: 10em" id="etoile" value="5" onclick="quest('etoile')"><br>5 pièces</td>
+        <td><input type="image" src="image/magasin/2.png" style="width: 10em" id="fleur" value="5" onclick="quest('fleur')"><br>5 pièces</td>
+    </tr>
+    <tr>
+        <td><input type="image" src="image/magasin/3.png" style="width: 10em " id="cercle" value="10" onclick="quest('cercle')"><br>10 pièces</td>
+        <td><input type="image" src="image/magasin/4.png" style="width: 10em" id="mandala" value="10" onclick="quest('mandala')"><br>10 pièces</td>
+    </tr>
+    <tr>
+        <td><input type="image" src="image/magasin/5.png" style="width: 10em"id="rosace" value="15" onclick="quest('rosace')"><br>15 pièces</td>
+        <td><input type="image" src="image/magasin/6.png" style="width: 10em" id="spirale" value="15" onclick="quest('spirale')"><br>15 pièces</td>
+    </tr>
+</table>
+</body>
+<script>
+    function quest(id){
+        input_tag = document.getElementById(id);
+        nom = input_tag.id
+        console.log(nom+ " " + input_tag.value)
+    }
+</script>
+
+
+</html>
