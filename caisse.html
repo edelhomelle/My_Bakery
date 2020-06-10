@@ -94,7 +94,7 @@ window.onclick = function(event) {
                             prix_produit = values[i];
                             //le client choisit le nombre de fois qu'il veut ce produit
                             recur_produit = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-
+                            nom_produit = on_accorde(recur_produit, nom_produit)
                             if (i == 0) {
                                 message_client = "Bonjour, j'aimerais<br /> " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
                                 message_calcul = recur_produit + " × " + prix_produit;
@@ -137,6 +137,7 @@ window.onclick = function(event) {
                             console.log(nom_produit + " " + prix_produit);
                             //le client choisit le nombre de fois qu'il veut ce produit
                             recur_produit = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+                            nom_produit = on_accorde(recur_produit, nom_produit)
 
                             if (i == 0) {
                                 message_client = "Bonjour, j'aimerais<br /> " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
@@ -196,6 +197,7 @@ window.onclick = function(event) {
                             prix_produit = values[tab[i]];
                             console.log(nom_produit + " " + prix_produit);
                             recur_produit = Math.floor(Math.random() * (max_recur_produit - 1 + 1)) + 1;
+                            nom_produit = on_accorde(recur_produit, nom_produit)
 
                             if (i == 0) {
                                 message_client = "Bonjour, j'aimerais<br /> " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
@@ -341,6 +343,31 @@ document.getElementById("aide").addEventListener("click", function(){
         cliquer_pour_etre_aide = true;
     }}, false);
 
+function on_accorde(nb, produit){
+    console.log(nb+produit)
+    if (nb > 1){
+        if (produit == "gateau au chocolat"){
+            produit = "gateaux au chocolat"
+        }
+        else if (produit == "pain au chocolat"){
+            produit = "pains au chocolat";
+        }
+        else if (produit == "charlotte aux fraises"){
+            produit = "charlottes aux fraises";
+        }
+        else if (produit == "tarte au citron"){
+            produit = "tartes au citron";
+        }
+        else {
+            produit = produit+"s";
+        }
+        console.log("s:"+produit);
+        return produit
+    }
+else {
+    console.log("s:"+produit)
+    return produit
+    }}
 </script>
 
 </body>
