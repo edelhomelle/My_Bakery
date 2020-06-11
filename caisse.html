@@ -70,9 +70,10 @@ window.onclick = function(event) {
 <div id="score" style="position: absolute; margin-bottom: 0.5em;right: 1em; text-shadow: -1px -1px white, 1px 1px #333;text-align: center; width: 4em; height: 1em; padding:0.5em; font-size: 3em; border-radius: 30px; background-color: orangered; text-decoration: none;""></div>
 <div id="calculette" style="position:absolute;right:2em;background-color: orangered; width: 46%; top:10em; border-radius: 40px">
 <span id="calcul" style="  width: 40%; text-align:left;display:none; margin: auto; margin-top: 0.5em; font-family: ComicFighter, Georgia; font-weight:bold;font-size:3em; "></span>
-<input type="text" id="resultat" autocomplete="off" placeholder="Ecris le résultat ici" style="width:90%;display: block; margin : auto;margin-top: 0.5em; margin-bottom: 0.5em;font-size: 2em; ">
+    <input type="text" id="resultat" autocomplete="off" placeholder="Ecris le résultat ici" style="width:90%;display: block; margin : auto;margin-top: 0.5em; margin-bottom: 0.5em;font-size: 2em; ">
 <input type="submit" id="verif" style="padding:0.5em;margin:1em;margin-top: 0.2em;margin-bottom:0.5em;font-size: 2em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;">
     <input type="button" id="aide" style="float:right; margin-top: 0.2em;margin-bottom:0.5em; margin-right:1em;padding:0.5em;font-size: 2em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Aide" "></div>
+
 
 <div>
 <input type="image"  style="width: 10em" id="nb_tentatives">
@@ -273,8 +274,10 @@ window.onclick = function(event) {
                     document.getElementById('verif').onclick = function (e) {
                         const resultat = document.getElementById("resultat").value;
                         if (resultat == bon_resultat) {
+                            confettis()
 
                             alert("C'est le bon résultat, bravo!");
+
                             bonne_rep_test = parseInt(localStorage.getItem("bonne_reponse")) + 1;
 
                             if (cliquer_pour_etre_aide == true){
@@ -292,7 +295,8 @@ window.onclick = function(event) {
                                 piece = piece+3;
                                 localStorage.setItem("piece", piece)
                                 localStorage.setItem("liste_calculs_deja_poses", [])
-                                location.reload();
+                                miseEnAttente();
+                               // location.reload();
                             } else {
                                 //si ce n'est pas la 3e bonne réponse, on incrémente le nb de bonne réponse et initialise le nombre de tentative à 0
                                 localStorage.setItem("bonne_reponse", bonne_rep_test);
@@ -300,7 +304,9 @@ window.onclick = function(event) {
                                 piece = parseInt(localStorage.getItem("piece"));
                                 piece++
                                 localStorage.setItem("piece", piece)
-                                location.reload();
+
+                                miseEnAttente();
+                               // location.reload();
 
                             }
                             console.log(parseInt(localStorage.getItem("bonne_reponse")) + 1);
@@ -462,6 +468,50 @@ else {
 
     }
 
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.2.0/dist/confetti.browser.min.js"></script>
+<script>
+    //https://www.npmjs.com/package/canvas-confetti
+    // https://www.kirilv.com/canvas-confetti/
+    
+    var end = Date.now() + (8 * 1000);
+
+    // go Buckeyes!
+    var colors = ['#bb0000', '#ffffff'];
+function confettis(){
+    (function frame() {
+        confetti({
+            particleCount: 2,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 },
+            colors: colors
+        });
+        confetti({
+            particleCount: 2,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 },
+            colors: colors
+        });
+
+        if (Date.now() < end) {
+            requestAnimationFrame(frame);
+        }
+    }());}
+</script>
+<script>
+    function miseEnAttente()
+    {
+        //Traitement
+        setTimeout(fonctionAExecuter, 5000); //On attend 5 secondes avant d'exécuter la fonction
+    }
+    function fonctionAExecuter()
+    {
+        //Le code écrit dans cette fonction ne sera exécuté qu'au bout de 5 secondes
+        location.reload()
+    }
 </script>
 </body>
 </html>
