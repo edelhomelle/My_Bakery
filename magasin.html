@@ -26,6 +26,10 @@
         input_tag = document.getElementById(id);
         nom = input_tag.id
         console.log(nom+ " " + input_tag.value)
+        localStorage.setItem("achat", nom )
+        WindowObjectReference = window.open("demande_paiement.html",
+            "NomDeFenetreDescriptif",
+            "width=420,height=230,resizable,scrollbars=yes,status=1");
     }
 </script>
 
