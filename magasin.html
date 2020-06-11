@@ -89,7 +89,7 @@
             console.log(input_tag.value)
             console.log(parseInt(localStorage.getItem("piece")))
 
-            if (parseInt(localStorage.getItem("piece")) > input_tag.value) {
+            if (parseInt(localStorage.getItem("piece")) >= input_tag.value) {
                 console.log(nom + " " + input_tag.value)
                 localStorage.setItem("achat", nom)
                 localStorage.setItem("prix_achat", input_tag.value)
