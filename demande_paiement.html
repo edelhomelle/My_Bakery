@@ -18,6 +18,8 @@ Payer?
             localStorage["liste_biens"] = JSON.stringify(new_liste)
             var new_stored_datas = JSON.parse(localStorage['liste_biens'])
             console.log(new_stored_datas)
+            window.fermeture = true;
+            window.close()
         }
         else {
             var stored_datas = JSON.parse(localStorage['liste_biens'])
@@ -27,29 +29,15 @@ Payer?
             localStorage["liste_biens"] = JSON.stringify(new_liste)
             var new_stored_datas = JSON.parse(localStorage['liste_biens'])
             console.log(new_stored_datas)
-        }
-        /*
-        console.log("nouveau_produit "+nouveau_produit)
-        var liste = []
-        console.log(localStorage.getItem("liste_biens").length)
-        for (i = 0 ; i < localStorage.getItem("liste_biens").length ; i++){
-            liste[i] = localStorage.getItem("liste_biens")[i]
-            console.log(i+" "+liste[i])
-        }
-        liste[localStorage.getItem("liste_biens").length] = ",["+nouveau_produit+"]"
-        localStorage.setItem("liste_biens", JSON.stringify(liste))
+            window.fermeture = true;
 
-        console.log(liste[localStorage.getItem("liste_biens").length])
-        localStorage.setItem("liste_biens", liste)
-       /* liste = localStorage.getItem("liste_biens")
-        console.log("taille "+liste.length);
-        liste[liste.length]=nouveau_produit
-
-        console.log(liste.length)
-        localStorage.setItem("liste_biens", JSON.stringify(liste))
-        console.log(localStorage.getItem("liste_biens"))*/
-        //localStorage.getItem("achat").clear
+            window.close()
+        }
     }, false);
+
+    document.getElementById("non").addEventListener("click", function () {
+        window.close()
+    })
 </script>
 </body>
 </html>
