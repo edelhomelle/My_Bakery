@@ -6,6 +6,26 @@
     <link rel="stylesheet" type="text/css" href="menu.css" />
 </head>
 <body style="text-align: center;">
+<!--MENU-->
+<div class="dropdown" style="float: left; ">
+    <button onclick="myFunction()" class="dropbtn" style="color:#555555;background-color: orange; padding:0.5em 1em 0.5em 1em; font-size: 2em; border-radius: 1em">MENU</button>
+    <div id="myDropdown" class="dropdown-content">
+        <a href="./index.html">Menu principal</a>
+        <a href="./caisse.html">Caisse</a>
+        <a href="./magasin.html">Magasin</a>
+        <a href="#" id="dwn-btn">Sauvegarder ma partie</a>
+        <a href="supprimer_joueur.html">Supprimer ma partie</a>
+        <a href="demandeEnregistrement.html" id="seco" >Importer une partie</a>
+    </div>
+</div>
+
+<script>
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+</script>
+
+<!--FIN MENU-->
 <table style="background-color: red; text-align: center; font-size: 2em; display: inline-block;">
     <tr>
         <td><input type="image" src="image/magasin/1.png" style="width: 10em" alt="etoile" id="etoile" value="5" onclick="quest('etoile')"><br>5 pièces</td>
