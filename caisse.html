@@ -275,8 +275,8 @@ window.onclick = function(event) {
                         const resultat = document.getElementById("resultat").value;
                         if (resultat == bon_resultat) {
                             confettis()
-
-                            alert("C'est le bon résultat, bravo!");
+                            bravo();
+                            //alert("C'est le bon résultat, bravo!");
 
                             bonne_rep_test = parseInt(localStorage.getItem("bonne_reponse")) + 1;
 
@@ -474,8 +474,8 @@ else {
 <script>
     //https://www.npmjs.com/package/canvas-confetti
     // https://www.kirilv.com/canvas-confetti/
-    
-    var end = Date.now() + (8 * 1000);
+
+    var end = Date.now() + (10*1000);
 
     // go Buckeyes!
     var colors = ['#bb0000', '#ffffff'];
@@ -505,7 +505,7 @@ function confettis(){
     function miseEnAttente()
     {
         //Traitement
-        setTimeout(fonctionAExecuter, 5000); //On attend 5 secondes avant d'exécuter la fonction
+        setTimeout(fonctionAExecuter, 3000); //On attend 5 secondes avant d'exécuter la fonction
     }
     function fonctionAExecuter()
     {
@@ -513,5 +513,62 @@ function confettis(){
         location.reload()
     }
 </script>
+
+
+<h1 class="ml9">
+  <span class="text-wrapper">
+    <span class="letters"></span>
+  </span>
+</h1>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+<script>
+    function bravo(){
+
+
+    // Wrap every letter in a span
+    var textWrapper = document.querySelector('.ml9 .letters');
+    textWrapper.innerHTML = "BRAVO!"
+    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+    anime.timeline({loop: true})
+        .add({
+            targets: '.ml9 .letter',
+            scale: [0, 1],
+            duration: 1500,
+            elasticity: 600,
+            delay: (el, i) => 45 * (i+1)
+        }).add({
+        targets: '.ml9',
+        opacity: 0,
+        duration: 1000,
+        easing: "easeOutExpo",
+        delay: 1000
+    });}
+</script>
+
 </body>
+<style>.ml9 {
+    position: absolute;
+    top: 50%; left: 50%;  transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
+
+    text-align: center;
+}
+
+.ml9 .text-wrapper {
+    position: relative;
+    display: inline-block;
+    padding-top: 0.2em;
+margin: auto;
+    padding-bottom: 0.1em;
+    overflow: hidden;
+}
+
+.ml9 .letter {
+
+    transform-origin: 50% 100%;
+    display: inline-block;
+    line-height: 1em;
+    font-size: 5em; font-weight: 1000; text-shadow: -1px -1px white, 1px 1px #333;  color: cadetblue;
+}</style>
 </html>
