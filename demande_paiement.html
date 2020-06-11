@@ -44,6 +44,7 @@ Payer?
 
         }
         var reste_pieces = parseInt(localStorage.getItem("piece")) - parseInt(localStorage.getItem("prix_achat"))
+        localStorage.setItem("piece", reste_pieces)
        location = "magasin.html"
        /*
         fenetre secondaire
