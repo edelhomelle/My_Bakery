@@ -88,7 +88,22 @@ window.onclick = function(event) {
  */
     //recuperer niveau du joueur:
     var niveau_joueur = localStorage.getItem('niveau');
+
     message_calcul = '';
+
+    var liste_calculs_deja_poses
+//on vérifie si la liste liste_calculs_deja_poses est vide
+    if (localStorage['liste_calculs_deja_poses'].length == 0){
+        console.log("liste_calculs_deja_poses vide");
+        liste_calculs_deja_poses = []
+    }
+    else {
+        console.log("liste_calculs_deja_poses pas vide");
+        //on récupère la liste que l'on stocke dans liste_calculs_deja_poses
+        liste_calculs_deja_poses = JSON.parse(localStorage['liste_calculs_deja_poses'])
+        console.log(liste_calculs_deja_poses.length)
+        console.log(liste_calculs_deja_poses)
+    }
 
     //afficher contenu json evolution en console en fonction du niveau du joueur:
     $.ajax({
@@ -98,6 +113,7 @@ window.onclick = function(event) {
         cache: false,
         success : function(data){
             $(data.evolution).each(function (index, value) {
+
                 //on récupère la liste des produits (tupples) disponibles au niveau du joueur:
                 liste_produits = value.produit;
                 //console.log(liste_produits);
@@ -110,119 +126,131 @@ window.onclick = function(event) {
                 resultat_calcul = 0;
 
                 if (index==niveau_joueur) {
-                    if (index < 10) {
-                        //console.log(keys);
-                        //on sélectionne 3 produits au hasard
-                        //1) on créer une liste de taille = nb produits dispos : 1, 2, 3, 4, 5...
-                        //2) mélanger la liste : 2, 5, 1, 4, 3...
+                    do {
+                        if (index < 10) {
+                            //console.log(keys);
+                            //on sélectionne 3 produits au hasard
+                            //1) on créer une liste de taille = nb produits dispos : 1, 2, 3, 4, 5...
+                            //2) mélanger la liste : 2, 5, 1, 4, 3...
 
-                        tab = new Array();
-                        nom_produits = new Array();
-                        prix_produits = new Array();
+                            tab = new Array();
+                            nom_produits = new Array();
+                            prix_produits = new Array();
 
-                        for (i = 0; i < keys.length; i++) {
-                            tab[i] = i;
-                            //console.log(tab[i]);
-                        }
-                        tab = shuffle(tab);
-                        for (i = 0; i < keys.length; i++) {
-                            // console.log("nb "+tab[i]);
-                            nom_produits[i] = keys[tab[i]];
-                            prix_produits[i] = values[tab[i]];
-                            //console.log(nom_produits[i]+" "+prix_produits[i]);
-                        }
-                        var max;
-                        if (index < 3){
+                            for (i = 0; i < keys.length; i++) {
+                                tab[i] = i;
+                                //console.log(tab[i]);
+                            }
+                            tab = shuffle(tab);
+                            for (i = 0; i < keys.length; i++) {
+                                // console.log("nb "+tab[i]);
+                                nom_produits[i] = keys[tab[i]];
+                                prix_produits[i] = values[tab[i]];
+                                //console.log(nom_produits[i]+" "+prix_produits[i]);
+                            }
+                            var max;
+                            if (index < 3) {
+                                max = 2;
+                            } else {
+                                max = 3;
+                            }
+
+                            //on récupère les trois premiers produits
+                            for (i = 0; i < max; i++) {
+                                nom_produit = keys[tab[i]];
+                                prix_produit = values[tab[i]];
+                                console.log(nom_produit + " " + prix_produit);
+                                //le client choisit le nombre de fois qu'il veut ce produit
+                                recur_produit = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+                                nom_produit = on_accorde(recur_produit, nom_produit)
+
+
+                                if (i == 0) {
+                                    message_client = "Bonjour, j'aimerais<br /> " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
+                                    message_calcul = recur_produit + " × " + prix_produit;
+                                    resultat_calcul = recur_produit * prix_produit;
+                                } else {
+                                    message_client += ", <br />" + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
+                                    message_calcul += "<br /> + <br />" + recur_produit + " × " + prix_produit;
+                                    resultat_calcul += recur_produit * prix_produit;
+                                }
+
+                                console.log(message_client);
+                                console.log(message_calcul);
+                                console.log(resultat_calcul);
+                            }
+
+                        } else {
+                            //console.log(keys);
+                            //on sélectionne 3 produits au hasard
+                            //1) on créer une liste de taille = nb produits dispos : 1, 2, 3, 4, 5...
+                            //2) mélanger la liste : 2, 5, 1, 4, 3...
+
+                            tab = new Array();
+                            nom_produits = new Array();
+                            prix_produits = new Array();
+
+                            for (i = 0; i < keys.length; i++) {
+                                tab[i] = i;
+                                //console.log(tab[i]);
+                            }
+                            tab = shuffle(tab);
+                            for (i = 0; i < keys.length; i++) {
+                                // console.log("nb "+tab[i]);
+                                nom_produits[i] = keys[tab[i]];
+                                prix_produits[i] = values[tab[i]];
+                                //console.log(nom_produits[i]+" "+prix_produits[i]);
+                            }
                             max = 2;
-                        }
-                        else {
-                            max = 3;
-                        }
-
-                        //on récupère les trois premiers produits
-                        for (i = 0; i < max; i++) {
-                            nom_produit = keys[tab[i]];
-                            prix_produit = values[tab[i]];
-                            console.log(nom_produit + " " + prix_produit);
-                            //le client choisit le nombre de fois qu'il veut ce produit
-                            recur_produit = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
-                            nom_produit = on_accorde(recur_produit, nom_produit)
-
-                            if (i == 0) {
-                                message_client = "Bonjour, j'aimerais<br /> " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
-                                message_calcul = recur_produit + " × " + prix_produit;
-                                resultat_calcul = recur_produit * prix_produit;
-                            } else {
-                                message_client += ", <br />" + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
-                                message_calcul += "<br /> + <br />" + recur_produit + " × " + prix_produit;
-                                resultat_calcul += recur_produit * prix_produit;
+                            switch (index) {
+                                case 10:
+                                case 11 :
+                                case 12 :
+                                case 13 :
+                                    console.log(index);
+                                    max = 2;
+                                    max_recur_produit = 2;
+                                    break;
+                                case 14 :
+                                    max = 3;
+                                    max_recur_produit = 2;
+                                    break;
                             }
-                            console.log(message_client);
-                            console.log(message_calcul);
-                            console.log(resultat_calcul);
-                        }
-
-                    } else {
-                        //console.log(keys);
-                        //on sélectionne 3 produits au hasard
-                        //1) on créer une liste de taille = nb produits dispos : 1, 2, 3, 4, 5...
-                        //2) mélanger la liste : 2, 5, 1, 4, 3...
-
-                        tab = new Array();
-                        nom_produits = new Array();
-                        prix_produits = new Array();
-
-                        for (i = 0; i < keys.length; i++) {
-                            tab[i] = i;
-                            //console.log(tab[i]);
-                        }
-                        tab = shuffle(tab);
-                        for (i = 0; i < keys.length; i++) {
-                            // console.log("nb "+tab[i]);
-                            nom_produits[i] = keys[tab[i]];
-                            prix_produits[i] = values[tab[i]];
-                            //console.log(nom_produits[i]+" "+prix_produits[i]);
-                        }
-                        max = 2;
-                        switch (index) {
-                            case 10:
-                            case 11 :
-                            case 12 :
-                            case 13 :
-                                console.log(index);
-                                max=2;
-                                max_recur_produit=2;
-                                break;
-                            case 14 :
-                                max=3;
-                                max_recur_produit=2;
-                                break;
-                        }
 
 
-                        //on récupère les "max" premiers produits
-                        for (i = 0; i < max; i++) {
-                            nom_produit = keys[tab[i]];
-                            prix_produit = values[tab[i]];
-                            console.log(nom_produit + " " + prix_produit);
-                            recur_produit = Math.floor(Math.random() * (max_recur_produit - 1 + 1)) + 1;
-                            nom_produit = on_accorde(recur_produit, nom_produit)
+                            //on récupère les "max" premiers produits
+                            for (i = 0; i < max; i++) {
+                                nom_produit = keys[tab[i]];
+                                prix_produit = values[tab[i]];
+                                console.log(nom_produit + " " + prix_produit);
+                                recur_produit = Math.floor(Math.random() * (max_recur_produit - 1 + 1)) + 1;
+                                nom_produit = on_accorde(recur_produit, nom_produit)
 
-                            if (i == 0) {
-                                message_client = "Bonjour, j'aimerais<br /> " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
-                                message_calcul = recur_produit + " × " + prix_produit;
-                                resultat_calcul = recur_produit * prix_produit;
-                            } else {
-                                message_client += ", <br />" + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
-                                message_calcul += "<br /> + <br />" + recur_produit + " × " + prix_produit;
-                                resultat_calcul += recur_produit * prix_produit;
+                                if (i == 0) {
+                                    message_client = "Bonjour, j'aimerais<br /> " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
+                                    message_calcul = recur_produit + " × " + prix_produit;
+                                    resultat_calcul = recur_produit * prix_produit;
+                                } else {
+                                    message_client += ", <br />" + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
+                                    message_calcul += "<br /> + <br />" + recur_produit + " × " + prix_produit;
+                                    resultat_calcul += recur_produit * prix_produit;
+                                }
+                                console.log(message_client);
+                                console.log(message_calcul);
+                                console.log(resultat_calcul);
                             }
-                            console.log(message_client);
-                            console.log(message_calcul);
-                            console.log(resultat_calcul);
-                        }
 
-                    }
+                        }
+                    }while(liste_calculs_deja_poses.includes(resultat_calcul))
+
+                    //on enregistre le nouveau résultat dans la liste
+                    liste_calculs_deja_poses[liste_calculs_deja_poses.length]=resultat_calcul
+                    //on remplace la valeur de localStorage par la nouvelle liste
+                    localStorage["liste_calculs_deja_poses"] = JSON.stringify(liste_calculs_deja_poses)
+                    //on récupère le nouveau localstorage de liste_calculs_deja_poses
+                    var new_stored_datas = JSON.parse(localStorage['liste_calculs_deja_poses'])
+                    //on l'affiche
+                    console.log(new_stored_datas)
 
                     message_client += "<br />s'il-vous-plaît.<br /> Combien je vous dois?"
 
@@ -261,6 +289,7 @@ window.onclick = function(event) {
                                 piece = parseInt(localStorage.getItem("piece"));
                                 piece = piece+3;
                                 localStorage.setItem("piece", piece)
+                                localStorage.setItem("liste_calculs_deja_poses", [])
                                 location.reload();
                             } else {
                                 //si ce n'est pas la 3e bonne réponse, on incrémente le nb de bonne réponse et initialise le nombre de tentative à 0
@@ -287,6 +316,7 @@ window.onclick = function(event) {
                                 if (niveau_joueur > 0) {
                                     niveau_joueur--;
                                     localStorage.setItem("niveau", niveau_joueur);
+                                    localStorage.setItem("liste_calculs_deja_poses", [])
                                 }
                                 //on remet à 0 le nb de bonne réponse et de tentative
                                 localStorage.setItem("bonne_reponse", 0);
