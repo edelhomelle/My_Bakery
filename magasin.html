@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="menu.css" />
 </head>
-<body style="text-align: center;background-image: url('image/fondfinal.png'); background-size: cover">
+<body style="text-align: center;background-image: url('image/fond_magasin.jpg'); ">
 <!--MENU-->
 <div class="dropdown" style="float: left; ">
     <button onclick="myFunction()" class="dropbtn" style="color:#555555;background-color: orange; padding:0.5em 1em 0.5em 1em; font-size: 2em; border-radius: 1em">MENU</button>
@@ -87,7 +87,11 @@
                 console.log(nom + " " + input_tag.value)
                 localStorage.setItem("achat", nom)
                 localStorage.setItem("prix_achat", input_tag.value)
+                location="demande_paiement.html"
                 //une fenêtre s'ouvre
+
+                /*
+                fenetre secondaire
                 var pageFille = window.open("demande_paiement.html",
                     "NomDeFenetreDescriptif",
                     "width=420,height=230,resizable,scrollbars=yes,status=1");
@@ -98,6 +102,7 @@
                         location.reload();
                     }
                 }
+                */
             }
         else {
             alert("Tu n'as pas assez de pièce pour acheter ceci")

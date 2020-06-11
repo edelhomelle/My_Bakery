@@ -9,7 +9,6 @@
 Payer?
 <input type="button" value="oui" id="oui">
 <input type="button" value="non" id="non">
-<input type="image" id="img">
 <div id="deco">
     <img id="etoile" src="" style="width: 10em; position: absolute; top: 5em; left: 5em;">
     <img id="fleur" src="" style="width: 10em; position: absolute; top: 5em; left: 15em;">
@@ -40,13 +39,22 @@ Payer?
 
         }
         var reste_pieces = parseInt(localStorage.getItem("piece")) - parseInt(localStorage.getItem("prix_achat"))
+       location = "magasin.html"
+       /*
+        fenetre secondaire
         localStorage.setItem("piece", reste_pieces)
         window.fermeture = true;
         window.close()
+
+        */
     }, false);
 
     document.getElementById("non").addEventListener("click", function () {
+        /*
+        fenetre secondaire
         window.close()
+         */
+        location="magasin.html"
     })
 </script>
 <script>
