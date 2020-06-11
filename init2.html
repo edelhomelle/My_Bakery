@@ -16,7 +16,57 @@
 <div id="body_bky">
     <a href="debut_jeu.html" style="display: block; width : 20em; margin : auto;margin-bottom: 1em;text-align: center; padding:1em 0.5em 1em 0.5em; font-size: 3em; border-radius: 30px; background-color: orangered; text-decoration: none; color: #333333" ">LANCER MA PARTIE</a>
     <a href="demandeEnregistrement.html" style="display: block; width : 20em; margin : auto;margin-bottom: 1em;text-align: center; padding:1em 0.5em 1em 0.5em; font-size: 3em; border-radius: 30px; background-color: orangered; text-decoration: none; color: #333333" ">CREER UNE NOUVELLE PARTIE</a>
+    <a href="demandeEnregistrement.html" style="display: block; width : 20em; margin : auto;margin-bottom: 0.5em;text-align: center; padding:1em 0.5em 1em 0.5em; font-size: 3em; border-radius: 30px; background-color: orangered; text-decoration: none; color: #333333" ">IMPORTER UNE PARTIE</a>
 
+</div>
+<div class="survol">
+    <div class="bulle">
+        <div id="bulle" style="position: absolute;
+    right:7em;
+    bottom: 17em;
+    background-color:white;
+    text-align:center;
+    width:300px;
+    height:160px;
+    border:2px solid #555555;
+border-top-right-radius:80px 40px;
+border-top-left-radius:80px 40px;
+border-bottom-right-radius:80px 40px;
+border-bottom-left-radius:80px 40px;
+display: block; margin : auto;
+">
+    <span id="output" style="
+font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */
+font-weight:bold;
+font-size:2em;
+position:relative;
+top:5px">Appuie sur la touche <b>f11</b> pour mettre en plein écran</span>
+            <span id="arrow_border" style="
+width: 0;
+height: 0;
+line-height: 0;
+border-bottom:30px solid transparent;
+border-left:30px solid transparent;
+border-right:30px solid #555555; /* couleur de la bordure de la bulle */
+position:absolute;
+bottom:-30px;
+right:65px;
+
+"></span>
+            <span id="arrow_inner" style="
+width: 0;
+height: 0;
+line-height: 0;
+border-bottom:30px solid transparent;
+border-left:30px solid transparent;
+border-right:30px solid #555555; /* couleur de la bordure de la bulle */
+position:absolute;
+bottom:-25px;
+right:67px;
+
+"></span>
+        </div>    </div>
+    <img src="image/chat.png" style="position: absolute; display: block; right: 2em; bottom: 2em">
 </div>
 <script>
     document.getElementById("menupcp").addEventListener("click", function(){
@@ -25,5 +75,12 @@
     }, false);
 </script>
 </body>
-
+<style>
+    .bulle {
+        display:none;
+    }
+    .survol:hover .bulle {
+        display: block;
+    }
+</style>
 </html>
