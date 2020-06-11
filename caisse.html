@@ -110,28 +110,7 @@ window.onclick = function(event) {
                 resultat_calcul = 0;
 
                 if (index==niveau_joueur) {
-                    if (index < 3) {
-                        for (i = 0; i <= index; i++) {
-
-                            nom_produit = keys[i];
-                            prix_produit = values[i];
-                            //le client choisit le nombre de fois qu'il veut ce produit
-                            recur_produit = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-                            nom_produit = on_accorde(recur_produit, nom_produit)
-                            if (i == 0) {
-                                message_client = "Bonjour, j'aimerais<br /> " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
-                                message_calcul = recur_produit + " × " + prix_produit;
-                                resultat_calcul = recur_produit * prix_produit;
-                            } else {
-                                message_client += ", <br />" + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
-                                message_calcul += "<br /> + <br />" + recur_produit + " × " + prix_produit;
-                                resultat_calcul += recur_produit * prix_produit;
-                            }
-                            console.log(message_client);
-                            console.log(message_calcul);
-                            console.log(resultat_calcul);
-                        }
-                    } else if (index < 10) {
+                    if (index < 10) {
                         //console.log(keys);
                         //on sélectionne 3 produits au hasard
                         //1) on créer une liste de taille = nb produits dispos : 1, 2, 3, 4, 5...
@@ -152,9 +131,16 @@ window.onclick = function(event) {
                             prix_produits[i] = values[tab[i]];
                             //console.log(nom_produits[i]+" "+prix_produits[i]);
                         }
+                        var max;
+                        if (index < 3){
+                            max = 2;
+                        }
+                        else {
+                            max = 3;
+                        }
 
                         //on récupère les trois premiers produits
-                        for (i = 0; i < 3; i++) {
+                        for (i = 0; i < max; i++) {
                             nom_produit = keys[tab[i]];
                             prix_produit = values[tab[i]];
                             console.log(nom_produit + " " + prix_produit);

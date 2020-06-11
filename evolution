@@ -4,8 +4,11 @@
       "niveau": 0,
       "produit": [
         {
-          "pain": 1
-        }
+          "pain": 1,
+          "croissant": 2,
+          "pain au chocolat": 3,
+          "brioche" : 4,
+          "chouquette" : 5        }
       ]
     },
     {
@@ -13,7 +16,10 @@
       "produit": [
         {
           "pain": 1,
-          "croissant": 2
+          "croissant": 2,
+          "pain au chocolat": 3,
+          "brioche" : 4,
+          "chouquette" : 5
         }
       ]
     },
@@ -23,7 +29,10 @@
         {
           "pain": 1,
           "croissant": 2,
-          "pain au chocolat": 3
+          "pain au chocolat": 3,
+          "brioche" : 4,
+          "chouquette" : 5,
+          "cookie" : 6
         }
       ]
     },
@@ -34,7 +43,9 @@
           "pain": 1,
           "croissant": 2,
           "pain au chocolat": 3,
-          "brioche" : 4
+          "brioche" : 4,
+          "chouquette" : 5,
+          "cookie" : 6
         }
       ]
     },
@@ -46,7 +57,9 @@
           "croissant": 2,
           "pain au chocolat": 3,
           "brioche" : 4,
-          "chouquette" : 5
+          "chouquette" : 5,
+          "cookie" : 6,
+          "meringue" : 7
         }
       ]
     },
@@ -59,7 +72,8 @@
           "pain au chocolat": 3,
           "brioche" : 4,
           "chouquette" : 5,
-          "cookie" : 6
+          "cookie" : 6,
+          "meringue" : 7
         }
       ]
     },
@@ -73,7 +87,8 @@
           "brioche" : 4,
           "chouquette" : 5,
           "cookie" : 6,
-          "meringue" : 7
+          "meringue" : 7,
+          "gateau au chocolat" : 8
         }
       ]
     },
