@@ -10,6 +10,14 @@ Payer?
 <input type="button" value="oui" id="oui">
 <input type="button" value="non" id="non">
 <input type="image" id="img">
+<div id="deco">
+    <img id="etoile" src="" style="width: 10em; position: absolute; top: 5em; left: 5em;">
+    <img id="fleur" src="" style="width: 10em; position: absolute; top: 5em; left: 15em;">
+    <img id="cercle" src="" style="width: 10em; position: absolute; top: 5em; left: 25em;">
+    <img id="mandala" src="" style="width: 10em; position: absolute; top: 5em; left: 35em;">
+    <img id="rosace" src="" style="width: 10em; position: absolute; top: 5em; left: 45em;">
+    <img id="spirale" src="" style="width: 10em; position: absolute; top: 5em; left: 55em;">
+</div>
 <script>
     document.getElementById("oui").addEventListener("click", function(){
         nouveau_produit = localStorage.getItem("achat")
@@ -40,6 +48,27 @@ Payer?
     document.getElementById("non").addEventListener("click", function () {
         window.close()
     })
+</script>
+<script>
+    //DECO
+    if (localStorage.getItem("liste_biens").length == 0){
+
+    }
+    else {
+        liste = JSON.parse(localStorage['liste_biens'])
+        var images = document.getElementsByTagName("img")
+        for (i = 0 ; i < images.length ; i++){
+            if (liste.includes(images[i].id)){
+                document.getElementById(images[i].id).setAttribute("src", "image/magasin/"+images[i].id+".png");
+
+            }
+        }
+    }
+    //déco en plus, pour montrer au joueur comment ca rend avec son potentiel achat
+    var potentiel_achat = localStorage.getItem("achat")
+    document.getElementById(potentiel_achat).setAttribute("src", "image/magasin/"+potentiel_achat+".png");
+
+
 </script>
 </body>
 </html>
