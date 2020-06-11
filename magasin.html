@@ -45,11 +45,12 @@
 
             //on vérifie que le joueur ai assez de pièce
             console.log(input_tag.value)
-            console.log(localStorage.getItem("piece"))
+            console.log(parseInt(localStorage.getItem("piece")))
 
-            if (localStorage.getItem("piece") > input_tag.value) {
+            if (parseInt(localStorage.getItem("piece")) > input_tag.value) {
                 console.log(nom + " " + input_tag.value)
                 localStorage.setItem("achat", nom)
+                localStorage.setItem("prix_achat", input_tag.value)
                 //une fenêtre s'ouvre
                 var pageFille = window.open("demande_paiement.html",
                     "NomDeFenetreDescriptif",

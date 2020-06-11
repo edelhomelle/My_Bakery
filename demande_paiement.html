@@ -18,6 +18,8 @@ Payer?
             localStorage["liste_biens"] = JSON.stringify(new_liste)
             var new_stored_datas = JSON.parse(localStorage['liste_biens'])
             console.log(new_stored_datas)
+            var reste_pieces = parseInt(localStorage.getItem("piece")) - parseInt(localStorage.getItem("prix_achat"))
+            localStorage.setItem("piece", reste_pieces)
             window.fermeture = true;
             window.close()
         }
@@ -29,6 +31,8 @@ Payer?
             localStorage["liste_biens"] = JSON.stringify(new_liste)
             var new_stored_datas = JSON.parse(localStorage['liste_biens'])
             console.log(new_stored_datas)
+            var reste_pieces = parseInt(localStorage.getItem("piece")) - parseInt(localStorage.getItem("prix_achat"))
+            localStorage.setItem("piece", reste_pieces)
             window.fermeture = true;
 
             window.close()
