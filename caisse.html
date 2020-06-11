@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="background-image: url('image/fondfinal.png'); background-size: cover">
+<html lang="en" style="">
 <head>
     <title>My Bakey _ caisse</title>
     <meta charset="utf-8">
@@ -8,7 +8,7 @@
 
 
 </head>
-<body>
+<body style="background-image: url('image/fondfinal.png'); background-size: cover">
 <div class="dropdown" style="float: left; position: absolute">
     <button onclick="myFunction()" class="dropbtn" style="background-color: orange; padding:0.5em 1em 0.5em 1em; font-size: 2em; border-radius: 1em; color: #555555">MENU</button>
     <div id="myDropdown" class="dropdown-content">
@@ -41,6 +41,15 @@ window.onclick = function(event) {
         }
     }
 }</script>
+<div id="deco">
+    <img id="etoile" src="" style="width: 10em; position: absolute; top: 5em; left: 5em;">
+    <img id="fleur" src="" style="width: 10em; position: absolute; top: 5em; left: 15em;">
+    <img id="cercle" src="" style="width: 10em; position: absolute; top: 5em; left: 25em;">
+    <img id="mandala" src="" style="width: 10em; position: absolute; top: 5em; left: 35em;">
+    <img id="rosace" src="" style="width: 10em; position: absolute; top: 5em; left: 45em;">
+    <img id="spirale" src="" style="width: 10em; position: absolute; top: 5em; left: 55em;">
+</div>
+
 <div style="float: left;">
     <div id="bulle" style="position: relative;right:50px; margin-top: 9em;background-color:white;text-align:center; height: 15em; padding:1em;border:2px solid #555555;border-top-right-radius:80px 40px;border-top-left-radius:80px 40px;border-bottom-right-radius:80px 40px;border-bottom-left-radius:80px 40px;margin-left: 5em;">
         <span id="output" style=" font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */ font-weight:bold;font-size:2em;position:relative;top:26px;"></span>
@@ -414,5 +423,22 @@ else {
     }}
 </script>
 
+<script>
+    //DECO
+    if (localStorage.getItem("liste_biens").length == 0){
+
+    }
+    else {
+        liste = JSON.parse(localStorage['liste_biens'])
+        var images = document.getElementsByTagName("img")
+        for (i = 0 ; i < images.length ; i++){
+            if (liste.includes(images[i].id)){
+                document.getElementById(images[i].id).setAttribute("src", "image/magasin/"+images[i].id+".png");
+            }
+        }
+
+    }
+
+</script>
 </body>
 </html>

@@ -1,23 +1,39 @@
 <!DOCTYPE html>
-<html lang="en" style="background-image: url('image/fondfinal.png'); background-size: cover">
+<html lang="en" style="">
 <head>
     <title>My Bakey _ magasin</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="menu.css" />
 </head>
-<body style="text-align: center;">
+<body style="text-align: center;background-image: url('image/fondfinal.png'); background-size: cover">
 <!--MENU-->
 <div class="dropdown" style="float: left; ">
     <button onclick="myFunction()" class="dropbtn" style="color:#555555;background-color: orange; padding:0.5em 1em 0.5em 1em; font-size: 2em; border-radius: 1em">MENU</button>
     <div id="myDropdown" class="dropdown-content">
         <a href="./index.html">Menu principal</a>
         <a href="./caisse.html">Caisse</a>
-        <a href="./magasin.html">Magasin</a>
+        <a href="./stock.html">Stock</a>
         <a href="#" id="dwn-btn">Sauvegarder ma partie</a>
         <a href="supprimer_joueur.html">Supprimer ma partie</a>
         <a href="demandeEnregistrement.html" id="seco" >Importer une partie</a>
     </div>
 </div>
+<!--PIECE-->
+<div style="position: absolute;bottom: 0px; right: 0px; display: inline-block; text-align: center">
+    <span id="pieces" style="font-size: 2em"></span>
+    <img src="image/sous.png" style="width: 10em; ">
+</div>
+<script>
+    nb_pieces = localStorage.getItem("piece");
+    const piece_affichage = document.getElementById("pieces");
+    if (nb_pieces > 1) {
+        piece_affichage.innerHTML = `${nb_pieces} pièces`;
+    }
+    else {
+        piece_affichage.innerHTML = `${nb_pieces} pièce`;
+    }
+</script>
+<!--FIN PIECE-->
 
 <script>
     function myFunction() {
@@ -26,18 +42,18 @@
 </script>
 
 <!--FIN MENU-->
-<table style="background-color: red; text-align: center; font-size: 2em; display: inline-block;">
+<table style="background-color: chocolate; text-align: center; font-size: 2em; display: inline-block;">
     <tr>
-        <td><input type="image" src="image/magasin/1.png" style="width: 10em" alt="etoile" id="etoile" value="5" onclick="quest('etoile')"><br>5 pièces</td>
-        <td><input type="image" src="image/magasin/2.png" style="width: 10em" alt="fleur" id="fleur" value="5" onclick="quest('fleur')"><br>5 pièces</td>
+        <td><input type="image" src="image/magasin/etoile.png" style="width: 10em" alt="etoile" id="etoile" value="5" onclick="quest('etoile')"><br>5 pièces</td>
+        <td><input type="image" src="image/magasin/fleur.png" style="width: 10em" alt="fleur" id="fleur" value="5" onclick="quest('fleur')"><br>5 pièces</td>
     </tr>
     <tr>
-        <td><input type="image" src="image/magasin/3.png" style="width: 10em " alt="cercle" id="cercle" value="10" onclick="quest('cercle')"><br>10 pièces</td>
-        <td><input type="image" src="image/magasin/4.png" style="width: 10em" alt="mandala" id="mandala" value="10" onclick="quest('mandala')"><br>10 pièces</td>
+        <td><input type="image" src="image/magasin/cercle.png" style="width: 10em " alt="cercle" id="cercle" value="10" onclick="quest('cercle')"><br>10 pièces</td>
+        <td><input type="image" src="image/magasin/mandala.png" style="width: 10em" alt="mandala" id="mandala" value="10" onclick="quest('mandala')"><br>10 pièces</td>
     </tr>
     <tr>
-        <td><input type="image" src="image/magasin/5.png" style="width: 10em" alt="rosace" id="rosace" value="15" onclick="quest('rosace')"><br>15 pièces</td>
-        <td><input type="image" src="image/magasin/6.png" style="width: 10em" alt="spirale" id="spirale" value="15" onclick="quest('spirale')"><br>15 pièces</td>
+        <td><input type="image" src="image/magasin/rosace.png" style="width: 10em" alt="rosace" id="rosace" value="15" onclick="quest('rosace')"><br>15 pièces</td>
+        <td><input type="image" src="image/magasin/spirale.png" style="width: 10em" alt="spirale" id="spirale" value="15" onclick="quest('spirale')"><br>15 pièces</td>
     </tr>
 </table>
 </body>
