@@ -59,7 +59,7 @@ window.onclick = function(event) {
 </div>
 
 <div style="float: left; margin-left: 1em">
-    <div id="bulle" style="position: relative;right:50px; margin-top: 5em;background-color:white;text-align:center; height: 15em; padding:1em;border:2px solid #555555;border-top-right-radius:80px 40px;border-top-left-radius:80px 40px;border-bottom-right-radius:80px 40px;border-bottom-left-radius:80px 40px;margin-left: 5em;">
+    <div id="bulle" style="position: absolute;bottom: 19em; left : 2em;background-color:white;text-align:center; height: 15em; padding:1em;border:2px solid #555555;border-top-right-radius:80px 40px;border-top-left-radius:80px 40px;border-bottom-right-radius:80px 40px;border-bottom-left-radius:80px 40px;">
         <span id="output" style=" font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */ font-weight:bold;font-size:2em;position:relative;top:26px;"></span>
         <span id="arrow_border" style="width: 0;height: 0;line-height: 0;border-bottom:0px solid transparent;border-left:30px solid transparent;border-right:30px solid #555555; /* couleur de la bordure de la bulle */position:absolute;bottom:-30px;left:65px;"></span>
         <span id="arrow_inner" style="width: 0;height: 0;line-height: 0;border-bottom:30px solid transparent;border-right:30px solid transparent;border-left:30px solid #555555; /* couleur de la bordure de la bulle */position:absolute;bottom:-25px;right:150px;"><span>
@@ -69,8 +69,8 @@ window.onclick = function(event) {
     <img src="./image/chat.png" style="width: 10em; position: absolute; left: 22em; bottom: 1em">
 </div>
 <div id="score" style="position: absolute; margin-bottom: 0.5em;right: 1em; text-shadow: -1px -1px white, 1px 1px #333;text-align: center; width: 4em; height: 1em; padding:0.5em; font-size: 3em; border-radius: 30px; background-color: orangered; text-decoration: none;""></div>
-<div id="calculette" style="position:absolute;right:2em;background-color: orangered; width: 46%; top:10em; border-radius: 40px">
-<span id="calcul" style="  width: 40%; text-align:left;display:none; margin: auto; margin-top: 0.5em; font-family: ComicFighter, Georgia; font-weight:bold;font-size:3em; "></span>
+<div id="calculette" style="position:absolute;right:3em;background-color: orangered; width: 46%; bottom: 10em; border-radius: 40px">
+<span id="calcul" style=" width: 40%; text-align:left;display:none; margin: auto; margin-top: 0.5em; font-family: ComicFighter, Georgia; font-weight:bold;font-size:3em; "></span>
     <input type="text" id="resultat" autocomplete="off" placeholder="Ecris le résultat ici" style="width:90%;display: block; margin : auto;margin-top: 0.5em; margin-bottom: 0.5em;font-size: 2em; ">
 <input type="submit" id="verif" style="padding:0.5em;margin:1em;margin-top: 0.2em;margin-bottom:0.5em;font-size: 2em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;">
     <input type="button" id="aide" style="float:right; margin-top: 0.2em;margin-bottom:0.5em; margin-right:1em;padding:0.5em;font-size: 2em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Aide" "></div>
