@@ -75,47 +75,48 @@ function tostring_item(nom_prod) {
 <div id="produits" style="float: left; margin-top: 10%">
 <table style="position:relative; background-color: brown; border:solid; border-color: brown; left: 15em">
     <tr style="background-color:chocolate" >
-        <td><input id="0" alt="pain"  type="image" src="image/pain.png" style="width: 10em; ">
-        <td><input id="1" alt="croissant" type="image" src="image/croissant.jpg" style="width: 10em">
-        <td><input id="2" alt="pain au chocolat" type="image" src="image/pain_au_chocolat.png" style="width: 10em">
-        <td><input id="3" alt="brioche" type="image" src="image/brioche.png" style="width: 10em">
+        <td><input class="0" alt="pain"  type="image" src="image/pain.png" style="width: 10em; ">
+        <td><input class="0" alt="croissant" type="image" src="image/croissant.jpg" style="width: 10em">
+        <td><input class="0" alt="pain au chocolat" type="image" src="image/pain_au_chocolat.png" style="width: 10em">
+        <td><input class="0" alt="brioche" type="image" src="image/brioche.png" style="width: 10em">
     </tr>
     <tr style="background-color:chocolate" >
-        <td><input id="4" alt="chouquette"  type="image" src="image/chouquette.jpg" style="width: 10em; ">
-        <td><input id="5" alt="cookie" type="image" src="image/cookie.png" style="width: 10em">
-        <td><input id="6" alt="meringue" type="image" src="image/meringue.png" style="width: 10em">
-        <td><input id="7" alt="gateau au chocolat" type="image" src="image/gateau_au_chocolat.webp" style="width: 10em">
+        <td><input class="0" alt="chouquette"  type="image" src="image/chouquette.jpg" style="width: 10em; ">
+        <td><input class="2" alt="cookie" type="image" src="image/cookie.png" style="width: 10em">
+        <td><input class="4" alt="meringue" type="image" src="image/meringue.png" style="width: 10em">
+        <td><input class="6" alt="gateau au chocolat" type="image" src="image/gateau_au_chocolat.webp" style="width: 10em">
     </tr>
     <tr style="background-color:chocolate" >
-        <td><input id="8" alt="charlotte aux fraises"  type="image" src="image/charlotte.jpg" style="width: 10em; ">
-        <td><input id="9" alt="tarte au citron" type="image" src="image/tarte_citron.png" style="width: 10em">
+        <td><input class="8" alt="charlotte aux fraises"  type="image" src="image/charlotte.jpg" style="width: 10em; ">
+        <td><input class="9" alt="tarte au citron" type="image" src="image/tarte_citron.png" style="width: 10em">
     </tr>
-
 </table>
+<img id="presentoire" src="image/presentoire_niveau0.png" style="position: absolute ; width: 30em;bottom: 1.5em; right: 0em">
 </div>
-<div id="chat_qui_parle" style="float: right; margin-top: 5%">
-    <div id="bulle" style="position: relative; background-color:white;
-    right: 10em;
+    <div class="survol">
+        <div class="bulle">
+            <div id="bulle" style="position: absolute;
+    right:7em;
+    bottom: 17em;
+    background-color:white;
     text-align:center;
     width:400px;
-    height:210px;
+    height:250px;
     border:2px solid #555555;
-    padding: 1em;
 border-top-right-radius:80px 40px;
 border-top-left-radius:80px 40px;
 border-bottom-right-radius:80px 40px;
 border-bottom-left-radius:80px 40px;
+display: block; margin : auto;
 ">
     <span id="output" style="
 font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */
 font-weight:bold;
 font-size:2em;
 position:relative;
-top:26px;
-
-
+top: 20px
 ">Nous avons obtenu les produits colorés. Encore quelques clients et nous débloquerons ceux grisés!</span>
-        <span id="arrow_border" style="
+                <span id="arrow_border" style="
 width: 0;
 height: 0;
 line-height: 0;
@@ -127,7 +128,7 @@ bottom:-30px;
 right:65px;
 
 "></span>
-        <span id="arrow_inner" style="
+                <span id="arrow_inner" style="
 width: 0;
 height: 0;
 line-height: 0;
@@ -139,30 +140,35 @@ bottom:-25px;
 right:67px;
 
 "></span>
+            </div>    </div>
+        <img src="image/chat.png" style="position: absolute; display: block; right: 7em; bottom: 2em">
     </div>
-    <div style="float: right">
-    <input type="image" src="image/chat.png" style=" position:relative;margin-top: 3em; right: 7em">
-    </div>
-</div>
+
 </body>
 <script>
     //infobulle et image grisée
-for (i=0; i<=13; i++){
-    var elmt = document.getElementById(i);
-    //https://forum.alsacreations.com/topic-5-18801-1-resoluRecuperer-lattribut-Alt.html
-    var nom = document.getElementById(i).getAttribute("alt")
+    console.log(document.getElementsByTagName("input").length);
+    for (i=0; i<document.getElementsByTagName("input").length; i++){
+        var elmts_classes = document.getElementsByClassName(i);
+        console.log(elmts_classes)
 
-    if (i>niveau_joueur){
+        for (j = 0; j < elmts_classes.length ; j++){
+            //console.log(document.getElementsByClassName(i)[j])
+            //console.log(document.getElementsByClassName(i)[j].className)
+            console.log(i+"."+j+" : " + document.getElementsByClassName(i)[j].alt)
+            var nom = document.getElementsByClassName(i)[j].alt
 
-        elmt.style.filter = "grayscale(100%)";
-        elmt.style.webkitFilter = "grayscale(100%)";
-        document.getElementById(i).title = nom + " : disponible dès le niveau " + i;
+            if (i > niveau_joueur) {
 
+                document.getElementsByClassName(i)[j].style.filter = "grayscale(100%)";
+                document.getElementsByClassName(i)[j].style.webkitFilter = "grayscale(100%)";
+                document.getElementsByClassName(i)[j].title = nom + " : disponible dès le niveau " + i;
+
+            } else {
+                document.getElementsByClassName(i)[j].title = nom;
+            }
+        }
     }
-    else{
-        document.getElementById(i).title = nom;
-    }
-}
 
 </script>
 
@@ -170,14 +176,6 @@ for (i=0; i<=13; i++){
 
 
 
-    document.getElementById("aide").addEventListener("click", function(){
-        let clic_aide = document.getElementById("calcul");
-        if(getComputedStyle(clic_aide).display != "none"){
-            clic_aide.style.display = "none";
-        } else {
-            clic_aide.style.display = "block";
-            cliquer_pour_etre_aide = true;
-        }}, false);
 
 
 
@@ -192,4 +190,38 @@ for (i=0; i<=13; i++){
     }, false);
 
 </script>
+<script>
+    //présentoire boulangerie
+    niveau_joueur = localStorage.getItem("niveau")
+    const presentoire = document.getElementById("presentoire");
+
+    switch (parseInt(niveau_joueur)) {
+        case 0: case 1:
+            presentoire.src = "./image/presentoire_niveau0.png"
+            break;
+        case 2: case 3:
+            presentoire.src = "./image/presentoire_niveau2.png"
+            break;
+        case 4: case 5:
+            presentoire.src = "./image/presentoire_niveau4.png"
+            break;
+        case 6: case 7:
+            presentoire.src = "./image/presentoire_niveau6.png"
+            break;
+        case 8:
+            presentoire.src = "./image/presentoire_niveau8.png"
+            break;
+        case 9:
+            presentoire.src = "./image/presentoire_niveau9.png"
+            break;
+    }
+</script>
+<style>
+    .bulle {
+        display:none;
+    }
+    .survol:hover .bulle {
+        display: block;
+    }
+</style>
 </html>

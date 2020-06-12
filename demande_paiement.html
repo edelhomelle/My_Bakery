@@ -20,6 +20,8 @@ Payer?
     <img id="mandala" src="" style="width: 10em; position: absolute; top: 5em; left: 35em;">
     <img id="rosace" src="" style="width: 10em; position: absolute; top: 5em; left: 45em;">
     <img id="spirale" src="" style="width: 10em; position: absolute; top: 5em; left: 55em;">
+    <img src="./image/caisse.png" style="width: 15em; position: absolute; left:9em; bottom: 0em">
+    <img id="presentoire" src="image/presentoire_niveau0.png" style="position: absolute ; width: 20em;bottom: 3em; left: 27em">
 
 </div>
 <script>
@@ -86,6 +88,33 @@ Payer?
     document.getElementById(potentiel_achat).setAttribute("src", "image/magasin/"+potentiel_achat+".png");
 
 
+</script>
+<script>
+    //présentoire boulangerie
+    niveau_joueur = localStorage.getItem("niveau")
+    const presentoire = document.getElementById("presentoire");
+
+    switch (parseInt(niveau_joueur)) {
+        case 0: case 1:
+            presentoire.src = "./image/presentoire_niveau0.png"
+            break;
+        case 2: case 3:
+            presentoire.src = "./image/presentoire_niveau2.png"
+            break;
+        case 4: case 5:
+            presentoire.src = "./image/presentoire_niveau4.png"
+            break;
+        case 6: case 7:
+            presentoire.src = "./image/presentoire_niveau6.png"
+            break;
+        case 8:
+            presentoire.src = "./image/presentoire_niveau8.png"
+            break;
+        case 9:
+            presentoire.src = "./image/presentoire_niveau9.png"
+            break;
+    
+    }
 </script>
 </body>
 </html>
