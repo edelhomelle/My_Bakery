@@ -291,9 +291,9 @@ window.onclick = function(event) {
                                 //on initialise à 0 son nb de bonne réponse et de tentative pour le nouveau niveau
                                 localStorage.setItem("bonne_reponse", 0);
                                 localStorage.setItem("tentative", 0);
-                                piece = parseInt(localStorage.getItem("piece"));
-                                piece = piece+3;
-                                localStorage.setItem("piece", piece)
+                                pieces = parseInt(localStorage.getItem("pieces"));
+                                pieces = pieces+3;
+                                localStorage.setItem("pieces", pieces)
                                 localStorage.setItem("liste_calculs_deja_poses", [])
                                 miseEnAttente();
                                // location.reload();
@@ -301,9 +301,9 @@ window.onclick = function(event) {
                                 //si ce n'est pas la 3e bonne réponse, on incrémente le nb de bonne réponse et initialise le nombre de tentative à 0
                                 localStorage.setItem("bonne_reponse", bonne_rep_test);
                                 localStorage.setItem("tentative", 0);
-                                piece = parseInt(localStorage.getItem("piece"));
-                                piece++
-                                localStorage.setItem("piece", piece)
+                                pieces = parseInt(localStorage.getItem("pieces"));
+                                pieces++
+                                localStorage.setItem("pieces", pieces)
 
                                 miseEnAttente();
                                // location.reload();
@@ -354,13 +354,13 @@ window.onclick = function(event) {
         return array.sort(function() { return Math.random() - .5 });
     }
 
-    nb_pieces = localStorage.getItem("piece");
-    const piece_affichage = document.getElementById("pieces");
+    nb_pieces = localStorage.getItem("pieces");
+    const pieces_affichage = document.getElementById("pieces");
     if (nb_pieces > 1) {
-        piece_affichage.innerHTML = `${nb_pieces} pièces`;
+        pieces_affichage.innerHTML = `${nb_pieces} pièces`;
     }
     else {
-        piece_affichage.innerHTML = `${nb_pieces} pièce`;
+        pieces_affichage.innerHTML = `${nb_pieces} pièce`;
     }
 
 
@@ -477,7 +477,7 @@ else {
     //https://www.npmjs.com/package/canvas-confetti
     // https://www.kirilv.com/canvas-confetti/
 
-    var end = Date.now() + (10*1000);
+    var end = Date.now() + (15*1000);
 
     // go Buckeyes!
     var colors = ['#bb0000', '#ffffff'];

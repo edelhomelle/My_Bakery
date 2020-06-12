@@ -37,8 +37,8 @@
         const val_prenom = inpvalue.value;
         const key_niveau = "niveau";
         const val_niveau = 0;
-        const key_bonne_reponse= "bonne_reponse";
-        const val_bonne_reponse= 0;
+        const key_bonne_reponse = "bonne_reponse";
+        const val_bonne_reponse = 0;
         const key_tentative = "tentative";
         const val_tentative = 0;
         const key_piece = "pieces";
@@ -54,57 +54,6 @@
             localStorage.setItem("liste_calculs_deja_poses", []);
             location.reload();
         }
-
-      /* let objJson = {
-            prenom: inpvalue.value,
-            niveau: 0
-        }
-        let objLinea = JSON.stringify(objJson);
-        localStorage.setItem("joueur", objLinea);
-        const fs = require('fs')
-
-        fs.writeFile('joueur.json', objLinea, function(erreur) {
-            if (erreur) {
-                console.log(erreur)}
-        })*/
-    };
-
-    /*btn.onclick = function () {
-        console.log(localStorage.getItem("prenom"));
-        console.log(inpvalue.value);
-        if (localStorage.getItem("prenom") != inpvalue.value){
-            console.log("empty");
-            //add_name();
-            add_json();
-        }
-        else{
-            console.log("ce prénom est déjà utilisé");
-            alert("Il y a déjà un joueur qui porte ce nom, vérifie dans les parties enregistrées. Sinon, tu peux écrire un autre prénom pour commencer une nouvelle partie.")
-        }
-    };*/
-
-    function add_name() {
-        const key = "prenom";
-        const value = inpvalue.value;
-        if (key && value) {
-            localStorage.setItem(key, value);
-            //location.reload();
-        }
-        for (let i = 0; i < localStorage.length; i++) {
-            const key = localStorage.key(i);
-            const value = localStorage.getItem(key);
-            output.innerHTML += `${key}: ${value} <br />`;
-        }
     }
-
-    function add_json() {
-        let objJson = {
-            prenom: inpvalue.value,
-            niveau: 0
-        }
-        let objLinea = JSON.stringify(objJson);
-        localStorage.setItem("joueur", objLinea);
-    }
-
 </script>
 </html>
