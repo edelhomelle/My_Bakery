@@ -8,6 +8,13 @@
         const reader = new FileReader()
         reader.onload = function () {
             console.log(reader.result)
+            data = reader.result
+            console.log(data)
+            recup_attributs_json =  JSON.stringify(data);
+            console.log(recup_attributs_json)
+            recup = JSON.parse(recup_attributs_json)
+            console.log(recup)
+            console.log(recup_attributs_json.prenom)
 
         }
         reader.onload = receivedText;
@@ -16,7 +23,11 @@
     }, false)
     function receivedText(e) {
         let lines = e.target.result;
-        var newArr = JSON.parse(lines);
+        console.log(lines)
+        data =  JSON.stringify(lines);
+        console.log(data)
+        newArr = JSON.parse(lines);
+        // var newArr = JSON.parse(lines);
         console.log(newArr)
         console.log(newArr.prenom)
         console.log(newArr.niveau)

@@ -96,7 +96,11 @@ window.onclick = function(event) {
 
     var liste_calculs_deja_poses
 //on vérifie si la liste liste_calculs_deja_poses est vide
-    if (localStorage['liste_calculs_deja_poses'].length == 0){
+    if (localStorage['liste_calculs_deja_poses'] == null){
+        console.log("liste_calculs_deja_poses vide");
+        liste_calculs_deja_poses = []
+    }
+    else if (localStorage['liste_calculs_deja_poses'].length == 0){
         console.log("liste_calculs_deja_poses vide");
         liste_calculs_deja_poses = []
     }
@@ -407,8 +411,8 @@ document.getElementById("dwn-btn").addEventListener("click", function(){
         '  "prenom": "' + localStorage.getItem("prenom") +'",\n' +
         '  "niveau": "' + localStorage.getItem("niveau") +'",\n' +
         '  "tentative": "' + localStorage.getItem("tentative") +'",\n' +
-        '  "bonne_reponse": "' + localStorage.getItem("bonne_reponse") +'"\n' +
-        '  "pieces": "' + localStorage.getItem("pieces") +'"\n' +
+        '  "bonne_reponse": "' + localStorage.getItem("bonne_reponse") +'",\n' +
+        '  "pieces": "' + localStorage.getItem("pieces") +'",\n' +
         '  "liste_biens": "' + localStorage.getItem("liste_biens") +'"\n' +
         '}';
     var filename = "config_joueur.json";
@@ -456,7 +460,10 @@ else {
 
 <script>
     // DECO
-    if (localStorage.getItem("liste_biens").length == 0){
+    if (localStorage.getItem("liste_biens") == null){
+
+    }
+    else if (localStorage.getItem("liste_biens").length == 0){
 
     }
     else {
