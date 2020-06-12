@@ -18,22 +18,22 @@
         <a href="demandeEnregistrement_importer.html" id="seco" >Importer une partie</a>
     </div>
 </div>
-<!--PIECE-->
+<!--PIECES-->
 <div style="position: absolute;bottom: 0px; right: 0px; display: inline-block; text-align: center">
     <span id="pieces" style="font-size: 2em"></span>
     <img src="image/sous.png" style="width: 10em; ">
 </div>
 <script>
-    nb_pieces = localStorage.getItem("piece");
-    const piece_affichage = document.getElementById("pieces");
+    nb_pieces = localStorage.getItem("pieces");
+    const pieces_affichage = document.getElementById("pieces");
     if (nb_pieces > 1) {
-        piece_affichage.innerHTML = `${nb_pieces} pièces`;
+        pieces_affichage.innerHTML = `${nb_pieces} pièces`;
     }
     else {
-        piece_affichage.innerHTML = `${nb_pieces} pièce`;
+        pieces_affichage.innerHTML = `${nb_pieces} pièce`;
     }
 </script>
-<!--FIN PIECE-->
+<!--FIN PIECES-->
 
 <script>
     function myFunction() {
@@ -47,8 +47,8 @@
     <tr>
         <td><input type="image" src="image/magasin/porte.png" style="width: 10em" alt="porte" id="porte" value="5" onclick="quest('porte')"><br>5 pièces</td>
         <td><input type="image" src="image/magasin/fenetre.png" style="width: 10em" alt="fenetre" id="fenetre" value="5" onclick="quest('fenetre')"><br>5 pièces</td>
-        <td><input type="image" src="image/magasin/fenetre_droite.png" style="width: 10em " alt="fenetre_droite" id="fenetre_droite" value="10" onclick="quest('fenetre_droite')"><br>10 pièces</td>
-        <td><input type="image" src="image/magasin/table_salon.png" style="width: 10em " alt="table_salon" id="table_salon" value="10" onclick="quest('table_salon')"><br>10 pièces</td>
+        <td><input type="image" src="image/magasin/fenetre_droite.png" style="width: 10em " alt="fenetre à droite" id="fenetre_droite" value="10" onclick="quest('fenetre_droite')"><br>10 pièces</td>
+        <td><input type="image" src="image/magasin/table_salon.png" style="width: 10em " alt="table de café" id="table_salon" value="10" onclick="quest('table_salon')"><br>10 pièces</td>
 
     </tr>
     <tr>
@@ -67,7 +67,10 @@
     //quand on clique sur l'image
     function quest(id){
         //on vérifie s'il y a déjà des produits d'achetés
-        if (localStorage.getItem("liste_biens").length == 0){
+        if (localStorage.getItem("liste_biens") == null){
+            liste = []
+        }
+        else if (localStorage.getItem("liste_biens").length == 0){
             liste = []
         }
         else {
@@ -78,7 +81,7 @@
         //on récupère l'élément avec l'id entré en paramètre dans quest()
         input_tag = document.getElementById(id);
         //on récupère son nom
-        nom = input_tag.alt
+        nom = input_tag.id
 
         //si le produit sélectionné est déjà dans la liste des produits achetés rien ne se passe
         if (liste.includes(nom)){}
@@ -87,9 +90,9 @@
 
             //on vérifie que le joueur ai assez de pièce
             console.log(input_tag.value)
-            console.log(parseInt(localStorage.getItem("piece")))
+            console.log(parseInt(localStorage.getItem("pieces")))
 
-            if (parseInt(localStorage.getItem("piece")) >= input_tag.value) {
+            if (parseInt(localStorage.getItem("pieces")) >= input_tag.value) {
                 console.log(nom + " " + input_tag.value)
                 localStorage.setItem("achat", nom)
                 localStorage.setItem("prix_achat", input_tag.value)
@@ -121,7 +124,10 @@
     console.log(elmts)
     console.log(elmts.length)
     var liste;
-    if (localStorage.getItem("liste_biens").length == 0){
+    if (localStorage.getItem("liste_biens") == null){
+        liste = []
+    }
+    else if (localStorage.getItem("liste_biens").length == 0){
         liste = []
     }
     else {
@@ -130,7 +136,7 @@
 
     //produits pas achetés = gris, quand on passe souris dessus : colorés
     for (i=0; i<elmts.length; i++) {
-        var elmt = elmts[i].alt
+        var elmt = elmts[i].id
             if (liste.includes(elmt)){
                 console.log(elmt+" : deja acheté")
             }
@@ -149,7 +155,11 @@
                     this.style.webkitFilter = "grayscale(100%)";
                 });
             }
+        var nom = document.getElementsByTagName("input")[i].getAttribute("alt")
+        elmts[i].title = nom;
   }
+
+
 </script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
@@ -158,6 +168,10 @@
     document.getElementById("dwn-btn").addEventListener("click", function(){
         location="telechargement_json_config_joueur.html"
     }, false);
+
+</script>
+
+<script>
 
 </script>
 </html>

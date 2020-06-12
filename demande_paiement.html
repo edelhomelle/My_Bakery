@@ -65,7 +65,10 @@ Payer?
 </script>
 <script>
     //DECO
-    if (localStorage.getItem("liste_biens").length == 0){
+    if (localStorage.getItem("liste_biens") == null){
+
+    }
+    else if (localStorage.getItem("liste_biens").length == 0){
 
     }
     else {
