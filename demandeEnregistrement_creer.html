@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <title>My Bakey _ caisse</title>
+    <meta charset="utf-8">
+
+</head>
+<style>
+    body {
+        background-image: url("./image/fond_boulangerie.png");
+        font-size: 3em;
+        text-align: center;
+    }
+    #txt {
+
+        font-size: 2em; font-weight: 1000; text-shadow: -1px -1px white, 1px 1px #333;  color: orangered;
+        background-color: rgba(50, 50, 50, 0.5);
+        display: inline-block;
+    }
+
+    #btn {
+        display: inline-block;
+        margin: auto;
+        font-size: 1em;
+    }
+
+    input {
+        width : 10em;
+        font-size: 1em;
+        margin: 0.5em;
+        margin-top: 0.2em;
+        padding: 0.5em 1em 0.5em 1em;
+        border-radius: 30px; background-color: orangered;
+        color: #333333
+    }
+
+
+</style>
+<body>
+<div id="txt">
+    Ton ancienne partie va être supprimée. <br>
+    Veux-tu la télécharger?<br>
+</div><div id="btn">
+    <input type="button" value="OUI" id="oui">
+    <input type="button" value="NON" id="non">
+    <input type="button" value="ANNULER" id="annuler">
+</div>
+<script>
+    document.getElementById("annuler").addEventListener("click", function(){
+        window.history.back();
+    }, false);
+
+    document.getElementById("non").addEventListener("click", function(){
+        localStorage.clear();
+        location = "creerPartie.html";
+    }, false);
+
+    document.getElementById("oui").addEventListener("click", function(){
+
+        var text = '{\n' +
+            '  "prenom": "' + localStorage.getItem("prenom") +'",\n' +
+            '  "niveau": "' + localStorage.getItem("niveau") +'",\n' +
+            '  "tentative": "' + localStorage.getItem("tentative") +'",\n' +
+            '  "bonne_reponse": "' + localStorage.getItem("bonne_reponse") +'"\n' +
+            '  "pieces": "' + localStorage.getItem("pieces") +'"\n' +
+            '  "liste_biens": "' + localStorage.getItem("liste_biens") +'"\n' +
+            '}';
+        var filename = "config_joueur.json";
+
+        download(filename, text);
+
+        location = "creerPartie.html";
+
+    }, false);
+
+    function download(filename, text) {
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+        document.body.removeChild(element);
+    }
+</script>
+</body>
+<style>
+    .bulle {
+        display:none;
+    }
+    .survol:hover .bulle {
+        display: block;
+    }
+</style>
+</html>
