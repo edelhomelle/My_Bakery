@@ -19,8 +19,6 @@ background-color: #2980B9">
     <button onclick="myFunction()" class="dropbtn" style="background-color: orange; padding:0.5em 1em 0.5em 1em; font-size: 2em; border-radius: 1em; color: #555555">MENU</button>
     <div id="myDropdown" class="dropdown-content">
         <a href="./index.html">Menu principal</a>
-        <a href="./stock.html">Stock</a>
-        <a href="./magasin.html">Magasin</a>
         <a href="#" id="dwn-btn">Sauvegarder ma partie</a>
         <a href="supprimer_joueur.html">Supprimer ma partie</a>
         <a href="demandeEnregistrement_importer.html" id="seco" >Importer une partie</a>
@@ -48,11 +46,10 @@ window.onclick = function(event) {
     }
 }</script>
 <div id="deco">
-
-    <img id="porte"onclick="location='exterieur.html'" src="image/magasin/porte_delabree.png" style="position:absolute;width: 9%; left: 30%; top: 24%">
+    <img id="porte" title="SORTIR" onclick="location='exterieur.html'" src="image/magasin/porte_delabree.png" style="position:absolute;width: 12%; height: 40%; left: 30%; bottom: 42%">
     <img id="fenetre" src="image/magasin/fenetre_delabree.png" style="position:absolute;width: 12%; right: 42%; top: 24%">
     <img id="fenetre_droite" src="image/magasin/fenetre_droite_delabree.png" style="position:absolute;width: 7%; right: 15%; top: 20%">
-    <img id="table_salon" src="image/magasin/table_salon.png" hidden style="position: absolute;    width: 16%; top: 45%; right: 33%">
+    <img id="table_salon" src="image/magasin/table_salon.png" style="display: none; position: absolute;    width: 16%; top: 45%; right: 33%">
     <img id="etoile" src="" style="width: 10em; position: absolute; top: 5em; left: 5em;">
     <img id="fleur" src="" style="width: 10em; position: absolute; top: 5em; left: 15em;">
     <img id="cercle" src="" style="width: 10em; position: absolute; top: 5em; left: 25em;">
@@ -60,8 +57,7 @@ window.onclick = function(event) {
     <img id="rosace" src="" style="width: 10em; position: absolute; top: 5em; left: 45em;">
     <img id="spirale" src=""     style="width: 10em; position: absolute; top: 5em; left: 55em;">
     <img id="tapis" hidden src="image/magasin/tapis.png" style="position: absolute ;width: 15%; left: 27%; top: 47%">
-    <img id="presentoire" src="image/presentoire_niveau0.png" style="position: absolute ;width: 15%;  top: 50%; transform: scaleX(-1)">
-
+    <img onclick="location='stock.html'" title="VOIR MES PRODUITS" id="presentoire" src="image/presentoire_niveau0.png" style="position: absolute ;width: 15%;  top: 50%; transform: scaleX(-1)">
 </div>
 
 <div style="float: left; margin-left: 1em">
@@ -429,9 +425,9 @@ position: absolute; width: 12%; left: 10%; top: 72%;">
         case 8:
             presentoire.src = "./image/presentoire_niveau8.png"
             break;
-        case 9:
-            presentoire.src = "./image/presentoire_niveau9.png"
-            break;
+    }
+    if (niveau_joueur >= 9){
+        presentoire.src = "./image/presentoire_niveau9.png"
     }
 
 
@@ -497,6 +493,7 @@ else {
         for (i = 0 ; i < images.length ; i++){
             if (liste.includes(images[i].id)){
                 document.getElementById(images[i].id).setAttribute("src", "image/magasin/"+images[i].id+".png");
+                document.getElementById(images[i].id).style.display = "block";
             }
         }
 
@@ -605,5 +602,12 @@ margin: auto;
     display: inline-block;
     line-height: 1em;
     font-size: 5em; font-weight: 1000; text-shadow: -1px -1px white, 1px 1px #333;  color: cadetblue;
-}</style>
+}
+#porte:hover,  #presentoire:hover{
+    border:solid;
+    border-color: coral;
+    padding: 0.1em;
+}
+
+</style>
 </html>

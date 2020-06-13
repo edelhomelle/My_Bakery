@@ -10,19 +10,18 @@ Payer?
 <input type="button" value="oui" id="oui">
 <input type="button" value="non" id="non">
 <div id="deco">
-    <img id="porte" src="image/magasin/porte_delabree.png" style="position:absolute; top: 8em; left: 25em; width: 10em; height: 18em">
-    <img id="fenetre" src="image/magasin/fenetre_delabree.png" style="position:absolute; top: 8em; left: 40em; width: 15em; height: 9em">
-    <img id="fenetre_droite" src="image/magasin/fenetre_droite_delabree.png" style="position:absolute; top: 5em; right: 5em; width: 12em; height: 15em">
-    <img id="table_salon" src=""     style="width: 17em; position: absolute; bottom: 5em; right: 20em; height: 11em;">
+    <img id="porte" title="SORTIR" onclick="location='exterieur.html'" src="image/magasin/porte_delabree.png" style="position:absolute;width: 11%; left: 30%; bottom: 36%">
+    <img id="fenetre" src="image/magasin/fenetre_delabree.png" style="position:absolute;width: 12%; right: 42%; top: 24%">
+    <img id="fenetre_droite" src="image/magasin/fenetre_droite_delabree.png" style="position:absolute;width: 7%; right: 15%; top: 20%">
+    <img id="table_salon" src="image/magasin/table_salon.png" hidden style="position: absolute;    width: 16%; top: 45%; right: 33%">
     <img id="etoile" src="" style="width: 10em; position: absolute; top: 5em; left: 5em;">
     <img id="fleur" src="" style="width: 10em; position: absolute; top: 5em; left: 15em;">
     <img id="cercle" src="" style="width: 10em; position: absolute; top: 5em; left: 25em;">
     <img id="mandala" src="" style="width: 10em; position: absolute; top: 5em; left: 35em;">
     <img id="rosace" src="" style="width: 10em; position: absolute; top: 5em; left: 45em;">
-    <img id="spirale" src="" style="width: 10em; position: absolute; top: 5em; left: 55em;">
-    <img src="./image/caisse.png" style="width: 15em; position: absolute; left:9em; bottom: 0em">
-    <img id="tapis" src="image/magasin/tapis.png" style="position: absolute ; width: 15em;bottom: 5em; left: 22em">
-    <img id="presentoire" src="image/presentoire_niveau0.png" style="position: absolute ; width: 15em;bottom: 3em; left: 27em">
+    <img id="spirale" src=""     style="width: 10em; position: absolute; top: 5em; left: 55em;">
+    <img id="tapis" hidden src="image/magasin/tapis.png" style="position: absolute ;width: 15%; left: 27%; top: 47%">
+    <img onclick="location='stock.html'" title="VOIR MES PRODUITS" id="presentoire" src="image/presentoire_niveau0.png" style="position: absolute ;width: 15%;  top: 50%; transform: scaleX(-1)">
 
 </div>
 <script>
@@ -87,7 +86,9 @@ Payer?
         var images = document.getElementsByTagName("img")
         for (i = 0 ; i < images.length ; i++){
             if (liste.includes(images[i].id)){
+
                 document.getElementById(images[i].id).setAttribute("src", "image/magasin/"+images[i].id+".png");
+                document.getElementById(images[i].id).style.display = "block";
 
             }
         }
@@ -95,6 +96,7 @@ Payer?
     //déco en plus, pour montrer au joueur comment ca rend avec son potentiel achat
     var potentiel_achat = localStorage.getItem("achat")
     document.getElementById(potentiel_achat).setAttribute("src", "image/magasin/"+potentiel_achat+".png");
+    document.getElementById(potentiel_achat).style.display = "block";
 
 
 </script>
