@@ -16,7 +16,7 @@
 background-color: #2980B9">
 <img src="image/fondfinal.png" style=" position: absolute; width: 100%;height: 100%">
 <div class="dropdown" style="float: left; position: absolute">
-    <button onclick="myFunction()" class="dropbtn" style="background-color: orange; padding:0.5em 1em 0.5em 1em; font-size: 2em; border-radius: 1em; color: #555555">MENU</button>
+    <button onclick="location='index.html'" class="dropbtn" style="background-color: orange; padding:0.5em 1em 0.5em 1em; font-size: 2em; border-radius: 1em; color: #555555" >MENU</button>
     <div id="myDropdown" class="dropdown-content">
         <a href="./index.html">Menu principal</a>
         <a href="#" id="dwn-btn">Sauvegarder ma partie</a>
@@ -26,25 +26,7 @@ background-color: #2980B9">
 </div>
 <script>
     var cliquer_pour_etre_aide = false;
-    /* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
-    }
-}</script>
+</script>
 <div id="deco">
     <img id="porte" title="SORTIR" onclick="location='exterieur.html'" src="image/magasin/porte_delabree.png" style="position:absolute;width: 12%; height: 40%; left: 30%; bottom: 42%">
     <img id="fenetre" src="image/magasin/fenetre_delabree.png" style="position:absolute;width: 12%; right: 42%; top: 24%">
@@ -60,12 +42,13 @@ window.onclick = function(event) {
     <img onclick="location='stock.html'" title="VOIR MES PRODUITS" id="presentoire" src="image/presentoire_niveau0.png" style="position: absolute ;width: 15%;  top: 50%; transform: scaleX(-1)">
 </div>
 
-<div style="float: left; margin-left: 1em">
-    <div id="bulle" style="position: absolute;bottom: 47%; left : 10%;background-color:white;text-align:center;  padding:1em;border:2px solid #555555;border-top-right-radius:80px 40px;border-top-left-radius:80px 40px;border-bottom-right-radius:80px 40px;border-bottom-left-radius:80px 40px;">
+<div style="float: left; ">
+    <div id="bulle" style="position: absolute;left: 15%; bottom: 50%;
+    background-color:white;text-align:center;  padding:1em;border:2px solid #555555;border-top-right-radius:80px 40px;border-top-left-radius:80px 40px;border-bottom-right-radius:80px 40px;border-bottom-left-radius:80px 40px;">
         <span id="output" style="
 font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */
 font-weight:bold;
-font-size:1.5em;
+font-size:1em;
 position:relative;
 top:5px"></span>
         <span id="arrow_border" style="
@@ -88,7 +71,11 @@ position:absolute; width: 13%; top: 70%; left: 15%; transform: scaleX(-1)">
     <img src="./image/chat.png" style="
 position: absolute; width: 12%; left: 10%; top: 72%;">
 </div>
-<div id="score" style="position: absolute; margin-bottom: 0.5em;right: 1em; text-shadow: -1px -1px white, 1px 1px #333;text-align: center; width: 4em; height: 1em; padding:0.5em; font-size: 3em; border-radius: 30px; background-color: orangered; text-decoration: none;""></div>
+<div style="position: absolute; margin-bottom: 0.5em;right: 1em;text-align: center;padding:0.5em; font-size: 2em; border-radius: 30px; background-color: orangered;">
+    <div id="score" style=" height: 1em; font-weight: 1000;"></div>
+
+<input type="image"  style="margin-top: 0.5em;width: 10em;" id="etoiles">
+</div>
 <div id="calculette" style="position:absolute;left: 40%;background-color: orangered; width: 46%; bottom: 10em; border-radius: 40px">
 <span id="calcul" style=" width: 40%; text-align:left;display:none; margin: auto; margin-top: 0.5em; font-family: ComicFighter, Georgia; font-weight:bold;font-size:3em; "></span>
     <input type="text" id="resultat" autocomplete="off" placeholder="Ecris le résultat ici" style="width:90%;display: block; margin : auto;margin-top: 0.5em; margin-bottom: 0.5em;font-size: 2em; ">
@@ -96,11 +83,8 @@ position: absolute; width: 12%; left: 10%; top: 72%;">
     <input type="button" id="aide" style="float:right; margin-top: 0.2em;margin-bottom:0.5em; margin-right:1em;padding:0.5em;font-size: 2em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Aide" "></div>
 
 
-<div>
-<input type="image"  style="width: 10em; position: absolute; left: 45%; top: 0em" id="nb_tentatives">
-</div>
 <div style="position: absolute;bottom: 0em; right: 0em; display: inline-block; text-align: center">
-    <span id="pieces" style="font-size: 2em"></span>
+    <span id="pieces" style="font-size: 2em; font-weight: 1000;"></span>
     <input type="image" src="image/sous.png" style="width: 10em; ">
 
 </div>
@@ -391,7 +375,7 @@ position: absolute; width: 12%; left: 10%; top: 72%;">
 //3 lumières bleues pour afficher l'avancement vers le prochaine niveau
     tentatives = localStorage.getItem("bonne_reponse")
     console.log(tentatives)
-    const te = document.getElementById("nb_tentatives");
+    const te = document.getElementById("etoiles");
 
     switch (parseInt(tentatives)) {
         case 0:
