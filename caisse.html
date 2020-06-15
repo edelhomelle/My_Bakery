@@ -12,8 +12,7 @@
 <body onload="document.getElementById('resultat').focus()" style="margin: 0;
 	padding: 0;
 	height: 100%;
-	width: 100%;
-background-color: #2980B9">
+	width: 100%;">
 <img src="image/fondfinal.png" style=" position: absolute; width: 100%;height: 100%">
 <div class="dropdown" style="float: left; position: absolute">
     <button onclick="location='index.html'" class="dropbtn" style="background-color: orange; padding:0.5em 1em 0.5em 1em; font-size: 2em; border-radius: 1em; color: #555555" >MENU</button>
@@ -76,15 +75,15 @@ position: absolute; width: 12%; left: 10%; top: 72%;">
 
 <input type="image"  style="margin-top: 0.5em;width: 10em;" id="etoiles">
 </div>
-<div id="calculette" style="position:absolute;left: 40%;background-color: orangered; width: 46%; bottom: 10em; border-radius: 40px">
-<span id="calcul" style=" width: 40%; text-align:left;display:none; margin: auto; margin-top: 0.5em; font-family: ComicFighter, Georgia; font-weight:bold;font-size:3em; "></span>
-    <input type="text" id="resultat" autocomplete="off" placeholder="Ecris le résultat ici" style="width:90%;display: block; margin : auto;margin-top: 0.5em; margin-bottom: 0.5em;font-size: 2em; ">
-<input type="submit" id="verif" style="padding:0.5em;margin:1em;margin-top: 0.2em;margin-bottom:0.5em;font-size: 2em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;">
-    <input type="button" id="aide" style="float:right; margin-top: 0.2em;margin-bottom:0.5em; margin-right:1em;padding:0.5em;font-size: 2em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Aide" "></div>
+<div id="calculette" style="position:absolute;left: 40%;background-color: orangered; width: 37%; bottom: 10em; border-radius: 40px">
+<span id="calcul" style=" width: 30%; text-align:left;display:none; margin: auto; margin-top: 0.5em; font-family: ComicFighter, Georgia; font-weight:bold;font-size:2em; "></span>
+    <input type="text" id="resultat" autocomplete="off" placeholder="Ecris le résultat ici" style="width:90%;display: block; margin : auto;margin-top: 0.5em; margin-bottom: 0.5em;font-size: 1.5em; ">
+<input type="submit" id="verif" style="padding:0.5em;margin:1em;margin-top: 0.2em;margin-bottom:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;">
+    <input type="button" id="aide" style="float:right; margin-top: 0.2em;margin-bottom:0.5em; margin-right:1em;padding:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Aide" "></div>
 
 
-<div style="position: absolute;bottom: 0em; right: 0em; display: inline-block; text-align: center">
-    <span id="pieces" style="font-size: 2em; font-weight: 1000;"></span>
+<div style="position: absolute;bottom: 0em; right: 0em; display: inline-block; text-align: right; ">
+    <span id="pieces" style="font-size: 2em; font-weight: 1000; bottom:30%; right: 110%; width:200%;position:absolute;"></span>
     <input type="image" src="image/sous.png" style="width: 10em; ">
 
 </div>
@@ -110,12 +109,23 @@ position: absolute; width: 12%; left: 10%; top: 72%;">
         liste_calculs_deja_poses = []
     }
     else {
-        console.log("liste_calculs_deja_poses pas vide");
-        //on récupère la liste que l'on stocke dans liste_calculs_deja_poses
-        liste_calculs_deja_poses = JSON.parse(localStorage['liste_calculs_deja_poses'])
-        console.log(liste_calculs_deja_poses.length)
-        console.log(liste_calculs_deja_poses)
+
+            console.log("liste_calculs_deja_poses pas vide");
+            //on récupère la liste que l'on stocke dans liste_calculs_deja_poses
+            liste_calculs_deja_poses = JSON.parse(localStorage['liste_calculs_deja_poses'])
+
+        //si la liste est trop grande on la réinitialise, pour ne pas que le programme tourne en boucle en cherchant un résultat ps déjà dans la liste
+            if (liste_calculs_deja_poses.length >= 7){
+                localStorage.setItem("liste_calculs_deja_poses", []);
+                liste_calculs_deja_poses = []
+
+            }
+            console.log(liste_calculs_deja_poses.length)
+            console.log(liste_calculs_deja_poses)
+
+
     }
+
 
     //afficher contenu json evolution en console en fonction du niveau du joueur:
     $.ajax({
@@ -304,8 +314,8 @@ position: absolute; width: 12%; left: 10%; top: 72%;">
                                 pieces = pieces+3;
                                 localStorage.setItem("pieces", pieces)
                                 localStorage.setItem("liste_calculs_deja_poses", [])
+                                cliquer_pour_etre_aide = false;
                                 miseEnAttente();
-                               // location.reload();
                             } else {
                                 //si ce n'est pas la 3e bonne réponse, on incrémente le nb de bonne réponse et initialise le nombre de tentative à 0
                                 localStorage.setItem("bonne_reponse", bonne_rep_test);
@@ -313,10 +323,8 @@ position: absolute; width: 12%; left: 10%; top: 72%;">
                                 pieces = parseInt(localStorage.getItem("pieces"));
                                 pieces++
                                 localStorage.setItem("pieces", pieces)
-
+                                cliquer_pour_etre_aide = false;
                                 miseEnAttente();
-                               // location.reload();
-
                             }
                             console.log(parseInt(localStorage.getItem("bonne_reponse")) + 1);
                         } else {
@@ -329,6 +337,7 @@ position: absolute; width: 12%; left: 10%; top: 72%;">
                             if (tentative_test > 3) {
                                 //nombre de tentative dépassé, on diminue le niveau et affiche le bon résultat
                                 alert("Dommage, ce n'est pas le bon résultat. Le bon résultat était " + bon_resultat);
+
                                 // on baisse le niveau
                                 if (niveau_joueur > 0) {
                                     niveau_joueur--;
@@ -338,13 +347,19 @@ position: absolute; width: 12%; left: 10%; top: 72%;">
                                 //on remet à 0 le nb de bonne réponse et de tentative
                                 localStorage.setItem("bonne_reponse", 0);
                                 localStorage.setItem("tentative", 0);
-                                location.reload();
+                                cliquer_pour_etre_aide = false;
+
+                                miseEnAttente();
+                                //location.reload();
                             } else {
                                 alert("Dommage, ce n'est pas le bon résultat. Essaye encore!");
+
                                 //on incrémente le nb de tentatives
                                 localStorage.setItem("tentative", tentative_test);
                                 //le nombre de bonne réponse repasse à 0, car il faut 3 bonnes réponse A LA SUITE
                                 localStorage.setItem("bonne_reponse", 0);
+                                cliquer_pour_etre_aide = false;
+
                             }
                         }
                     }
@@ -535,6 +550,7 @@ function confettis(){
     <span class="letters"></span>
   </span>
 </h1>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 <script>
