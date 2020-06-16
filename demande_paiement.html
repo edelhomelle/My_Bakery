@@ -38,7 +38,7 @@
     <img id="mandala" src="" style="width: 10em; position: absolute; top: 5em; left: 35em;">
     <img id="rosace" src="" style="width: 10em; position: absolute; top: 5em; left: 45em;">
     <img id="spirale" src=""     style="width: 10em; position: absolute; top: 5em; left: 55em;">
-    <img id="tapis" hidden src="image/magasin/tapis.png" style="position: absolute ;width: 15%; left: 27%; top: 47%">
+    <img id="tapis" hidden src="image/magasin/tapis.png" style="position: absolute ;width: 15%; left: 27%; top: 53%">
     <img onclick="location='stock.html'" title="VOIR MES PRODUITS" id="presentoire" src="image/presentoire_niveau0.png" style="position: absolute ;width: 15%;  top: 50%; transform: scaleX(-1)">
 
 </div>
@@ -74,7 +74,7 @@
         var reste_pieces = parseInt(localStorage.getItem("pieces")) - parseInt(localStorage.getItem("prix_achat"))
         console.log(reste_pieces);
         localStorage.setItem("pieces", reste_pieces)
-       location = "magasin.html"
+        location = "magasin.html"
        /*
         fenetre secondaire
         localStorage.setItem("piece", reste_pieces)

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>My Bakery, TUTORIEL</title>
+</head>
+<style>
+    #presentoire:hover{
+        border: solid;
+        border-color: coral;
+
+    }
+</style>
+<body style="margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;">
+<img src="image/fondfinal.png" style=" position: absolute; width: 100%;height: 100%">
+<img id="fleche_pointeur" title="" src="image/fleche_pointeur.svg" style="transform: scaleY(-1); width: 15%; position:absolute; right: 30%; top: 15%; display: none; z-index: 1">
+
+<div id="deco">
+    <img id="porte" title="SORTIR" onclick="location='exterieur.html'" src="image/magasin/porte_delabree.png" style="position:absolute;width: 12%; height: 40%; left: 30%; bottom: 42%">
+    <img id="fenetre" src="image/magasin/fenetre_delabree.png" style="position:absolute;width: 12%; right: 42%; top: 24%">
+    <img id="fenetre_droite" src="image/magasin/fenetre_droite_delabree.png" style="position:absolute;width: 7%; right: 15%; top: 20%">
+</div>
+
+</div>
+
+<div id="zone2" style="position: relative;width: 200px; height: 400px;
+"> </div>
+
+<div id="bulle_chien" style="position: absolute;
+    right:60%;
+    bottom: 55%;
+    background-color:white;
+    text-align:center;
+    max-width: 40%;
+    padding: 2%;
+    border:2px solid #555555;
+border-top-right-radius:80px 40px;
+border-top-left-radius:80px 40px;
+border-bottom-right-radius:80px 40px;
+border-bottom-left-radius:80px 40px;
+display: none; margin : auto;
+
+">
+    <span id="output" style="
+font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */
+font-weight:bold;
+font-size:1em;
+position:relative;
+top:5px"></span>
+
+</div>
+
+<img onclick="remplir_bulle()" id="fleche" src="image/next.png" title="SUIVANT" style="display: none; width: 10%; position:absolute;bottom: 10%; right: 10%">
+<img id="presentoire0" title="" src="image/presentoire_niveau0.png" style="position: absolute ;width: 15%;  top: 50%; transform: scaleX(-1)">
+<img id="chien" title="" src="image/chien.PNG" style="position: absolute ;width: 15%;  bottom: 38%; left: 28% ; opacity: 0">
+<div id="zone3" style="z-index:0;position: absolute; top: 0em; width: 700px; height: 350px;  "> </div>
+<img src="./image/caisse.png" style="position:absolute; width: 13%; top: 70%; left: 15%; transform: scaleX(-1)">
+<div id="bulle_chat" style="position: absolute;
+    right:10%;
+    top: 10%;
+    background-color:white;
+    text-align:center;
+    max-width: 30%;
+    padding: 2%;
+    border:2px solid #555555;
+border-top-right-radius:80px 40px;
+border-top-left-radius:80px 40px;
+border-bottom-right-radius:80px 40px;
+border-bottom-left-radius:80px 40px;
+display: none; margin : auto;
+z-index: 1;
+">
+    <span id="output_chat" style="
+font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */
+font-weight:bold;
+font-size:1em;
+position:relative;
+top:5px"></span>
+
+</div>
+
+<div id="calculette" style="display:none;position:absolute;left: 40%;background-color: orangered; width: 37%; bottom: 10em; border-radius: 40px">
+    <span id="calcul" style=" width: 30%; text-align:left;display:none; margin: auto; margin-top: 0.5em; font-family: ComicFighter, Georgia; font-weight:bold;font-size:2em; "></span>
+    <input type="text" id="resultat" autocomplete="off" placeholder="Ecris le résultat ici" style="width:90%;display: block; margin : auto;margin-top: 0.5em; margin-bottom: 0.5em;font-size: 1.5em; ">
+    <input type="submit" id="ok" onclick="verifier()" style="padding:0.5em;margin:1em;margin-top: 0.2em;margin-bottom:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Valider">
+    <input type="button" id="aide" style="float:right; margin-top: 0.2em;margin-bottom:0.5em; margin-right:1em;padding:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Aide"></div>
+<script>
+
+
+    function remplir_bulle() {
+        document.getElementById("bulle_chien").style.display = "block"
+        document.getElementById("output").innerHTML = "Bonjour, j'aimerais <br/>2 croissants (2€)<br> et 1 brioche (4€) <br /> s'il-vous-plaît. <br/> Combien je vous dois?"
+        document.getElementById("fleche").addEventListener("click", function(){
+            document.getElementById("bulle_chat").style.display = "block"
+            document.getElementById("output_chat").innerHTML = "quel calcul devons-nous faire... <br/>Une fois que tu as trouvé le résultat, <br>écris le ici et clique sur le bouton valider"
+            document.getElementById("calculette").style.display = "block"
+            document.getElementById("resultat").style.display = "block"
+            document.getElementById("ok").style.display = "block"
+            document.getElementById("fleche_pointeur").style.display = "block";
+            document.getElementById("ok").addEventListener("click", function(){
+                console.log(document.getElementById("resultat").value);
+            }, false);
+
+
+        }, false);
+        //document.getElementById("fleche").addEventListener("click", function(){}, false)
+
+        }
+
+    function deplace () {
+        for (var i = 0; i < nbFormules; i++) {
+            if (formules[i]["left"] < largeurG) {
+
+                document.getElementById("fleche").style.display = "block";
+
+                break
+            } else {
+                formules[i]["left"] -= 1;
+                document.getElementById('g' + i).style.top = formules[i]["top"] + 'px';
+                document.getElementById('g' + i).style.left = formules[i]["left"] + 'px';           }        }    }
+    function deplaceSur (id) {
+        //spécifier le nombre d'objets ici
+        nbFormules = 1;
+        //la dimension de l'objet
+        objectWidth = 123;
+        objectHeight = 30;
+        //dimension de la zone
+        largeurG = parseInt(document.getElementById(id).style.width.substr(0, document.getElementById(id).style.width.length-2));
+        hauteurG = parseInt(document.getElementById(id).style.height.substr(0, document.getElementById(id).style.height.length-2));
+        largeurG -= objectWidth;
+        hauteurG -= objectHeight;
+        formules = new Array();
+        for (var i=0; i < nbFormules; i++) {
+            formules[i] = new Array();
+            formules[i]["left"] = 600;
+            formules[i]["top"] = 400;
+
+            document.write ('<span id="g'+i+'" style="position: absolute; left: '+formules[i]["left"]+'px; top: '+formules[i]["top"]+'px">');
+            // placer ici l'objet qui tombe !
+            document.write ('<img src="image/chat.png">');
+            document.write ('</span>');
+        }
+        intervalG = window.setInterval ("deplace()", 5);
+    }
+
+
+    function tombe () {
+        for (var i = 0; i < nbFlocons; i++) {
+            if (flocons[i]["top"] > hauteurF) {
+
+                break;
+            } else
+                flocons[i]["top"] += 1;
+            flocons[i]["left"] -= 1;
+            document.getElementById('f'+i).style.top = flocons[i]["top"]+'px';
+            document.getElementById('f'+i).style.left = flocons[i]["left"]+'px';
+        }
+    }
+
+    function tombeSur (id) {
+        //spécifier le nombre d'objets ici
+        nbFlocons = 1;
+        //la dimension de l'objet
+        objectWidth = 36;
+        objectHeight = 40;
+        //dimension de la zone
+        largeurF = parseInt(document.getElementById(id).style.width.substr(0, document.getElementById(id).style.width.length-2));
+        hauteurF = parseInt(document.getElementById(id).style.height.substr(0, document.getElementById(id).style.height.length-2));
+        largeurF -= objectWidth;
+        hauteurF -= objectHeight;
+        flocons = new Array();
+        for (var i=0; i < nbFlocons; i++) {
+            flocons[i] = new Array();
+            flocons[i]["left"] = 400;
+            flocons[i]["top"] = 200;
+
+            document.write ('<span id="f'+i+'" style="position: absolute; left: '+flocons[i]["left"]+'px; top: '+flocons[i]["top"]+'px; color: white">');
+            // placer ici l'objet qui tombe !
+            document.write ('<img src="image/chien.PNG" style="width: 40%">');
+            document.write ('</span>');
+        }
+
+        intervalF = window.setInterval ("tombe()", 5);
+    }
+    tombeSur("zone3");
+    deplaceSur("zone2")
+
+function verifier() {
+ console.log(document.getElementById("resultat"))
+}
+</script>
+</body>
+
+</html>

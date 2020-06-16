@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" style="color: #555555">
+<head>
+    <meta charset="UTF-8">
+    <title>My Bakery, TUTORIEL</title>
+
+</head>
+<body style="    background-image: url('./image/fond_boulangerie.png') ; background-size: cover;
+">
+<img id="retour" src="image/fleche.svg" style="display:none;position: absolute; bottom: 0; left: 0;width: 7em; transform: rotate(-90deg)" title="RETOUR" onclick="location='caisse.html'">
+<div id="zone2" style="position: absolute;  width: 900px; "> </div>
+
+<div id="produits" style="float: left; margin-top: 10%">
+    <table style="position:relative; background-color: brown; border:solid; border-color: brown; left: 15em">
+        <tr style="background-color:chocolate" >
+            <td><input class="0" alt="pain"  type="image" src="image/pain.png" style="width: 10em; ">
+            <td><input class="0" alt="croissant" type="image" src="image/croissant.jpg" style="width: 10em">
+            <td><input class="0" alt="pain au chocolat" type="image" src="image/pain_au_chocolat.png" style="width: 10em">
+            <td><input class="0" alt="brioche" type="image" src="image/brioche.png" style="width: 10em">
+        </tr>
+        <tr style="background-color:chocolate" >
+            <td><input class="0" alt="chouquette"  type="image" src="image/chouquette.jpg" style="width: 10em; ">
+            <td><input class="2" alt="cookie" type="image" src="image/cookie.png" style="width: 10em">
+            <td><input class="4" alt="meringue" type="image" src="image/meringue.png" style="width: 10em">
+            <td><input class="6" alt="gateau au chocolat" type="image" src="image/gateau_au_chocolat.webp" style="width: 10em">
+        </tr>
+        <tr style="background-color:chocolate" >
+            <td><input class="8" alt="charlotte aux fraises"  type="image" src="image/charlotte.jpg" style="width: 10em; ">
+            <td><input class="9" alt="tarte au citron" type="image" src="image/tarte_citron.png" style="width: 10em">
+        </tr>
+    </table>
+    <img id="presentoire" src="image/presentoire_niveau0.png" style="position: absolute ; width: 30em;bottom: 1.5em; right: 0em">
+</div>
+<img onclick="remplir_bulle()" id="fleche" src="image/next.png" title="SUIVANT" style="position: absolute;display: none; width: 10%; bottom: 0%; right: 10%">
+<div id="bulle" style="position: absolute;
+    right:30%;
+    bottom: 40%;
+    background-color:white;
+    text-align:center;
+    max-width: 30%;
+    padding: 2%;
+    border:2px solid #555555;
+border-top-right-radius:80px 40px;
+border-top-left-radius:80px 40px;
+border-bottom-right-radius:80px 40px;
+border-bottom-left-radius:80px 40px;
+display: none; margin : auto;
+
+">
+    <span id="output" style="
+font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */
+font-weight:bold;
+font-size:2em;
+position:relative;
+top:5px"></span>
+
+</div>
+</body>
+<script>
+    function remplir_bulle(){
+        document.getElementById("bulle").style.display = "block"
+        document.getElementById("output").innerHTML = "Nous voici dans les stocks de la boulangerie"
+
+        document.getElementById("fleche").addEventListener("click", function(){
+            document.getElementById("output").innerHTML = ""
+            document.getElementById("output").innerHTML = "Les produits grisés seront débloqués en prenant du niveau. Pour cela, il faut répondre correctement aux attentes des clients!"
+
+            document.getElementById("fleche").addEventListener("click", function(){
+                document.getElementById("retour").style.display = "block"
+                document.getElementById("fleche").style.opacity = 0
+                document.getElementById("output").innerHTML = ""
+                document.getElementById("output").innerHTML = "La flèche en bas à gauche te permet de revenir à la caisse. Clique dessus!"
+                document.getElementById("retour").addEventListener("click", function(){
+                    location = "tuto_debut2.html"
+                },false)
+            },false)
+        },false)
+        }
+
+    //infobulle et image grisée
+    console.log(document.getElementsByTagName("input").length);
+    for (i=0; i<document.getElementsByTagName("input").length; i++){
+        var elmts_classes = document.getElementsByClassName(i);
+        console.log(elmts_classes)
+
+        for (j = 0; j < elmts_classes.length ; j++){
+            //console.log(document.getElementsByClassName(i)[j])
+            //console.log(document.getElementsByClassName(i)[j].className)
+            console.log(i+"."+j+" : " + document.getElementsByClassName(i)[j].alt)
+            var nom = document.getElementsByClassName(i)[j].alt
+
+            if (i > 0) {
+
+                document.getElementsByClassName(i)[j].style.filter = "grayscale(100%)";
+                document.getElementsByClassName(i)[j].style.webkitFilter = "grayscale(100%)";
+                document.getElementsByClassName(i)[j].title = nom + " : disponible dès le niveau " + i;
+
+            } else {
+                document.getElementsByClassName(i)[j].title = nom;
+            }
+        }
+    }
+
+
+    function deplace () {
+        for (var i = 0; i < nbFormules; i++) {
+            if (formules[i]["left"] > largeurG) {
+
+                document.getElementById("fleche").style.display = "block";
+                break
+            } else {
+                formules[i]["left"] += 1;
+                document.getElementById('g' + i).style.top = formules[i]["top"] + 'px';
+                document.getElementById('g' + i).style.left = formules[i]["left"] + 'px';           }        }    }
+    function deplaceSur (id) {
+        //spécifier le nombre d'objets ici
+        nbFormules = 1;
+        //la dimension de l'objet
+        objectWidth = 123;
+        objectHeight = 30;
+        //dimension de la zone
+        largeurG = parseInt(document.getElementById(id).style.width.substr(0, document.getElementById(id).style.width.length-2));
+        hauteurG = parseInt(document.getElementById(id).style.height.substr(0, document.getElementById(id).style.height.length-2));
+        largeurG -= objectWidth;
+        hauteurG -= objectHeight;
+        formules = new Array();
+        for (var i=0; i < nbFormules; i++) {
+            formules[i] = new Array();
+            formules[i]["left"] = 200;
+            formules[i]["top"] = 400;
+
+            document.write ('<span id="g'+i+'" style="position: absolute; left: '+formules[i]["left"]+'px; top: '+formules[i]["top"]+'px">');
+            // placer ici l'objet qui tombe !
+            document.write ('<img src="image/chat.png">');
+            document.write ('</span>');
+        }
+        intervalG = window.setInterval ("deplace()", 5);
+    }
+
+    deplaceSur("zone2")
+</script>
+</html>
