@@ -71,8 +71,9 @@
             console.log(new_stored_datas)
 
         }
-        var reste_pieces = parseInt(localStorage.getItem("piece")) - parseInt(localStorage.getItem("prix_achat"))
-        localStorage.setItem("piece", reste_pieces)
+        var reste_pieces = parseInt(localStorage.getItem("pieces")) - parseInt(localStorage.getItem("prix_achat"))
+        console.log(reste_pieces);
+        localStorage.setItem("pieces", reste_pieces)
        location = "magasin.html"
        /*
         fenetre secondaire
