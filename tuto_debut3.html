@@ -11,7 +11,7 @@
 
     }
 </style>
-<body style="margin: 0;
+<form style="margin: 0;
 	padding: 0;
 	height: 100%;
 	width: 100%;">
@@ -85,8 +85,9 @@ top:5px"></span>
 <div id="calculette" style="display:none;position:absolute;left: 40%;background-color: orangered; width: 37%; bottom: 10em; border-radius: 40px">
     <span id="calcul" style=" width: 30%; text-align:left;display:none; margin: auto; margin-top: 0.5em; font-family: ComicFighter, Georgia; font-weight:bold;font-size:2em; "></span>
     <input type="text" id="resultat" autocomplete="off" placeholder="Ecris le résultat ici" style="width:90%;display: block; margin : auto;margin-top: 0.5em; margin-bottom: 0.5em;font-size: 1.5em; ">
-    <input type="submit" id="ok" onclick="verifier()" style="padding:0.5em;margin:1em;margin-top: 0.2em;margin-bottom:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Valider">
-    <input type="button" id="aide" style="float:right; margin-top: 0.2em;margin-bottom:0.5em; margin-right:1em;padding:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Aide"></div>
+    <input type="button" id="aide" style="float:right; margin-top: 0.2em;margin-bottom:0.5em; margin-right:1em;padding:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Aide">
+    <input type="button" id="verif" style="float:right; margin-top: 0.2em;margin-bottom:0.5em; margin-right:1em;padding:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Vérifier">
+</div>
 <script>
 
 
@@ -97,19 +98,23 @@ top:5px"></span>
             document.getElementById("bulle_chat").style.display = "block"
             document.getElementById("output_chat").innerHTML = "quel calcul devons-nous faire... <br/>Une fois que tu as trouvé le résultat, <br>écris le ici et clique sur le bouton valider"
             document.getElementById("calculette").style.display = "block"
-            document.getElementById("resultat").style.display = "block"
-            document.getElementById("ok").style.display = "block"
+
             document.getElementById("fleche_pointeur").style.display = "block";
-            document.getElementById("ok").addEventListener("click", function(){
-                console.log(document.getElementById("resultat").value);
-            }, false);
+            document.getElementById("verif").style.backgroundColor = "coral";
 
 
         }, false);
         //document.getElementById("fleche").addEventListener("click", function(){}, false)
 
         }
+    document.getElementById("verif").addEventListener("click", function(){
+        console.log("ok");
+        console.log(document.getElementById("resultat").value);
 
+    }, false);
+    document.getElementById("aide").addEventListener("click", function(){
+        console.log("okok");
+    }, false);
     function deplace () {
         for (var i = 0; i < nbFormules; i++) {
             if (formules[i]["left"] < largeurG) {
