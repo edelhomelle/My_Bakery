@@ -3,12 +3,30 @@
 <head>
     <title>My Bakey _ magasin</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="menu.css" />
 </head>
+<style>
+    span {
+        font-size: 200%;
+        color: #555555;
+    }
+    input{
+        background-color: coral;
+        width: 7%;
+        font-size: 200%;
+        padding: 1%;
+        border-radius: 30%;
+        color: #555555;
+    }
+    #payer {
+        text-align: center;
+    }
+</style>
 <body>
-Payer?
+<div id="payer">
+<span>Payer?<br/></span>
 <input type="button" value="oui" id="oui">
 <input type="button" value="non" id="non">
+</div>
 <div id="deco">
     <img id="porte" title="SORTIR" onclick="location='exterieur.html'" src="image/magasin/porte_delabree.png" style="position:absolute;width: 11%; left: 30%; bottom: 36%">
     <img id="fenetre" src="image/magasin/fenetre_delabree.png" style="position:absolute;width: 12%; right: 42%; top: 24%">
