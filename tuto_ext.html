@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>My Bakery, TUTORIEL</title>
+    <link rel="stylesheet" href="load.css">
+
 </head>
 <style>
     #magasin:hover {
@@ -14,6 +16,11 @@
 	height: 100%;
 	width: 100%;
 background-color: #2980B9">
+<div class="main" id="mainCont">
+    <script>document.getElementById("mainCont").classList.add('isLoading')
+    </script>
+    <div class="loader"></div>
+
 <img src="image/paysage_exterieur.png" style=" position: absolute; left: 20%;top: 0em;height: 100%">
 <div id="magasin" style="font-size: 1.5em;position: absolute; left: 29.5%; top: 30%; width: 25%; height: 41%;" onclick="location = 'tuto_magasin.html'">
         <span style="font-weight: 1000; text-shadow: -1px -1px white, 1px 1px #333;  color: orangered;position:absolute; top: 20%; left: 30%">
@@ -44,9 +51,10 @@ top:5px">Nous sommes à l'extérieur de la boulangerie, il y a un magasin à cô
 </div>
 
 <img src="image/chat.png" style="top: 60%; left: 50%; position:absolute;">
-
+</div>
 
 </body>
 
+<script type="text/javascript" src="load.js">
 
 </html>
