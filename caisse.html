@@ -280,6 +280,7 @@ color: blueviolet;
                             }
 
                         }
+                        resultat_calcul = Math.round(resultat_calcul*100)/100;
                     }while(liste_calculs_deja_poses.includes(resultat_calcul))
 
                     //on enregistre le nouveau résultat dans la liste
@@ -491,13 +492,13 @@ color: blueviolet;
 
     switch (parseInt(tentatives)) {
         case 0:
-            te.src = "./image/t0.svg"
-            break;
-        case 1:
             te.src = "./image/t1.svg"
             break;
-        case 2:
+        case 1:
             te.src = "./image/t2.svg"
+            break;
+        case 2:
+            te.src = "./image/t3.svg"
             break;
     }
 
@@ -532,10 +533,7 @@ color: blueviolet;
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 
-// Start file download.
-document.getElementById("dwn-btn").addEventListener("click", function(){
-    location="telechargement_json_config_joueur.html"
-}, false);
+
 
 
 
