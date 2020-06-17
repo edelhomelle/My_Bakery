@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr" style="color: #555555">
+<head>
+    <meta charset="UTF-8">
+    <title>My Bakery, TUTORIEL</title>
+</head>
+<body style="margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+background-color: #2980B9">
+<img src="image/paysage_exterieur.png" style=" position: absolute; left: 20%;top: 0em;height: 100%">
+<img id="retour" src="image/fleche.svg" style="display: none;position: absolute; bottom: 0; left: 0;width: 7em; transform: rotate(-90deg)" title="BOULANGERIE" >
+<div id="magasin" style="font-size: 2em;position: absolute; left: 29.5%; top: 30%; width: 25%; height: 41%;" onclick="location='tuto_magasin2.html'">
+        <span style="font-weight: 1000; text-shadow: -1px -1px white, 1px 1px #333;  color: orangered;position:absolute; top: 20%; left: 30%">
+            MAGASIN
+        </span>
+</div>
+
+
+<img onclick="remplir_bulle()" id="fleche" src="image/next.png" title="SUIVANT" style="display: none; width: 10%; position:absolute;bottom: 10%; right: 10%">
+
+<div id="zone2" style="position: absolute; width: 300px; height: 600px; "> </div>
+
+<div id="bulle" style="position: absolute;
+    left:5%;
+    bottom: 40%;
+    background-color:white;
+    text-align:center;
+    max-width: 20%;
+    padding: 2%;
+    border:2px solid #555555;
+border-top-right-radius:80px 40px;
+border-top-left-radius:80px 40px;
+border-bottom-right-radius:80px 40px;
+border-bottom-left-radius:80px 40px;
+display: none; margin : auto;
+
+">
+    <span id="output" style="
+font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */
+font-weight:bold;
+font-size:1.5em;
+position:relative;
+top:5px"></span>
+
+</div>
+
+</body>
+<style>
+    #magasin:hover {
+        border: solid; border-color: white;
+    }
+</style>
+    <script>
+    function deplace () {
+        for (var i = 0; i < nbFormules; i++) {
+            if (formules[i]["left"] > largeurG) {
+
+                document.getElementById("fleche").style.display = "block";
+                break
+            } else {
+                formules[i]["left"] += 1;
+                document.getElementById('g' + i).style.top = formules[i]["top"] + 'px';
+                document.getElementById('g' + i).style.left = formules[i]["left"] + 'px';           }        }    }
+    function deplaceSur (id) {
+        //spécifier le nombre d'objets ici
+        nbFormules = 1;
+        //la dimension de l'objet
+        objectWidth = 123;
+        objectHeight = 30;
+        //dimension de la zone
+        largeurG = parseInt(document.getElementById(id).style.width.substr(0, document.getElementById(id).style.width.length-2));
+        hauteurG = parseInt(document.getElementById(id).style.height.substr(0, document.getElementById(id).style.height.length-2));
+        largeurG -= objectWidth;
+        hauteurG -= objectHeight;
+        formules = new Array();
+        for (var i=0; i < nbFormules; i++) {
+            formules[i] = new Array();
+            formules[i]["left"] = 0;
+            formules[i]["top"] = 400;
+
+            document.write ('<span id="g'+i+'" style="position: absolute; left: '+formules[i]["left"]+'px; top: '+formules[i]["top"]+'px">');
+            // placer ici l'objet qui tombe !
+            document.write ('<img src="image/chat.png">');
+            document.write ('</span>');
+        }
+        intervalG = window.setInterval ("deplace()", 5);
+    }
+
+    deplaceSur("zone2")
+</script>
+<script>
+    function remplir_bulle() {
+        document.getElementById("bulle").style.display = "block"
+        document.getElementById("fleche").style.opacity = "0"
+        document.getElementById("output").innerHTML = "Pour revenir à la boulangerie, clique sur la flèche en bas à gauche"
+        document.getElementById("retour").style.display = "block"
+        document.getElementById("retour").addEventListener("click", function() {
+            location = "tuto_caisse_fin.html"
+        })
+
+        }
+</script>
+
+</html>

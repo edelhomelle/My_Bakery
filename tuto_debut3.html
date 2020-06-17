@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" style="color: #555555">
 <head>
     <meta charset="UTF-8">
     <title>My Bakery, TUTORIEL</title>
@@ -10,19 +10,21 @@
         border-color: coral;
 
     }
+    #porte:hover {
+        border: solid;
+        border-color: coral;
+        padding: 1em;
+    }
 </style>
-<form style="margin: 0;
+<body style="margin: 0;
 	padding: 0;
 	height: 100%;
 	width: 100%;">
 <img src="image/fondfinal.png" style=" position: absolute; width: 100%;height: 100%">
-<img id="fleche_pointeur" title="" src="image/fleche_pointeur.svg" style="transform: scaleY(-1); width: 15%; position:absolute; right: 30%; top: 15%; display: none; z-index: 1">
+<img id="fleche_pointeur" title="" src="image/fleche_pointeur.svg" style="transform: scaleY(-1); width: 20%; position:absolute; right: 30%; top: 15%; display: none; z-index: 1">
 
-<div id="deco">
-    <img id="porte" title="SORTIR" onclick="location='exterieur.html'" src="image/magasin/porte_delabree.png" style="position:absolute;width: 12%; height: 40%; left: 30%; bottom: 42%">
     <img id="fenetre" src="image/magasin/fenetre_delabree.png" style="position:absolute;width: 12%; right: 42%; top: 24%">
     <img id="fenetre_droite" src="image/magasin/fenetre_droite_delabree.png" style="position:absolute;width: 7%; right: 15%; top: 20%">
-</div>
 
 </div>
 
@@ -42,12 +44,12 @@ border-top-left-radius:80px 40px;
 border-bottom-right-radius:80px 40px;
 border-bottom-left-radius:80px 40px;
 display: none; margin : auto;
-
+z-index: 1;
 ">
     <span id="output" style="
 font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */
 font-weight:bold;
-font-size:1em;
+font-size:1.5em;
 position:relative;
 top:5px"></span>
 
@@ -76,18 +78,26 @@ z-index: 1;
     <span id="output_chat" style="
 font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */
 font-weight:bold;
-font-size:1em;
+font-size:1.5em;
 position:relative;
 top:5px"></span>
 
 </div>
 
+
+    <div id="div_pieces" style="opacity: 0;position: absolute;bottom: 0em; right: 0em; display: inline-block; text-align: right; ">
+        <span id="pieces" style="font-size: 1.5em; font-weight: 1000; bottom:30%; right: 110%; width:200%;position:absolute;"></span>
+        <input type="image" src="image/sous.png" style="width: 10em; ">
+
+    </div>
+<img id="porte0" title="SORTIR" src="image/magasin/porte_delabree.png" style="position:absolute;width: 12%; height: 40%; left: 30%; bottom: 42%; z-index: 0">
 <div id="calculette" style="display:none;position:absolute;left: 40%;background-color: orangered; width: 37%; bottom: 10em; border-radius: 40px">
     <span id="calcul" style=" width: 30%; text-align:left;display:none; margin: auto; margin-top: 0.5em; font-family: ComicFighter, Georgia; font-weight:bold;font-size:2em; "></span>
     <input type="text" id="resultat" autocomplete="off" placeholder="Ecris le résultat ici" style="width:90%;display: block; margin : auto;margin-top: 0.5em; margin-bottom: 0.5em;font-size: 1.5em; ">
     <input type="button" id="aide" style="float:right; margin-top: 0.2em;margin-bottom:0.5em; margin-right:1em;padding:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Aide">
     <input type="button" id="verif" style="float:right; margin-top: 0.2em;margin-bottom:0.5em; margin-right:1em;padding:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Vérifier">
 </div>
+
 <script>
 
 
@@ -100,7 +110,7 @@ top:5px"></span>
             document.getElementById("calculette").style.display = "block"
 
             document.getElementById("fleche_pointeur").style.display = "block";
-            document.getElementById("verif").style.backgroundColor = "coral";
+            document.getElementById("fleche").style.opacity = 0;
 
 
         }, false);
@@ -110,11 +120,67 @@ top:5px"></span>
     document.getElementById("verif").addEventListener("click", function(){
         console.log("ok");
         console.log(document.getElementById("resultat").value);
+        if (document.getElementById("resultat").value == 8){
+            document.getElementById("fleche_pointeur").style.opacity=0;
+            document.getElementById("output").innerHTML = "";
+            document.getElementById("bulle_chien").style.opacity = 0;
+            document.getElementById("chien").style.opacity = 0;
+            document.getElementById("bulle_chat").style.top = "25%";
+            document.getElementById("bulle_chat").style.right = "80%";
+
+            document.getElementById("output_chat").innerHTML = "";
+            document.getElementById("output_chat").innerHTML = "C'est la bonne réponse, Bravo "+localStorage.getItem("prenom")+"! Cela vous coûtera 8€ s'il-vous-plaît, Monsieur";
+
+            document.getElementById("fleche").style.opacity = 1;
+            document.getElementById("calculette").style.opacity = 0;
+
+            document.getElementById("fleche").addEventListener("click", function(){
+                document.getElementById("fleche").style.opacity = 1;
+                document.getElementById("div_pieces").style.opacity = 1;
+                document.getElementById("pieces").innerHTML = "1";
+                document.getElementById("output_chat").innerHTML = "";
+                document.getElementById("output_chat").innerHTML = "Regarde "+localStorage.getItem("prenom")+", nous avons gagné une pièce!";
+                localStorage.setItem("pieces", "1");
+                document.getElementById("fleche").addEventListener("click", function(){
+                    document.getElementById("output_chat").innerHTML = "";
+                    document.getElementById("output_chat").innerHTML = "Les pièces permettent d'acheter de nouveaux meubles en magasin, faisons y un tour! Clique sur la porte";
+                    document.getElementById("bulle_chat").style.top = "15%"
+                    document.getElementById("fleche_pointeur").style.transform = "rotate(100deg)";
+                    document.getElementById("fleche_pointeur").style.left = "18%";
+                    document.getElementById("fleche_pointeur").style.width = "13%";
+                    document.getElementById("fleche_pointeur").style.opacity = 1;
+                    document.getElementById("porte0").id = "porte";
+                    document.getElementById("porte").addEventListener("click", function() {
+                        location = "tuto_ext.html"
+                    }, false)
+                })
+
+            })
+
+
+            }
+        else {
+            alert("Essaye encore, appuie sur le bouton aide si besoin")
+        }
 
     }, false);
+
     document.getElementById("aide").addEventListener("click", function(){
-        console.log("okok");
-    }, false);
+
+            document.getElementById("calculette").style.zIndex=1;
+
+        let clic_aide = document.getElementById("calcul");
+        clic_aide.innerHTML = "2 × 2 <br> + <br> 1 × 4"
+        if(getComputedStyle(clic_aide).display != "none"){
+
+            document.getElementById("calculette").style.zIndex=0;
+            clic_aide.style.display = "none";
+        } else {
+            clic_aide.style.display = "block";
+            cliquer_pour_etre_aide = true;
+        }}
+        ,false);
+
     function deplace () {
         for (var i = 0; i < nbFormules; i++) {
             if (formules[i]["left"] < largeurG) {
@@ -193,9 +259,7 @@ top:5px"></span>
     tombeSur("zone3");
     deplaceSur("zone2")
 
-function verifier() {
- console.log(document.getElementById("resultat"))
-}
+
 </script>
 </body>
 

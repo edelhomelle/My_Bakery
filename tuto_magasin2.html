@@ -1,27 +1,45 @@
 <!DOCTYPE html>
-<html lang="en" style="">
+<html lang="fr" style="color: #555555">
 <head>
-    <title>My Bakey _ magasin</title>
+    <title>My Bakery, TUTORIEL</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="menu.css" />
 </head>
 <body style="text-align: center;background-image: url('image/fond_magasin.jpg'); ">
-<!--MENU-->
-<img src="image/fleche.svg" style="position: absolute; bottom: 0; left: 0;width: 7em; transform: rotate(-90deg)" title="RETOUR" onclick="location='exterieur.html'">
+<img id="retour" src="image/fleche.svg" style="display: none;position: absolute; bottom: 0; left: 0;width: 7em; transform: rotate(-90deg)" title="RETOUR" >
 
-<div class="dropdown" style="float: left; ">
-    <button onclick="myFunction()" class="dropbtn" style="color:#555555;background-color: orange; padding:0.5em 1em 0.5em 1em; font-size: 2em; border-radius: 1em">MENU</button>
-    <div id="myDropdown" class="dropdown-content">
-        <a href="./index.html">Menu principal</a>
-        <a href="#" id="dwn-btn">Sauvegarder ma partie</a>
-        <a href="supprimer_joueur.html">Supprimer ma partie</a>
-        <a href="demandeEnregistrement_importer.html" id="seco" >Importer une partie</a>
-    </div>
-</div>
 <!--PIECES-->
 <div style="position: absolute;bottom: 0px; right: 0px; display: inline-block; text-align: center">
     <span id="pieces" style="font-size: 2em"></span>
     <img src="image/sous.png" style="width: 10em; ">
+</div>
+
+<img onclick="remplir_bulle()" id="fleche" src="image/next.png" title="SUIVANT" style="display: none; width: 10%; position:absolute;bottom: 10%; right: 10%">
+
+<div id="zone2" style="position: absolute; width: 300px; height: 600px; "> </div>
+
+<div id="bulle" style="position: absolute;
+    left:5%;
+    bottom: 40%;
+    background-color:white;
+    text-align:center;
+    max-width: 20%;
+    padding: 2%;
+    border:2px solid #555555;
+border-top-right-radius:80px 40px;
+border-top-left-radius:80px 40px;
+border-bottom-right-radius:80px 40px;
+border-bottom-left-radius:80px 40px;
+display: none; margin : auto;
+
+">
+    <span id="output" style="
+font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */
+font-weight:bold;
+font-size:1.5em;
+position:relative;
+top:5px"></span>
+
 </div>
 <script>
     nb_pieces = localStorage.getItem("pieces");
@@ -98,25 +116,10 @@
                 console.log(nom + " " + input_tag.value)
                 localStorage.setItem("achat", nom)
                 localStorage.setItem("prix_achat", input_tag.value)
-                location="demande_paiement.html"
-                //une fenêtre s'ouvre
-
-                /*
-                fenetre secondaire
-                var pageFille = window.open("demande_paiement.html",
-                    "NomDeFenetreDescriptif",
-                    "width=420,height=230,resizable,scrollbars=yes,status=1");
-                //Recharge la page parente à la fermeture de la page fille
-                pageFille.onunload = function () {
-                    if (pageFille.fermeture) {
-                        //Rechargement
-                        location.reload();
-                    }
-                }
-                */
+                location="tuto_payer.html"
             }
-        else {
-            alert("Tu n'as pas assez de pièce pour acheter ceci")
+            else {
+                alert("Tu n'as pas assez de pièce pour acheter ceci")
             }
         }
     }
@@ -139,41 +142,81 @@
     //produits pas achetés = gris, quand on passe souris dessus : colorés
     for (i=0; i<elmts.length; i++) {
         var elmt = elmts[i].id
-            if (liste.includes(elmt)){
-                console.log(elmt+" : deja acheté")
-            }
-            else {
-                console.log(elmt+" : a acheter!");
-                elmts[i].style.filter = "grayscale(100%)";
-                elmts[i].style.webkitFilter = "grayscale(100%)";
-                elmts[i].addEventListener("mouseover", function( event ) {
-                    // on cible la cible de mouseleave
-                    this.style.filter = "grayscale(0%)";
-                    this.style.webkitFilter = "grayscale(0%)";
-                });
-                elmts[i].addEventListener("mouseout", function( event ) {
-                    // on cible la cible de mouseleave
-                    this.style.filter = "grayscale(100%)";
-                    this.style.webkitFilter = "grayscale(100%)";
-                });
-            }
+        if (liste.includes(elmt)){
+            console.log(elmt+" : deja acheté")
+        }
+        else {
+            console.log(elmt+" : a acheter!");
+            elmts[i].style.filter = "grayscale(100%)";
+            elmts[i].style.webkitFilter = "grayscale(100%)";
+            elmts[i].addEventListener("mouseover", function( event ) {
+                // on cible la cible de mouseleave
+                this.style.filter = "grayscale(0%)";
+                this.style.webkitFilter = "grayscale(0%)";
+            });
+            elmts[i].addEventListener("mouseout", function( event ) {
+                // on cible la cible de mouseleave
+                this.style.filter = "grayscale(100%)";
+                this.style.webkitFilter = "grayscale(100%)";
+            });
+        }
         var nom = document.getElementsByTagName("input")[i].getAttribute("alt")
         elmts[i].title = nom;
-  }
+    }
 
 
 </script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script>
 
-    // Start file download.
-    document.getElementById("dwn-btn").addEventListener("click", function(){
-        location="telechargement_json_config_joueur.html"
-    }, false);
+
+    <script>
+    function deplace () {
+        for (var i = 0; i < nbFormules; i++) {
+            if (formules[i]["left"] > largeurG) {
+
+                document.getElementById("fleche").style.display = "block";
+                break
+            } else {
+                formules[i]["left"] += 1;
+                document.getElementById('g' + i).style.top = formules[i]["top"] + 'px';
+                document.getElementById('g' + i).style.left = formules[i]["left"] + 'px';           }        }    }
+    function deplaceSur (id) {
+        //spécifier le nombre d'objets ici
+        nbFormules = 1;
+        //la dimension de l'objet
+        objectWidth = 123;
+        objectHeight = 30;
+        //dimension de la zone
+        largeurG = parseInt(document.getElementById(id).style.width.substr(0, document.getElementById(id).style.width.length-2));
+        hauteurG = parseInt(document.getElementById(id).style.height.substr(0, document.getElementById(id).style.height.length-2));
+        largeurG -= objectWidth;
+        hauteurG -= objectHeight;
+        formules = new Array();
+        for (var i=0; i < nbFormules; i++) {
+            formules[i] = new Array();
+            formules[i]["left"] = 0;
+            formules[i]["top"] = 400;
+
+            document.write ('<span id="g'+i+'" style="position: absolute; left: '+formules[i]["left"]+'px; top: '+formules[i]["top"]+'px">');
+            // placer ici l'objet qui tombe !
+            document.write ('<img src="image/chat.png">');
+            document.write ('</span>');
+        }
+        intervalG = window.setInterval ("deplace()", 5);
+    }
+
+    deplaceSur("zone2")
 
 </script>
-
 <script>
+    function remplir_bulle(){
+        document.getElementById("bulle").style.display = "block"
+        document.getElementById("retour").style.display = "block"
+        document.getElementById("output").innerHTML = "Pour sortir du magasin, appuie sur la flèche en bas à gauche."
+        document.getElementById("fleche").style.opacity = "0"
+        document.getElementById("retour").addEventListener("click", function() {
+            location = "tuto_ext2.html"
+        })
+    }
 
 </script>
 </html>

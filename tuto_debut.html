@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" style="color: #555555">
 <head>
     <meta charset="UTF-8">
     <title>My Bakery, TUTORIEL</title>
@@ -48,7 +48,7 @@ display: none; margin : auto;
     <span id="output" style="
 font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */
 font-weight:bold;
-font-size:2em;
+font-size:1.5em;
 position:relative;
 top:5px"></span>
 
@@ -79,6 +79,7 @@ function remplir_bulle() {
                 document.getElementById("output").innerHTML = "";
                 document.getElementById("output").innerHTML = "En cliquant sur le présentoire, tu verras tes produits ainsi que ceux que tu pourras avoir plus tard. <br /> Clique dessus!";
                 document.getElementById("presentoire0").id = "presentoire";
+                document.getElementById("fleche").style.opacity = "0"
                 document.getElementById("presentoire").addEventListener("click", function () {
                     location="tuto_stock.html"
                 }, false)

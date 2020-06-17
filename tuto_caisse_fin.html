@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr" style="color: #555555">
+<head>
+    <title>My Bakery, FIN DU TUTORIEL</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="menu.css" />
+
+
+
+</head>
+<!--https://openclassrooms.com/forum/sujet/input-placer-le-curseur-automatiquement-dedans-80024-->
+<body style="margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;">
+<img src="image/fondfinal.png" style=" position: absolute; width: 100%;height: 100%">
+<div class="dropdown" style="float: left; position: absolute">
+    <button onclick="location='index.html'" class="dropbtn" style="background-color: orange; padding:0.5em 1em 0.5em 1em; font-size: 1.5em; border-radius: 1em; color: #555555" >MENU</button>
+    <div id="myDropdown" class="dropdown-content">
+        <a href="./index.html">Menu principal</a>
+        <a href="#" id="dwn-btn">Sauvegarder ma partie</a>
+        <a href="supprimer_joueur.html">Supprimer ma partie</a>
+        <a href="demandeEnregistrement_importer.html" id="seco" >Importer une partie</a>
+    </div>
+</div>
+<script>
+    var cliquer_pour_etre_aide = false;
+</script>
+<img  id="fleche" src="image/next.png" title="SUIVANT" style="display: none; width: 10%; position:absolute;bottom: 10%; right: 10%">
+
+<div id="deco">
+    <img id="porte" src="image/magasin/porte_delabree.png" style="position:absolute;width: 12%; height: 40%; left: 30%; bottom: 42%">
+    <img id="vase_fleurs" src="image/magasin/vase_fleurs.png" style="position:absolute;width: 11%; left: 18%; bottom: 35%">
+    <img id="fenetre" src="image/magasin/fenetre_delabree.png" style="position:absolute;width: 12%; right: 42%; top: 24%">
+    <img id="fenetre_droite" src="image/magasin/fenetre_droite_delabree.png" style="position:absolute;width: 7%; right: 15%; top: 20%">
+    <img id="table_salon" src="image/magasin/table_salon.png" style="display: none; position: absolute;    width: 16%; top: 45%; right: 33%">
+    <img id="etoile" src="" style="width: 10em; position: absolute; top: 5em; left: 5em;">
+    <img id="fleur" src="" style="width: 10em; position: absolute; top: 5em; left: 15em;">
+    <img id="cercle" src="" style="width: 10em; position: absolute; top: 5em; left: 25em;">
+    <img id="mandala" src="" style="width: 10em; position: absolute; top: 5em; left: 35em;">
+    <img id="rosace" src="" style="width: 10em; position: absolute; top: 5em; left: 45em;">
+    <img id="spirale" src=""     style="width: 10em; position: absolute; top: 5em; left: 55em;">
+    <img id="tapis" hidden src="image/magasin/tapis.png" style="position: absolute ;width: 15%; left: 27%; top: 47%">
+    <img id="presentoire" src="image/presentoire_niveau0.png" style="position: absolute ;width: 15%;  top: 50%; transform: scaleX(-1)">
+</div>
+
+<div style="float: left; ">
+    <div id="bulle" style="
+    position: absolute;left: 30%; bottom: 20%;
+    background-color:white;text-align:center;  max-width: 30%;padding:1em;border:2px solid #555555;border-top-right-radius:80px 40px;border-top-left-radius:80px 40px;border-bottom-right-radius:80px 40px;border-bottom-left-radius:80px 40px;">
+        <span id="output" style="
+font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */
+font-weight:bold;
+font-size:1.5em;
+position:relative;
+top:5px;
+"></span>
+    </div></div>
+
+    <img src="./image/caisse.png" style="
+position:absolute; width: 13%; top: 70%; left: 15%; transform: scaleX(-1)">
+    <img src="./image/chat.png" style="
+position: absolute; width: 12%; left: 10%; top: 72%;">
+</div>
+<div style="position: absolute; margin-bottom: 0.5em;right: 1em;text-align: center;padding:0.5em; font-size: 1.5em; border-radius: 30px; background-color: orangered;">
+    <div id="score" style=" height: 1em; font-weight: 1000;"></div>
+
+    <input type="image" src="image/t0.svg" style="margin-top: 0.5em;width: 10em;" id="etoiles">
+</div>
+
+
+<div style="position: absolute;bottom: 0em; right: 0em; display: inline-block; text-align: right; ">
+    <span id="pieces" style="font-size: 1.5em; font-weight: 1000; bottom:30%; right: 110%; width:200%;position:absolute;"></span>
+    <input type="image" src="image/sous.png" style="width: 10em; ">
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+    /* $.getJSON('evolution', function(data){
+     console.log(data);
+ });
+ */
+    //recuperer niveau du joueur:
+    var niveau_joueur = localStorage.getItem('niveau');
+
+    message_calcul = '';
+
+    var liste_calculs_deja_poses
+    //on vérifie si la liste liste_calculs_deja_poses est vide
+    if (localStorage['liste_calculs_deja_poses'] == null){
+        console.log("liste_calculs_deja_poses vide");
+        liste_calculs_deja_poses = []
+    }
+    else if (localStorage['liste_calculs_deja_poses'].length == 0){
+        console.log("liste_calculs_deja_poses vide");
+        liste_calculs_deja_poses = []
+    }
+    else {
+
+        console.log("liste_calculs_deja_poses pas vide");
+        //on récupère la liste que l'on stocke dans liste_calculs_deja_poses
+        liste_calculs_deja_poses = JSON.parse(localStorage['liste_calculs_deja_poses'])
+
+        //si la liste est trop grande on la réinitialise, pour ne pas que le programme tourne en boucle en cherchant un résultat ps déjà dans la liste
+        if (liste_calculs_deja_poses.length >= 7){
+            localStorage.setItem("liste_calculs_deja_poses", []);
+            liste_calculs_deja_poses = []
+
+        }
+        console.log(liste_calculs_deja_poses.length)
+        console.log(liste_calculs_deja_poses)
+
+
+    }
+
+
+
+
+    sc = localStorage.getItem("niveau");
+    const score = document.getElementById("score");
+    score.innerHTML = `niveau ${sc} <br />`;
+
+    function shuffle(array)
+    {
+        return array.sort(function() { return Math.random() - .5 });
+    }
+
+    nb_pieces = localStorage.getItem("pieces");
+    const pieces_affichage = document.getElementById("pieces");
+    if (nb_pieces > 1) {
+        pieces_affichage.innerHTML = `${nb_pieces} pièces`;
+    }
+    else {
+        pieces_affichage.innerHTML = `${nb_pieces} pièce`;
+    }
+
+</script>
+
+
+<script>
+    // DECO
+    if (localStorage.getItem("liste_biens") == null){
+
+    }
+    else if (localStorage.getItem("liste_biens").length == 0){
+
+    }
+    else {
+        liste = JSON.parse(localStorage['liste_biens'])
+        var images = document.getElementsByTagName("img")
+        for (i = 0 ; i < images.length ; i++){
+            if (liste.includes(images[i].id)){
+                document.getElementById(images[i].id).setAttribute("src", "image/magasin/"+images[i].id+".png");
+                document.getElementById(images[i].id).style.display = "block";f
+            }
+        }
+
+    }
+
+</script>
+
+<script>
+    document.getElementById("output").innerHTML = "En haut à droite apparaît ton niveau. Juste en-dessous tu peux voir des étoiles. A chaque bonne réponse tu gagnes une étoile et au bout de trois, tu augmentes de niveau!"
+    document.getElementById("fleche").style.display = "block"
+    document.getElementById("fleche").addEventListener("click", function() {
+        document.getElementById("output").innerHTML = "Le tutoriel est maintenant fini, amuses toi bien!"
+        document.getElementById("fleche").addEventListener("click", function() {
+            location="caisse.html"
+        })
+
+    })
+</script>
+
+
+
+
+</body>
+
+</html>

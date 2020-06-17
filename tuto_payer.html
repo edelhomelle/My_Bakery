@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr" style="background-image: url('image/fondfinal.png'); background-size: cover;color: #555555">
+<head>
+    <title>My Bakery, TUTORIEL</title>
+    <meta charset="utf-8">
+</head>
+<style>
+    span {
+        font-size: 200%;
+        color: #555555;
+    }
+    input{
+        background-color: coral;
+        width: 7%;
+        font-size: 200%;
+        padding: 1%;
+        border-radius: 30%;
+        color: #555555;
+    }
+    #payer {
+        text-align: center;
+        display: none;
+    }
+</style>
+<body>
+<img onclick="remplir_bulle()" id="fleche" src="image/next.png" title="SUIVANT" style="display: none; width: 10%; position:absolute;bottom: 10%; right: 10%">
+
+<div id="payer">
+    <span> <br/></span>
+    <input type="button" value="oui" id="oui">
+    <input type="button" value="non" id="non">
+</div>
+<div id="deco">
+    <img id="porte" src="image/magasin/porte_delabree.png" style="position:absolute;width: 11%; left: 30%; bottom: 36%">
+    <img id="vase" src="image/magasin/vase_fleurs.png" style="position:absolute;width: 11%; left: 18%; bottom: 32%">
+    <img id="fenetre" src="image/magasin/fenetre_delabree.png" style="position:absolute;width: 12%; right: 42%; top: 24%">
+    <img id="fenetre_droite" src="image/magasin/fenetre_droite_delabree.png" style="position:absolute;width: 7%; right: 15%; top: 20%">
+    <img id="presentoire" src="image/presentoire_niveau0.png" style="position: absolute ;width: 15%;  top: 50%; transform: scaleX(-1)">
+
+</div>
+<div id="zone2" style="position: absolute; width: 500px; height: 600px; "> </div>
+
+<div id="bulle" style="position: absolute;
+    left:43%;
+    bottom: 35%;
+    background-color:white;
+    text-align:center;
+    max-width: 20%;
+    padding: 2%;
+    border:2px solid #555555;
+border-top-right-radius:80px 40px;
+border-top-left-radius:80px 40px;
+border-bottom-right-radius:80px 40px;
+border-bottom-left-radius:80px 40px;
+display: none; margin : auto;
+
+">
+    <span id="output" style="
+font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */
+font-weight:bold;
+font-size:1.5em;
+position:relative;
+top:5px"></span>
+
+</div>
+<script>
+    document.getElementsByTagName("span")[0].innerHTML = "Payer le "+localStorage.getItem("achat")  +"?"
+    document.getElementById("oui").addEventListener("click", function(){
+        nouveau_produit = localStorage.getItem("achat")
+        if (localStorage['liste_biens'] == null) {
+            var new_liste = []
+            new_liste[0] = nouveau_produit
+            localStorage["liste_biens"] = JSON.stringify(new_liste)
+            var new_stored_datas = JSON.parse(localStorage['liste_biens'])
+            console.log(new_stored_datas)
+
+        }
+        else if (localStorage['liste_biens'].length == 0) {
+            var new_liste = []
+            new_liste[0] = nouveau_produit
+            localStorage["liste_biens"] = JSON.stringify(new_liste)
+            var new_stored_datas = JSON.parse(localStorage['liste_biens'])
+            console.log(new_stored_datas)
+
+        }
+        else {
+            var stored_datas = JSON.parse(localStorage['liste_biens'])
+            console.log(stored_datas.length)
+            var new_liste = stored_datas
+            new_liste[stored_datas.length] = nouveau_produit
+            localStorage["liste_biens"] = JSON.stringify(new_liste)
+            var new_stored_datas = JSON.parse(localStorage['liste_biens'])
+            console.log(new_stored_datas)
+
+        }
+        var reste_pieces = parseInt(localStorage.getItem("pieces")) - parseInt(localStorage.getItem("prix_achat"))
+        console.log(reste_pieces);
+        localStorage.setItem("pieces", reste_pieces)
+        location = "tuto_magasin2.html"
+
+    }, false);
+
+    document.getElementById("non").addEventListener("click", function () {
+
+        location="tuto_magasin2.html"
+    })
+</script>
+<script>
+    function deplace () {
+        for (var i = 0; i < nbFormules; i++) {
+            if (formules[i]["left"] > largeurG) {
+
+                document.getElementById("fleche").style.display = "block";
+                break
+            } else {
+                formules[i]["left"] += 1;
+                document.getElementById('g' + i).style.top = formules[i]["top"] + 'px';
+                document.getElementById('g' + i).style.left = formules[i]["left"] + 'px';           }        }    }
+    function deplaceSur (id) {
+        //spécifier le nombre d'objets ici
+        nbFormules = 1;
+        //la dimension de l'objet
+        objectWidth = 123;
+        objectHeight = 30;
+        //dimension de la zone
+        largeurG = parseInt(document.getElementById(id).style.width.substr(0, document.getElementById(id).style.width.length-2));
+        hauteurG = parseInt(document.getElementById(id).style.height.substr(0, document.getElementById(id).style.height.length-2));
+        largeurG -= objectWidth;
+        hauteurG -= objectHeight;
+        formules = new Array();
+        for (var i=0; i < nbFormules; i++) {
+            formules[i] = new Array();
+            formules[i]["left"] = 0;
+            formules[i]["top"] = 400;
+
+            document.write ('<span id="g'+i+'" style="position: absolute; left: '+formules[i]["left"]+'px; top: '+formules[i]["top"]+'px">');
+            // placer ici l'objet qui tombe !
+            document.write ('<img src="image/chat.png">');
+            document.write ('</span>');
+        }
+        intervalG = window.setInterval ("deplace()", 5);
+    }
+
+    deplaceSur("zone2")
+
+</script>
+<script>
+    function remplir_bulle(){
+        document.getElementById("bulle").style.display = "block"
+        document.getElementById("payer").style.display = "block"
+        document.getElementById("fleche").style.opacity = "0"
+        document.getElementById("output").innerHTML = "Si l'article te plaît et que tu le veux dans la boulangerie, appuie sur le bouton oui, sinon, appuie sur le bouton non"
+
+    }
+</script>
+</body>
+</html>
