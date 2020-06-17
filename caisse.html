@@ -86,11 +86,17 @@ color: blueviolet;
 
 <input type="image"  style="margin-top: 0.5em;width: 10em;" id="etoiles">
 </div>
-<div id="calculette" style="position:absolute;left: 40%;background-color: orangered; width: 37%; bottom: 10em; border-radius: 40px">
+<div id="calculette" style="z-index:1;position:absolute;left: 40%;background-color: orangered; width: 37%; bottom: 10em; border-radius: 40px">
 <span id="calcul" style=" width: 30%; text-align:left;display:none; margin: auto; margin-top: 0.5em; font-family: ComicFighter, Georgia; font-weight:bold;font-size:2em; "></span>
     <input type="text" id="resultat" autocomplete="off" placeholder="Ecris le résultat ici" style="width:90%;display: block; margin : auto;margin-top: 0.5em; margin-bottom: 0.5em;font-size: 1.5em; ">
 <input type="submit" id="verif" style="padding:0.5em;margin:1em;margin-top: 0.2em;margin-bottom:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;">
     <input type="button" id="aide" style="float:right; margin-top: 0.2em;margin-bottom:0.5em; margin-right:1em;padding:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Aide" "></div>
+
+<div id="calculette_remboursement" style="z-index:0;opacity:0;position:absolute;left: 40%;background-color: orangered; width: 37%; bottom: 10em; border-radius: 40px">
+    <span id="calcul_remboursement" style=" width: 30%; text-align:left;display:none; margin: auto; margin-top: 0.5em; font-family: ComicFighter, Georgia; font-weight:bold;font-size:2em; "></span>
+    <input type="text" id="resultat_remboursement" autocomplete="off" placeholder="Ecris le résultat ici" style="width:90%;display: block; margin : auto;margin-top: 0.5em; margin-bottom: 0.5em;font-size: 1.5em; ">
+    <input type="submit" id="verif_remboursement" style="padding:0.5em;margin:1em;margin-top: 0.2em;margin-bottom:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;">
+    <input type="button" id="aide_remboursement" style="float:right; margin-top: 0.2em;margin-bottom:0.5em; margin-right:1em;padding:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Aide" "></div>
 
 
 <div style="position: absolute;bottom: 0em; right: 0em; display: inline-block; text-align: right; ">
@@ -326,7 +332,6 @@ color: blueviolet;
                                 localStorage.setItem("pieces", pieces)
                                 localStorage.setItem("liste_calculs_deja_poses", [])
                                 cliquer_pour_etre_aide = false;
-                                miseEnAttente();
                             } else {
                                 //si ce n'est pas la 3e bonne réponse, on incrémente le nb de bonne réponse et initialise le nombre de tentative à 0
                                 localStorage.setItem("bonne_reponse", bonne_rep_test);
@@ -335,8 +340,83 @@ color: blueviolet;
                                 pieces++
                                 localStorage.setItem("pieces", pieces)
                                 cliquer_pour_etre_aide = false;
-                                miseEnAttente();
                             }
+
+                            // random : client donne trop d'argent
+                            random_remboursement = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+                            if (random_remboursement == 1){
+                                document.getElementById("calculette").style.opacity = 0;
+                                document.getElementById("calculette").style.zIndex = 0;
+                                document.getElementById("calculette_remboursement").style.opacity = 1;
+                                document.getElementById("calculette_remboursement").style.zIndex = 1;
+
+                                billet = ""
+
+                               document.getElementById('resultat_remboursement').focus()
+                                if (bon_resultat < 10){
+                                    billet = 10;
+                                    document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 10€, combien me devez-vous?"
+                                }
+                                else if (bon_resultat < 20){
+                                    billet = 20;
+                                    document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 20€, combien me devez-vous?"
+                                }
+                                else if (bon_resultat < 30){
+                                    billet = 30;
+                                    document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... J'ai un billet de 10€ et un autre de 20, combien me devez-vous?"
+                                }
+                                else if (bon_resultat < 40){
+                                    billet = 40;
+                                    document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... J'ai deux billets de 20€, combien me devez-vous?"
+                                }
+                                else if (bon_resultat < 50){
+                                    billet = 50;
+                                    document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 50€, combien me devez-vous?"
+
+                                }
+                                else if (bon_resultat < 100){
+                                    billet = 100;
+                                    document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 100€, combien me devez-vous?"
+
+                                }
+                                else if (bon_resultat < 200){
+                                    billet = 200;
+                                    document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 200€, combien me devez-vous?"
+
+                                }
+                                else if (bon_resultat < 500){
+                                    billet = 500;
+                                    document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 500€, combien me devez-vous?"
+
+                                }
+                                console.log(billet);
+                                console.log(bon_resultat);
+                                console.log(billet-bon_resultat);
+
+                                rembourser = billet - bon_resultat;
+                                document.getElementById("verif_remboursement").addEventListener("click", function() {
+                                    if (document.getElementById("resultat_remboursement").value == rembourser){
+                                        bravo();
+                                        confettis();
+                                        miseEnAttente();
+                                        pieces = parseInt(localStorage.getItem("pieces"))
+                                        pieces+= 2;
+                                        localStorage.setItem("pieces", pieces);
+                                    }
+                                    else {
+                                        document.getElementById("bulle_dommage").style.opacity = 1
+                                        document.getElementById("output_dommage").innerHTML = "Dommage, ce n'est pas le bon résultat. La bonne réponse était " + rembourser
+                                        miseEnAttente_cacher_dommage()
+                                        miseEnAttente()
+                                    }
+                                })
+                                }
+                            else {
+                                miseEnAttente()
+                            }
+
+
+
                             console.log(parseInt(localStorage.getItem("bonne_reponse")) + 1);
                         } else {
                             //mauvais résultat
@@ -380,6 +460,8 @@ color: blueviolet;
                     }
 
                 }
+
+
             })
         }
     })
@@ -520,7 +602,7 @@ else {
     //https://www.npmjs.com/package/canvas-confetti
     // https://www.kirilv.com/canvas-confetti/
 
-    var end = Date.now() + (15*1000);
+    var end = Date.now() + (7*1000);
 
     // go Buckeyes!
     var colors = ['#bb0000', '#ffffff'];
@@ -590,13 +672,13 @@ function confettis(){
     textWrapper.innerHTML = "BRAVO!"
     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-    anime.timeline({loop: true})
+    anime.timeline({loop: 1})
         .add({
             targets: '.ml9 .letter',
             scale: [0, 1],
             duration: 1500,
             elasticity: 600,
-            delay: (el, i) => 45 * (i+1)
+
         }).add({
         targets: '.ml9',
         opacity: 0,
