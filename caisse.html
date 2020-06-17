@@ -9,10 +9,9 @@
 
 </head>
 <!--https://openclassrooms.com/forum/sujet/input-placer-le-curseur-automatiquement-dedans-80024-->
-<body onload="document.getElementById('resultat').focus()" style="margin: 0;
-	padding: 0;
+<body onload="document.getElementById('resultat').focus()" style="
 	height: 100%;
-	width: 100%;">
+	width: 100%;position:fixed;top: 0;bottom: 0;left: 0;right: 0">
 <img src="image/fondfinal.png" style=" position: absolute; width: 100%;height: 100%">
 <div class="dropdown" style="float: left; position: absolute">
     <button onclick="location='index.html'" class="dropbtn" style="background-color: orange; padding:0.5em 1em 0.5em 1em; font-size: 2em; border-radius: 1em; color: #555555" >MENU</button>
@@ -71,7 +70,18 @@ position:absolute; width: 13%; top: 70%; left: 15%; transform: scaleX(-1)">
     <img src="./image/chat.png" style="
 position: absolute; width: 12%; left: 10%; top: 72%;">
 </div>
-<div style="position: absolute; margin-bottom: 0.5em;right: 1em;text-align: center;padding:0.5em; font-size: 2em; border-radius: 30px; background-color: orangered;">
+<div id="bulle_dommage" style="margin-top: 10%;opacity: 0;text-align: center;transition: opacity 200ms ease-out, opacity 500ms ease-in">
+        <span id="output_dommage" style="
+font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */
+font-weight:bold;
+font-size:5em;font-weight: 1000; text-shadow: -1px -1px white, 1px 1px #333;
+position:relative;
+color: blueviolet;
+"
+        >htrvj</span>
+</div>
+
+<div style="position: absolute; top: 1em;right: 1em;text-align: center;padding:0.5em; font-size: 2em; border-radius: 30px; background-color: orangered;">
     <div id="score" style=" height: 1em; font-weight: 1000;"></div>
 
 <input type="image"  style="margin-top: 0.5em;width: 10em;" id="etoiles">
@@ -334,11 +344,13 @@ position: absolute; width: 12%; left: 10%; top: 72%;">
                             tentative_test = parseInt(localStorage.getItem("tentative"));
                             tentative_test++;
                             console.log("tentative_test " + tentative_test);
-                            //si le nb de tentatives est > 3
-                            if (tentative_test > 3) {
+                            //si le nb de tentatives est > 2 (0,1,2)
+                            if (tentative_test > 2) {
                                 //nombre de tentative dépassé, on diminue le niveau et affiche le bon résultat
-                                alert("Dommage, ce n'est pas le bon résultat. Le bon résultat était " + bon_resultat);
-
+                               // alert("Dommage, ce n'est pas le bon résultat. Le bon résultat était " + bon_resultat);
+                                document.getElementById("bulle_dommage").style.opacity = 1
+                                document.getElementById("output_dommage").innerHTML = "Dommage, ce n'est pas le bon résultat. Le bon résultat était " + bon_resultat
+                                miseEnAttente_cacher_dommage()
                                 // on baisse le niveau
                                 if (niveau_joueur > 0) {
                                     niveau_joueur--;
@@ -353,8 +365,10 @@ position: absolute; width: 12%; left: 10%; top: 72%;">
                                 miseEnAttente();
                                 //location.reload();
                             } else {
-                                alert("Dommage, ce n'est pas le bon résultat. Essaye encore!");
-
+                                //alert("Dommage, ce n'est pas le bon résultat. Essaye encore!");
+                                document.getElementById("bulle_dommage").style.opacity = 1
+                                document.getElementById("output_dommage").innerHTML = "Dommage, ce n'est pas le bon résultat. Essaye encore!"
+                                miseEnAttente_cacher_dommage()
                                 //on incrémente le nb de tentatives
                                 localStorage.setItem("tentative", tentative_test);
                                 //le nombre de bonne réponse repasse à 0, car il faut 3 bonnes réponse A LA SUITE
@@ -542,6 +556,18 @@ function confettis(){
     {
         //Le code écrit dans cette fonction ne sera exécuté qu'au bout de 5 secondes
         location.reload()
+    }
+
+
+    function miseEnAttente_cacher_dommage()
+    {
+        //Traitement
+        setTimeout(cacher_dommage, 3000); //On attend 5 secondes avant d'exécuter la fonction
+    }
+    function cacher_dommage()
+    {
+        //Le code écrit dans cette fonction ne sera exécuté qu'au bout de 5 secondes
+        document.getElementById("bulle_dommage").style.opacity=0
     }
 </script>
 
