@@ -322,6 +322,185 @@ color: blueviolet;
                         console.log("BON RES " + bon_resultat);
 
                         //vérification du résultat donné par le joueur
+
+                        //touche entrer
+                        $(document).keypress(function(event) {
+
+                            if (event.charCode == 13){
+                                const resultat = document.getElementById("resultat").value;
+                                if (resultat == bon_resultat) {
+                                    confettis()
+                                    bravo();
+                                    //alert("C'est le bon résultat, bravo!");
+
+                                    bonne_rep_test = parseInt(localStorage.getItem("bonne_reponse")) + 1;
+
+                                    if (cliquer_pour_etre_aide == true){
+                                        bonne_rep_test = parseInt(localStorage.getItem("bonne_reponse"));
+                                    }
+                                    if (bonne_rep_test == 3) {
+                                        //si c'est la 3e bonne réponse, le niveau du joueur augmente
+                                        niveau_joueur++;
+                                        localStorage.setItem("niveau", niveau_joueur);
+                                        console.log(localStorage.getItem("niveau"));
+                                        //on initialise à 0 son nb de bonne réponse et de tentative pour le nouveau niveau
+                                        localStorage.setItem("bonne_reponse", 0);
+                                        localStorage.setItem("tentative", 0);
+                                        pieces = parseInt(localStorage.getItem("pieces"));
+                                        pieces = pieces+3;
+                                        localStorage.setItem("pieces", pieces)
+                                        localStorage.setItem("liste_calculs_deja_poses", [])
+                                        cliquer_pour_etre_aide = false;
+                                    } else {
+                                        //si ce n'est pas la 3e bonne réponse, on incrémente le nb de bonne réponse et initialise le nombre de tentative à 0
+                                        localStorage.setItem("bonne_reponse", bonne_rep_test);
+                                        localStorage.setItem("tentative", 0);
+                                        pieces = parseInt(localStorage.getItem("pieces"));
+                                        pieces++
+                                        localStorage.setItem("pieces", pieces)
+                                        cliquer_pour_etre_aide = false;
+                                    }
+
+                                    // random : client donne trop d'argent
+                                    random_remboursement = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+                                    if (random_remboursement == 1){
+                                        document.getElementById("calculette").style.opacity = 0;
+                                        document.getElementById("calculette").style.zIndex = 0;
+                                        document.getElementById("calculette_remboursement").style.opacity = 1;
+                                        document.getElementById("calculette_remboursement").style.zIndex = 1;
+
+                                        billet = ""
+
+                                        document.getElementById('resultat_remboursement').focus()
+                                        if (bon_resultat < 10){
+                                            billet = 10;
+                                            document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 10€, combien me devez-vous?"
+                                        }
+                                        else if (bon_resultat < 20){
+                                            billet = 20;
+                                            document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 20€, combien me devez-vous?"
+                                        }
+                                        else if (bon_resultat < 30){
+                                            billet = 30;
+                                            document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... J'ai un billet de 10€ et un autre de 20, combien me devez-vous?"
+                                        }
+                                        else if (bon_resultat < 40){
+                                            billet = 40;
+                                            document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... J'ai deux billets de 20€, combien me devez-vous?"
+                                        }
+                                        else if (bon_resultat < 50){
+                                            billet = 50;
+                                            document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 50€, combien me devez-vous?"
+
+                                        }
+                                        else if (bon_resultat < 100){
+                                            billet = 100;
+                                            document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 100€, combien me devez-vous?"
+
+                                        }
+                                        else if (bon_resultat < 200){
+                                            billet = 200;
+                                            document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 200€, combien me devez-vous?"
+
+                                        }
+                                        else if (bon_resultat < 500){
+                                            billet = 500;
+                                            document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 500€, combien me devez-vous?"
+
+                                        }
+                                        console.log(billet);
+                                        console.log(bon_resultat);
+                                        console.log(billet-bon_resultat);
+
+                                        rembourser = billet - bon_resultat;
+
+                                        //touche entrer
+                                        $(document).keypress(function(event) {
+
+                                            if (event.charCode == 13) {
+                                                if (document.getElementById("resultat_remboursement").value == rembourser){
+                                                    bravo();
+                                                    confettis();
+                                                    miseEnAttente();
+                                                    pieces = parseInt(localStorage.getItem("pieces"))
+                                                    pieces+= 2;
+                                                    localStorage.setItem("pieces", pieces);
+                                                }
+                                                else {
+                                                    document.getElementById("bulle_dommage").style.opacity = 1
+                                                    document.getElementById("output_dommage").innerHTML = "Dommage, ce n'est pas le bon résultat. La bonne réponse était " + rembourser
+                                                    miseEnAttente_cacher_dommage()
+                                                    miseEnAttente()
+                                                }
+                                            }
+                                        });
+                                        //bouton valider
+                                        document.getElementById("verif_remboursement").addEventListener("click", function() {
+                                            if (document.getElementById("resultat_remboursement").value == rembourser){
+                                                bravo();
+                                                confettis();
+                                                miseEnAttente();
+                                                pieces = parseInt(localStorage.getItem("pieces"))
+                                                pieces+= 2;
+                                                localStorage.setItem("pieces", pieces);
+                                            }
+                                            else {
+                                                document.getElementById("bulle_dommage").style.opacity = 1
+                                                document.getElementById("output_dommage").innerHTML = "Dommage, ce n'est pas le bon résultat. La bonne réponse était " + rembourser
+                                                miseEnAttente_cacher_dommage()
+                                                miseEnAttente()
+                                            }
+                                        })
+                                    }
+                                    else {
+                                        miseEnAttente()
+                                    }
+
+
+
+                                    console.log(parseInt(localStorage.getItem("bonne_reponse")) + 1);
+                                } else {
+                                    //mauvais résultat
+                                    //on incrémente le nombre de tentative
+                                    tentative_test = parseInt(localStorage.getItem("tentative"));
+                                    tentative_test++;
+                                    console.log("tentative_test " + tentative_test);
+                                    //si le nb de tentatives est > 2 (0,1,2)
+                                    if (tentative_test > 2) {
+                                        //nombre de tentative dépassé, on diminue le niveau et affiche le bon résultat
+                                        // alert("Dommage, ce n'est pas le bon résultat. Le bon résultat était " + bon_resultat);
+                                        document.getElementById("bulle_dommage").style.opacity = 1
+                                        document.getElementById("output_dommage").innerHTML = "Dommage, ce n'est pas le bon résultat. Le bon résultat était " + bon_resultat
+                                        miseEnAttente_cacher_dommage()
+                                        // on baisse le niveau
+                                        if (niveau_joueur > 0) {
+                                            niveau_joueur--;
+                                            localStorage.setItem("niveau", niveau_joueur);
+                                            localStorage.setItem("liste_calculs_deja_poses", [])
+                                        }
+                                        //on remet à 0 le nb de bonne réponse et de tentative
+                                        localStorage.setItem("bonne_reponse", 0);
+                                        localStorage.setItem("tentative", 0);
+                                        cliquer_pour_etre_aide = false;
+
+                                        miseEnAttente();
+                                        //location.reload();
+                                    } else {
+                                        //alert("Dommage, ce n'est pas le bon résultat. Essaye encore!");
+                                        document.getElementById("bulle_dommage").style.opacity = 1
+                                        document.getElementById("output_dommage").innerHTML = "Dommage, ce n'est pas le bon résultat. Essaye encore!"
+                                        miseEnAttente_cacher_dommage()
+                                        //on incrémente le nb de tentatives
+                                        localStorage.setItem("tentative", tentative_test);
+                                        //le nombre de bonne réponse repasse à 0, car il faut 3 bonnes réponse A LA SUITE
+                                        localStorage.setItem("bonne_reponse", 0);
+                                        cliquer_pour_etre_aide = false;
+
+                                    }
+                                }
+                            }
+                        });
+                        //bouton valider
                         document.getElementById('verif').onclick = function (e) {
                             const resultat = document.getElementById("resultat").value;
                             if (resultat == bon_resultat) {
@@ -409,6 +588,28 @@ color: blueviolet;
                                     console.log(billet-bon_resultat);
 
                                     rembourser = billet - bon_resultat;
+
+                                    //touche entrer
+                                    $(document).keypress(function(event) {
+
+                                        if (event.charCode == 13) {
+                                            if (document.getElementById("resultat_remboursement").value == rembourser){
+                                                bravo();
+                                                confettis();
+                                                miseEnAttente();
+                                                pieces = parseInt(localStorage.getItem("pieces"))
+                                                pieces+= 2;
+                                                localStorage.setItem("pieces", pieces);
+                                            }
+                                            else {
+                                                document.getElementById("bulle_dommage").style.opacity = 1
+                                                document.getElementById("output_dommage").innerHTML = "Dommage, ce n'est pas le bon résultat. La bonne réponse était " + rembourser
+                                                miseEnAttente_cacher_dommage()
+                                                miseEnAttente()
+                                            }
+                                        }
+                                    });
+                                    //bouton valider
                                     document.getElementById("verif_remboursement").addEventListener("click", function() {
                                         if (document.getElementById("resultat_remboursement").value == rembourser){
                                             bravo();
