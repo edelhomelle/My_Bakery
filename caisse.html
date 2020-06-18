@@ -20,9 +20,14 @@ margin: 0;
     <h3 style="position:absolute;">Chargement de My Bakery...</h3>
 
 </div>
-
+<p style="padding-top: 50%;position: absolute; top: 0; width:100%;height: 100%;">
+    Tourne l'écran dans l'autre sens
+</p>
 <section>
     <script src="chargement_elements.js"></script>
+
+
+
 
     <img src="image/fondfinal.png" style=" position: absolute; top: 0; width:100%;height: 100%;">
     <div class="dropdown" style="top:2px; left:2px;position: absolute">
@@ -98,11 +103,11 @@ color: blueviolet;
 
         <input type="image"  style="margin-top: 0.5em;width: 10em;" id="etoiles">
     </div>
-    <div id="calculette" style="z-index:1;position:absolute;left: 40%;background-color: orangered; width: 37%; bottom: 10em; border-radius: 40px">
-        <span id="calcul" style=" width: 30%; text-align:left;display:none; margin: auto; margin-top: 0.5em; font-family: ComicFighter, Georgia; font-weight:bold;font-size:2em; "></span>
+    <div id="calculette" style="z-index:1;position:absolute;left: 50%;background-color: orangered; width: 37%; bottom: 10em; border-radius: 40px">
+        <span id="calcul" style=" width: 30%; text-align:left;display:none; margin: auto; margin-top: 0.5em; font-family: ComicFighter, Georgia; font-weight:bold;font-size:1.5em; "></span>
         <input type="text" id="resultat" autocomplete="off" placeholder="Ecris le résultat ici" style="width:90%;display: block; margin : auto;margin-top: 0.5em; margin-bottom: 0.5em;font-size: 1.5em; ">
-        <input type="submit" id="verif" style="padding:0.5em;margin:1em;margin-top: 0.2em;margin-bottom:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;">
-        <input type="button" id="aide" style="float:right; margin-top: 0.2em;margin-bottom:0.5em; margin-right:1em;padding:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Aide" "></div>
+        <input type="submit" id="verif" style="padding:0.2em;margin:0.2em;margin-bottom:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 6em;">
+        <input type="button" id="aide" style="float:right;margin:0.2em;margin-left:0em;padding:0.2em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 6em;" value="Aide" "></div>
 
     <div id="calculette_remboursement" style="z-index:0;opacity:0;position:absolute;left: 40%;background-color: orangered; width: 37%; bottom: 10em; border-radius: 40px">
         <span id="calcul_remboursement" style=" width: 30%; text-align:left;display:none; margin: auto; margin-top: 0.5em; font-family: ComicFighter, Georgia; font-weight:bold;font-size:2em; "></span>
@@ -698,9 +703,15 @@ color: blueviolet;
             });}
     </script>
 
+
+
 </section>
-<script src="chargement_elements.js"></script>
-</body>
+<script>window.addEventListener('load', () =>  {
+
+    const preload = document.querySelector(".preload")
+    preload.classList.add("preload-finish")
+
+});</script></body>
 
 
 

@@ -1,74 +1,174 @@
 <!DOCTYPE html>
 <html lang="en" style="">
 <head>
-    <title>My Bakey _ magasin</title>
+    <title>My Bakey _ caisse</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="menu.css" />
+    <link rel="stylesheet" href="chargement_elements.css">
+    <link rel="stylesheet" href="menu.css">
+
+
 </head>
-<body style="text-align: center;background-image: url('image/fond_magasin.jpg'); ">
-<!--MENU-->
-<img src="image/fleche.svg" style="position: absolute; bottom: 0; left: 0;width: 7em; transform: rotate(-90deg)" title="RETOUR" onclick="location='exterieur.html'">
+<!--https://openclassrooms.com/forum/sujet/input-placer-le-curseur-automatiquement-dedans-80024-->
+<style>
+    input {
+        max-height: 10em;
+        max-width: 10em;
+    }
 
-<div class="dropdown" style="float: left; ">
-    <button onclick="myFunction()" class="dropbtn" style="color:#555555;background-color: orange; padding:0.5em 1em 0.5em 1em; font-size: 2em; border-radius: 1em">MENU</button>
-    <div id="myDropdown" class="dropdown-content">
-        <a href="./index.html">Menu principal</a>
-        <a href="#" id="dwn-btn">Sauvegarder ma partie</a>
-        <a href="supprimer_joueur.html">Supprimer ma partie</a>
-        <a href="demandeEnregistrement_importer.html" id="seco" >Importer une partie</a>
+</style>
+<body  style="
+margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;">
+
+<div class="preload">
+    <img src="image/chat.png" alt="avion" class="avion" style="position:absolute;">
+    <h3 style="position:absolute;">Chargement de My Bakery...</h3>
+
+</div>
+<p style="padding-top: 50%;position: absolute; top: 0; width:100%;height: 100%;">
+    Tourne l'écran dans l'autre sens
+</p>
+
+<section>
+    <img src="image/fond_magasin.jpg" style=" position: absolute; top: 0; width:100%;height: 100%;">
+    <div style="position:absolute; text-align: center; width: 100%; height: 95%">
+        <!--MENU-->
+        <img src="image/fleche.svg" style="position: absolute; bottom: 0; left: 0;width: 7em; transform: rotate(-90deg)" title="RETOUR" onclick="location='exterieur.html'">
+
+        <div class="dropdown" style="float: left; ">
+            <button onclick="myFunction()" class="dropbtn" style="color:#555555;background-color: orange; padding:0.5em 1em 0.5em 1em; font-size: 2em; border-radius: 1em">MENU</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="./index.html">Menu principal</a>
+                <a href="#" id="dwn-btn">Sauvegarder ma partie</a>
+                <a href="supprimer_joueur.html">Supprimer ma partie</a>
+                <a href="demandeEnregistrement_importer.html" id="seco" >Importer une partie</a>
+            </div>
+        </div>
+
+
+
+        <!--PIECES-->
+        <div style="position: absolute;bottom: 0px; right: 0px; display: inline-block; text-align: center">
+            <span id="pieces" style="font-size: 2em"></span>
+            <img src="image/sous.png" style="width: 6em; ">
+        </div>
+        <script>
+            nb_pieces = localStorage.getItem("pieces");
+            const pieces_affichage = document.getElementById("pieces");
+            if (nb_pieces > 1) {
+                pieces_affichage.innerHTML = `${nb_pieces} pièces`;
+            }
+            else {
+                pieces_affichage.innerHTML = `${nb_pieces} pièce`;
+            }
+        </script>
+        <!--FIN PIECES-->
+
+        <script>
+            function myFunction() {
+                document.getElementById("myDropdown").classList.toggle("show");
+            }
+        </script>
+
+
+
+
+
+        <table style="background-color: rgba(223,139,49, 0.75); display: inline-block; margin: auto">
+            <tr>
+                <td style="border: solid; border-color:saddlebrown;width: 10em; height: 10em; "><input type="image" src="image/magasin/vase_fleurs.png"  alt="vase avec des fleurs" id="vase" value="1" onclick="quest('vase')"><br>1 pièce</td>
+                <td style="border: solid; border-color:saddlebrown;width: 10em; height: 10em;"><input type="image" src="image/magasin/porte.png" alt="porte" id="porte" value="5" onclick="quest('porte')"><br>5 pièces</td>
+                <td style="border: solid; border-color:saddlebrown;width: 10em; height: 10em;"><input type="image" src="image/magasin/fenetre.png"  alt="fenetre" id="fenetre" value="5" onclick="quest('fenetre')"><br>5 pièces</td>
+                <td style="border: solid; border-color:saddlebrown;width: 10em; height: 10em;"><input type="image" src="image/magasin/fenetre_droite.png"  alt="fenetre à droite" id="fenetre_droite" value="10" onclick="quest('fenetre_droite')"><br>10 pièces</td>
+            </tr>
+            <tr>
+                <td style="border: solid; border-color:saddlebrown;width: 10em; height: 10em;"><input type="image" src="image/magasin/table_salon.png"  alt="table de café" id="table_salon" value="10" onclick="quest('table_salon')"><br>10 pièces</td>
+                <td style="border: solid; border-color:saddlebrown;width: 10em; height: 10em;"><input type="image" src="image/magasin/cloche.png"alt="cloche" id="cloche" value="5" onclick="quest('cloche')"><br>5 pièces</td>
+                <td style="border: solid; border-color:saddlebrown;width: 10em; height: 10em;"><input type="image" src="image/magasin/canape.png"  alt="canapé" id="canape" value="15" onclick="quest('canape')"><br>15 pièces</td>
+                <td style="border: solid; border-color:saddlebrown;width: 10em; height: 10em;"><input type="image" src="image/magasin/fontaine.png" alt="fontaine" id="fontaine" value="10" onclick="quest('fontaine')"><br>10 pièces</td>
+            </tr>
+            <tr>
+                <td style="border: solid; border-color:saddlebrown;width: 10em; height: 10em;"><input type="image" src="image/magasin/tableau.png" alt="tableau" id="tableau" value="20" onclick="quest('tableau')"><br>20 pièces</td>
+                <td style="border: solid; border-color:saddlebrown;width: 10em; height: 10em;"><input type="image" src="image/magasin/lampe.png"  alt="lampe murale" id="lampe" value="3" onclick="quest('lampe')"><br>3 pièces</td>
+                <td style="border: solid; border-color:saddlebrown;width: 10em; height: 10em;"><input type="image" src="image/magasin/lavande.png" alt="panier de lavande" id="lavande" value="4" onclick="quest('lavande')"><br>4 pièces</td>
+                <td style="border: solid; border-color:saddlebrown;width: 10em; height: 10em;"><input type="image" src="image/magasin/tapis.png" alt="tapis" id="tapis" value="5" onclick="quest('tapis')"><br>5 pièces</td>
+
+            </tr>
+        </table>
+
     </div>
-</div>
-<!--PIECES-->
-<div style="position: absolute;bottom: 0px; right: 0px; display: inline-block; text-align: center">
-    <span id="pieces" style="font-size: 2em"></span>
-    <img src="image/sous.png" style="width: 10em; ">
-</div>
-<script>
-    nb_pieces = localStorage.getItem("pieces");
-    const pieces_affichage = document.getElementById("pieces");
-    if (nb_pieces > 1) {
-        pieces_affichage.innerHTML = `${nb_pieces} pièces`;
-    }
-    else {
-        pieces_affichage.innerHTML = `${nb_pieces} pièce`;
-    }
-</script>
-<!--FIN PIECES-->
 
-<script>
-    function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
-</script>
+    <script >
+        window.addEventListener('load', () =>  {
 
-<!--FIN MENU-->
-<table style="background-color: chocolate; text-align: center; font-size: 2em; display: inline-block;">
+            const preload = document.querySelector(".preload")
+            preload.classList.add("preload-finish")
 
-    <tr>
-        <td><input type="image" src="image/magasin/vase_fleurs.png" style="width: 10em" alt="vase avec des fleurs" id="vase" value="1" onclick="quest('vase')"><br>1 pièce</td>
-        <td><input type="image" src="image/magasin/porte.png" style="width: 10em" alt="porte" id="porte" value="5" onclick="quest('porte')"><br>5 pièces</td>
-        <td><input type="image" src="image/magasin/fenetre.png" style="width: 10em" alt="fenetre" id="fenetre" value="5" onclick="quest('fenetre')"><br>5 pièces</td>
-        <td><input type="image" src="image/magasin/fenetre_droite.png" style="width: 10em " alt="fenetre à droite" id="fenetre_droite" value="10" onclick="quest('fenetre_droite')"><br>10 pièces</td>
+        });</script>
 
-    </tr>
-    <tr>
-        <td><input type="image" src="image/magasin/tapis.png" style="width: 10em" alt="tapis" id="tapis" value="5" onclick="quest('tapis')"><br>5 pièces</td>
-        <td><input type="image" src="image/magasin/table_salon.png" style="width: 10em " alt="table de café" id="table_salon" value="10" onclick="quest('table_salon')"><br>10 pièces</td>
-        <td><input type="image" src="image/magasin/cloche.png" style="width: 10em" alt="cloche" id="cloche" value="5" onclick="quest('cloche')"><br>5 pièces</td>
-        <td><input type="image" src="image/magasin/canape.png" style="width: 10em" alt="canapé" id="canape" value="15" onclick="quest('canape')"><br>15 pièces</td>
-    </tr>
-    <tr>
-        <td><input type="image" src="image/magasin/fontaine.png" style="width: 10em" alt="fontaine" id="fontaine" value="10" onclick="quest('fontaine')"><br>10 pièces</td>
-        <td><input type="image" src="image/magasin/lavande.png" style="width: 10em" alt="panier de lavande" id="lavande" value="4" onclick="quest('lavande')"><br>4 pièces</td>
-        <td><input type="image" src="image/magasin/tableau.png" style="width: 10em " alt="tableau" id="tableau" value="20" onclick="quest('tableau')"><br>20 pièces</td>
-        <td><input type="image" src="image/magasin/lampe.png" style="width: 10em" alt="lampe murale" id="lampe" value="3" onclick="quest('lampe')"><br>3 pièces</td>
-    </tr>
-</table>
-</body>
-<script>
-    //quand on clique sur l'image
-    function quest(id){
-        //on vérifie s'il y a déjà des produits d'achetés
+    <script>
+        //quand on clique sur l'image
+        function quest(id){
+            //on vérifie s'il y a déjà des produits d'achetés
+            if (localStorage.getItem("liste_biens") == null){
+                liste = []
+            }
+            else if (localStorage.getItem("liste_biens").length == 0){
+                liste = []
+            }
+            else {
+                //si il y a déjà des produits achetés, on les récupère dans la liste "liste"
+                liste = JSON.parse(localStorage['liste_biens'])
+            }
+
+            //on récupère l'élément avec l'id entré en paramètre dans quest()
+            input_tag = document.getElementById(id);
+            //on récupère son nom
+            nom = input_tag.id
+
+            //si le produit sélectionné est déjà dans la liste des produits achetés rien ne se passe
+            if (liste.includes(nom)){}
+            //si le produit sélectionné est déjà dans la liste des produits achetés on demande au joueur s'il veut acheter le nouveau produit
+            else {
+
+                //on vérifie que le joueur ai assez de pièce
+                console.log(input_tag.value)
+                console.log(parseInt(localStorage.getItem("pieces")))
+
+                if (parseInt(localStorage.getItem("pieces")) >= input_tag.value) {
+                    console.log(nom + " " + input_tag.value)
+                    localStorage.setItem("achat", nom)
+                    localStorage.setItem("prix_achat", input_tag.value)
+                    location="demande_paiement.html"
+                    //une fenêtre s'ouvre
+
+                    /*
+                    fenetre secondaire
+                    var pageFille = window.open("demande_paiement.html",
+                        "NomDeFenetreDescriptif",
+                        "width=420,height=230,resizable,scrollbars=yes,status=1");
+                    //Recharge la page parente à la fermeture de la page fille
+                    pageFille.onunload = function () {
+                        if (pageFille.fermeture) {
+                            //Rechargement
+                            location.reload();
+                        }
+                    }
+                    */
+                }
+                else {
+                    alert("Tu n'as pas assez de pièce pour acheter ceci")
+                }
+            }
+        }
+
+
+        var elmts = document.getElementsByTagName("input");
+        console.log(elmts)
+        console.log(elmts.length)
+        var liste;
         if (localStorage.getItem("liste_biens") == null){
             liste = []
         }
@@ -76,69 +176,12 @@
             liste = []
         }
         else {
-            //si il y a déjà des produits achetés, on les récupère dans la liste "liste"
             liste = JSON.parse(localStorage['liste_biens'])
         }
 
-        //on récupère l'élément avec l'id entré en paramètre dans quest()
-        input_tag = document.getElementById(id);
-        //on récupère son nom
-        nom = input_tag.id
-
-        //si le produit sélectionné est déjà dans la liste des produits achetés rien ne se passe
-        if (liste.includes(nom)){}
-        //si le produit sélectionné est déjà dans la liste des produits achetés on demande au joueur s'il veut acheter le nouveau produit
-        else {
-
-            //on vérifie que le joueur ai assez de pièce
-            console.log(input_tag.value)
-            console.log(parseInt(localStorage.getItem("pieces")))
-
-            if (parseInt(localStorage.getItem("pieces")) >= input_tag.value) {
-                console.log(nom + " " + input_tag.value)
-                localStorage.setItem("achat", nom)
-                localStorage.setItem("prix_achat", input_tag.value)
-                location="demande_paiement.html"
-                //une fenêtre s'ouvre
-
-                /*
-                fenetre secondaire
-                var pageFille = window.open("demande_paiement.html",
-                    "NomDeFenetreDescriptif",
-                    "width=420,height=230,resizable,scrollbars=yes,status=1");
-                //Recharge la page parente à la fermeture de la page fille
-                pageFille.onunload = function () {
-                    if (pageFille.fermeture) {
-                        //Rechargement
-                        location.reload();
-                    }
-                }
-                */
-            }
-        else {
-            alert("Tu n'as pas assez de pièce pour acheter ceci")
-            }
-        }
-    }
-
-
-    var elmts = document.getElementsByTagName("input");
-    console.log(elmts)
-    console.log(elmts.length)
-    var liste;
-    if (localStorage.getItem("liste_biens") == null){
-        liste = []
-    }
-    else if (localStorage.getItem("liste_biens").length == 0){
-        liste = []
-    }
-    else {
-        liste = JSON.parse(localStorage['liste_biens'])
-    }
-
-    //produits pas achetés = gris, quand on passe souris dessus : colorés
-    for (i=0; i<elmts.length; i++) {
-        var elmt = elmts[i].id
+        //produits pas achetés = gris, quand on passe souris dessus : colorés
+        for (i=0; i<elmts.length; i++) {
+            var elmt = elmts[i].id
             if (liste.includes(elmt)){
                 console.log(elmt+" : deja acheté")
             }
@@ -157,23 +200,31 @@
                     this.style.webkitFilter = "grayscale(100%)";
                 });
             }
-        var nom = document.getElementsByTagName("input")[i].getAttribute("alt")
-        elmts[i].title = nom;
-  }
+            var nom = document.getElementsByTagName("input")[i].getAttribute("alt")
+            elmts[i].title = nom;
+        }
 
 
-</script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script>
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
 
-    // Start file download.
-    document.getElementById("dwn-btn").addEventListener("click", function(){
-        location="telechargement_json_config_joueur.html"
-    }, false);
+        // Start file download.
+        document.getElementById("dwn-btn").addEventListener("click", function(){
+            location="telechargement_json_config_joueur.html"
+        }, false);
 
-</script>
+    </script>
 
-<script>
+    <script>
 
-</script>
+    </script>
+
+
+</section>
+
+
+
+</body>
+
 </html>

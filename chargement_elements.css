@@ -3,7 +3,42 @@
     padding: 0;
     box-sizing: border-box;
 }
+@media screen and (orientation: portrait) {
 
+
+
+   section {
+       opacity: 0;
+   }
+
+
+    p {
+        background-color: #2980B9;
+        opacity: 1;
+        font-size: 5em;
+        text-align: center;
+        display: block;
+        margin:auto;
+    }
+
+
+
+}
+@media screen and (orientation: landscape) {
+
+
+    section {
+        opacity: 1;
+    }
+
+    p {
+        visibility: hidden;
+
+        bottom: 100%;
+    }
+
+
+}
 .preload {
     position: fixed;
     top: 0;
@@ -19,7 +54,7 @@
 .preload-finish {
     opacity: 0;
     pointer-events: none;
-visibility: hidden}
+    visibility: hidden}
 
 .nuage1, .nuage2, .nuage3 {
     height: 100px;

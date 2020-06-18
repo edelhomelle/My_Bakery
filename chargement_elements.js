@@ -1,6 +1,6 @@
+
 document.querySelector("iframe").addEventListener("load", function() {
 
-    this.style.backgroundColor = "red";
     alert(this.nodeName);
 
 });
