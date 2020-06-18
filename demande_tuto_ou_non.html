@@ -7,15 +7,31 @@
     <meta name="author" content="Eloïse DELHOMELLE">
     <meta name="description" content="Projet individuel">
     <meta name="keywords" content="HTML,CSS,JavaScript">
+    <link rel="stylesheet" href="chargement_elements.css">
+
 </head>
 
 
 <body style="text-align: center;background-image: url('image/fond_boulangerie.png'); background-repeat: no-repeat; background-size: cover ">
+
+<p style="padding-top: 50%;position: absolute; top: 0; width:100%;height: 100%;">
+    Tourne l'écran dans l'autre sens
+</p>
+
+
+<div class="preload">
+    <img src="image/chat.png" alt="avion" class="avion">
+    <h3>Chargement de My Bakery...</h3>
+</div>
+<section>
+    <script src="charger.js"></script>
+
+
 <div id="tuto">
     <span>Veux tu voir le tutoriel? </span>
     <input type="button" value="oui" onclick="location='tuto_debut.html'">
     <input type="button" value="non" onclick="location='caisse.html'">
-</div>
+</div></section>
 </body>
 <style >
     span {

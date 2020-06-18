@@ -3,12 +3,14 @@
 <head>
     <title>My Bakey _ caisse</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="chargement_elements.css">
+
 
 </head>
 <style>
     body {
         background-image: url("./image/fond_boulangerie.png");
-        font-size: 3em;
+        font-size: 2em;
         text-align: center;
     }
     #txt {
@@ -28,7 +30,7 @@
         width : 10em;
         font-size: 1em;
         margin: 0.5em;
-        margin-top: 0.2em;
+        margin-top: 2%;
         padding: 0.5em 1em 0.5em 1em;
         border-radius: 30px; background-color: orangered;
         color: #333333
@@ -37,12 +39,22 @@
 
 </style>
 <body>
-<div id="txt">
+<p style="padding-top: 50%;position: absolute; top: 0; width:100%;height: 100%;">
+    Tourne l'écran dans l'autre sens
+</p>
+<div class="preload">
+    <img src="image/chat.png" alt="avion" class="avion">
+    <h3>Chargement de My Bakery...</h3>
+</div>
+<section>
+    <script src="charger.js"></script>
+
+    <div id="txt">
     Ton ancienne partie va être supprimée. <br>
     Veux-tu la télécharger?<br>
-</div><div id="btn">
-    <input type="button" value="OUI" id="oui">
-    <input type="button" value="NON" id="non">
+</div><br><div id="btn">
+    <input type="button" value="OUI" id="oui"><br>
+    <input type="button" value="NON" id="non"><br>
     <input type="button" value="ANNULER" id="annuler">
 </div>
 <script>
@@ -85,6 +97,7 @@
         document.body.removeChild(element);
     }
 </script>
+</section>
 </body>
 <style>
     .bulle {

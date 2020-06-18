@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" style="background-image: url('image/fondfinal.png'); background-size: cover">
 <head>
-    <title>My Bakey _ magasin</title>
+    <title>My Bakery _ magasin</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="chargement_elements.css">
+
 </head>
 <style>
     span {
@@ -22,6 +24,19 @@
     }
 </style>
 <body>
+
+<p style="padding-top: 50%;position: absolute; top: 0; width:100%;height: 100%;">
+    Tourne l'écran dans l'autre sens
+</p>
+
+
+<div class="preload">
+    <img src="image/chat.png" alt="avion" class="avion">
+    <h3>Chargement de My Bakery...</h3>
+</div>
+<section>
+    <script src="charger.js"></script>
+
 <div id="payer">
 <span>Payer?<br/></span>
 <input type="button" value="oui" id="oui">
@@ -147,5 +162,6 @@
 
     }
 </script>
+</section>
 </body>
 </html>

@@ -8,9 +8,19 @@
     <meta name="author" content="Eloïse DELHOMELLE">
     <meta name="description" content="TD2">
     <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <link rel="stylesheet" href="chargement_elements.css">
+
 </head>
 <body style="color: #333333">
-
+<p style="padding-top: 50%;position: absolute; top: 0; width:100%;height: 100%;">
+    Tourne l'écran dans l'autre sens
+</p>
+<div class="preload">
+    <img src="image/chat.png" alt="avion" class="avion">
+    <h3>Chargement de My Bakery...</h3>
+</div>
+<section>
+    <script src="charger.js"></script>
 <div id="bulle" style="position: relative;
     right:50px;
     background-color:white;
@@ -61,17 +71,19 @@ right:67px;
 </div>
 <img src="image/chat.png" style="
 display: block; margin : auto;margin-top:1em; width: 20em" />
-</body>
-<script>
-    console.log(localStorage);
-    const output = document.getElementById("output");
+    <script>
+        console.log(localStorage);
+        const output = document.getElementById("output");
 
         const key = localStorage.key('prenom');
         const value = localStorage.getItem('prenom');
         output.innerHTML += `Bienvenue ${value} <br />`;
 
-    document.getElementsByTagName('body')[0].onclick = function(e) {
-        document.location.href="caisse.html";
-    }
-</script>
+        document.getElementsByTagName('body')[0].onclick = function(e) {
+            document.location.href="caisse.html";
+        }
+    </script>
+</section>
+</body>
+
 </html>

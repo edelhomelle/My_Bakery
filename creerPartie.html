@@ -9,6 +9,8 @@
     <meta name="author" content="Eloïse DELHOMELLE">
     <meta name="description" content="TD2">
     <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <link rel="stylesheet" href="chargement_elements.css">
+
 </head>
 
 <style media="screen">
@@ -18,6 +20,16 @@
     }
 </style>
 <body>
+<p style="padding-top: 50%;position: absolute; top: 0; width:100%;height: 100%;">
+    Tourne l'écran dans l'autre sens
+</p>
+<div class="preload">
+    <img src="image/chat.png" alt="avion" class="avion">
+    <h3>Chargement de My Bakery...</h3>
+</div>
+<section>
+    <script src="charger.js"></script>
+
 <form action="controleur_nom.html">
     <legend style="display: block; margin : auto;margin-top:1em;margin-bottom:0.5em;text-align: center; font-size: 5em; font-weight: 1000; text-shadow: -1px -1px white, 1px 1px #333;  color: orangered ">
         Quel est ton prénom?
@@ -26,34 +38,36 @@
     <button type="submit" id="btn" style="display: block; width : 10em; margin : auto;text-align: center; padding: 0em 1em 1em 1em; font-size: 3em; border-radius: 30px; background-color: orangered; text-decoration: none; color: #333333">ok</button>
 </form>
 
+    <script type="text/javascript">
+        const inpvalue = document.getElementById("inpvalue");
+        const btn = document.getElementById("btn");
+        const output = document.getElementById("output");
+        btn.onclick = function () {
+            const key_prenom = "prenom";
+            const val_prenom = inpvalue.value;
+            const key_niveau = "niveau";
+            const val_niveau = 0;
+            const key_bonne_reponse = "bonne_reponse";
+            const val_bonne_reponse = 0;
+            const key_tentative = "tentative";
+            const val_tentative = 0;
+            const key_piece = "pieces";
+            const val_piece = 0;
+
+            if (key_prenom && val_prenom) {
+                localStorage.setItem(key_prenom, val_prenom);
+                localStorage.setItem(key_niveau, val_niveau);
+                localStorage.setItem(key_bonne_reponse, val_bonne_reponse);
+                localStorage.setItem(key_tentative, val_tentative);
+                localStorage.setItem(key_piece, val_piece);
+                localStorage.setItem("liste_biens", []);
+                localStorage.setItem("liste_calculs_deja_poses", []);
+                location.reload();
+            }
+        }
+    </script>
+</section>
 </body>
 
-<script type="text/javascript">
-    const inpvalue = document.getElementById("inpvalue");
-    const btn = document.getElementById("btn");
-    const output = document.getElementById("output");
-    btn.onclick = function () {
-        const key_prenom = "prenom";
-        const val_prenom = inpvalue.value;
-        const key_niveau = "niveau";
-        const val_niveau = 0;
-        const key_bonne_reponse = "bonne_reponse";
-        const val_bonne_reponse = 0;
-        const key_tentative = "tentative";
-        const val_tentative = 0;
-        const key_piece = "pieces";
-        const val_piece = 0;
 
-        if (key_prenom && val_prenom) {
-            localStorage.setItem(key_prenom, val_prenom);
-            localStorage.setItem(key_niveau, val_niveau);
-            localStorage.setItem(key_bonne_reponse, val_bonne_reponse);
-            localStorage.setItem(key_tentative, val_tentative);
-            localStorage.setItem(key_piece, val_piece);
-            localStorage.setItem("liste_biens", []);
-            localStorage.setItem("liste_calculs_deja_poses", []);
-            location.reload();
-        }
-    }
-</script>
 </html>
