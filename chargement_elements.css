@@ -1,0 +1,80 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.preload {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: steelblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+}
+
+.preload-finish {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nuage1, .nuage2, .nuage3 {
+    height: 100px;
+    position: absolute;
+    right: 0%;
+}
+
+.nuage1 {
+    top: 25%;
+    transform: translate(100%, -25%);
+    animation: nuage 3s ease infinite;
+}
+.nuage2 {
+    top: 50%;
+    transform: translate(100%, -50%);
+    animation: nuage 3s ease infinite 2s;
+    z-index: -1;
+}
+.nuage3 {
+    top: 75%;
+    transform: translate(100%, -75%);
+    animation: nuage 3s ease infinite 1.5s;
+}
+
+.avion {
+    height: 200px ;
+    animation: avion 1s ease infinite alternate;
+}
+.preload h3 {
+    position: absolute;
+    top: 75%;
+    transform: translateY(-75%);
+    font-size: 30px;
+    color: white;
+    font-family:  sans-serif;
+}
+
+@keyframes avion {
+    from {
+        transform: translateY(0px);
+
+    }
+    to {
+        transform: translateY(50px);
+    }
+}
+
+@keyframes nuage {
+    from {
+        right: 0%;
+    }
+    to {
+        right: 130%;
+    }
+}
+section img {
+    height: 200px;
+}

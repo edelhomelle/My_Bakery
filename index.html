@@ -4,22 +4,62 @@
     <meta charset="UTF-8">
     <title>Ma boulangerie</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="boulangerie.css" />
     <meta name="author" content="Eloïse DELHOMELLE">
-    <meta name="description" content="TD2">
+    <meta name="description" content="Projet individuel">
     <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+<link rel="stylesheet" href="chargement_elements.css">
 </head>
-<body>
+
+<style>
+    iframe {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<body >
+
+<div class="preload">
+    <img src="image/avion.png" alt="avion" class="avion">
+    <h3>Chargement de My Bakery...</h3>
+    <img class="nuage1" src="image/nuage.png" alt="nuage1">
+    <img class="nuage2" src="image/nuage.png" alt="nuage2">
+    <img class="nuage3" src="image/nuage.png" alt="nuage3">
+    <iframe  hidden src="caisse.html"></iframe>
+    <iframe  hidden src="exterieur.html"></iframe>
+    <iframe  hidden src="magasin.html"></iframe>
+    <iframe  hidden src="stock.html"></iframe>
+    <iframe  hidden src="creerPartie.html"></iframe>
+    <iframe  hidden src="debut_jeu.html"></iframe>
+    <iframe  hidden src="demande_paiement.html"></iframe>
+    <iframe  hidden src="demande_tuto_ou_non.html"></iframe>
+    <iframe  hidden src="demandeEnregistrement_creer.html"></iframe>
+    <iframe  hidden src="demandeEnregistrement_importer.html"></iframe>
+    <iframe  hidden src="recuperer_compte.html"></iframe>
+    <iframe  hidden src="supprimer_joueur.html"></iframe>
+    <iframe  hidden src="tuto_debut.html"></iframe>
+    <iframe  hidden src="tuto_caisse_fin.html"></iframe>
+    <iframe  hidden src="tuto_debut2.html"></iframe>
+    <iframe  hidden src="tuto_debut3.html"></iframe>
+    <iframe  hidden src="tuto_ext.html"></iframe>
+    <iframe  hidden src="tuto_ext2.html"></iframe>
+    <iframe  hidden src="tuto_magasin.html"></iframe>
+    <iframe  hidden src="tuto_magasin2.html"></iframe>
+    <iframe  hidden src="tuto_payer.html"></iframe>
+    <iframe  hidden src="tuto_stock.html"></iframe>
+
+</div>
+
+<section>
+    <h1>Arrived</h1>
+    <script src="chargement_elements.js"></script>
+    <script src="choix_init.js" style="transition: opacity 0.2s ease">    </script>
+</section>
+
 </body>
-<script>
-    //s'il n'y a aucun enregisrement dans le local storage, on propose soit d'importer une partie, soit d'en créer une
-    if (localStorage.length == 0)
-    {
-        location = "init.html"
-    }
-    //s'il y a un enregistrement dans le local storage, on propose soit de lancer la partie, soit d'en importer une autre (inclue la supression de l'autre)
-    else {
-        location = "init2.html"
-    }
-</script>
 </html>
