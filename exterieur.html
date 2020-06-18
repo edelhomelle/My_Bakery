@@ -3,19 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="chargement_elements.css">
+
 </head>
-<body style="margin: 0;
+<body style="
+margin: 0;
 	padding: 0;
 	height: 100%;
-	width: 100%;
-background-color: #2980B9">
-<img src="image/paysage_exterieur.png" style=" position: absolute; left: 20%;top: 0em;height: 100%">
+	width: 100%;">
+
+<div class="preload">
+    <img src="image/chat.png" alt="avion" class="avion" style="position:absolute;">
+    <h3 style="position:absolute;">Chargement de My Bakery...</h3>
+
+</div>
+<p style="padding-top: 50%;position: absolute; top: 0; width:100%;height: 100%;">
+    Tourne l'écran dans l'autre sens
+</p>
+
+<section>
+    <img src="image/paysage_exterieur.png" style=" position: absolute; top: 0; width:100%;height: 100%;">
+
 <img src="image/fleche.svg" style="position: absolute; bottom: 0; left: 0;width: 7em; transform: rotate(-90deg)" title="BOULANGERIE" onclick="location='caisse.html'">
-<div id="magasin" style="font-size: 2em;position: absolute; left: 29.5%; top: 30%; width: 25%; height: 41%;" onclick="location='magasin.html'">
+<div id="magasin" style="font-size: 2em;position: absolute; left: 18%; top: 30%; width: 35%; height: 43%;" onclick="location='magasin.html'">
         <span style="font-weight: 1000; text-shadow: -1px -1px white, 1px 1px #333;  color: orangered;position:absolute; top: 20%; left: 30%">
             MAGASIN
         </span>
 </div>
+</section>
 </body>
 <style>
     #magasin:hover {
@@ -23,5 +38,11 @@ background-color: #2980B9">
     }
 </style>
 
+<script >
+    window.addEventListener('load', () =>  {
 
+        const preload = document.querySelector(".preload")
+        preload.classList.add("preload-finish")
+
+    });</script>
 </html>
