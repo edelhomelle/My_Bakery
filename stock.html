@@ -3,11 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Stock</title>
+    <link rel="stylesheet" href="chargement_elements.css">
+
     <link rel="stylesheet" type="text/css" href="menu.css" />
 
 </head>
 <body style="    background-image: url('./image/fond_boulangerie.png') ; background-size: cover;
 ">
+
+<div class="preload">
+    <img src="image/chat.png" alt="avion" class="avion" style="position:absolute;">
+    <h3 style="position:absolute;">Chargement de My Bakery...</h3>
+
+</div>
+<p style="padding-top: 50%;position: absolute; top: 0; width:100%;height: 100%;">
+    Tourne l'écran dans l'autre sens
+</p>
+<section>
+    <script src="chargement_elements.js"></script>
+
+
+
+
+
+
 <img src="image/fleche.svg" style="position: absolute; bottom: 0; left: 0;width: 7em; transform: rotate(-90deg)" title="RETOUR" onclick="location='caisse.html'">
 
 <div class="dropdown" style="float: left; position: absolute">
@@ -73,31 +92,31 @@ function tostring_item(nom_prod) {
 </script>
 
 <div id="produits" style="float: left; margin-top: 10%">
-<table style="position:relative; background-color: brown; border:solid; border-color: brown; left: 15em">
+<table style="position:relative; background-color: rgba(223,139,49, 0.75); left:8em">
     <tr style="background-color:chocolate" >
-        <td><input class="0" alt="pain"  type="image" src="image/pain.png" style="width: 10em; ">
-        <td><input class="0" alt="croissant" type="image" src="image/croissant.jpg" style="width: 10em">
-        <td><input class="0" alt="pain au chocolat" type="image" src="image/pain_au_chocolat.png" style="width: 10em">
-        <td><input class="0" alt="brioche" type="image" src="image/brioche.png" style="width: 10em">
+        <td style="border: solid; border-color:saddlebrown;"><input class="0" alt="pain"  type="image" src="image/pain.png" style="width: 8em; ">
+        <td style="border: solid; border-color:saddlebrown;"><input class="0" alt="croissant" type="image" src="image/croissant.jpg" style="width: 8em">
+        <td style="border: solid; border-color:saddlebrown;"><input class="0" alt="pain au chocolat" type="image" src="image/pain_au_chocolat.png" style="width: 8em">
+        <td style="border: solid; border-color:saddlebrown;"><input class="0" alt="brioche" type="image" src="image/brioche.png" style="width: 8em">
     </tr>
     <tr style="background-color:chocolate" >
-        <td><input class="0" alt="chouquette"  type="image" src="image/chouquette.jpg" style="width: 10em; ">
-        <td><input class="2" alt="cookie" type="image" src="image/cookie.png" style="width: 10em">
-        <td><input class="4" alt="meringue" type="image" src="image/meringue.png" style="width: 10em">
-        <td><input class="6" alt="gateau au chocolat" type="image" src="image/gateau_au_chocolat.webp" style="width: 10em">
+        <td style="border: solid; border-color:saddlebrown;"><input class="0" alt="chouquette"  type="image" src="image/chouquette.jpg" style="width: 8em; ">
+        <td style="border: solid; border-color:saddlebrown;"><input class="2" alt="cookie" type="image" src="image/cookie.png" style="width: 8em">
+        <td style="border: solid; border-color:saddlebrown;"><input class="4" alt="meringue" type="image" src="image/meringue.png" style="width: 8em">
+        <td style="border: solid; border-color:saddlebrown;"><input class="6" alt="gateau au chocolat" type="image" src="image/gateau_au_chocolat.webp" style="width: 8em">
     </tr>
     <tr style="background-color:chocolate" >
-        <td><input class="8" alt="charlotte aux fraises"  type="image" src="image/charlotte.jpg" style="width: 10em; ">
-        <td><input class="9" alt="tarte au citron" type="image" src="image/tarte_citron.png" style="width: 10em">
+        <td style="border: solid; border-color:saddlebrown;"><input class="8" alt="charlotte aux fraises"  type="image" src="image/charlotte.jpg" style="width: 8em; ">
+        <td style="border: solid; border-color:saddlebrown;"><input class="9" alt="tarte au citron" type="image" src="image/tarte_citron.png" style="width: 8em">
     </tr>
 </table>
-<img id="presentoire" src="image/presentoire_niveau0.png" style="position: absolute ; width: 30em;bottom: 1.5em; right: 0em">
+<img id="presentoire" src="image/presentoire_niveau0.png" style="position: absolute ; width: 25em;bottom: 1.5em; right: 0em">
 </div>
     <div class="survol">
         <div class="bulle">
             <div id="bulle" style="position: absolute;
-    right:7em;
-    bottom: 17em;
+    right:23%;
+    bottom: 35%;
     background-color:white;
     text-align:center;
     width:400px;
@@ -143,79 +162,80 @@ right:67px;
             </div>    </div>
         <img src="image/chat.png" style="position: absolute; display: block; right: 7em; bottom: 2em">
     </div>
+    <script>
+        //infobulle et image grisée
+        console.log(document.getElementsByTagName("input").length);
+        for (i=0; i<document.getElementsByTagName("input").length; i++){
+            var elmts_classes = document.getElementsByClassName(i);
+            console.log(elmts_classes)
 
-</body>
-<script>
-    //infobulle et image grisée
-    console.log(document.getElementsByTagName("input").length);
-    for (i=0; i<document.getElementsByTagName("input").length; i++){
-        var elmts_classes = document.getElementsByClassName(i);
-        console.log(elmts_classes)
+            for (j = 0; j < elmts_classes.length ; j++){
+                //console.log(document.getElementsByClassName(i)[j])
+                //console.log(document.getElementsByClassName(i)[j].className)
+                console.log(i+"."+j+" : " + document.getElementsByClassName(i)[j].alt)
+                var nom = document.getElementsByClassName(i)[j].alt
 
-        for (j = 0; j < elmts_classes.length ; j++){
-            //console.log(document.getElementsByClassName(i)[j])
-            //console.log(document.getElementsByClassName(i)[j].className)
-            console.log(i+"."+j+" : " + document.getElementsByClassName(i)[j].alt)
-            var nom = document.getElementsByClassName(i)[j].alt
+                if (i > niveau_joueur) {
 
-            if (i > niveau_joueur) {
+                    document.getElementsByClassName(i)[j].style.filter = "grayscale(100%)";
+                    document.getElementsByClassName(i)[j].style.webkitFilter = "grayscale(100%)";
+                    document.getElementsByClassName(i)[j].title = nom + " : disponible dès le niveau " + i;
 
-                document.getElementsByClassName(i)[j].style.filter = "grayscale(100%)";
-                document.getElementsByClassName(i)[j].style.webkitFilter = "grayscale(100%)";
-                document.getElementsByClassName(i)[j].title = nom + " : disponible dès le niveau " + i;
-
-            } else {
-                document.getElementsByClassName(i)[j].title = nom;
+                } else {
+                    document.getElementsByClassName(i)[j].title = nom;
+                }
             }
         }
-    }
 
-</script>
+    </script>
 
-<script>
-
+    <script>
 
 
 
 
 
 
-</script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script>
 
-    // Start file download.
-    document.getElementById("dwn-btn").addEventListener("click", function(){
-        location="telechargement_json_config_joueur.html"
-    }, false);
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
 
-</script>
-<script>
-    //présentoire boulangerie
-    niveau_joueur = localStorage.getItem("niveau")
-    const presentoire = document.getElementById("presentoire");
+        // Start file download.
+        document.getElementById("dwn-btn").addEventListener("click", function(){
+            location="telechargement_json_config_joueur.html"
+        }, false);
 
-    switch (parseInt(niveau_joueur)) {
-        case 0: case 1:
-            presentoire.src = "./image/presentoire_niveau0.png"
-            break;
-        case 2: case 3:
-            presentoire.src = "./image/presentoire_niveau2.png"
-            break;
-        case 4: case 5:
-            presentoire.src = "./image/presentoire_niveau4.png"
-            break;
-        case 6: case 7:
-            presentoire.src = "./image/presentoire_niveau6.png"
-            break;
-        case 8:
-            presentoire.src = "./image/presentoire_niveau8.png"
-            break;
-        case 9:
-            presentoire.src = "./image/presentoire_niveau9.png"
-            break;
-    }
-</script>
+    </script>
+    <script>
+        //présentoire boulangerie
+        niveau_joueur = localStorage.getItem("niveau")
+        const presentoire = document.getElementById("presentoire");
+
+        switch (parseInt(niveau_joueur)) {
+            case 0: case 1:
+                presentoire.src = "./image/presentoire_niveau0.png"
+                break;
+            case 2: case 3:
+                presentoire.src = "./image/presentoire_niveau2.png"
+                break;
+            case 4: case 5:
+                presentoire.src = "./image/presentoire_niveau4.png"
+                break;
+            case 6: case 7:
+                presentoire.src = "./image/presentoire_niveau6.png"
+                break;
+            case 8:
+                presentoire.src = "./image/presentoire_niveau8.png"
+                break;
+            case 9:
+                presentoire.src = "./image/presentoire_niveau9.png"
+                break;
+        }
+    </script>
+</section>
+</body>
+
 <style>
     .bulle {
         display:none;
@@ -224,4 +244,11 @@ right:67px;
         display: block;
     }
 </style>
+<script >
+    window.addEventListener('load', () =>  {
+
+        const preload = document.querySelector(".preload")
+        preload.classList.add("preload-finish")
+
+    });</script>
 </html>
