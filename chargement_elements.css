@@ -19,7 +19,7 @@
 .preload-finish {
     opacity: 0;
     pointer-events: none;
-}
+visibility: hidden}
 
 .nuage1, .nuage2, .nuage3 {
     height: 100px;
@@ -76,5 +76,8 @@
     }
 }
 section img {
-    height: 200px;
 }
+
+
+
+

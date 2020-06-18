@@ -3,46 +3,58 @@
 <head>
     <title>My Bakey _ caisse</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="menu.css" />
-
+    <link rel="stylesheet" href="chargement_elements.css">
+    <link rel="stylesheet" href="menu.css">
 
 
 </head>
 <!--https://openclassrooms.com/forum/sujet/input-placer-le-curseur-automatiquement-dedans-80024-->
 <body onload="document.getElementById('resultat').focus()" style="
+margin: 0;
+	padding: 0;
 	height: 100%;
-	width: 100%;position:fixed;top: 0;bottom: 0;left: 0;right: 0">
-<img src="image/fondfinal.png" style=" position: absolute; width: 100%;height: 100%">
-<div class="dropdown" style="float: left; position: absolute">
-    <button onclick="location='index.html'" class="dropbtn" style="background-color: orange; padding:0.5em 1em 0.5em 1em; font-size: 2em; border-radius: 1em; color: #555555" >MENU</button>
-    <div id="myDropdown" class="dropdown-content">
-        <a href="./index.html">Menu principal</a>
-        <a href="#" id="dwn-btn">Sauvegarder ma partie</a>
-        <a href="supprimer_joueur.html">Supprimer ma partie</a>
-        <a href="demandeEnregistrement_importer.html" id="seco" >Importer une partie</a>
-    </div>
-</div>
-<script>
-    var cliquer_pour_etre_aide = false;
-</script>
-<div id="deco">
-    <img id="vase_fleurs" src="image/magasin/vase_fleurs.png" style="position:absolute;width: 11%; left: 18%; bottom: 35%">
-    <img id="porte" title="SORTIR" onclick="location='exterieur.html'" src="image/magasin/porte_delabree.png" style="position:absolute;width: 12%; height: 40%; left: 30%; bottom: 42%">
-    <img id="fenetre" src="image/magasin/fenetre_delabree.png" style="position:absolute;width: 12%; right: 42%; top: 24%">
-    <img id="fenetre_droite" src="image/magasin/fenetre_droite_delabree.png" style="position:absolute;width: 7%; right: 15%; top: 20%">
-    <img id="cloche" src="image/magasin/cloche.png" style="display:none;width: 3%; position: absolute; top: 11%; left: 35%;transform: scaleX(-1); transform: rotate(30deg)">
-    <img id="canape" src="image/magasin/canape.png" style="display:none;position: absolute;    width: 21%; top: 35%; right: 33%">
-    <img id="fontaine" src="image/magasin/fontaine.png" style="display:none;width: 15%; position: absolute; top: 40%; right: 19%">
-    <img id="lavande" src="image/magasin/lavande.png"     style="display:none;transform: scaleX(-1);width: 10%; position: absolute; top: 55%; right: 18%">
-    <img id="table_salon" src="image/magasin/table_salon.png" hidden style="position: absolute;    width: 18%; top: 65%; right: 22%">
-    <img id="tableau" src="image/magasin/tableau.png" style="display: none;width: 8%; position: absolute; top: 8%; right: 33%">
-    <img id="lampe" src="image/magasin/lampe.png" style="display:none;width: 6%; position: absolute; top: 18%; left: 5%;">
-    <img id="tapis"  src="image/magasin/tapis.png" style="display:none;position: absolute ;width: 15%; left: 27%; top: 47%">
-    <img onclick="location='stock.html'" title="VOIR MES PRODUITS" id="presentoire" src="image/presentoire_niveau0.png" style="position: absolute ;width: 15%;  top: 50%; transform: scaleX(-1)">
+	width: 100%;">
+
+<div class="preload">
+    <img src="image/chat.png" alt="avion" class="avion" style="position:absolute;">
+    <h3 style="position:absolute;">Chargement de My Bakery...</h3>
+
 </div>
 
-<div style="float: left; ">
-    <div id="bulle" style="position: absolute;left: 15%; bottom: 50%;
+<section>
+    <script src="chargement_elements.js"></script>
+
+    <img src="image/fondfinal.png" style=" position: absolute; top: 0; width:100%;height: 100%;">
+    <div class="dropdown" style="top:2px; left:2px;position: absolute">
+        <button onclick="location='index.html'" class="dropbtn" style="background-color: orange; padding:0.5em 1em 0.5em 1em; font-size: 2em; border-radius: 1em; color: #555555" >MENU</button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="./index.html">Menu principal</a>
+            <a href="#" id="dwn-btn">Sauvegarder ma partie</a>
+            <a href="supprimer_joueur.html">Supprimer ma partie</a>
+            <a href="demandeEnregistrement_importer.html" id="seco" >Importer une partie</a>
+        </div>
+    </div>
+    <script>
+        var cliquer_pour_etre_aide = false;
+    </script>
+    <div id="deco">
+        <img id="vase_fleurs" src="image/magasin/vase_fleurs.png" style="position:absolute;width: 11%; left: 18%; bottom: 35%">
+        <img id="porte" title="SORTIR" onclick="location='exterieur.html'" src="image/magasin/porte_delabree.png" style="position:absolute;width: 12%; height: 40%; left: 30%; bottom: 42%">
+        <img id="fenetre" src="image/magasin/fenetre_delabree.png" style="position:absolute;width: 12%; right: 42%; top: 24%">
+        <img id="fenetre_droite" src="image/magasin/fenetre_droite_delabree.png" style="position:absolute;width: 7%; right: 15%; top: 20%">
+        <img id="cloche" src="image/magasin/cloche.png" style="display:none;width: 3%; position: absolute; top: 11%; left: 35%;transform: scaleX(-1); transform: rotate(30deg)">
+        <img id="canape" src="image/magasin/canape.png" style="display:none;position: absolute;    width: 21%; top: 35%; right: 33%">
+        <img id="fontaine" src="image/magasin/fontaine.png" style="display:none;width: 15%; position: absolute; top: 40%; right: 19%">
+        <img id="lavande" src="image/magasin/lavande.png"     style="display:none;transform: scaleX(-1);width: 10%; position: absolute; top: 55%; right: 18%">
+        <img id="table_salon" src="image/magasin/table_salon.png" hidden style="position: absolute;    width: 18%; top: 65%; right: 22%">
+        <img id="tableau" src="image/magasin/tableau.png" style="display: none;width: 8%; position: absolute; top: 8%; right: 33%">
+        <img id="lampe" src="image/magasin/lampe.png" style="display:none;width: 6%; position: absolute; top: 18%; left: 5%;">
+        <img id="tapis"  src="image/magasin/tapis.png" style="display:none;position: absolute ;width: 15%; left: 27%; top: 47%">
+        <img onclick="location='stock.html'" title="VOIR MES PRODUITS" id="presentoire" src="image/presentoire_niveau0.png" style="position: absolute ;width: 15%;  top: 50%; transform: scaleX(-1)">
+    </div>
+
+    <div style="float: left; ">
+        <div id="bulle" style="position: absolute;left: 15%; bottom: 50%;
     background-color:white;text-align:center;  padding:1em;border:2px solid #555555;border-top-right-radius:80px 40px;border-top-left-radius:80px 40px;border-bottom-right-radius:80px 40px;border-bottom-left-radius:80px 40px;">
         <span id="output" style="
 font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */
@@ -50,7 +62,7 @@ font-weight:bold;
 font-size:1em;
 position:relative;
 top:5px"></span>
-        <span id="arrow_border" style="
+            <span id="arrow_border" style="
 width: 0;
 height: 0;
 line-height: 0;
@@ -62,15 +74,15 @@ bottom:-30px;
 right:50%;
 
 "></span>
-    </div>
-    <img src="./image/chien.PNG" style="
+        </div>
+        <img src="./image/chien.PNG" style="
 position:absolute; width: 10%; top:54%; left:19%">
-    <img src="./image/caisse.png" style="
+        <img src="./image/caisse.png" style="
 position:absolute; width: 13%; top: 70%; left: 15%; transform: scaleX(-1)">
-    <img src="./image/chat.png" style="
+        <img src="./image/chat.png" style="
 position: absolute; width: 12%; left: 10%; top: 72%;">
-</div>
-<div id="bulle_dommage" style="margin-top: 10%;opacity: 0;text-align: center;transition: opacity 200ms ease-out, opacity 500ms ease-in">
+    </div>
+    <div id="bulle_dommage" style="margin-top: 10%;opacity: 0;text-align: center;transition: opacity 200ms ease-out, opacity 500ms ease-in">
         <span id="output_dommage" style="
 font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */
 font-weight:bold;
@@ -79,59 +91,59 @@ position:relative;
 color: blueviolet;
 "
         >htrvj</span>
-</div>
+    </div>
 
-<div style="position: absolute; top: 1em;right: 1em;text-align: center;padding:0.5em; font-size: 2em; border-radius: 30px; background-color: orangered;">
-    <div id="score" style=" height: 1em; font-weight: 1000;"></div>
+    <div style="position: absolute; top: 1em;right: 1em;text-align: center;padding:0.5em; font-size: 2em; border-radius: 30px; background-color: orangered;">
+        <div id="score" style=" height: 1em; font-weight: 1000;"></div>
 
-<input type="image"  style="margin-top: 0.5em;width: 10em;" id="etoiles">
-</div>
-<div id="calculette" style="z-index:1;position:absolute;left: 40%;background-color: orangered; width: 37%; bottom: 10em; border-radius: 40px">
-<span id="calcul" style=" width: 30%; text-align:left;display:none; margin: auto; margin-top: 0.5em; font-family: ComicFighter, Georgia; font-weight:bold;font-size:2em; "></span>
-    <input type="text" id="resultat" autocomplete="off" placeholder="Ecris le résultat ici" style="width:90%;display: block; margin : auto;margin-top: 0.5em; margin-bottom: 0.5em;font-size: 1.5em; ">
-<input type="submit" id="verif" style="padding:0.5em;margin:1em;margin-top: 0.2em;margin-bottom:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;">
-    <input type="button" id="aide" style="float:right; margin-top: 0.2em;margin-bottom:0.5em; margin-right:1em;padding:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Aide" "></div>
+        <input type="image"  style="margin-top: 0.5em;width: 10em;" id="etoiles">
+    </div>
+    <div id="calculette" style="z-index:1;position:absolute;left: 40%;background-color: orangered; width: 37%; bottom: 10em; border-radius: 40px">
+        <span id="calcul" style=" width: 30%; text-align:left;display:none; margin: auto; margin-top: 0.5em; font-family: ComicFighter, Georgia; font-weight:bold;font-size:2em; "></span>
+        <input type="text" id="resultat" autocomplete="off" placeholder="Ecris le résultat ici" style="width:90%;display: block; margin : auto;margin-top: 0.5em; margin-bottom: 0.5em;font-size: 1.5em; ">
+        <input type="submit" id="verif" style="padding:0.5em;margin:1em;margin-top: 0.2em;margin-bottom:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;">
+        <input type="button" id="aide" style="float:right; margin-top: 0.2em;margin-bottom:0.5em; margin-right:1em;padding:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Aide" "></div>
 
-<div id="calculette_remboursement" style="z-index:0;opacity:0;position:absolute;left: 40%;background-color: orangered; width: 37%; bottom: 10em; border-radius: 40px">
-    <span id="calcul_remboursement" style=" width: 30%; text-align:left;display:none; margin: auto; margin-top: 0.5em; font-family: ComicFighter, Georgia; font-weight:bold;font-size:2em; "></span>
-    <input type="text" id="resultat_remboursement" autocomplete="off" placeholder="Ecris le résultat ici" style="width:90%;display: block; margin : auto;margin-top: 0.5em; margin-bottom: 0.5em;font-size: 1.5em; ">
-    <input type="submit" id="verif_remboursement" style="padding:0.5em;margin:1em;margin-top: 0.2em;margin-bottom:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;">
-    <input type="button" id="aide_remboursement" style="float:right; margin-top: 0.2em;margin-bottom:0.5em; margin-right:1em;padding:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Aide" "></div>
+    <div id="calculette_remboursement" style="z-index:0;opacity:0;position:absolute;left: 40%;background-color: orangered; width: 37%; bottom: 10em; border-radius: 40px">
+        <span id="calcul_remboursement" style=" width: 30%; text-align:left;display:none; margin: auto; margin-top: 0.5em; font-family: ComicFighter, Georgia; font-weight:bold;font-size:2em; "></span>
+        <input type="text" id="resultat_remboursement" autocomplete="off" placeholder="Ecris le résultat ici" style="width:90%;display: block; margin : auto;margin-top: 0.5em; margin-bottom: 0.5em;font-size: 1.5em; ">
+        <input type="submit" id="verif_remboursement" style="padding:0.5em;margin:1em;margin-top: 0.2em;margin-bottom:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;">
+        <input type="button" id="aide_remboursement" style="float:right; margin-top: 0.2em;margin-bottom:0.5em; margin-right:1em;padding:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Aide" "></div>
 
 
-<div style="position: absolute;bottom: 0em; right: 0em; display: inline-block; text-align: right; ">
-    <span id="pieces" style="font-size: 2em; font-weight: 1000; bottom:30%; right: 110%; width:200%;position:absolute;"></span>
-    <input type="image" src="image/sous.png" style="width: 10em; ">
+    <div style="position: absolute;bottom: 0em; right: 0em; display: inline-block; text-align: right; ">
+        <span id="pieces" style="font-size: 2em; font-weight: 1000; bottom:30%; right: 110%; width:200%;position:absolute;"></span>
+        <input type="image" src="image/sous.png" style="width: 10em; ">
 
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script>
-    /* $.getJSON('evolution', function(data){
-     console.log(data);
- });
- */
-    //recuperer niveau du joueur:
-    var niveau_joueur = localStorage.getItem('niveau');
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>
+        /* $.getJSON('evolution', function(data){
+         console.log(data);
+     });
+     */
+        //recuperer niveau du joueur:
+        var niveau_joueur = localStorage.getItem('niveau');
 
-    message_calcul = '';
+        message_calcul = '';
 
-    var liste_calculs_deja_poses
-//on vérifie si la liste liste_calculs_deja_poses est vide
-    if (localStorage['liste_calculs_deja_poses'] == null){
-        console.log("liste_calculs_deja_poses vide");
-        liste_calculs_deja_poses = []
-    }
-    else if (localStorage['liste_calculs_deja_poses'].length == 0){
-        console.log("liste_calculs_deja_poses vide");
-        liste_calculs_deja_poses = []
-    }
-    else {
+        var liste_calculs_deja_poses
+        //on vérifie si la liste liste_calculs_deja_poses est vide
+        if (localStorage['liste_calculs_deja_poses'] == null){
+            console.log("liste_calculs_deja_poses vide");
+            liste_calculs_deja_poses = []
+        }
+        else if (localStorage['liste_calculs_deja_poses'].length == 0){
+            console.log("liste_calculs_deja_poses vide");
+            liste_calculs_deja_poses = []
+        }
+        else {
 
             console.log("liste_calculs_deja_poses pas vide");
             //on récupère la liste que l'on stocke dans liste_calculs_deja_poses
             liste_calculs_deja_poses = JSON.parse(localStorage['liste_calculs_deja_poses'])
 
-        //si la liste est trop grande on la réinitialise, pour ne pas que le programme tourne en boucle en cherchant un résultat ps déjà dans la liste
+            //si la liste est trop grande on la réinitialise, pour ne pas que le programme tourne en boucle en cherchant un résultat ps déjà dans la liste
             if (liste_calculs_deja_poses.length >= 7){
                 localStorage.setItem("liste_calculs_deja_poses", []);
                 liste_calculs_deja_poses = []
@@ -141,552 +153,559 @@ color: blueviolet;
             console.log(liste_calculs_deja_poses)
 
 
-    }
+        }
 
 
-    //afficher contenu json evolution en console en fonction du niveau du joueur:
-    $.ajax({
-        url: 'evolution',
-        dataType: 'json',
-        type: 'get',
-        cache: false,
-        success : function(data){
-            $(data.evolution).each(function (index, value) {
+        //afficher contenu json evolution en console en fonction du niveau du joueur:
+        $.ajax({
+            url: 'evolution',
+            dataType: 'json',
+            type: 'get',
+            cache: false,
+            success : function(data){
+                $(data.evolution).each(function (index, value) {
 
-                //on récupère la liste des produits (tupples) disponibles au niveau du joueur:
-                liste_produits = value.produit;
-                //console.log(liste_produits);
-                //on récupère les clés (=nom de chaque produit) et leur valeur (= prix)
-                keys = Object.keys(liste_produits[0]);
-                values = Object.values(liste_produits[0]);
-                //on calcule le nombre de produit (nombre de clés)
-                nombre_produits=keys.length;
-                message_client = '';
-                resultat_calcul = 0;
+                    //on récupère la liste des produits (tupples) disponibles au niveau du joueur:
+                    liste_produits = value.produit;
+                    //console.log(liste_produits);
+                    //on récupère les clés (=nom de chaque produit) et leur valeur (= prix)
+                    keys = Object.keys(liste_produits[0]);
+                    values = Object.values(liste_produits[0]);
+                    //on calcule le nombre de produit (nombre de clés)
+                    nombre_produits=keys.length;
+                    message_client = '';
+                    resultat_calcul = 0;
 
-                if (index==niveau_joueur) {
-                    do {
-                        if (index < 10) {
-                            //console.log(keys);
-                            //on sélectionne 3 produits au hasard
-                            //1) on créer une liste de taille = nb produits dispos : 1, 2, 3, 4, 5...
-                            //2) mélanger la liste : 2, 5, 1, 4, 3...
+                    if (index==niveau_joueur) {
+                        do {
+                            if (index < 10) {
+                                //console.log(keys);
+                                //on sélectionne 3 produits au hasard
+                                //1) on créer une liste de taille = nb produits dispos : 1, 2, 3, 4, 5...
+                                //2) mélanger la liste : 2, 5, 1, 4, 3...
 
-                            tab = new Array();
-                            nom_produits = new Array();
-                            prix_produits = new Array();
+                                tab = new Array();
+                                nom_produits = new Array();
+                                prix_produits = new Array();
 
-                            for (i = 0; i < keys.length; i++) {
-                                tab[i] = i;
-                                //console.log(tab[i]);
-                            }
-                            tab = shuffle(tab);
-                            for (i = 0; i < keys.length; i++) {
-                                // console.log("nb "+tab[i]);
-                                nom_produits[i] = keys[tab[i]];
-                                prix_produits[i] = values[tab[i]];
-                                //console.log(nom_produits[i]+" "+prix_produits[i]);
-                            }
-                            var max;
-                            if (index < 3) {
-                                max = 2;
-                            } else {
-                                max = 3;
-                            }
-
-                            //on récupère les trois premiers produits
-                            for (i = 0; i < max; i++) {
-                                nom_produit = keys[tab[i]];
-                                prix_produit = values[tab[i]];
-                                console.log(nom_produit + " " + prix_produit);
-                                //le client choisit le nombre de fois qu'il veut ce produit
-                                recur_produit = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
-                                nom_produit = on_accorde(recur_produit, nom_produit)
-
-
-                                if (i == 0) {
-                                    message_client = "Bonjour, j'aimerais<br /> " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
-                                    message_calcul = recur_produit + " × " + prix_produit;
-                                    resultat_calcul = recur_produit * prix_produit;
-                                } else {
-                                    message_client += ", <br />" + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
-                                    message_calcul += "<br /> + <br />" + recur_produit + " × " + prix_produit;
-                                    resultat_calcul += recur_produit * prix_produit;
+                                for (i = 0; i < keys.length; i++) {
+                                    tab[i] = i;
+                                    //console.log(tab[i]);
                                 }
-
-                                console.log(message_client);
-                                console.log(message_calcul);
-                                console.log(resultat_calcul);
-                            }
-
-                        } else {
-                            //console.log(keys);
-                            //on sélectionne 3 produits au hasard
-                            //1) on créer une liste de taille = nb produits dispos : 1, 2, 3, 4, 5...
-                            //2) mélanger la liste : 2, 5, 1, 4, 3...
-
-                            tab = new Array();
-                            nom_produits = new Array();
-                            prix_produits = new Array();
-
-                            for (i = 0; i < keys.length; i++) {
-                                tab[i] = i;
-                                //console.log(tab[i]);
-                            }
-                            tab = shuffle(tab);
-                            for (i = 0; i < keys.length; i++) {
-                                // console.log("nb "+tab[i]);
-                                nom_produits[i] = keys[tab[i]];
-                                prix_produits[i] = values[tab[i]];
-                                //console.log(nom_produits[i]+" "+prix_produits[i]);
-                            }
-                            max = 2;
-                            switch (index) {
-                                case 10:
-                                case 11 :
-                                case 12 :
-                                case 13 :
-                                    console.log(index);
+                                tab = shuffle(tab);
+                                for (i = 0; i < keys.length; i++) {
+                                    // console.log("nb "+tab[i]);
+                                    nom_produits[i] = keys[tab[i]];
+                                    prix_produits[i] = values[tab[i]];
+                                    //console.log(nom_produits[i]+" "+prix_produits[i]);
+                                }
+                                var max;
+                                if (index < 3) {
                                     max = 2;
-                                    max_recur_produit = 2;
-                                    break;
-                                case 14 :
-                                    max = 3;
-                                    max_recur_produit = 2;
-                                    break;
-                            }
-
-
-                            //on récupère les "max" premiers produits
-                            for (i = 0; i < max; i++) {
-                                nom_produit = keys[tab[i]];
-                                prix_produit = values[tab[i]];
-                                console.log(nom_produit + " " + prix_produit);
-                                recur_produit = Math.floor(Math.random() * (max_recur_produit - 1 + 1)) + 1;
-                                nom_produit = on_accorde(recur_produit, nom_produit)
-
-                                if (i == 0) {
-                                    message_client = "Bonjour, j'aimerais<br /> " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
-                                    message_calcul = recur_produit + " × " + prix_produit;
-                                    resultat_calcul = recur_produit * prix_produit;
                                 } else {
-                                    message_client += ", <br />" + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
-                                    message_calcul += "<br /> + <br />" + recur_produit + " × " + prix_produit;
-                                    resultat_calcul += recur_produit * prix_produit;
+                                    max = 3;
                                 }
-                                console.log(message_client);
-                                console.log(message_calcul);
-                                console.log(resultat_calcul);
-                            }
 
-                        }
-                        resultat_calcul = Math.round(resultat_calcul*100)/100;
-                    }while(liste_calculs_deja_poses.includes(resultat_calcul))
-
-                    //on enregistre le nouveau résultat dans la liste
-                    liste_calculs_deja_poses[liste_calculs_deja_poses.length]=resultat_calcul
-                    //on remplace la valeur de localStorage par la nouvelle liste
-                    localStorage["liste_calculs_deja_poses"] = JSON.stringify(liste_calculs_deja_poses)
-                    //on récupère le nouveau localstorage de liste_calculs_deja_poses
-                    var new_stored_datas = JSON.parse(localStorage['liste_calculs_deja_poses'])
-                    //on l'affiche
-                    console.log(new_stored_datas)
-
-                    message_client += "<br />s'il-vous-plaît.<br /> Combien je vous dois?"
-
-                    //bulle client
-                    const output = document.getElementById("output");
-                    output.innerHTML += `${message_client} `;
-
-                    //affichage calcul à faire en bas à droite
-                    const calcul = document.getElementById("calcul");
-                    calcul.innerHTML += `${message_calcul} =<br />`;
+                                //on récupère les trois premiers produits
+                                for (i = 0; i < max; i++) {
+                                    nom_produit = keys[tab[i]];
+                                    prix_produit = values[tab[i]];
+                                    console.log(nom_produit + " " + prix_produit);
+                                    //le client choisit le nombre de fois qu'il veut ce produit
+                                    recur_produit = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+                                    nom_produit = on_accorde(recur_produit, nom_produit)
 
 
+                                    if (i == 0) {
+                                        message_client = "Bonjour, j'aimerais<br /> " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
+                                        message_calcul = recur_produit + " × " + prix_produit;
+                                        resultat_calcul = recur_produit * prix_produit;
+                                    } else {
+                                        message_client += ", <br />" + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
+                                        message_calcul += "<br /> + <br />" + recur_produit + " × " + prix_produit;
+                                        resultat_calcul += recur_produit * prix_produit;
+                                    }
 
-                    bon_resultat = resultat_calcul;
-                    console.log("BON RES " + bon_resultat);
+                                    console.log(message_client);
+                                    console.log(message_calcul);
+                                    console.log(resultat_calcul);
+                                }
 
-                    //vérification du résultat donné par le joueur
-                    document.getElementById('verif').onclick = function (e) {
-                        const resultat = document.getElementById("resultat").value;
-                        if (resultat == bon_resultat) {
-                            confettis()
-                            bravo();
-                            //alert("C'est le bon résultat, bravo!");
-
-                            bonne_rep_test = parseInt(localStorage.getItem("bonne_reponse")) + 1;
-
-                            if (cliquer_pour_etre_aide == true){
-                                bonne_rep_test = parseInt(localStorage.getItem("bonne_reponse"));
-                            }
-                            if (bonne_rep_test == 3) {
-                                //si c'est la 3e bonne réponse, le niveau du joueur augmente
-                                niveau_joueur++;
-                                localStorage.setItem("niveau", niveau_joueur);
-                                console.log(localStorage.getItem("niveau"));
-                                //on initialise à 0 son nb de bonne réponse et de tentative pour le nouveau niveau
-                                localStorage.setItem("bonne_reponse", 0);
-                                localStorage.setItem("tentative", 0);
-                                pieces = parseInt(localStorage.getItem("pieces"));
-                                pieces = pieces+3;
-                                localStorage.setItem("pieces", pieces)
-                                localStorage.setItem("liste_calculs_deja_poses", [])
-                                cliquer_pour_etre_aide = false;
                             } else {
-                                //si ce n'est pas la 3e bonne réponse, on incrémente le nb de bonne réponse et initialise le nombre de tentative à 0
-                                localStorage.setItem("bonne_reponse", bonne_rep_test);
-                                localStorage.setItem("tentative", 0);
-                                pieces = parseInt(localStorage.getItem("pieces"));
-                                pieces++
-                                localStorage.setItem("pieces", pieces)
-                                cliquer_pour_etre_aide = false;
-                            }
+                                //console.log(keys);
+                                //on sélectionne 3 produits au hasard
+                                //1) on créer une liste de taille = nb produits dispos : 1, 2, 3, 4, 5...
+                                //2) mélanger la liste : 2, 5, 1, 4, 3...
 
-                            // random : client donne trop d'argent
-                            random_remboursement = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
-                            if (random_remboursement == 1){
-                                document.getElementById("calculette").style.opacity = 0;
-                                document.getElementById("calculette").style.zIndex = 0;
-                                document.getElementById("calculette_remboursement").style.opacity = 1;
-                                document.getElementById("calculette_remboursement").style.zIndex = 1;
+                                tab = new Array();
+                                nom_produits = new Array();
+                                prix_produits = new Array();
 
-                                billet = ""
+                                for (i = 0; i < keys.length; i++) {
+                                    tab[i] = i;
+                                    //console.log(tab[i]);
+                                }
+                                tab = shuffle(tab);
+                                for (i = 0; i < keys.length; i++) {
+                                    // console.log("nb "+tab[i]);
+                                    nom_produits[i] = keys[tab[i]];
+                                    prix_produits[i] = values[tab[i]];
+                                    //console.log(nom_produits[i]+" "+prix_produits[i]);
+                                }
+                                max = 2;
+                                switch (index) {
+                                    case 10:
+                                    case 11 :
+                                    case 12 :
+                                    case 13 :
+                                        console.log(index);
+                                        max = 2;
+                                        max_recur_produit = 2;
+                                        break;
+                                    case 14 :
+                                        max = 3;
+                                        max_recur_produit = 2;
+                                        break;
+                                }
 
-                               document.getElementById('resultat_remboursement').focus()
-                                if (bon_resultat < 10){
-                                    billet = 10;
-                                    document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 10€, combien me devez-vous?"
-                                }
-                                else if (bon_resultat < 20){
-                                    billet = 20;
-                                    document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 20€, combien me devez-vous?"
-                                }
-                                else if (bon_resultat < 30){
-                                    billet = 30;
-                                    document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... J'ai un billet de 10€ et un autre de 20, combien me devez-vous?"
-                                }
-                                else if (bon_resultat < 40){
-                                    billet = 40;
-                                    document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... J'ai deux billets de 20€, combien me devez-vous?"
-                                }
-                                else if (bon_resultat < 50){
-                                    billet = 50;
-                                    document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 50€, combien me devez-vous?"
 
-                                }
-                                else if (bon_resultat < 100){
-                                    billet = 100;
-                                    document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 100€, combien me devez-vous?"
+                                //on récupère les "max" premiers produits
+                                for (i = 0; i < max; i++) {
+                                    nom_produit = keys[tab[i]];
+                                    prix_produit = values[tab[i]];
+                                    console.log(nom_produit + " " + prix_produit);
+                                    recur_produit = Math.floor(Math.random() * (max_recur_produit - 1 + 1)) + 1;
+                                    nom_produit = on_accorde(recur_produit, nom_produit)
 
-                                }
-                                else if (bon_resultat < 200){
-                                    billet = 200;
-                                    document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 200€, combien me devez-vous?"
-
-                                }
-                                else if (bon_resultat < 500){
-                                    billet = 500;
-                                    document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 500€, combien me devez-vous?"
-
-                                }
-                                console.log(billet);
-                                console.log(bon_resultat);
-                                console.log(billet-bon_resultat);
-
-                                rembourser = billet - bon_resultat;
-                                document.getElementById("verif_remboursement").addEventListener("click", function() {
-                                    if (document.getElementById("resultat_remboursement").value == rembourser){
-                                        bravo();
-                                        confettis();
-                                        miseEnAttente();
-                                        pieces = parseInt(localStorage.getItem("pieces"))
-                                        pieces+= 2;
-                                        localStorage.setItem("pieces", pieces);
+                                    if (i == 0) {
+                                        message_client = "Bonjour, j'aimerais<br /> " + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
+                                        message_calcul = recur_produit + " × " + prix_produit;
+                                        resultat_calcul = recur_produit * prix_produit;
+                                    } else {
+                                        message_client += ", <br />" + recur_produit + " " + nom_produit + " (" + prix_produit + "€)";
+                                        message_calcul += "<br /> + <br />" + recur_produit + " × " + prix_produit;
+                                        resultat_calcul += recur_produit * prix_produit;
                                     }
-                                    else {
-                                        document.getElementById("bulle_dommage").style.opacity = 1
-                                        document.getElementById("output_dommage").innerHTML = "Dommage, ce n'est pas le bon résultat. La bonne réponse était " + rembourser
-                                        miseEnAttente_cacher_dommage()
-                                        miseEnAttente()
-                                    }
-                                })
+                                    console.log(message_client);
+                                    console.log(message_calcul);
+                                    console.log(resultat_calcul);
                                 }
-                            else {
-                                miseEnAttente()
+
                             }
+                            resultat_calcul = Math.round(resultat_calcul*100)/100;
+                        }while(liste_calculs_deja_poses.includes(resultat_calcul))
+
+                        //on enregistre le nouveau résultat dans la liste
+                        liste_calculs_deja_poses[liste_calculs_deja_poses.length]=resultat_calcul
+                        //on remplace la valeur de localStorage par la nouvelle liste
+                        localStorage["liste_calculs_deja_poses"] = JSON.stringify(liste_calculs_deja_poses)
+                        //on récupère le nouveau localstorage de liste_calculs_deja_poses
+                        var new_stored_datas = JSON.parse(localStorage['liste_calculs_deja_poses'])
+                        //on l'affiche
+                        console.log(new_stored_datas)
+
+                        message_client += "<br />s'il-vous-plaît.<br /> Combien je vous dois?"
+
+                        //bulle client
+                        const output = document.getElementById("output");
+                        output.innerHTML += `${message_client} `;
+
+                        //affichage calcul à faire en bas à droite
+                        const calcul = document.getElementById("calcul");
+                        calcul.innerHTML += `${message_calcul} =<br />`;
 
 
 
-                            console.log(parseInt(localStorage.getItem("bonne_reponse")) + 1);
-                        } else {
-                            //mauvais résultat
-                            //on incrémente le nombre de tentative
-                            tentative_test = parseInt(localStorage.getItem("tentative"));
-                            tentative_test++;
-                            console.log("tentative_test " + tentative_test);
-                            //si le nb de tentatives est > 2 (0,1,2)
-                            if (tentative_test > 2) {
-                                //nombre de tentative dépassé, on diminue le niveau et affiche le bon résultat
-                               // alert("Dommage, ce n'est pas le bon résultat. Le bon résultat était " + bon_resultat);
-                                document.getElementById("bulle_dommage").style.opacity = 1
-                                document.getElementById("output_dommage").innerHTML = "Dommage, ce n'est pas le bon résultat. Le bon résultat était " + bon_resultat
-                                miseEnAttente_cacher_dommage()
-                                // on baisse le niveau
-                                if (niveau_joueur > 0) {
-                                    niveau_joueur--;
+                        bon_resultat = resultat_calcul;
+                        console.log("BON RES " + bon_resultat);
+
+                        //vérification du résultat donné par le joueur
+                        document.getElementById('verif').onclick = function (e) {
+                            const resultat = document.getElementById("resultat").value;
+                            if (resultat == bon_resultat) {
+                                confettis()
+                                bravo();
+                                //alert("C'est le bon résultat, bravo!");
+
+                                bonne_rep_test = parseInt(localStorage.getItem("bonne_reponse")) + 1;
+
+                                if (cliquer_pour_etre_aide == true){
+                                    bonne_rep_test = parseInt(localStorage.getItem("bonne_reponse"));
+                                }
+                                if (bonne_rep_test == 3) {
+                                    //si c'est la 3e bonne réponse, le niveau du joueur augmente
+                                    niveau_joueur++;
                                     localStorage.setItem("niveau", niveau_joueur);
+                                    console.log(localStorage.getItem("niveau"));
+                                    //on initialise à 0 son nb de bonne réponse et de tentative pour le nouveau niveau
+                                    localStorage.setItem("bonne_reponse", 0);
+                                    localStorage.setItem("tentative", 0);
+                                    pieces = parseInt(localStorage.getItem("pieces"));
+                                    pieces = pieces+3;
+                                    localStorage.setItem("pieces", pieces)
                                     localStorage.setItem("liste_calculs_deja_poses", [])
+                                    cliquer_pour_etre_aide = false;
+                                } else {
+                                    //si ce n'est pas la 3e bonne réponse, on incrémente le nb de bonne réponse et initialise le nombre de tentative à 0
+                                    localStorage.setItem("bonne_reponse", bonne_rep_test);
+                                    localStorage.setItem("tentative", 0);
+                                    pieces = parseInt(localStorage.getItem("pieces"));
+                                    pieces++
+                                    localStorage.setItem("pieces", pieces)
+                                    cliquer_pour_etre_aide = false;
                                 }
-                                //on remet à 0 le nb de bonne réponse et de tentative
-                                localStorage.setItem("bonne_reponse", 0);
-                                localStorage.setItem("tentative", 0);
-                                cliquer_pour_etre_aide = false;
 
-                                miseEnAttente();
-                                //location.reload();
+                                // random : client donne trop d'argent
+                                random_remboursement = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+                                if (random_remboursement == 1){
+                                    document.getElementById("calculette").style.opacity = 0;
+                                    document.getElementById("calculette").style.zIndex = 0;
+                                    document.getElementById("calculette_remboursement").style.opacity = 1;
+                                    document.getElementById("calculette_remboursement").style.zIndex = 1;
+
+                                    billet = ""
+
+                                    document.getElementById('resultat_remboursement').focus()
+                                    if (bon_resultat < 10){
+                                        billet = 10;
+                                        document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 10€, combien me devez-vous?"
+                                    }
+                                    else if (bon_resultat < 20){
+                                        billet = 20;
+                                        document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 20€, combien me devez-vous?"
+                                    }
+                                    else if (bon_resultat < 30){
+                                        billet = 30;
+                                        document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... J'ai un billet de 10€ et un autre de 20, combien me devez-vous?"
+                                    }
+                                    else if (bon_resultat < 40){
+                                        billet = 40;
+                                        document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... J'ai deux billets de 20€, combien me devez-vous?"
+                                    }
+                                    else if (bon_resultat < 50){
+                                        billet = 50;
+                                        document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 50€, combien me devez-vous?"
+
+                                    }
+                                    else if (bon_resultat < 100){
+                                        billet = 100;
+                                        document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 100€, combien me devez-vous?"
+
+                                    }
+                                    else if (bon_resultat < 200){
+                                        billet = 200;
+                                        document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 200€, combien me devez-vous?"
+
+                                    }
+                                    else if (bon_resultat < 500){
+                                        billet = 500;
+                                        document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 500€, combien me devez-vous?"
+
+                                    }
+                                    console.log(billet);
+                                    console.log(bon_resultat);
+                                    console.log(billet-bon_resultat);
+
+                                    rembourser = billet - bon_resultat;
+                                    document.getElementById("verif_remboursement").addEventListener("click", function() {
+                                        if (document.getElementById("resultat_remboursement").value == rembourser){
+                                            bravo();
+                                            confettis();
+                                            miseEnAttente();
+                                            pieces = parseInt(localStorage.getItem("pieces"))
+                                            pieces+= 2;
+                                            localStorage.setItem("pieces", pieces);
+                                        }
+                                        else {
+                                            document.getElementById("bulle_dommage").style.opacity = 1
+                                            document.getElementById("output_dommage").innerHTML = "Dommage, ce n'est pas le bon résultat. La bonne réponse était " + rembourser
+                                            miseEnAttente_cacher_dommage()
+                                            miseEnAttente()
+                                        }
+                                    })
+                                }
+                                else {
+                                    miseEnAttente()
+                                }
+
+
+
+                                console.log(parseInt(localStorage.getItem("bonne_reponse")) + 1);
                             } else {
-                                //alert("Dommage, ce n'est pas le bon résultat. Essaye encore!");
-                                document.getElementById("bulle_dommage").style.opacity = 1
-                                document.getElementById("output_dommage").innerHTML = "Dommage, ce n'est pas le bon résultat. Essaye encore!"
-                                miseEnAttente_cacher_dommage()
-                                //on incrémente le nb de tentatives
-                                localStorage.setItem("tentative", tentative_test);
-                                //le nombre de bonne réponse repasse à 0, car il faut 3 bonnes réponse A LA SUITE
-                                localStorage.setItem("bonne_reponse", 0);
-                                cliquer_pour_etre_aide = false;
+                                //mauvais résultat
+                                //on incrémente le nombre de tentative
+                                tentative_test = parseInt(localStorage.getItem("tentative"));
+                                tentative_test++;
+                                console.log("tentative_test " + tentative_test);
+                                //si le nb de tentatives est > 2 (0,1,2)
+                                if (tentative_test > 2) {
+                                    //nombre de tentative dépassé, on diminue le niveau et affiche le bon résultat
+                                    // alert("Dommage, ce n'est pas le bon résultat. Le bon résultat était " + bon_resultat);
+                                    document.getElementById("bulle_dommage").style.opacity = 1
+                                    document.getElementById("output_dommage").innerHTML = "Dommage, ce n'est pas le bon résultat. Le bon résultat était " + bon_resultat
+                                    miseEnAttente_cacher_dommage()
+                                    // on baisse le niveau
+                                    if (niveau_joueur > 0) {
+                                        niveau_joueur--;
+                                        localStorage.setItem("niveau", niveau_joueur);
+                                        localStorage.setItem("liste_calculs_deja_poses", [])
+                                    }
+                                    //on remet à 0 le nb de bonne réponse et de tentative
+                                    localStorage.setItem("bonne_reponse", 0);
+                                    localStorage.setItem("tentative", 0);
+                                    cliquer_pour_etre_aide = false;
 
+                                    miseEnAttente();
+                                    //location.reload();
+                                } else {
+                                    //alert("Dommage, ce n'est pas le bon résultat. Essaye encore!");
+                                    document.getElementById("bulle_dommage").style.opacity = 1
+                                    document.getElementById("output_dommage").innerHTML = "Dommage, ce n'est pas le bon résultat. Essaye encore!"
+                                    miseEnAttente_cacher_dommage()
+                                    //on incrémente le nb de tentatives
+                                    localStorage.setItem("tentative", tentative_test);
+                                    //le nombre de bonne réponse repasse à 0, car il faut 3 bonnes réponse A LA SUITE
+                                    localStorage.setItem("bonne_reponse", 0);
+                                    cliquer_pour_etre_aide = false;
+
+                                }
                             }
                         }
+
                     }
 
-                }
 
+                })
+            }
+        })
 
-            })
+        sc = localStorage.getItem("niveau");
+        const score = document.getElementById("score");
+        score.innerHTML = `niveau ${sc} <br />`;
+
+        function shuffle(array)
+        {
+            return array.sort(function() { return Math.random() - .5 });
         }
-    })
 
-    sc = localStorage.getItem("niveau");
-    const score = document.getElementById("score");
-    score.innerHTML = `niveau ${sc} <br />`;
-
-    function shuffle(array)
-    {
-        return array.sort(function() { return Math.random() - .5 });
-    }
-
-    nb_pieces = localStorage.getItem("pieces");
-    const pieces_affichage = document.getElementById("pieces");
-    if (nb_pieces > 1) {
-        pieces_affichage.innerHTML = `${nb_pieces} pièces`;
-    }
-    else {
-        pieces_affichage.innerHTML = `${nb_pieces} pièce`;
-    }
-
-//3 lumières bleues pour afficher l'avancement vers le prochaine niveau
-    tentatives = localStorage.getItem("bonne_reponse")
-    console.log(tentatives)
-    const te = document.getElementById("etoiles");
-
-    switch (parseInt(tentatives)) {
-        case 0:
-            te.src = "./image/t1.svg"
-            break;
-        case 1:
-            te.src = "./image/t2.svg"
-            break;
-        case 2:
-            te.src = "./image/t3.svg"
-            break;
-    }
-
-    //présentoire boulangerie
-    niveau_joueur = localStorage.getItem("niveau")
-    const presentoire = document.getElementById("presentoire");
-
-    switch (parseInt(niveau_joueur)) {
-        case 0: case 1:
-            presentoire.src = "./image/presentoire_niveau0.png"
-            break;
-        case 2: case 3:
-            presentoire.src = "./image/presentoire_niveau2.png"
-            break;
-        case 4: case 5:
-            presentoire.src = "./image/presentoire_niveau4.png"
-            break;
-        case 6: case 7:
-            presentoire.src = "./image/presentoire_niveau6.png"
-            break;
-        case 8:
-            presentoire.src = "./image/presentoire_niveau8.png"
-            break;
-    }
-    if (niveau_joueur >= 9){
-        presentoire.src = "./image/presentoire_niveau9.png"
-    }
-
-
-</script>
-
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script>
-
-
-
-
-
-document.getElementById("aide").addEventListener("click", function(){
-    let clic_aide = document.getElementById("calcul");
-    if(getComputedStyle(clic_aide).display != "none"){
-        clic_aide.style.display = "none";
-    } else {
-        clic_aide.style.display = "block";
-        cliquer_pour_etre_aide = true;
-    }}, false);
-
-function on_accorde(nb, produit){
-    console.log(nb+produit)
-    if (nb > 1){
-        if (produit == "gateau au chocolat"){
-            produit = "gateaux au chocolat"
-        }
-        else if (produit == "pain au chocolat"){
-            produit = "pains au chocolat";
-        }
-        else if (produit == "charlotte aux fraises"){
-            produit = "charlottes aux fraises";
-        }
-        else if (produit == "tarte au citron"){
-            produit = "tartes au citron";
+        nb_pieces = localStorage.getItem("pieces");
+        const pieces_affichage = document.getElementById("pieces");
+        if (nb_pieces > 1) {
+            pieces_affichage.innerHTML = `${nb_pieces} pièces`;
         }
         else {
-            produit = produit+"s";
+            pieces_affichage.innerHTML = `${nb_pieces} pièce`;
         }
-        console.log("s:"+produit);
-        return produit
-    }
-else {
-    console.log("s:"+produit)
-    return produit
-    }}
-</script>
 
-<script>
-    // DECO
-    if (localStorage.getItem("liste_biens") == null){
+        //3 lumières bleues pour afficher l'avancement vers le prochaine niveau
+        tentatives = localStorage.getItem("bonne_reponse")
+        console.log(tentatives)
+        const te = document.getElementById("etoiles");
 
-    }
-    else if (localStorage.getItem("liste_biens").length == 0){
+        switch (parseInt(tentatives)) {
+            case 0:
+                te.src = "./image/t1.svg"
+                break;
+            case 1:
+                te.src = "./image/t2.svg"
+                break;
+            case 2:
+                te.src = "./image/t3.svg"
+                break;
+        }
 
-    }
-    else {
-        liste = JSON.parse(localStorage['liste_biens'])
-        var images = document.getElementsByTagName("img")
-        for (i = 0 ; i < images.length ; i++){
-            if (liste.includes(images[i].id)){
-                document.getElementById(images[i].id).setAttribute("src", "image/magasin/"+images[i].id+".png");
-                document.getElementById(images[i].id).style.display = "block";
+        //présentoire boulangerie
+        niveau_joueur = localStorage.getItem("niveau")
+        const presentoire = document.getElementById("presentoire");
+
+        switch (parseInt(niveau_joueur)) {
+            case 0: case 1:
+                presentoire.src = "./image/presentoire_niveau0.png"
+                break;
+            case 2: case 3:
+                presentoire.src = "./image/presentoire_niveau2.png"
+                break;
+            case 4: case 5:
+                presentoire.src = "./image/presentoire_niveau4.png"
+                break;
+            case 6: case 7:
+                presentoire.src = "./image/presentoire_niveau6.png"
+                break;
+            case 8:
+                presentoire.src = "./image/presentoire_niveau8.png"
+                break;
+        }
+        if (niveau_joueur >= 9){
+            presentoire.src = "./image/presentoire_niveau9.png"
+        }
+
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+
+
+
+
+
+        document.getElementById("aide").addEventListener("click", function(){
+            let clic_aide = document.getElementById("calcul");
+            if(getComputedStyle(clic_aide).display != "none"){
+                clic_aide.style.display = "none";
+            } else {
+                clic_aide.style.display = "block";
+                cliquer_pour_etre_aide = true;
+            }}, false);
+
+        function on_accorde(nb, produit){
+            console.log(nb+produit)
+            if (nb > 1){
+                if (produit == "gateau au chocolat"){
+                    produit = "gateaux au chocolat"
+                }
+                else if (produit == "pain au chocolat"){
+                    produit = "pains au chocolat";
+                }
+                else if (produit == "charlotte aux fraises"){
+                    produit = "charlottes aux fraises";
+                }
+                else if (produit == "tarte au citron"){
+                    produit = "tartes au citron";
+                }
+                else {
+                    produit = produit+"s";
+                }
+                console.log("s:"+produit);
+                return produit
             }
+            else {
+                console.log("s:"+produit)
+                return produit
+            }}
+    </script>
+
+    <script>
+        // DECO
+        if (localStorage.getItem("liste_biens") == null){
+
+        }
+        else if (localStorage.getItem("liste_biens").length == 0){
+
+        }
+        else {
+            liste = JSON.parse(localStorage['liste_biens'])
+            var images = document.getElementsByTagName("img")
+            for (i = 0 ; i < images.length ; i++){
+                if (liste.includes(images[i].id)){
+                    document.getElementById(images[i].id).setAttribute("src", "image/magasin/"+images[i].id+".png");
+                    document.getElementById(images[i].id).style.display = "block";
+                }
+            }
+
         }
 
-    }
+    </script>
 
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.2.0/dist/confetti.browser.min.js"></script>
+    <script>
+        //https://www.npmjs.com/package/canvas-confetti
+        // https://www.kirilv.com/canvas-confetti/
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.2.0/dist/confetti.browser.min.js"></script>
-<script>
-    //https://www.npmjs.com/package/canvas-confetti
-    // https://www.kirilv.com/canvas-confetti/
+        var end = Date.now() + (7*1000);
 
-    var end = Date.now() + (7*1000);
+        // go Buckeyes!
+        var colors = ['#bb0000', '#ffffff'];
+        function confettis(){
+            (function frame() {
+                confetti({
+                    particleCount: 2,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: colors
+                });
+                confetti({
+                    particleCount: 2,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: colors
+                });
 
-    // go Buckeyes!
-    var colors = ['#bb0000', '#ffffff'];
-function confettis(){
-    (function frame() {
-        confetti({
-            particleCount: 2,
-            angle: 60,
-            spread: 55,
-            origin: { x: 0 },
-            colors: colors
-        });
-        confetti({
-            particleCount: 2,
-            angle: 120,
-            spread: 55,
-            origin: { x: 1 },
-            colors: colors
-        });
-
-        if (Date.now() < end) {
-            requestAnimationFrame(frame);
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());}
+    </script>
+    <script>
+        function miseEnAttente()
+        {
+            //Traitement
+            setTimeout(fonctionAExecuter, 3000); //On attend 5 secondes avant d'exécuter la fonction
         }
-    }());}
-</script>
-<script>
-    function miseEnAttente()
-    {
-        //Traitement
-        setTimeout(fonctionAExecuter, 3000); //On attend 5 secondes avant d'exécuter la fonction
-    }
-    function fonctionAExecuter()
-    {
-        //Le code écrit dans cette fonction ne sera exécuté qu'au bout de 5 secondes
-        location.reload()
-    }
+        function fonctionAExecuter()
+        {
+            //Le code écrit dans cette fonction ne sera exécuté qu'au bout de 5 secondes
+            location.reload()
+        }
 
 
-    function miseEnAttente_cacher_dommage()
-    {
-        //Traitement
-        setTimeout(cacher_dommage, 3000); //On attend 5 secondes avant d'exécuter la fonction
-    }
-    function cacher_dommage()
-    {
-        //Le code écrit dans cette fonction ne sera exécuté qu'au bout de 5 secondes
-        document.getElementById("bulle_dommage").style.opacity=0
-    }
-</script>
+        function miseEnAttente_cacher_dommage()
+        {
+            //Traitement
+            setTimeout(cacher_dommage, 3000); //On attend 5 secondes avant d'exécuter la fonction
+        }
+        function cacher_dommage()
+        {
+            //Le code écrit dans cette fonction ne sera exécuté qu'au bout de 5 secondes
+            document.getElementById("bulle_dommage").style.opacity=0
+        }
+    </script>
 
 
-<h1 class="ml9">
+    <h1 class="ml9">
   <span class="text-wrapper">
     <span class="letters"></span>
   </span>
-</h1>
+    </h1>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-<script>
-    //https://tobiasahlin.com/moving-letters/#9
-    function bravo(){
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script>
+        //https://tobiasahlin.com/moving-letters/#9
+        function bravo(){
 
 
-    // Wrap every letter in a span
-    var textWrapper = document.querySelector('.ml9 .letters');
-    textWrapper.innerHTML = "BRAVO!"
-    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+            // Wrap every letter in a span
+            var textWrapper = document.querySelector('.ml9 .letters');
+            textWrapper.innerHTML = "BRAVO!"
+            textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-    anime.timeline({loop: 1})
-        .add({
-            targets: '.ml9 .letter',
-            scale: [0, 1],
-            duration: 1500,
-            elasticity: 600,
+            anime.timeline({loop: 1})
+                .add({
+                    targets: '.ml9 .letter',
+                    scale: [0, 1],
+                    duration: 1500,
+                    elasticity: 600,
 
-        }).add({
-        targets: '.ml9',
-        opacity: 0,
-        duration: 1000,
-        easing: "easeOutExpo",
-        delay: 1000
-    });}
-</script>
+                }).add({
+                targets: '.ml9',
+                opacity: 0,
+                duration: 1000,
+                easing: "easeOutExpo",
+                delay: 1000
+            });}
+    </script>
 
+</section>
+<script src="chargement_elements.js"></script>
 </body>
+
+
+
+
+
 <style>.ml9 {
     position: absolute;
     top: 50%; left: 50%;  transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
