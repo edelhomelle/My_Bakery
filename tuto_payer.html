@@ -3,6 +3,8 @@
 <head>
     <title>My Bakery, TUTORIEL</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="chargement_elements.css">
+
 </head>
 <style>
     span {
@@ -23,6 +25,15 @@
     }
 </style>
 <body>
+<p style="position: absolute; top: 0;">
+    Tourne l'écran dans l'autre sens
+</p>
+<div class="preload">
+    <img src="image/chat.png" alt="avion" class="avion">
+    <h3>Chargement de My Bakery...</h3>
+</div>
+<section>
+    <script src="charger.js"></script>
 <img onclick="remplir_bulle()" id="fleche" src="image/next.png" title="SUIVANT" style="display: none; width: 10%; position:absolute;bottom: 10%; right: 10%">
 
 <div id="payer">
@@ -152,6 +163,6 @@ top:5px"></span>
         document.getElementById("output").innerHTML = "Si l'article te plaît et que tu le veux dans la boulangerie, appuie sur le bouton oui, sinon, appuie sur le bouton non"
 
     }
-</script>
+</script></section>
 </body>
 </html>

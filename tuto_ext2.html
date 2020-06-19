@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>My Bakery, TUTORIEL</title>
+    <link rel="stylesheet" href="chargement_elements.css">
+
 </head>
 <body style="margin: 0;
 	padding: 0;
 	height: 100%;
 	width: 100%;
 background-color: #2980B9">
+<p style="position: absolute; top: 0;">
+    Tourne l'écran dans l'autre sens
+</p>
+<div class="preload">
+    <img src="image/chat.png" alt="avion" class="avion">
+    <h3>Chargement de My Bakery...</h3>
+</div>
+<section>
+    <script src="charger.js"></script>
 <img src="image/paysage_exterieur.png" style=" position: absolute; left: 20%;top: 0em;height: 100%">
 <img id="retour" src="image/fleche.svg" style="display: none;position: absolute; bottom: 0; left: 0;width: 7em; transform: rotate(-90deg)" title="BOULANGERIE" >
 <div id="magasin" style="font-size: 2em;position: absolute; left: 29.5%; top: 30%; width: 25%; height: 41%;" onclick="location='tuto_magasin2.html'">
@@ -45,62 +56,63 @@ position:relative;
 top:5px"></span>
 
 </div>
-
-</body>
-<style>
-    #magasin:hover {
-        border: solid; border-color: white;
-    }
-</style>
+    <style>
+        #magasin:hover {
+            border: solid; border-color: white;
+        }
+    </style>
     <script>
-    function deplace () {
-        for (var i = 0; i < nbFormules; i++) {
-            if (formules[i]["left"] > largeurG) {
+        function deplace () {
+            for (var i = 0; i < nbFormules; i++) {
+                if (formules[i]["left"] > largeurG) {
 
-                document.getElementById("fleche").style.display = "block";
-                break
-            } else {
-                formules[i]["left"] += 1;
-                document.getElementById('g' + i).style.top = formules[i]["top"] + 'px';
-                document.getElementById('g' + i).style.left = formules[i]["left"] + 'px';           }        }    }
-    function deplaceSur (id) {
-        //spécifier le nombre d'objets ici
-        nbFormules = 1;
-        //la dimension de l'objet
-        objectWidth = 123;
-        objectHeight = 30;
-        //dimension de la zone
-        largeurG = parseInt(document.getElementById(id).style.width.substr(0, document.getElementById(id).style.width.length-2));
-        hauteurG = parseInt(document.getElementById(id).style.height.substr(0, document.getElementById(id).style.height.length-2));
-        largeurG -= objectWidth;
-        hauteurG -= objectHeight;
-        formules = new Array();
-        for (var i=0; i < nbFormules; i++) {
-            formules[i] = new Array();
-            formules[i]["left"] = 0;
-            formules[i]["top"] = 400;
+                    document.getElementById("fleche").style.display = "block";
+                    break
+                } else {
+                    formules[i]["left"] += 1;
+                    document.getElementById('g' + i).style.top = formules[i]["top"] + 'px';
+                    document.getElementById('g' + i).style.left = formules[i]["left"] + 'px';           }        }    }
+        function deplaceSur (id) {
+            //spécifier le nombre d'objets ici
+            nbFormules = 1;
+            //la dimension de l'objet
+            objectWidth = 123;
+            objectHeight = 30;
+            //dimension de la zone
+            largeurG = parseInt(document.getElementById(id).style.width.substr(0, document.getElementById(id).style.width.length-2));
+            hauteurG = parseInt(document.getElementById(id).style.height.substr(0, document.getElementById(id).style.height.length-2));
+            largeurG -= objectWidth;
+            hauteurG -= objectHeight;
+            formules = new Array();
+            for (var i=0; i < nbFormules; i++) {
+                formules[i] = new Array();
+                formules[i]["left"] = 0;
+                formules[i]["top"] = 400;
 
-            document.write ('<span id="g'+i+'" style="position: absolute; left: '+formules[i]["left"]+'px; top: '+formules[i]["top"]+'px">');
-            // placer ici l'objet qui tombe !
-            document.write ('<img src="image/chat.png">');
-            document.write ('</span>');
+                document.write ('<span id="g'+i+'" style="position: absolute; left: '+formules[i]["left"]+'px; top: '+formules[i]["top"]+'px">');
+                // placer ici l'objet qui tombe !
+                document.write ('<img src="image/chat.png">');
+                document.write ('</span>');
+            }
+            intervalG = window.setInterval ("deplace()", 5);
         }
-        intervalG = window.setInterval ("deplace()", 5);
-    }
 
-    deplaceSur("zone2")
-</script>
-<script>
-    function remplir_bulle() {
-        document.getElementById("bulle").style.display = "block"
-        document.getElementById("fleche").style.opacity = "0"
-        document.getElementById("output").innerHTML = "Pour revenir à la boulangerie, clique sur la flèche en bas à gauche"
-        document.getElementById("retour").style.display = "block"
-        document.getElementById("retour").addEventListener("click", function() {
-            location = "tuto_caisse_fin.html"
-        })
+        deplaceSur("zone2")
+    </script>
+    <script>
+        function remplir_bulle() {
+            document.getElementById("bulle").style.display = "block"
+            document.getElementById("fleche").style.opacity = "0"
+            document.getElementById("output").innerHTML = "Pour revenir à la boulangerie, clique sur la flèche en bas à gauche"
+            document.getElementById("retour").style.display = "block"
+            document.getElementById("retour").addEventListener("click", function() {
+                location = "tuto_caisse_fin.html"
+            })
 
         }
-</script>
+    </script>
+
+</section>
+</body>
 
 </html>

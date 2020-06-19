@@ -13,10 +13,13 @@
 
 
     p {
+        padding-top: 50%;
         background-color: #2980B9;
+        height: 100%;
         opacity: 1;
         font-size: 5em;
         text-align: center;
+        visibility: visible;
         display: block;
         margin:auto;
     }

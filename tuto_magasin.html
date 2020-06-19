@@ -4,11 +4,21 @@
     <title>My Bakery, TUTORIEL</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="menu.css" />
+    <link rel="stylesheet" href="chargement_elements.css">
+
 
 </head>
 <body style="text-align: center;background-image: url('image/fond_magasin.jpg'); ">
 
-
+<p style="position: absolute; top: 0;">
+    Tourne l'écran dans l'autre sens
+</p>
+<div class="preload">
+    <img src="image/chat.png" alt="avion" class="avion">
+    <h3>Chargement de My Bakery...</h3>
+</div>
+<section>
+    <script src="charger.js"></script>
 
 
 <img onclick="remplir_bulle()" id="fleche" src="image/next.png" title="SUIVANT" style="display: none; width: 10%; position:absolute;bottom: 10%; right: 10%">
@@ -88,12 +98,68 @@ top:5px"></span>
         <td><input type="image" src="image/magasin/lampe.png" style="width: 10em" alt="lampe murale" id="lampe" value="3" onclick="quest('lampe')"><br>3 pièces</td>
     </tr>
 </table>
+    <script>
+        //quand on clique sur l'image
+        function quest(id){
+            //on vérifie s'il y a déjà des produits d'achetés
+            if (localStorage.getItem("liste_biens") == null){
+                liste = []
+            }
+            else if (localStorage.getItem("liste_biens").length == 0){
+                liste = []
+            }
+            else {
+                //si il y a déjà des produits achetés, on les récupère dans la liste "liste"
+                liste = JSON.parse(localStorage['liste_biens'])
+            }
 
-</body>
-<script>
-    //quand on clique sur l'image
-    function quest(id){
-        //on vérifie s'il y a déjà des produits d'achetés
+            //on récupère l'élément avec l'id entré en paramètre dans quest()
+            input_tag = document.getElementById(id);
+            //on récupère son nom
+            nom = input_tag.id
+
+            //si le produit sélectionné est déjà dans la liste des produits achetés rien ne se passe
+            if (liste.includes(nom)){}
+            //si le produit sélectionné est déjà dans la liste des produits achetés on demande au joueur s'il veut acheter le nouveau produit
+            else {
+
+                //on vérifie que le joueur ai assez de pièce
+                console.log(input_tag.value)
+                console.log(parseInt(localStorage.getItem("pieces")))
+
+                if (parseInt(localStorage.getItem("pieces")) >= input_tag.value) {
+                    console.log(nom + " " + input_tag.value)
+                    localStorage.setItem("achat", nom)
+                    localStorage.setItem("prix_achat", input_tag.value)
+                    location="tuto_payer.html"
+                    location="tuto_payer.html"
+                    //une fenêtre s'ouvre
+
+                    /*
+                    fenetre secondaire
+                    var pageFille = window.open("demande_paiement.html",
+                        "NomDeFenetreDescriptif",
+                        "width=420,height=230,resizable,scrollbars=yes,status=1");
+                    //Recharge la page parente à la fermeture de la page fille
+                    pageFille.onunload = function () {
+                        if (pageFille.fermeture) {
+                            //Rechargement
+                            location.reload();
+                        }
+                    }
+                    */
+                }
+                else {
+                    alert("Tu n'as pas assez de pièce pour acheter ceci")
+                }
+            }
+        }
+
+
+        var elmts = document.getElementsByTagName("input");
+        console.log(elmts)
+        console.log(elmts.length)
+        var liste;
         if (localStorage.getItem("liste_biens") == null){
             liste = []
         }
@@ -101,162 +167,107 @@ top:5px"></span>
             liste = []
         }
         else {
-            //si il y a déjà des produits achetés, on les récupère dans la liste "liste"
             liste = JSON.parse(localStorage['liste_biens'])
         }
 
-        //on récupère l'élément avec l'id entré en paramètre dans quest()
-        input_tag = document.getElementById(id);
-        //on récupère son nom
-        nom = input_tag.id
-
-        //si le produit sélectionné est déjà dans la liste des produits achetés rien ne se passe
-        if (liste.includes(nom)){}
-        //si le produit sélectionné est déjà dans la liste des produits achetés on demande au joueur s'il veut acheter le nouveau produit
-        else {
-
-            //on vérifie que le joueur ai assez de pièce
-            console.log(input_tag.value)
-            console.log(parseInt(localStorage.getItem("pieces")))
-
-            if (parseInt(localStorage.getItem("pieces")) >= input_tag.value) {
-                console.log(nom + " " + input_tag.value)
-                localStorage.setItem("achat", nom)
-                localStorage.setItem("prix_achat", input_tag.value)
-                location="tuto_payer.html"
-                location="tuto_payer.html"
-                //une fenêtre s'ouvre
-
-                /*
-                fenetre secondaire
-                var pageFille = window.open("demande_paiement.html",
-                    "NomDeFenetreDescriptif",
-                    "width=420,height=230,resizable,scrollbars=yes,status=1");
-                //Recharge la page parente à la fermeture de la page fille
-                pageFille.onunload = function () {
-                    if (pageFille.fermeture) {
-                        //Rechargement
-                        location.reload();
-                    }
-                }
-                */
+        //produits pas achetés = gris, quand on passe souris dessus : colorés
+        for (i=0; i<elmts.length; i++) {
+            var elmt = elmts[i].id
+            if (liste.includes(elmt)){
+                console.log(elmt+" : deja acheté")
             }
             else {
-                alert("Tu n'as pas assez de pièce pour acheter ceci")
+                console.log(elmt+" : a acheter!");
+                elmts[i].style.filter = "grayscale(100%)";
+                elmts[i].style.webkitFilter = "grayscale(100%)";
+                elmts[i].addEventListener("mouseover", function( event ) {
+                    // on cible la cible de mouseleave
+                    this.style.filter = "grayscale(0%)";
+                    this.style.webkitFilter = "grayscale(0%)";
+                });
+                elmts[i].addEventListener("mouseout", function( event ) {
+                    // on cible la cible de mouseleave
+                    this.style.filter = "grayscale(100%)";
+                    this.style.webkitFilter = "grayscale(100%)";
+                });
             }
+            var nom = document.getElementsByTagName("input")[i].getAttribute("alt")
+            elmts[i].title = nom;
         }
-    }
 
 
-    var elmts = document.getElementsByTagName("input");
-    console.log(elmts)
-    console.log(elmts.length)
-    var liste;
-    if (localStorage.getItem("liste_biens") == null){
-        liste = []
-    }
-    else if (localStorage.getItem("liste_biens").length == 0){
-        liste = []
-    }
-    else {
-        liste = JSON.parse(localStorage['liste_biens'])
-    }
+    </script>
 
-    //produits pas achetés = gris, quand on passe souris dessus : colorés
-    for (i=0; i<elmts.length; i++) {
-        var elmt = elmts[i].id
-        if (liste.includes(elmt)){
-            console.log(elmt+" : deja acheté")
+
+    <script>
+        function deplace () {
+            for (var i = 0; i < nbFormules; i++) {
+                if (formules[i]["left"] > largeurG) {
+
+                    document.getElementById("fleche").style.display = "block";
+                    break
+                } else {
+                    formules[i]["left"] += 1;
+                    document.getElementById('g' + i).style.top = formules[i]["top"] + 'px';
+                    document.getElementById('g' + i).style.left = formules[i]["left"] + 'px';           }        }    }
+        function deplaceSur (id) {
+            //spécifier le nombre d'objets ici
+            nbFormules = 1;
+            //la dimension de l'objet
+            objectWidth = 123;
+            objectHeight = 30;
+            //dimension de la zone
+            largeurG = parseInt(document.getElementById(id).style.width.substr(0, document.getElementById(id).style.width.length-2));
+            hauteurG = parseInt(document.getElementById(id).style.height.substr(0, document.getElementById(id).style.height.length-2));
+            largeurG -= objectWidth;
+            hauteurG -= objectHeight;
+            formules = new Array();
+            for (var i=0; i < nbFormules; i++) {
+                formules[i] = new Array();
+                formules[i]["left"] = 0;
+                formules[i]["top"] = 400;
+
+                document.write ('<span id="g'+i+'" style="position: absolute; left: '+formules[i]["left"]+'px; top: '+formules[i]["top"]+'px">');
+                // placer ici l'objet qui tombe !
+                document.write ('<img src="image/chat.png">');
+                document.write ('</span>');
+            }
+            intervalG = window.setInterval ("deplace()", 5);
         }
-        else {
-            console.log(elmt+" : a acheter!");
-            elmts[i].style.filter = "grayscale(100%)";
-            elmts[i].style.webkitFilter = "grayscale(100%)";
-            elmts[i].addEventListener("mouseover", function( event ) {
-                // on cible la cible de mouseleave
-                this.style.filter = "grayscale(0%)";
-                this.style.webkitFilter = "grayscale(0%)";
-            });
-            elmts[i].addEventListener("mouseout", function( event ) {
-                // on cible la cible de mouseleave
-                this.style.filter = "grayscale(100%)";
-                this.style.webkitFilter = "grayscale(100%)";
-            });
-        }
-        var nom = document.getElementsByTagName("input")[i].getAttribute("alt")
-        elmts[i].title = nom;
-    }
 
+        deplaceSur("zone2")
 
-</script>
-
-
-<script>
-    function deplace () {
-        for (var i = 0; i < nbFormules; i++) {
-            if (formules[i]["left"] > largeurG) {
-
-                document.getElementById("fleche").style.display = "block";
-                break
-            } else {
-                formules[i]["left"] += 1;
-                document.getElementById('g' + i).style.top = formules[i]["top"] + 'px';
-                document.getElementById('g' + i).style.left = formules[i]["left"] + 'px';           }        }    }
-    function deplaceSur (id) {
-        //spécifier le nombre d'objets ici
-        nbFormules = 1;
-        //la dimension de l'objet
-        objectWidth = 123;
-        objectHeight = 30;
-        //dimension de la zone
-        largeurG = parseInt(document.getElementById(id).style.width.substr(0, document.getElementById(id).style.width.length-2));
-        hauteurG = parseInt(document.getElementById(id).style.height.substr(0, document.getElementById(id).style.height.length-2));
-        largeurG -= objectWidth;
-        hauteurG -= objectHeight;
-        formules = new Array();
-        for (var i=0; i < nbFormules; i++) {
-            formules[i] = new Array();
-            formules[i]["left"] = 0;
-            formules[i]["top"] = 400;
-
-            document.write ('<span id="g'+i+'" style="position: absolute; left: '+formules[i]["left"]+'px; top: '+formules[i]["top"]+'px">');
-            // placer ici l'objet qui tombe !
-            document.write ('<img src="image/chat.png">');
-            document.write ('</span>');
-        }
-        intervalG = window.setInterval ("deplace()", 5);
-    }
-
-    deplaceSur("zone2")
-
-</script>
-<script>
-    function remplir_bulle() {
-        document.getElementById("bulle").style.display = "block"
-        document.getElementById("output").innerHTML = "Quel joli magasin!"
-
-        document.getElementById("fleche").addEventListener("click", function() {
-            document.getElementById("output").innerHTML = ""
-            document.getElementById("output").innerHTML = "Il manque un peu de fleurs dans la boulangerie... Peut-être pourrions-nous en trouver ici?"
+    </script>
+    <script>
+        function remplir_bulle() {
+            document.getElementById("bulle").style.display = "block"
+            document.getElementById("output").innerHTML = "Quel joli magasin!"
 
             document.getElementById("fleche").addEventListener("click", function() {
-                document.getElementById("output").innerHTML = "Oh... mais quel beau bouquet de fleurs! <br>Il vaut une pièce, nous pouvons l'acheter!   "
-                document.getElementById("fleche_pointeur").style.display = "block"
+                document.getElementById("output").innerHTML = ""
+                document.getElementById("output").innerHTML = "Il manque un peu de fleurs dans la boulangerie... Peut-être pourrions-nous en trouver ici?"
 
                 document.getElementById("fleche").addEventListener("click", function() {
-                    document.getElementById("output").innerHTML = "Je me demande à quoi la boulangerie ressemblerait avec... Clique sur le vase pour le savoir!"
+                    document.getElementById("output").innerHTML = "Oh... mais quel beau bouquet de fleurs! <br>Il vaut une pièce, nous pouvons l'acheter!   "
                     document.getElementById("fleche_pointeur").style.display = "block"
-                    document.getElementById("fleche").style.opacity = "0"
 
-                    document.getElementById("vase").addEventListener("click", function() {
-                        quest("vase")
+                    document.getElementById("fleche").addEventListener("click", function() {
+                        document.getElementById("output").innerHTML = "Je me demande à quoi la boulangerie ressemblerait avec... Clique sur le vase pour le savoir!"
+                        document.getElementById("fleche_pointeur").style.display = "block"
+                        document.getElementById("fleche").style.opacity = "0"
+
+                        document.getElementById("vase").addEventListener("click", function() {
+                            quest("vase")
+                        })
+
                     })
-
                 })
             })
-        })
         }
-</script>
+    </script>
+</section>
+</body>
+
 
 
 </html>
