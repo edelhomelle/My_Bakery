@@ -7,6 +7,7 @@
 
 
 </head>
+
 <body style="    background-image: url('./image/fond_boulangerie.png') ; background-size: cover;
 ">
 
@@ -21,30 +22,31 @@
     <script src="charger.js"></script>
 
 <img id="retour" src="image/fleche.svg" style="display:none;position: absolute; bottom: 0; left: 0;width: 7em; transform: rotate(-90deg)" title="RETOUR" onclick="location='caisse.html'">
-<div id="zone2" style="position: absolute;  width: 900px; "> </div>
+<div id="zone2" style="position: absolute;  width: 750px; "> </div>
 
-<div id="produits" style="float: left; margin-top: 10%">
-    <table style="position:relative; background-color: brown; border:solid; border-color: brown; left: 15em">
+<div id="produits" style="left: 0;">
+    <table style="position:relative; background-color: brown; border:solid; border-color: brown; margin-top: 10%; margin-left: 10%">
         <tr style="background-color:chocolate" >
-            <td><input class="0" alt="pain"  type="image" src="image/stock/pain.png" style="width: 10em; ">
-            <td><input class="0" alt="croissant" type="image" src="image/stock/croissant.png" style="width: 10em">
-            <td><input class="0" alt="pain au chocolat" type="image" src="image/stock/pain_au_chocolat.png" style="width: 10em">
-            <td><input class="0" alt="brioche" type="image" src="image/stock/brioche.png" style="width: 10em">
+            <td><input class="0" alt="pain"  type="image" src="image/stock/pain.png" style="width: 10em; "></td>
+            <td><input class="0" alt="croissant" type="image" src="image/stock/croissant.png" style="width: 10em"></td>
+            <td><input class="0" alt="pain au chocolat" type="image" src="image/stock/pain_au_chocolat.png" style="width: 10em"></td>
+            <td><input class="0" alt="brioche" type="image" src="image/stock/brioche.png" style="width: 10em"></td>
         </tr>
         <tr style="background-color:chocolate" >
-            <td><input class="0" alt="chouquette"  type="image" src="image/stock/chouquette.png" style="width: 10em; ">
-            <td><input class="2" alt="cookie" type="image" src="image/stock/cookie.png" style="width: 10em">
-            <td><input class="4" alt="meringue" type="image" src="image/stock/meringue.png" style="width: 10em">
-            <td><input class="6" alt="gateau au chocolat" type="image" src="image/stock/gateau_au_chocolat.png" style="width: 10em">
+            <td><input class="0" alt="chouquette"  type="image" src="image/stock/chouquette.png" style="width: 10em; "></td>
+            <td><input class="2" alt="cookie" type="image" src="image/stock/cookie.png" style="width: 10em"></td>
+            <td><input class="4" alt="meringue" type="image" src="image/stock/meringue.png" style="width: 10em"></td>
+            <td><input class="6" alt="gateau au chocolat" type="image" src="image/stock/gateau_au_chocolat.png" style="width: 10em"></td>
         </tr>
         <tr style="background-color:chocolate" >
-            <td><input class="8" alt="charlotte aux fraises"  type="image" src="image/stock/charlotte.png" style="width: 10em; ">
-            <td><input class="9" alt="tarte au citron" type="image" src="image/stock/tarte_citron.png" style="width: 10em">
+            <td><input class="8" alt="charlotte aux fraises"  type="image" src="image/stock/charlotte.png" style="width: 10em; "></td>
+            <td><input class="9" alt="tarte au citron" type="image" src="image/stock/tarte_citron.png" style="width: 10em"></td>
         </tr>
     </table>
-    <img id="presentoire" src="image/presentoire_niveau0.png" style="position: absolute ; width: 30em;bottom: 1.5em; right: 0em">
 </div>
-<img onclick="remplir_bulle()" id="fleche" src="image/next.png" title="SUIVANT" style="position: absolute;display: none; width: 10%; bottom: 0%; right: 10%">
+    <img id="presentoire" src="image/presentoire_niveau0.png" style="position: absolute ; width: 30%;bottom: 1.5em; right: 0em">
+
+    <img onclick="remplir_bulle()" id="fleche" src="image/next.png" title="SUIVANT" style="position: absolute;display: none; width: 10%; bottom: 0%; right: 10%">
 <div id="bulle" style="position: absolute;
     right:30%;
     bottom: 40%;
@@ -123,7 +125,7 @@ top:5px"></span>
                     break
                 } else {
                     formules[i]["left"] += 1;
-                    document.getElementById('g' + i).style.top = formules[i]["top"] + 'px';
+                    document.getElementById('g' + i).style.bottom = formules[i]["bottom"] + 'px';
                     document.getElementById('g' + i).style.left = formules[i]["left"] + 'px';           }        }    }
         function deplaceSur (id) {
             //spécifier le nombre d'objets ici
@@ -139,8 +141,8 @@ top:5px"></span>
             formules = new Array();
             for (var i=0; i < nbFormules; i++) {
                 formules[i] = new Array();
-                formules[i]["left"] = 200;
-                formules[i]["top"] = 400;
+                formules[i]["left"] = 0;
+                formules[i]["bottom"] = 5;
 
                 document.write ('<span id="g'+i+'" style="position: absolute; left: '+formules[i]["left"]+'px; top: '+formules[i]["top"]+'px">');
                 // placer ici l'objet qui tombe !

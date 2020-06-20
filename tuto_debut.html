@@ -43,7 +43,7 @@
 <img src="./image/caisse.png" style="
 position:absolute; width: 13%; top: 70%; left: 15%; transform: scaleX(-1)">
 
-<div id="zone2" style="position: relative; width: 700px; height: 600px; "> </div>
+<div id="zone2" style="position: relative; width: 700px;  "> </div>
 
     <div id="bulle" style="position: absolute;
     right:50%;
@@ -111,7 +111,7 @@ function remplir_bulle() {
                 break
             } else {
                 formules[i]["left"] += 1;
-                document.getElementById('g' + i).style.top = formules[i]["top"] + 'px';
+                document.getElementById('g' + i).style.bottom = formules[i]["bottom"] + 'px';
                 document.getElementById('g' + i).style.left = formules[i]["left"] + 'px';           }        }    }
  function deplaceSur (id) {
         //spécifier le nombre d'objets ici
@@ -128,7 +128,7 @@ function remplir_bulle() {
         for (var i=0; i < nbFormules; i++) {
             formules[i] = new Array();
             formules[i]["left"] = 200;
-            formules[i]["top"] = 400;
+            formules[i]["bottom"] = 50;
 
             document.write ('<span id="g'+i+'" style="position: absolute; left: '+formules[i]["left"]+'px; top: '+formules[i]["top"]+'px">');
             // placer ici l'objet qui tombe !

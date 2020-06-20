@@ -22,6 +22,8 @@
 	padding: 0;
 	height: 100%;
 	width: 100%;">
+
+
 <p style="position: absolute; top: 0;">
     Tourne l'écran dans l'autre sens
 </p>
@@ -96,6 +98,22 @@ top:5px"></span>
 
 </div>
 
+    <div id="bulle_dommage" style="position: absolute;
+    top: 10%;
+   opacity: 0;text-align: center;transition: opacity 200ms ease-out, opacity 500ms ease-in;
+z-index: 1;
+">
+    <span id="output_dommage" style="font-family: ComicFighter, Georgia; /* on spécifie une autre police standard, au cas où... */
+font-weight:bold;
+font-size:5em;font-weight: 1000; text-shadow: -1px -1px white, 1px 1px #333;
+position:relative;
+color: blueviolet"></span>
+
+    </div>
+
+
+
+
 
     <div id="div_pieces" style="opacity: 0;position: absolute;bottom: 0em; right: 0em; display: inline-block; text-align: right; ">
         <span id="pieces" style="font-size: 1.5em; font-weight: 1000; bottom:30%; right: 110%; width:200%;position:absolute;"></span>
@@ -103,14 +121,18 @@ top:5px"></span>
 
     </div>
 <img id="porte0" title="SORTIR" src="image/magasin/porte_delabree.png" style="position:absolute;width: 12%; height: 40%; left: 30%; bottom: 42%; z-index: 0">
-<div id="calculette" style="display:none;position:absolute;left: 40%;background-color: orangered; width: 37%; bottom: 10em; border-radius: 40px">
+<div id="calculette" style="display:none;position:absolute;
+left: 50%;top: 60%;background-color: orangered; width: 37%; height: 10% bottom: 10em; border-radius: 40px">
     <span id="calcul" style=" width: 30%; text-align:left;display:none; margin: auto; margin-top: 0.5em; font-family: ComicFighter, Georgia; font-weight:bold;font-size:2em; "></span>
     <input type="text" id="resultat" autocomplete="off" placeholder="Ecris le résultat ici" style="width:90%;display: block; margin : auto;margin-top: 0.5em; margin-bottom: 0.5em;font-size: 1.5em; ">
     <input type="button" id="aide" style="float:right; margin-top: 0.2em;margin-bottom:0.5em; margin-right:1em;padding:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Aide">
     <input type="button" id="verif" style="float:right; margin-top: 0.2em;margin-bottom:0.5em; margin-right:1em;padding:0.5em;font-size: 1.5em; border-radius: 30px; background-color: coral; text-decoration: none; color: #333333; width: 8em;" value="Vérifier">
 </div>
 
-<script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <script>
 
 
     function remplir_bulle() {
@@ -118,67 +140,79 @@ top:5px"></span>
         document.getElementById("output").innerHTML = "Bonjour, j'aimerais <br/>2 croissants (2€)<br> et 1 brioche (4€) <br /> s'il-vous-plaît. <br/> Combien je vous dois?"
         document.getElementById("fleche").addEventListener("click", function(){
             document.getElementById("bulle_chat").style.display = "block"
+            document.getElementById("bulle_chat").style.top = "10%"
+            document.getElementById("bulle_chat").style.right = "10%"
             document.getElementById("output_chat").innerHTML = "quel calcul devons-nous faire... <br/>Une fois que tu as trouvé le résultat, <br>écris le ici et clique sur le bouton valider"
             document.getElementById("calculette").style.display = "block"
+            document.getElementById("calculette").style.right = "5%"
             document.getElementById('resultat').focus()
 
             document.getElementById("fleche_pointeur").style.display = "block";
             document.getElementById("fleche").style.opacity = 0;
+            $(document).keypress(function(event) {
 
+                if (event.charCode == 13){verifier()}})
 
         }, false);
         //document.getElementById("fleche").addEventListener("click", function(){}, false)
 
         }
+
     document.getElementById("verif").addEventListener("click", function(){
-        console.log("ok");
-        console.log(document.getElementById("resultat").value);
-        if (document.getElementById("resultat").value == 8){
-            document.getElementById("fleche_pointeur").style.opacity=0;
-            document.getElementById("output").innerHTML = "";
-            document.getElementById("bulle_chien").style.visibility = "hidden";
-            document.getElementById("chien").style.opacity = 0;
-            document.getElementById("bulle_chat").style.top = "25%";
-            document.getElementById("bulle_chat").style.right = "80%";
+       verifier()
+    }, false);
+function verifier(){
+    console.log(document.getElementById("resultat").value);
+    if (document.getElementById("resultat").value == 8){
+        document.getElementById("fleche_pointeur").style.opacity=0;
+        document.getElementById("output").innerHTML = "";
+        document.getElementById("bulle_chien").style.visibility = "hidden";
+        document.getElementById("chien").style.opacity = 0;
+        document.getElementById("bulle_chat").style.top = "25%";
+        document.getElementById("bulle_chat").style.right = "80%";
 
-            document.getElementById("output_chat").innerHTML = "";
-            document.getElementById("output_chat").innerHTML = "C'est la bonne réponse, Bravo "+localStorage.getItem("prenom")+"! Cela vous coûtera 8€ s'il-vous-plaît, Monsieur";
+        document.getElementById("output_chat").innerHTML = "";
+        document.getElementById("output_chat").innerHTML = "C'est la bonne réponse, Bravo "+localStorage.getItem("prenom")+"! Cela vous coûtera 8€ s'il-vous-plaît, Monsieur";
 
+        document.getElementById("fleche").style.opacity = 1;
+        document.getElementById("calculette").style.visibility = "hidden";
+
+        document.getElementById("fleche").addEventListener("click", function(){
             document.getElementById("fleche").style.opacity = 1;
-            document.getElementById("calculette").style.visibility = "hidden";
-
+            document.getElementById("div_pieces").style.opacity = 1;
+            document.getElementById("pieces").innerHTML = "1";
+            document.getElementById("output_chat").innerHTML = "";
+            document.getElementById("output_chat").innerHTML = "Regarde "+localStorage.getItem("prenom")+", nous avons gagné une pièce!";
+            localStorage.setItem("pieces", "1");
             document.getElementById("fleche").addEventListener("click", function(){
-                document.getElementById("fleche").style.opacity = 1;
-                document.getElementById("div_pieces").style.opacity = 1;
-                document.getElementById("pieces").innerHTML = "1";
                 document.getElementById("output_chat").innerHTML = "";
-                document.getElementById("output_chat").innerHTML = "Regarde "+localStorage.getItem("prenom")+", nous avons gagné une pièce!";
-                localStorage.setItem("pieces", "1");
-                document.getElementById("fleche").addEventListener("click", function(){
-                    document.getElementById("output_chat").innerHTML = "";
-                    document.getElementById("output_chat").innerHTML = "Les pièces permettent d'acheter de nouveaux meubles en magasin, faisons y un tour! Clique sur la porte";
-                    document.getElementById("bulle_chat").style.top = "15%"
-                    document.getElementById("fleche_pointeur").style.transform = "rotate(100deg)";
-                    document.getElementById("fleche_pointeur").style.left = "18%";
-                    document.getElementById("fleche_pointeur").style.width = "13%";
-                    document.getElementById("fleche_pointeur").style.opacity = 1;
-                    document.getElementById("porte0").id = "porte";
-                    document.getElementById("porte").addEventListener("click", function() {
-                        location = "tuto_ext.html"
-                    }, false)
-                })
-
+                document.getElementById("output_chat").innerHTML = "Les pièces permettent d'acheter de nouveaux meubles en magasin, faisons y un tour! Clique sur la porte";
+                document.getElementById("bulle_chat").style.top = "15%"
+                document.getElementById("fleche_pointeur").style.transform = "rotate(100deg)";
+                document.getElementById("fleche_pointeur").style.left = "18%";
+                document.getElementById("fleche_pointeur").style.width = "13%";
+                document.getElementById("fleche_pointeur").style.opacity = 1;
+                document.getElementById("porte0").id = "porte";
+                document.getElementById("porte").addEventListener("click", function() {
+                    location = "tuto_ext.html"
+                }, false)
             })
 
+        })
 
-            }
-        else {
-            alert("Essaye encore, appuie sur le bouton aide si besoin")
-        }
 
-    }, false);
+    }
+    else {
+        console.log("faux")
+        document.getElementById("bulle_dommage").style.opacity = 1
+        document.getElementById("output_dommage").innerHTML = "Essaye encore, appuie sur le bouton aide si besoin"
+        miseEnAttente_cacher_dommage()
+        document.getElementById('resultat').focus()
 
-    document.getElementById("aide").addEventListener("click", function(){
+    }
+
+}
+        document.getElementById("aide").addEventListener("click", function(){
 
             document.getElementById("calculette").style.zIndex=1;
 
@@ -203,8 +237,9 @@ top:5px"></span>
                 break
             } else {
                 formules[i]["left"] -= 1;
-                document.getElementById('g' + i).style.top = formules[i]["top"] + 'px';
-                document.getElementById('g' + i).style.left = formules[i]["left"] + 'px';           }        }    }
+                document.getElementById('g' + i).style.bottom = formules[i]["bottom"] + 'px';
+                document.getElementById('g' + i).style.left = formules[i]["left"] + 'px';
+            }        }    }
     function deplaceSur (id) {
         //spécifier le nombre d'objets ici
         nbFormules = 1;
@@ -220,7 +255,7 @@ top:5px"></span>
         for (var i=0; i < nbFormules; i++) {
             formules[i] = new Array();
             formules[i]["left"] = 600;
-            formules[i]["top"] = 400;
+            formules[i]["bottom"] = 10;
 
             document.write ('<span id="g'+i+'" style="position: absolute; left: '+formules[i]["left"]+'px; top: '+formules[i]["top"]+'px">');
             // placer ici l'objet qui tombe !
@@ -229,8 +264,6 @@ top:5px"></span>
         }
         intervalG = window.setInterval ("deplace()", 5);
     }
-
-
     function tombe () {
         for (var i = 0; i < nbFlocons; i++) {
             if (flocons[i]["top"] > hauteurF) {
@@ -243,7 +276,6 @@ top:5px"></span>
             document.getElementById('f'+i).style.left = flocons[i]["left"]+'px';
         }
     }
-
     function tombeSur (id) {
         //spécifier le nombre d'objets ici
         nbFlocons = 1;
@@ -272,7 +304,16 @@ top:5px"></span>
     tombeSur("zone3");
     deplaceSur("zone2")
 
-
+    function miseEnAttente_cacher_dommage()
+    {
+        //Traitement
+        setTimeout(cacher_dommage, 4000); //On attend 5 secondes avant d'exécuter la fonction
+    }
+    function cacher_dommage()
+    {
+        //Le code écrit dans cette fonction ne sera exécuté qu'au bout de 5 secondes
+        document.getElementById("bulle_dommage").style.opacity=0
+    }
 </script></section>
 </body>
 
