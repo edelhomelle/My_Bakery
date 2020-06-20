@@ -120,6 +120,7 @@ top:5px"></span>
             document.getElementById("bulle_chat").style.display = "block"
             document.getElementById("output_chat").innerHTML = "quel calcul devons-nous faire... <br/>Une fois que tu as trouvé le résultat, <br>écris le ici et clique sur le bouton valider"
             document.getElementById("calculette").style.display = "block"
+            document.getElementById('resultat').focus()
 
             document.getElementById("fleche_pointeur").style.display = "block";
             document.getElementById("fleche").style.opacity = 0;
@@ -135,7 +136,7 @@ top:5px"></span>
         if (document.getElementById("resultat").value == 8){
             document.getElementById("fleche_pointeur").style.opacity=0;
             document.getElementById("output").innerHTML = "";
-            document.getElementById("bulle_chien").style.opacity = 0;
+            document.getElementById("bulle_chien").style.visibility = "hidden";
             document.getElementById("chien").style.opacity = 0;
             document.getElementById("bulle_chat").style.top = "25%";
             document.getElementById("bulle_chat").style.right = "80%";
@@ -144,7 +145,7 @@ top:5px"></span>
             document.getElementById("output_chat").innerHTML = "C'est la bonne réponse, Bravo "+localStorage.getItem("prenom")+"! Cela vous coûtera 8€ s'il-vous-plaît, Monsieur";
 
             document.getElementById("fleche").style.opacity = 1;
-            document.getElementById("calculette").style.opacity = 0;
+            document.getElementById("calculette").style.visibility = "hidden";
 
             document.getElementById("fleche").addEventListener("click", function(){
                 document.getElementById("fleche").style.opacity = 1;
