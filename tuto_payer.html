@@ -53,10 +53,10 @@
 
 <div id="bulle" style="position: absolute;
     left:43%;
-    bottom: 35%;
+    bottom: 45%;
     background-color:white;
     text-align:center;
-    max-width: 20%;
+    max-width: 35%;
     padding: 2%;
     border:2px solid #555555;
 border-top-right-radius:80px 40px;
@@ -125,7 +125,7 @@ top:5px"></span>
                 break
             } else {
                 formules[i]["left"] += 1;
-                document.getElementById('g' + i).style.top = formules[i]["top"] + 'px';
+                document.getElementById('g' + i).style.bottom = formules[i]["bottom"] + 'px';
                 document.getElementById('g' + i).style.left = formules[i]["left"] + 'px';           }        }    }
     function deplaceSur (id) {
         //spécifier le nombre d'objets ici
@@ -142,7 +142,7 @@ top:5px"></span>
         for (var i=0; i < nbFormules; i++) {
             formules[i] = new Array();
             formules[i]["left"] = 0;
-            formules[i]["top"] = 400;
+            formules[i]["bottom"] = 30;
 
             document.write ('<span id="g'+i+'" style="position: absolute; left: '+formules[i]["left"]+'px; top: '+formules[i]["top"]+'px">');
             // placer ici l'objet qui tombe !

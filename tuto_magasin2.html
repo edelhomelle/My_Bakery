@@ -29,11 +29,11 @@
 
 <img onclick="remplir_bulle()" id="fleche" src="image/next.png" title="SUIVANT" style="display: none; width: 10%; position:absolute;bottom: 10%; right: 10%">
 
-<div id="zone2" style="position: absolute; width: 300px; height: 600px; "> </div>
+<div id="zone2" style="position: absolute; width: 170px; height: 100px; "> </div>
 
 <div id="bulle" style="position: absolute;
     left:5%;
-    bottom: 40%;
+    bottom: 45%;
     background-color:white;
     text-align:center;
     max-width: 20%;
@@ -76,23 +76,23 @@ top:5px"></span>
 <table style="background-color: chocolate; text-align: center; font-size: 2em; display: inline-block;">
 
     <tr>
-        <td><input type="image" src="image/magasin/vase_fleurs.png" style="width: 10em" alt="vase avec des fleurs" id="vase" value="1" onclick="quest('vase')"><br>1 pièce</td>
-        <td><input type="image" src="image/magasin/porte.png" style="width: 10em" alt="porte" id="porte" value="5" onclick="quest('porte')"><br>5 pièces</td>
-        <td><input type="image" src="image/magasin/fenetre.png" style="width: 10em" alt="fenetre" id="fenetre" value="5" onclick="quest('fenetre')"><br>5 pièces</td>
-        <td><input type="image" src="image/magasin/fenetre_droite.png" style="width: 10em " alt="fenetre à droite" id="fenetre_droite" value="10" onclick="quest('fenetre_droite')"><br>10 pièces</td>
+        <td><input type="image" src="image/magasin/vase_fleurs.png" style="width: 8em" alt="vase avec des fleurs" id="vase" value="1" onclick="quest('vase')"><br>1 pièce</td>
+        <td><input type="image" src="image/magasin/porte.png" style="width: 8em" alt="porte" id="porte" value="5" onclick="quest('porte')"><br>5 pièces</td>
+        <td><input type="image" src="image/magasin/fenetre.png" style="width: 8em" alt="fenetre" id="fenetre" value="5" onclick="quest('fenetre')"><br>5 pièces</td>
+        <td><input type="image" src="image/magasin/fenetre_droite.png" style="width: 8em " alt="fenetre à droite" id="fenetre_droite" value="10" onclick="quest('fenetre_droite')"><br>10 pièces</td>
 
     </tr>
     <tr>
-        <td><input type="image" src="image/magasin/tapis.png" style="width: 10em" alt="tapis" id="tapis" value="5" onclick="quest('tapis')"><br>5 pièces</td>
-        <td><input type="image" src="image/magasin/table_salon.png" style="width: 10em " alt="table de café" id="table_salon" value="10" onclick="quest('table_salon')"><br>10 pièces</td>
-        <td><input type="image" src="image/magasin/cloche.png" style="width: 10em" alt="cloche" id="cloche" value="5" onclick="quest('cloche')"><br>5 pièces</td>
-        <td><input type="image" src="image/magasin/canape.png" style="width: 10em" alt="canapé" id="canape" value="15" onclick="quest('canape')"><br>15 pièces</td>
+        <td><input type="image" src="image/magasin/tapis.png" style="width: 8em" alt="tapis" id="tapis" value="5" onclick="quest('tapis')"><br>5 pièces</td>
+        <td><input type="image" src="image/magasin/table_salon.png" style="width: 8em " alt="table de café" id="table_salon" value="10" onclick="quest('table_salon')"><br>10 pièces</td>
+        <td><input type="image" src="image/magasin/cloche.png" style="width: 8em" alt="cloche" id="cloche" value="5" onclick="quest('cloche')"><br>5 pièces</td>
+        <td><input type="image" src="image/magasin/canape.png" style="width: 8em" alt="canapé" id="canape" value="15" onclick="quest('canape')"><br>15 pièces</td>
     </tr>
     <tr>
-        <td><input type="image" src="image/magasin/fontaine.png" style="width: 10em" alt="fontaine" id="fontaine" value="10" onclick="quest('fontaine')"><br>10 pièces</td>
-        <td><input type="image" src="image/magasin/lavande.png" style="width: 10em" alt="panier de lavande" id="lavande" value="4" onclick="quest('lavande')"><br>4 pièces</td>
-        <td><input type="image" src="image/magasin/tableau.png" style="width: 10em " alt="tableau" id="tableau" value="20" onclick="quest('tableau')"><br>20 pièces</td>
-        <td><input type="image" src="image/magasin/lampe.png" style="width: 10em" alt="lampe murale" id="lampe" value="3" onclick="quest('lampe')"><br>3 pièces</td>
+        <td><input type="image" src="image/magasin/fontaine.png" style="width: 8em" alt="fontaine" id="fontaine" value="10" onclick="quest('fontaine')"><br>10 pièces</td>
+        <td><input type="image" src="image/magasin/lavande.png" style="width: 8em" alt="panier de lavande" id="lavande" value="4" onclick="quest('lavande')"><br>4 pièces</td>
+        <td><input type="image" src="image/magasin/tableau.png" style="width: 8em " alt="tableau" id="tableau" value="20" onclick="quest('tableau')"><br>20 pièces</td>
+        <td><input type="image" src="image/magasin/lampe.png" style="width: 8em" alt="lampe murale" id="lampe" value="3" onclick="quest('lampe')"><br>3 pièces</td>
     </tr>
 </table>
 
@@ -190,7 +190,7 @@ top:5px"></span>
                     break
                 } else {
                     formules[i]["left"] += 1;
-                    document.getElementById('g' + i).style.top = formules[i]["top"] + 'px';
+                    document.getElementById('g' + i).style.bottom = formules[i]["bottom"] + 'px';
                     document.getElementById('g' + i).style.left = formules[i]["left"] + 'px';           }        }    }
         function deplaceSur (id) {
             //spécifier le nombre d'objets ici
@@ -207,7 +207,7 @@ top:5px"></span>
             for (var i=0; i < nbFormules; i++) {
                 formules[i] = new Array();
                 formules[i]["left"] = 0;
-                formules[i]["top"] = 400;
+                formules[i]["bottom"] = 80;
 
                 document.write ('<span id="g'+i+'" style="position: absolute; left: '+formules[i]["left"]+'px; top: '+formules[i]["top"]+'px">');
                 // placer ici l'objet qui tombe !
