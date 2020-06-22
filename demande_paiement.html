@@ -44,13 +44,13 @@
 <input type="button" value="non" id="non">
 </div>
 <div id="deco">
-    <img id="vase_fleurs" src="image/magasin/vase_fleurs.png" style="position:absolute;width: 11%; left: 18%; bottom: 35%">
+    <img id="vase_fleurs" src="image/magasin/vase_fleurs.png" style="display:none;position:absolute;width: 11%; left: 18%; bottom: 35%">
     <img id="porte" src="image/magasin/porte_delabree.png" style="position:absolute;width: 12%; height: 40%; left: 30%; bottom: 42%">
     <img id="fenetre" src="image/magasin/fenetre_delabree.png" style="position:absolute;width: 12%; right: 42%; top: 24%">
     <img id="fenetre_droite" src="image/magasin/fenetre_droite_delabree.png" style="position:absolute;width: 7%; right: 15%; top: 20%">
     <img id="cloche" src="image/magasin/cloche.png" style="display:none;width: 3%; position: absolute; top: 20%; left: 35%;transform: scaleX(-1); transform: rotate(30deg)">
     <img id="lampe" src="image/magasin/lampe.png" style="display:none;width: 6%; position: absolute; top: 18%; left: 5%;">
-    <img id="canape" src="image/magasin/canape.png" style="position: absolute;    width: 21%; top: 35%; right: 33%">
+    <img id="canape" src="image/magasin/canape.png" style="display:none;position: absolute;    width: 21%; top: 35%; right: 33%">
     <img id="fontaine" src="image/magasin/fontaine.png" style="display:none;width: 15%; position: absolute; top: 45%; right: 20%">
     <img id="lavande" src="image/magasin/lavande.png"     style="display:none;transform: scaleX(-1);width: 10%; position: absolute; top: 60%; right: 20%">
     <img id="table_salon" src="image/magasin/table_salon.png" hidden style="position: absolute;    width: 18%; top: 70%; right: 25%">
@@ -66,6 +66,7 @@
             var new_liste = []
             new_liste[0] = nouveau_produit
             localStorage["liste_biens"] = JSON.stringify(new_liste)
+
             var new_stored_datas = JSON.parse(localStorage['liste_biens'])
             console.log(new_stored_datas)
 
@@ -80,10 +81,14 @@
         }
         else {
             var stored_datas = JSON.parse(localStorage['liste_biens'])
+            console.log("var stored_datas = JSON.parse(localStorage['liste_biens']) : "+stored_datas)
             console.log(stored_datas.length)
             var new_liste = stored_datas
             new_liste[stored_datas.length] = nouveau_produit
+            console.log(new_liste[stored_datas.length])
+            //nouvelle liste dans localstorage
             localStorage["liste_biens"] = JSON.stringify(new_liste)
+            console.log("JSON.stringify(stored_datas) : "+JSON.stringify(new_liste))
             var new_stored_datas = JSON.parse(localStorage['liste_biens'])
             console.log(new_stored_datas)
 
@@ -91,7 +96,7 @@
         var reste_pieces = parseInt(localStorage.getItem("pieces")) - parseInt(localStorage.getItem("prix_achat"))
         console.log(reste_pieces);
         localStorage.setItem("pieces", reste_pieces)
-        location = "magasin.html"
+        //location = "magasin.html"
        /*
         fenetre secondaire
         localStorage.setItem("piece", reste_pieces)
