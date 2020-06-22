@@ -1,9 +1,4 @@
 
-document.querySelector("iframe").addEventListener("load", function() {
-
-    alert(this.nodeName);
-
-});
 
 window.addEventListener('load', () =>  {
 
