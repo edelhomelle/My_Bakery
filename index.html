@@ -7,6 +7,9 @@
     <meta name="author" content="Eloïse DELHOMELLE">
     <meta name="description" content="Projet individuel">
     <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta http-equiv="Cache-control" content="public" max-age="31536000">
+
+
 <link rel="stylesheet" href="chargement_elements.css">
 </head>
 
@@ -28,37 +31,85 @@
     <img src="image/chat.png" alt="avion" class="avion">
     <h3>Chargement de My Bakery...</h3>
 
-    <iframe  hidden src="caisse.html"></iframe>
-    <iframe  hidden src="exterieur.html"></iframe>
-    <iframe  hidden src="magasin.html"></iframe>
-    <iframe  hidden src="stock.html"></iframe>
-    <iframe  hidden src="creerPartie.html"></iframe>
-    <iframe  hidden src="debut_jeu.html"></iframe>
-    <iframe  hidden src="demande_paiement.html"></iframe>
-    <iframe  hidden src="demande_tuto_ou_non.html"></iframe>
-    <iframe  hidden src="demandeEnregistrement_creer.html"></iframe>
-    <iframe  hidden src="demandeEnregistrement_importer.html"></iframe>
-    <iframe  hidden src="recuperer_compte.html"></iframe>
-    <iframe  hidden src="supprimer_joueur.html"></iframe>
-    <iframe  hidden src="tuto_debut.html"></iframe>
-    <iframe  hidden src="tuto_caisse_fin.html"></iframe>
-    <iframe  hidden src="tuto_debut2.html"></iframe>
-    <iframe  hidden src="tuto_debut3.html"></iframe>
-    <iframe  hidden src="tuto_ext.html"></iframe>
-    <iframe  hidden src="tuto_ext2.html"></iframe>
-    <iframe  hidden src="tuto_magasin.html"></iframe>
-    <iframe  hidden src="tuto_magasin2.html"></iframe>
-    <iframe  hidden src="tuto_payer.html"></iframe>
-    <iframe  hidden src="tuto_stock.html"></iframe>
 
 </div>
+
 <p style="position: absolute; top: 0;">
     Tourne l'écran dans l'autre sens
 </p>
 <section>
     <h1>Arrived</h1>
+    <div id="imgimg"></div>
+    <div class="hidden">
+        <script type="text/javascript">
+            <!--//--><![CDATA[//><!--
+            var images = new Array()
+            function preload() {
+                for (i = 0; i < preload.arguments.length; i++) {
+                    images[i] = new Image()
+                    images[i].src = preload.arguments[i]
+                    console.log(images[i].src)
+                    var img = document.createElement("img");
+                    img.src = images[i].src
+                    document.getElementById("imgimg").appendChild(img)
+
+                }
+
+
+            }
+            preload(
+                "image/chat.png",
+                "image/chien.png",
+                "image/fleche.svg",
+                "image/fleche_pointeur.svg",
+                "image/fond_boulangerie.png",
+                "image/fond_magasin.jpg",
+                "image/fondfinal.png",
+                "image/next.png",
+                "image/paysage_exterieur.png",
+                "image/presentoire_niveau0.png",
+                "image/presentoire_niveau2.png",
+                "image/presentoire_niveau4.png",
+                "image/presentoire_niveau6.png",
+                "image/presentoire_niveau8.png",
+                "image/presentoire_niveau9.png",
+                "image/sous.png",
+                "image/t0.png",
+                "image/t1.png",
+                "image/t2.png",
+                "image/t3.png",
+                "image/magasin/vase_fleurs.png",
+                "image/magasin/tapis.png",
+                "image/magasin/tableau.png",
+                "image/magasin/table_salon.png",
+                "image/magasin/porte_delabree.png",
+                "image/magasin/porte.png",
+                "image/magasin/lavande.png",
+                "image/magasin/lampe.png",
+                "image/magasin/fontaine.png",
+                "image/magasin/fenetre_droite_delabree.png",
+                "image/magasin/fenetre_droite.png",
+                "image/magasin/fenetre_delabree.png",
+                "image/magasin/fenetre.png",
+                "image/magasin/cloche.png",
+                "image/magasin/canape.png",
+                "image/stock/brioche.png",
+                "image/stock/charlotte.png",
+                "image/stock/chouquette.png",
+                "image/stock/cookie.png",
+                "image/stock/croissant.png",
+                "image/stock/gateau_au_chocolat.png",
+                "image/stock/macaron.png",
+                "image/stock/meringue.png",
+                "image/stock/pain.png",
+                "image/stock/pain_au_chocolat.png",
+                "image/stock/tarte_citron.png",
+            )
+            //--><!]]>
+        </script>
+    </div>
     <script src="chargement_elements.js"></script>
-    <script src="choix_init.js" style="transition: opacity 0.2s ease">    </script>
+   <!-- <script src="choix_init.js" style="transition: opacity 0.2s ease">    </script>-->
 </section>
 
 </body>
