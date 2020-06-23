@@ -9,7 +9,36 @@
     <meta http-equiv="Cache-control" content="public" max-age="31536000">
     <link rel="stylesheet" href="chargement_elements.css">
     <link rel="stylesheet" href="menu.css">
+    <style>.ml9 {
+        position: absolute;
+        top: 50%; left: 50%;  transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
 
+        text-align: center;
+    }
+
+    .ml9 .text-wrapper {
+        position: relative;
+        display: inline-block;
+        padding-top: 0.2em;
+        margin: auto;
+        padding-bottom: 0.1em;
+        overflow: hidden;
+    }
+
+    .ml9 .letter {
+
+        transform-origin: 50% 100%;
+        display: inline-block;
+        line-height: 1em;
+        font-size: 5em; font-weight: 1000; text-shadow: -1px -1px white, 1px 1px #333;  color: cadetblue;
+    }
+    #porte:hover,  #presentoire:hover{
+        border:solid;
+        border-color: coral;
+        padding: 0.1em;
+    }
+
+    </style>
 
 
 </head>
@@ -924,35 +953,6 @@ color: blueviolet;
 
 
 
-<style>.ml9 {
-    position: absolute;
-    top: 50%; left: 50%;  transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
 
-    text-align: center;
-}
-
-.ml9 .text-wrapper {
-    position: relative;
-    display: inline-block;
-    padding-top: 0.2em;
-margin: auto;
-    padding-bottom: 0.1em;
-    overflow: hidden;
-}
-
-.ml9 .letter {
-
-    transform-origin: 50% 100%;
-    display: inline-block;
-    line-height: 1em;
-    font-size: 5em; font-weight: 1000; text-shadow: -1px -1px white, 1px 1px #333;  color: cadetblue;
-}
-#porte:hover,  #presentoire:hover{
-    border:solid;
-    border-color: coral;
-    padding: 0.1em;
-}
-
-</style>
 
 </html>
