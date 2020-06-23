@@ -50,7 +50,7 @@ margin: 0;
 	width: 100%;">
 
 <div class="preload">
-    <img src="image/chat.png" alt="avion" class="avion" style="position:absolute;">
+    <img src="image/chat.png" alt="chargement_chat" class="avion" style="position:absolute;">
     <h3 style="position:absolute;">Chargement de My Bakery...</h3>
 
 </div>
@@ -61,7 +61,7 @@ margin: 0;
 <section>
     <script src="charger.js"></script>
 
-    <img src="image/fondfinal.png" style=" position: absolute; top: 0; width:100%;height: 100%;">
+    <img src="image/fondfinal.png" alt="fond_boulangerie" style=" position: absolute; top: 0; width:100%;height: 100%;">
     <div class="dropdown" style="top:2px; left:2px;position: absolute">
         <button onclick="location='index.html'" class="dropbtn" style="background-color: orange; padding:0.5em 1em 0.5em 1em; font-size: 2em; border-radius: 1em; color: #555555" >MENU</button>
         <div id="myDropdown" class="dropdown-content">
@@ -75,18 +75,18 @@ margin: 0;
         var cliquer_pour_etre_aide = false;
     </script>
     <div id="deco">
-        <img id="vase_fleurs" src="image/magasin/vase_fleurs.png" style="display:none;position:absolute;width: 11%; left: 18%; bottom: 35%">
-        <img id="porte" title="SORTIR" onclick="location='exterieur.html'" src="image/magasin/porte_delabree.png" style="position:absolute;width: 12%; height: 40%; left: 30%; bottom: 42%">
-        <img id="fenetre" src="image/magasin/fenetre_delabree.png" style="position:absolute;width: 12%; right: 42%; top: 24%">
-        <img id="fenetre_droite" src="image/magasin/fenetre_droite_delabree.png" style="position:absolute;width: 7%; right: 15%; top: 20%">
-        <img id="cloche" src="image/magasin/cloche.png" style="display:none;width: 3%; position: absolute; top: 11%; left: 35%;transform: scaleX(-1); transform: rotate(30deg)">
-        <img id="canape" src="image/magasin/canape.png" style="display:none;position: absolute;    width: 21%; top: 35%; right: 33%">
-        <img id="fontaine" src="image/magasin/fontaine.png" style="display:none;width: 15%; position: absolute; top: 40%; right: 19%">
-        <img id="lavande" src="image/magasin/lavande.png"     style="display:none;transform: scaleX(-1);width: 10%; position: absolute; top: 55%; right: 18%">
-        <img id="table_salon" src="image/magasin/table_salon.png"  hidden style="position: absolute;    width: 18%; top: 65%; right: 22%">
-        <img id="tableau" src="image/magasin/tableau.png" style="display: none;width: 8%; position: absolute; top: 8%; right: 33%">
-        <img id="lampe" src="image/magasin/lampe.png" style="display:none;width: 6%; position: absolute; top: 18%; left: 5%;">
-        <img id="tapis"  src="image/tapis.png" style="display:none;position: absolute ;width: 15%; left: 27%; top: 47%">
+        <img alt = "vase_fleurs" id="vase_fleurs" src="image/magasin/vase_fleurs.png" style="display:none;position:absolute;width: 11%; left: 18%; bottom: 35%">
+        <img alt = "porte" id="porte" title="SORTIR" onclick="location='exterieur.html'" src="image/magasin/porte_delabree.png" style="position:absolute;width: 12%; height: 40%; left: 30%; bottom: 42%">
+        <img alt = "fenetre" id="fenetre" src="image/magasin/fenetre_delabree.png" style="position:absolute;width: 12%; right: 42%; top: 24%">
+        <img alt = "fenetre_droite" id="fenetre_droite" src="image/magasin/fenetre_droite_delabree.png" style="position:absolute;width: 7%; right: 15%; top: 20%">
+        <img alt = "cloche" id="cloche" src="image/magasin/cloche.png" style="display:none;width: 3%; position: absolute; top: 11%; left: 35%;transform: scaleX(-1); transform: rotate(30deg)">
+        <img alt = "canape" id="canape" src="image/magasin/canape.png" style="display:none;position: absolute;    width: 21%; top: 35%; right: 33%">
+        <img alt = "fontaine" id="fontaine" src="image/magasin/fontaine.png" style="display:none;width: 15%; position: absolute; top: 40%; right: 19%">
+        <img alt = "lavande" id="lavande" src="image/magasin/lavande.png"     style="display:none;transform: scaleX(-1);width: 10%; position: absolute; top: 55%; right: 18%">
+        <img alt = "table_salon" id="table_salon" src="image/magasin/table_salon.png"  hidden style="position: absolute;    width: 18%; top: 65%; right: 22%">
+        <img alt = "tableau" id="tableau" src="image/magasin/tableau.png" style="display: none;width: 8%; position: absolute; top: 8%; right: 33%">
+        <img alt = "lampe" id="lampe" src="image/magasin/lampe.png" style="display:none;width: 6%; position: absolute; top: 18%; left: 5%;">
+        <img alt =  "tapis" id="tapis"  src="image/tapis.png" style="display:none;position: absolute ;width: 15%; left: 27%; top: 47%">
         <img onclick="location='stock.html'" title="VOIR MES PRODUITS" id="presentoire" src="image/presentoire_niveau0.png" style="position: absolute ;width: 15%;  top: 50%; transform: scaleX(-1)">
     </div>
 
@@ -112,11 +112,11 @@ right:50%;
 
 "></span>
         </div>
-        <img src="./image/chien.PNG" style="
+        <img alt = "chien_client" src="./image/chien.PNG" style="
 position:absolute; width: 10%; top:54%; left:19%">
-        <img src="./image/caisse.png" style="
+        <img alt = "caisse" src="./image/caisse.png" style="
 position:absolute; width: 13%; top: 70%; left: 15%; transform: scaleX(-1)">
-        <img src="./image/chat.png" style="
+        <img alt="chat" src="./image/chat.png" style="
 position: absolute; width: 12%; left: 10%; top: 72%;">
     </div>
     <div id="bulle_dommage" style="margin-top: 10%;opacity: 0;text-align: center;transition: opacity 200ms ease-out, opacity 500ms ease-in">
@@ -133,7 +133,7 @@ color: blueviolet;
     <div style="position: absolute; top: 1em;right: 1em;text-align: center;padding:0.5em; font-size: 2em; border-radius: 30px; background-color: orangered;">
         <div id="score" style=" height: 1em; font-weight: 1000;"></div>
 
-        <input type="image"  style="margin-top: 0.5em;width: 10em;" id="etoiles">
+        <input type="image" alt="etoiles_bonne_reponse" style="margin-top: 0.5em;width: 10em;" id="etoiles">
     </div>
     <div id="calculette" style="z-index:1;position:absolute;left: 50%;background-color: orangered; width: 37%; bottom: 10em; border-radius: 40px">
         <span id="calcul" style=" width: 30%; text-align:left;display:none; margin: auto; margin-top: 0.5em; font-family: ComicFighter, Georgia; font-weight:bold;font-size:1.5em; "></span>
@@ -150,7 +150,7 @@ color: blueviolet;
 
     <div style="position: absolute;bottom: 0em; right: 0em; display: inline-block; text-align: right; ">
         <span id="pieces" style="font-size: 2em; font-weight: 1000; bottom:30%; right: 110%; width:200%;position:absolute;"></span>
-        <input type="image" src="image/sous.png" style="width: 10em; ">
+        <input type="image" alt="sous" src="image/sous.png" style="width: 10em; ">
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
