@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Ma boulangerie</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="boulangerie.css" />
-    <!--    <script type="text/javascript" src="./boulangerie.js"> </script>-->
     <meta name="author" content="Eloïse DELHOMELLE">
-    <meta name="description" content="PI">
+    <meta name="description" content="Projet individuel">
     <meta name="keywords" content="HTML,CSS,XML,JavaScript">
-    <link rel="stylesheet" href="chargement_elements.css">
     <meta http-equiv="Cache-control" content="public" max-age="31536000">
+    <link rel="stylesheet" type="text/css" href="boulangerie.css" />
+    <link rel="stylesheet" href="chargement_elements.css">
 
 </head>
 
@@ -29,19 +27,9 @@
 <script>
     const input = document.querySelector('input[type="file')
     input.addEventListener('change', function (e) {
-        console.log(input.files)
+        console.log("input.files : "+input.files)
         const reader = new FileReader()
-        reader.onload = function () {
-            console.log(reader.result)
-            data = reader.result
-            console.log(data)
-            recup_attributs_json =  JSON.stringify(data);
-            console.log(recup_attributs_json)
-            recup = JSON.parse(recup_attributs_json)
-            console.log(recup)
-            console.log(recup_attributs_json.prenom)
 
-        }
         reader.onload = receivedText;
 
         reader.readAsText(input.files[0])
@@ -50,21 +38,22 @@
         let lines = e.target.result;
         console.log(lines)
         data =  JSON.stringify(lines);
-        console.log(data)
+        console.log("JSON.stringify(lines) : "+data)
         newArr = JSON.parse(lines);
         // var newArr = JSON.parse(lines);
-        console.log(newArr)
-        console.log(newArr.prenom)
-        console.log(newArr.niveau)
-        console.log(newArr.tentative)
-        console.log(newArr.bonne_reponse)
+        console.log("newArr : "+newArr)
+        console.log("newArr.prenom : " +newArr.prenom)
+        console.log("newArr.niveau : "+newArr.niveau)
+        console.log("newArr.tentative : "+newArr.tentative)
+        console.log("newArr.bonne_reponse : "+newArr.bonne_reponse)
+        console.log("newArr.pieces : "+newArr.pieces)
+        console.log("newArr.liste_biens : "+newArr.liste_biens)
         localStorage.setItem('prenom', newArr.prenom)
         localStorage.setItem('niveau', newArr.niveau)
         localStorage.setItem('tentative', newArr.tentative)
         localStorage.setItem('bonne_reponse', newArr.bonne_reponse)
         localStorage.setItem('pieces', newArr.pieces)
-        location = "debut_jeu.html"
-
+        //location = "debut_jeu.html"
 
     }
 

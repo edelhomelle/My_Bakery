@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" style="">
 <head>
-    <title>My Bakey _ caisse</title>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <title>Ma boulangerie</title>
+    <meta name="author" content="Eloïse DELHOMELLE">
+    <meta name="description" content="Projet individuel">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta http-equiv="Cache-control" content="public" max-age="31536000">
     <link rel="stylesheet" href="chargement_elements.css">
     <link rel="stylesheet" href="menu.css">
-    <meta http-equiv="Cache-control" content="public" max-age="31536000">
 
 
 
@@ -51,10 +54,10 @@ margin: 0;
         <img id="canape" src="image/magasin/canape.png" style="display:none;position: absolute;    width: 21%; top: 35%; right: 33%">
         <img id="fontaine" src="image/magasin/fontaine.png" style="display:none;width: 15%; position: absolute; top: 40%; right: 19%">
         <img id="lavande" src="image/magasin/lavande.png"     style="display:none;transform: scaleX(-1);width: 10%; position: absolute; top: 55%; right: 18%">
-        <img id="table_salon" src="image/magasin/table_salon.png" hidden style="position: absolute;    width: 18%; top: 65%; right: 22%">
+        <img id="table_salon" src="image/magasin/table_salon.png"  hidden style="position: absolute;    width: 18%; top: 65%; right: 22%">
         <img id="tableau" src="image/magasin/tableau.png" style="display: none;width: 8%; position: absolute; top: 8%; right: 33%">
         <img id="lampe" src="image/magasin/lampe.png" style="display:none;width: 6%; position: absolute; top: 18%; left: 5%;">
-        <img id="tapis"  src="image/magasin/tapis.png" style="display:none;position: absolute ;width: 15%; left: 27%; top: 47%">
+        <img id="tapis"  src="image/tapis.png" style="display:none;position: absolute ;width: 15%; left: 27%; top: 47%">
         <img onclick="location='stock.html'" title="VOIR MES PRODUITS" id="presentoire" src="image/presentoire_niveau0.png" style="position: absolute ;width: 15%;  top: 50%; transform: scaleX(-1)">
     </div>
 
@@ -303,7 +306,10 @@ color: blueviolet;
                         //on enregistre le nouveau résultat dans la liste
                         liste_calculs_deja_poses[liste_calculs_deja_poses.length]=resultat_calcul
                         //on remplace la valeur de localStorage par la nouvelle liste
+                        console.log(liste_calculs_deja_poses)
                         localStorage["liste_calculs_deja_poses"] = JSON.stringify(liste_calculs_deja_poses)
+                        console.log("JSON.stringify(liste_calculs_deja_poses) : "+JSON.stringify(liste_calculs_deja_poses))
+
                         //on récupère le nouveau localstorage de liste_calculs_deja_poses
                         var new_stored_datas = JSON.parse(localStorage['liste_calculs_deja_poses'])
                         //on l'affiche

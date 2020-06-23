@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" style="background-image: url('image/fondfinal.png'); background-size: cover">
 <head>
-    <title>My Bakery _ magasin</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="chargement_elements.css">
+    <meta charset="UTF-8">
+    <title>Ma boulangerie</title>
+    <meta name="author" content="Eloïse DELHOMELLE">
+    <meta name="description" content="Projet individuel">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
     <meta http-equiv="Cache-control" content="public" max-age="31536000">
-
+    <link rel="stylesheet" href="chargement_elements.css">
 </head>
 <style>
     span {
@@ -66,7 +68,6 @@
             var new_liste = []
             new_liste[0] = nouveau_produit
             localStorage["liste_biens"] = JSON.stringify(new_liste)
-
             var new_stored_datas = JSON.parse(localStorage['liste_biens'])
             console.log(new_stored_datas)
 
@@ -96,7 +97,7 @@
         var reste_pieces = parseInt(localStorage.getItem("pieces")) - parseInt(localStorage.getItem("prix_achat"))
         console.log(reste_pieces);
         localStorage.setItem("pieces", reste_pieces)
-        //location = "magasin.html"
+        location = "magasin.html"
        /*
         fenetre secondaire
         localStorage.setItem("piece", reste_pieces)
