@@ -400,7 +400,7 @@ color: blueviolet;
                                     }
 
                                     // random : client donne trop d'argent
-                                    random_remboursement = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+                                    random_remboursement = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
                                     if (random_remboursement == 1){
                                         document.getElementById("calculette").style.opacity = 0;
                                         document.getElementById("calculette").style.zIndex = 0;
@@ -412,38 +412,38 @@ color: blueviolet;
                                         document.getElementById('resultat_remboursement').focus()
                                         if (bon_resultat < 10){
                                             billet = 10;
-                                            document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 10€, combien me devez-vous?"
+                                            document.getElementById("output").innerHTML = bon_resultat+"€ hum..."+`<br />` + " Je n'ai qu'un billet de 10€,"+`<br />` + "combien me devez-vous?"
                                         }
                                         else if (bon_resultat < 20){
                                             billet = 20;
-                                            document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 20€, combien me devez-vous?"
+                                            document.getElementById("output").innerHTML = bon_resultat+"€ hum... "+`<br />` + "Je n'ai qu'un billet de 20€,"+`<br />` + " combien me devez-vous?"
                                         }
                                         else if (bon_resultat < 30){
                                             billet = 30;
-                                            document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... J'ai un billet de 10€ et un autre de 20, combien me devez-vous?"
+                                            document.getElementById("output").innerHTML = bon_resultat+"€ hum..."+`<br />` + " J'ai un billet de 10€"+`<br />` + " et un autre de 20,"+`<br />` + " combien me devez-vous?"
                                         }
                                         else if (bon_resultat < 40){
                                             billet = 40;
-                                            document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... J'ai deux billets de 20€, combien me devez-vous?"
+                                            document.getElementById("output").innerHTML = bon_resultat+"€ hum..."+`<br />` + " J'ai deux billets de 20€,"+`<br />` + " combien me devez-vous?"
                                         }
                                         else if (bon_resultat < 50){
                                             billet = 50;
-                                            document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 50€, combien me devez-vous?"
+                                            document.getElementById("output").innerHTML = bon_resultat+"€ hum... "+`<br />` + "Je n'ai qu'un billet de 50€,"+`<br />` + " combien me devez-vous?"
 
                                         }
                                         else if (bon_resultat < 100){
                                             billet = 100;
-                                            document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 100€, combien me devez-vous?"
+                                            document.getElementById("output").innerHTML = bon_resultat+"€ hum... "+`<br />` + "Je n'ai qu'un billet de 100€,"+`<br />` + " combien me devez-vous?"
 
                                         }
                                         else if (bon_resultat < 200){
                                             billet = 200;
-                                            document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 200€, combien me devez-vous?"
+                                            document.getElementById("output").innerHTML = bon_resultat+"€ hum... "+`<br />` + "Je n'ai qu'un billet de 200€,"+`<br />` + " combien me devez-vous?"
 
                                         }
                                         else if (bon_resultat < 500){
                                             billet = 500;
-                                            document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 500€, combien me devez-vous?"
+                                            document.getElementById("output").innerHTML = bon_resultat+"€ hum... "+`<br />` + "Je n'ai qu'un billet de 500€,"+`<br />` + " combien me devez-vous?"
 
                                         }
                                         console.log(billet);
@@ -575,7 +575,7 @@ color: blueviolet;
                                 }
 
                                 // random : client donne trop d'argent
-                                random_remboursement = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+                                random_remboursement = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
                                 if (random_remboursement == 1){
                                     document.getElementById("calculette").style.opacity = 0;
                                     document.getElementById("calculette").style.zIndex = 0;
@@ -587,38 +587,38 @@ color: blueviolet;
                                     document.getElementById('resultat_remboursement').focus()
                                     if (bon_resultat < 10){
                                         billet = 10;
-                                        document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 10€, combien me devez-vous?"
+                                        document.getElementById("output").innerHTML = bon_resultat+"€ hum..."+`<br />` + " Je n'ai qu'un billet de 10€,"+`<br />` + "combien me devez-vous?"
                                     }
                                     else if (bon_resultat < 20){
                                         billet = 20;
-                                        document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 20€, combien me devez-vous?"
+                                        document.getElementById("output").innerHTML = bon_resultat+"€ hum... "+`<br />` + "Je n'ai qu'un billet de 20€,"+`<br />` + " combien me devez-vous?"
                                     }
                                     else if (bon_resultat < 30){
                                         billet = 30;
-                                        document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... J'ai un billet de 10€ et un autre de 20, combien me devez-vous?"
+                                        document.getElementById("output").innerHTML = bon_resultat+"€ hum..."+`<br />` + " J'ai un billet de 10€"+`<br />` + " et un autre de 20,"+`<br />` + " combien me devez-vous?"
                                     }
                                     else if (bon_resultat < 40){
                                         billet = 40;
-                                        document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... J'ai deux billets de 20€, combien me devez-vous?"
+                                        document.getElementById("output").innerHTML = bon_resultat+"€ hum..."+`<br />` + " J'ai deux billets de 20€,"+`<br />` + " combien me devez-vous?"
                                     }
                                     else if (bon_resultat < 50){
                                         billet = 50;
-                                        document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 50€, combien me devez-vous?"
+                                        document.getElementById("output").innerHTML = bon_resultat+"€ hum... "+`<br />` + "Je n'ai qu'un billet de 50€,"+`<br />` + " combien me devez-vous?"
 
                                     }
                                     else if (bon_resultat < 100){
                                         billet = 100;
-                                        document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 100€, combien me devez-vous?"
+                                        document.getElementById("output").innerHTML = bon_resultat+"€ hum... "+`<br />` + "Je n'ai qu'un billet de 100€,"+`<br />` + " combien me devez-vous?"
 
                                     }
                                     else if (bon_resultat < 200){
                                         billet = 200;
-                                        document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 200€, combien me devez-vous?"
+                                        document.getElementById("output").innerHTML = bon_resultat+"€ hum... "+`<br />` + "Je n'ai qu'un billet de 200€,"+`<br />` + " combien me devez-vous?"
 
                                     }
                                     else if (bon_resultat < 500){
                                         billet = 500;
-                                        document.getElementById("bulle").innerHTML = bon_resultat+"€ hum... Je n'ai qu'un billet de 500€, combien me devez-vous?"
+                                        document.getElementById("output").innerHTML = bon_resultat+"€ hum... "+`<br />` + "Je n'ai qu'un billet de 500€,"+`<br />` + " combien me devez-vous?"
 
                                     }
                                     console.log(billet);
