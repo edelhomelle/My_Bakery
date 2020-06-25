@@ -51,7 +51,7 @@
 <section>
     <script src="charger.js"></script>
 <div id="txt">
-    Ton ancienne partie va être supprimé. <br>
+    Ton ancienne partie va être supprimée. <br>
     Veux-tu la télécharger?<br>
 </div><div id="btn">
     <input type="button" value="OUI" id="oui">
@@ -81,7 +81,7 @@
         var filename = "config_joueur.json";
 
         download(filename, text);
-
+        localStorage.clear();
         location = "index.html";
 
     }, false);
