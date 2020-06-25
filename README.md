@@ -1,7 +1,7 @@
 # My_Bakery
  Auteur : Éloïse DELHOMELLE
  
- [![Capture d'écran](image/capture_jeu.PNG "Capture d'écran")](https://edelhomelle.github.io/My_Bakery "Capture d'écran")
+ [![Capture d'écran](image/capture_jeu.png "Capture d'écran")](https://edelhomelle.github.io/My_Bakery "Capture d'écran")
  
  ### Presentation du jeu
 
