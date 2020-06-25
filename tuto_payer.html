@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" style="background-image: url('image/fondfinal.png'); background-size: cover;color: #555555">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Ma boulangerie</title>
@@ -38,26 +38,28 @@
 </div>
 <section>
     <script src="charger.js"></script>
+    <img src="image/fondfinal.png" alt = "fond_boulangerie" style=" position: absolute; width: 100%;height: 100%">
+
 <img onclick="remplir_bulle()" id="fleche" alt="fleche_next" src="image/next.png" title="SUIVANT" style="display: none; width: 10%; position:absolute;bottom: 10%; right: 10%">
 
-<div id="payer">
-    <span> <br/></span>
-    <input type="button" value="oui" id="oui">
-    <input type="button" value="non" id="non">
+<div id="payer" >
+    <span style="position:absolute;text-align: center;  left: 0; right: 0"> <br/></span>
+    <input type="button" value="oui" id="oui" style="position:absolute; top: 7%;right: 51%">
+    <input type="button" value="non" id="non" style="position: absolute; top: 7%;left: 51%">
 </div>
 <div id="deco">
-    <img alt="porte" id="porte" src="image/magasin/porte_delabree.png" style="position:absolute;width: 11%; left: 30%; bottom: 36%">
+    <img alt="porte" id="porte" src="image/magasin/porte_delabree.png" style="position:absolute;width: 12%; height: 40%; left: 30%; bottom: 42%">
     <img alt="vase" id="vase" src="image/magasin/vase_fleurs.png" style="position:absolute;width: 11%; left: 18%; bottom: 32%">
     <img alt="fenetre" id="fenetre" src="image/magasin/fenetre_delabree.png" style="position:absolute;width: 12%; right: 42%; top: 24%">
     <img alt="fenetre_droite" id="fenetre_droite" src="image/magasin/fenetre_droite_delabree.png" style="position:absolute;width: 7%; right: 15%; top: 20%">
     <img alt="presentoire" id="presentoire" src="image/presentoire_niveau0.png" style="position: absolute ;width: 15%;  top: 50%; transform: scaleX(-1)">
 
 </div>
-<div id="zone2" style="position: absolute; width: 500px; height: 600px; "> </div>
+<div id="zone2" style="position: absolute; width: 500px; height: 600px; top: 30%"> </div>
 
 <div id="bulle" style="position: absolute;
-    left:43%;
-    bottom: 45%;
+    right:10%;
+    bottom: 40%;
     background-color:white;
     text-align:center;
     max-width: 35%;
