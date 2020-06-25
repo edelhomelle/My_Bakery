@@ -18,6 +18,6 @@ My Bakery est un jeu éducatif où le joueur dirige une boulangerie et vend des 
  
  ###Licence
  
- Le code est sous licence libre  [GNU GPL v3](https://github.com/edelhomelle/My_Bakery/blob/master/LICENSE)
+ Le code est sous licence libre  [GNU GPL v3](https://github.com/edelhomelle/My_Bakery/blob/master/LICENSE.txt)
  En l'état du projet, toutes les ressources multimédia ne sont pas libres, ce qui peut rendre problématique sa distribution.
- Voir [les crédits](http://mapagedecredits) pour plus de détails.
+ Voir [les crédits](https://edelhomelle.github.io/My_Bakery/credits.html) pour plus de détails.
